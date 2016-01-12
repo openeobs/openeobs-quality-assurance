@@ -54,7 +54,7 @@ class TestPatientListPage(TestCommon):
         patient_id = patient_to_test.get_attribute('href').replace(
             'http://localhost:8069/mobile/patient/', ''
         )
-        id_to_use = self.patient_list_page.patient_helper(int(patient_id))
+        id_to_use = self.patient_list_page.patient_scan_helper(int(patient_id))
         self.patient_list_page.do_barcode_scan(id_to_use['other_identifier'])
 
     def test_can_click_list_item_to_view_patient_details(self):
@@ -79,12 +79,13 @@ class TestPatientListPage(TestCommon):
         task_id = patient_to_test.get_attribute('href').replace(
             'http://localhost:8069/mobile/patient/', ''
         )
-        name_to_use = \
-            self.patient_list_page.patient_helper(int(task_id))['display_name']
+        task_data = self.patient_list_page.patient_helper(task_id)[0]
+        name_to_use = task_data['full_name']
         patient_name = self.driver.find_element(
             *ListPageLocators.list_item_patient_name
         )
-        self.assertEqual(patient_name.text, name_to_use, 'Incorrect name')
+        self.assertEqual(patient_name.text, name_to_use.strip(),
+                         'Incorrect name')
 
     def test_list_item_contains_patient_location(self):
         """
@@ -95,9 +96,50 @@ class TestPatientListPage(TestCommon):
         task_id = patient_to_test.get_attribute('href').replace(
             'http://localhost:8069/mobile/patient/', ''
         )
-        patient = self.patient_list_page.patient_helper(int(task_id))
-        bed_to_use = patient['current_location_id'][1]
+        task_data = self.patient_list_page.patient_helper(task_id)[0]
+        location = task_data['location']
+        parent_location = task_data['parent_location']
+        bed_to_use = '{0}, {1}'.format(location, parent_location)
         patient_location = self.driver.find_element(
             *ListPageLocators.list_item_patient_location
         )
-        self.assertIn(bed_to_use, patient_location.text, 'Incorrect location')
+        self.assertEqual(bed_to_use, patient_location.text,
+                         'Incorrect location')
+
+    def test_list_item_contains_score_and_trend(self):
+        """
+        Test that the score and trend are present in list item
+        """
+        tasks = self.patient_list_page.get_list_items()
+        patient_to_test = tasks[0]
+        task_id = patient_to_test.get_attribute('href').replace(
+            'http://localhost:8069/mobile/patient/', ''
+        )
+        task_data = self.patient_list_page.patient_helper(task_id)[0]
+        score = task_data['ews_score']
+        trend = task_data['ews_trend']
+        score_str = '({0} )'.format(score)
+        patient_trend = self.driver.find_element(
+            *ListPageLocators.list_item_patient_trend
+        )
+        trend_str = 'icon-{0}-arrow'.format(trend)
+        self.assertEqual(patient_trend.get_attribute('class'), trend_str,
+                         'Incorrect trend')
+        self.assertIn(score_str, patient_to_test.text, 'Incorrect score')
+
+    def test_list_item_contains_task_deadline(self):
+        """
+        Test that the patient name is in the list item
+        """
+        tasks = self.patient_list_page.get_list_items()
+        patient_to_test = tasks[0]
+        task_id = patient_to_test.get_attribute('href').replace(
+            'http://localhost:8069/mobile/patient/', ''
+        )
+        task_data = self.patient_list_page.patient_helper(task_id)[0]
+        deadline = task_data['next_ews_time']
+        task_deadline = self.driver.find_element(
+            *ListPageLocators.list_item_deadline
+        )
+        self.assertEqual(deadline, task_deadline.text,
+                         'Incorrect deadline')

@@ -1,6 +1,6 @@
 from selenium.webdriver.common.by import By
-import selenium.webdriver.support.expected_conditions as EC
-import selenium.webdriver.support.ui as UI
+import selenium.webdriver.support.expected_conditions as ec
+import selenium.webdriver.support.ui as ui
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
 from erppeek import Client
@@ -43,9 +43,31 @@ class BasePage(object):
         standin_item = self.driver.find_element(*MenuLocators.stand_in_el)
         standin_item.click()
 
-    def task_helper(self, task_id):
+    @staticmethod
+    def task_helper(task_id):
         """
         use a task id to get id for do a barcode scan
+        :param task_id: ID of Task to do foo
+        """
+        odoo_client = Client('http://localhost:8069', db='nhclinical',
+                             user='nasir', password='nasir')
+        return odoo_client.model('nh.eobs.api').get_activities([task_id])
+
+    @staticmethod
+    def patient_helper(patient_id):
+        """
+        use a patient id to get id for do a barcode scan
+        :param patient_id: ID of patient to do foo
+        """
+        odoo_client = Client('http://localhost:8069', db='nhclinical',
+                             user='nasir', password='nasir')
+        return odoo_client.model('nh.eobs.api').get_patients([int(patient_id)])
+
+    @staticmethod
+    def task_scan_helper(task_id):
+        """
+        use a task id to get id for do a barcode scan
+        :param task_id: ID of Task to do foo
         """
         odoo_client = Client('http://localhost:8069', db='nhclinical',
                              user='nasir', password='nasir')
@@ -61,9 +83,11 @@ class BasePage(object):
         ])
         return patient_record
 
-    def patient_helper(self, patient_id):
+    @staticmethod
+    def patient_scan_helper(patient_id):
         """
         use a patient id to get id for do a barcode scan
+        :param patient_id: ID of patient to do foo
         """
         odoo_client = Client('http://localhost:8069', db='nhclinical',
                              user='nasir', password='nasir')
@@ -83,14 +107,14 @@ class BasePage(object):
         """
         scan_item = self.driver.find_element(*MenuLocators.barcode_scan_el)
         scan_item.click()
-        UI.WebDriverWait(self.driver, 5).until(
-            EC.visibility_of_element_located(
+        ui.WebDriverWait(self.driver, 5).until(
+            ec.visibility_of_element_located(
                     (By.ID,
                      'patient_barcode')
             )
         )
-        UI.WebDriverWait(self.driver, 5).until(
-            EC.visibility_of_element_located(
+        ui.WebDriverWait(self.driver, 5).until(
+            ec.visibility_of_element_located(
                 (By.CSS_SELECTOR, '#patient_barcode .barcode_scan')
             )
         )
@@ -103,8 +127,8 @@ class BasePage(object):
                 "scan.textContent = ',{0},';".format(patient_id)
             )
             barcode_input.send_keys(Keys.ENTER)
-            UI.WebDriverWait(self.driver, 5).until(
-                EC.visibility_of_element_located(
+            ui.WebDriverWait(self.driver, 5).until(
+                ec.visibility_of_element_located(
                         (By.TAG_NAME,
                          'dl')
                 )
@@ -179,7 +203,7 @@ class ListPageLocators(object):
     list_item_patient_name = (By.TAG_NAME, 'strong')
     list_item_patient_trend = (By.TAG_NAME, 'i')
     list_item_patient_location = (By.TAG_NAME, 'em')
-    list_item_deadline = (By.CSS_SELECTOR, 'div.task-left')
+    list_item_deadline = (By.CSS_SELECTOR, 'div.task-right .aside')
     list_item_title = (By.CSS_SELECTOR, 'p.taskInfo')
 
 
