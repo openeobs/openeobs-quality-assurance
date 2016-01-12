@@ -1,18 +1,8 @@
-import unittest
-from selenium import webdriver
 from openeobs_selenium.login_page import LoginPage
+from test_common import TestCommon
 
 
-class TestLoginPage(unittest.TestCase):
-
-    @classmethod
-    def setUpClass(cls):
-        cls.driver = webdriver.Firefox()
-        cls.driver.get('http://localhost:8069/web?db=nhclinical')
-
-    @classmethod
-    def tearDownClass(cls):
-        cls.driver.close()
+class TestLoginPage(TestCommon):
 
     def setUp(self):
         self.driver.get("http://localhost:8069/mobile/login")

@@ -3,45 +3,45 @@ from openeobs_selenium.list_page import ListPage
 from test_common import TestCommon
 
 
-class TestTaskListPage(TestCommon):
+class TestPatientListPage(TestCommon):
 
     def setUp(self):
         self.driver.get("http://localhost:8069/mobile/login")
         self.login_page = LoginPage(self.driver)
-        self.task_list_page = ListPage(self.driver)
+        self.patient_list_page = ListPage(self.driver)
         self.login_page.login('nasir', 'nasir')
-        self.task_list_page.go_to_task_list()
+        self.patient_list_page.go_to_patient_list()
 
     def test_can_logout(self):
         """
         Test that the title of the login page is Open-eObs
         """
-        self.task_list_page.logout()
-        self.assertTrue(self.task_list_page.is_login_page(),
+        self.patient_list_page.logout()
+        self.assertTrue(self.patient_list_page.is_login_page(),
                         'Did not get to the logout page correctly')
 
     def test_can_go_to_task_list_page(self):
         """
         Test that can go to task list page
         """
-        self.task_list_page.go_to_task_list()
-        self.assertTrue(self.task_list_page.is_task_list_page(),
+        self.patient_list_page.go_to_task_list()
+        self.assertTrue(self.patient_list_page.is_task_list_page(),
                         'Did not get to the task list page correctly')
 
     def test_can_go_to_patient_list_page(self):
         """
         Test that can go to the patient list page
         """
-        self.task_list_page.go_to_patient_list()
-        self.assertTrue(self.task_list_page.is_patient_list_page(),
+        self.patient_list_page.go_to_patient_list()
+        self.assertTrue(self.patient_list_page.is_patient_list_page(),
                         'Did not get to patient list page correctly')
 
     def test_can_go_to_stand_in_page(self):
         """
         Test that can navigate to the stand in page
         """
-        self.task_list_page.go_to_standin()
-        self.assertTrue(self.task_list_page.is_stand_in_page(),
+        self.patient_list_page.go_to_standin()
+        self.assertTrue(self.patient_list_page.is_stand_in_page(),
                         'Did not get to stand in page correctly')
 
     def test_can_carry_out_barcode_scan(self):
@@ -50,15 +50,15 @@ class TestTaskListPage(TestCommon):
         """
         pass
 
-    def test_can_click_list_item_to_carry_out_task(self):
+    def test_can_click_list_item_to_view_patient_details(self):
         """
         Test that clicking on a work item tasks user to carry out the task
         """
-        tasks = self.task_list_page.get_list_items()
-        task_to_test = tasks[0]
-        task_url = task_to_test.get_attribute('href')
-        task_to_test.click()
-        self.assertTrue(self.task_list_page.is_task_page(),
-                        'Did not get to task page correctly')
-        self.assertEqual(self.driver.current_url, task_url,
+        patients = self.patient_list_page.get_list_items()
+        patient_to_test = patients[0]
+        patient_url = patient_to_test.get_attribute('href')
+        patient_to_test.click()
+        self.assertTrue(self.patient_list_page.is_patient_page(),
+                        'Did not get to patient page correctly')
+        self.assertEqual(self.driver.current_url, patient_url,
                          'Incorrect url')
