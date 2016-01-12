@@ -48,7 +48,13 @@ class TestPatientListPage(TestCommon):
         """
         Test that can do a barcode scan
         """
-        pass
+        patients = self.patient_list_page.get_list_items()
+        patient_to_test = patients[0]
+        patient_id = patient_to_test.get_attribute('href').replace(
+            'http://localhost:8069/mobile/patient/', ''
+        )
+        id_to_use = self.patient_list_page.patient_scan_helper(int(patient_id))
+        self.patient_list_page.do_barcode_scan(id_to_use)
 
     def test_can_click_list_item_to_view_patient_details(self):
         """

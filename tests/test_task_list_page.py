@@ -48,7 +48,13 @@ class TestTaskListPage(TestCommon):
         """
         Test that can do a barcode scan
         """
-        pass
+        tasks = self.task_list_page.get_list_items()
+        patient_to_test = tasks[0]
+        task_id = patient_to_test.get_attribute('href').replace(
+            'http://localhost:8069/mobile/task/', ''
+        )
+        id_to_use = self.task_list_page.task_scan_helper(task_id)
+        self.task_list_page.do_barcode_scan(id_to_use)
 
     def test_can_click_list_item_to_carry_out_task(self):
         """

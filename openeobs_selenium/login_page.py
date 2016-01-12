@@ -1,5 +1,6 @@
 from openeobs_selenium.page_helpers import BasePage, LoginPageLocators
 from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.support.select import Select
 
 
 class LoginPage(BasePage):
@@ -18,6 +19,14 @@ class LoginPage(BasePage):
         login_button = self.driver.find_element(
             *LoginPageLocators.login_button_el
         )
+        try:
+            db = self.driver.find_element(
+                *LoginPageLocators.database_dropdown_el
+            )
+            Select(db).select_by_value('nhclinical')
+        except NoSuchElementException:
+            pass
+
         username_el.send_keys(username)
         password_el.send_keys(password)
         login_button.click()

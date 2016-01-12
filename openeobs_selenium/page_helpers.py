@@ -1,4 +1,9 @@
 from selenium.webdriver.common.by import By
+import selenium.webdriver.support.expected_conditions as EC
+import selenium.webdriver.support.ui as UI
+from selenium.webdriver.common.keys import Keys
+from selenium.common.exceptions import NoSuchElementException, TimeoutException
+from erppeek import Client
 
 
 class BasePage(object):
@@ -38,14 +43,65 @@ class BasePage(object):
         standin_item = self.driver.find_element(*MenuLocators.stand_in_el)
         standin_item.click()
 
+    def task_scan_helper(self, task_id):
+        """
+        use a task id to get id for do a barcode scan
+        """
+        odoo_client = Client('http://localhost:8069', db='nhclinical',
+                             user='nasir', password='nasir')
+        activity_api = odoo_client.model('nh.activity')
+        patient_api = odoo_client.model('nh.clinical.patient')
+        activity_record = activity_api.read(int(task_id), ['patient_id'])
+        patient_id = activity_record['patient_id'][0]
+        patient_record = patient_api.read(patient_id, ['other_identifier',
+                                                       'patient_identifier'])
+        return patient_record['other_identifier']
+
+    def patient_scan_helper(self, patient_id):
+        """
+        use a patient id to get id for do a barcode scan
+        """
+        odoo_client = Client('http://localhost:8069', db='nhclinical',
+                             user='nasir', password='nasir')
+        patient_api = odoo_client.model('nh.clinical.patient')
+        patient_record = patient_api.read(patient_id, ['other_identifier',
+                                                       'patient_identifier'])
+        return patient_record['other_identifier']
+
     def do_barcode_scan(self, patient_id):
         """
         Carry out a barcode scan with the patient id
         :param patient_id:
         """
         scan_item = self.driver.find_element(*MenuLocators.barcode_scan_el)
-        # TODO: Implement this
         scan_item.click()
+        UI.WebDriverWait(self.driver, 5).until(
+            EC.visibility_of_element_located(
+                    (By.ID,
+                     'patient_barcode')
+            )
+        )
+        UI.WebDriverWait(self.driver, 5).until(
+            EC.visibility_of_element_located(
+                (By.CSS_SELECTOR, '#patient_barcode .barcode_scan')
+            )
+        )
+        try:
+            barcode_input = \
+                self.driver.find_element(*MenuLocators.barcode_scan_input)
+            self.driver.execute_script("var scan = document.getElementsByName('barcode_scan')[0]; scan.setAttribute('value', ',{0},'); scan.textContent = ',{0},';".format(patient_id))
+            barcode_input.send_keys(Keys.ENTER)
+            UI.WebDriverWait(self.driver, 5).until(
+                EC.visibility_of_element_located(
+                        (By.TAG_NAME,
+                         'dl')
+                )
+            )
+        except NoSuchElementException:
+            return False
+        except TimeoutException:
+            return False
+        return True
 
     def is_login_page(self):
         """
@@ -123,4 +179,5 @@ class MenuLocators(object):
     patient_list_el = (By.ID, 'patientNavItem')
     stand_in_el = (By.LINK_TEXT, 'Stand In')
     barcode_scan_el = (By.CSS_SELECTOR, '.header-main li.scan_parent .scan')
+    barcode_scan_input = (By.CSS_SELECTOR, '#patient_barcode .barcode_scan')
     logout_el = (By.CSS_SELECTOR, '.header-main li.logout .button')
