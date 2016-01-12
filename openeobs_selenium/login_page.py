@@ -6,13 +6,6 @@ class LoginPage(BasePage):
     Login Page methods and helps etc
     """
 
-    def is_login_page(self):
-        """
-        Check that the page's title matches that of the login page
-        :return: Boolean of if the title matches or not
-        """
-        return '/mobile/login' in self.driver.current_url
-
     def login(self, username, password):
         """
         Fill out the login form and press the submit button
