@@ -1,0 +1,62 @@
+from openeobs_selenium.patient_page import PatientPage
+from openeobs_selenium.login_page import LoginPage
+from openeobs_selenium.list_page import ListPage
+from test_common import TestCommon
+
+
+class TestPatientPage(TestCommon):
+
+    def setUp(self):
+        self.driver.get("http://localhost:8069/mobile/login")
+        self.login_page = LoginPage(self.driver)
+        self.list_page = ListPage(self.driver)
+        self.patient_page = PatientPage(self.driver)
+        self.login_page.login('nasir', 'nasir')
+        self.list_page.go_to_patient_list()
+        patients = self.list_page.get_list_items()
+        patient_to_test = patients[0]
+        self.patient_url = patient_to_test.get_attribute('href')
+        self.driver.get(self.patient_url)
+
+
+    def test_can_logout(self):
+        """
+        Test that the title of the login page is Open-eObs
+        """
+        self.patient_page.logout()
+        self.assertTrue(self.patient_page.is_login_page(),
+                        'Did not get to the logout page correctly')
+
+    def test_can_go_to_task_list_page(self):
+        """
+        Test that can go to task list page
+        """
+        self.patient_page.go_to_task_list()
+        self.assertTrue(self.patient_page.is_task_list_page(),
+                        'Did not get to the task list page correctly')
+
+    def test_can_go_to_patient_list_page(self):
+        """
+        Test that can go to the patient list page
+        """
+        self.patient_page.go_to_patient_list()
+        self.assertTrue(self.patient_page.is_patient_list_page(),
+                        'Did not get to patient list page correctly')
+
+    def test_can_go_to_stand_in_page(self):
+        """
+        Test that can navigate to the stand in page
+        """
+        self.patient_page.go_to_standin()
+        self.assertTrue(self.patient_page.is_stand_in_page(),
+                        'Did not get to stand in page correctly')
+
+    def test_can_carry_out_barcode_scan(self):
+        """
+        Test that can do a barcode scan
+        """
+        task_id = self.patient_url.replace(
+            'http://localhost:8069/mobile/patient/', ''
+        )
+        id_to_use = self.patient_page.patient_scan_helper(int(task_id))
+        self.patient_page.do_barcode_scan(id_to_use['other_identifier'])

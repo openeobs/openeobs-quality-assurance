@@ -217,3 +217,25 @@ class MenuLocators(object):
     barcode_scan_el = (By.CSS_SELECTOR, '.header-main li.scan_parent .scan')
     barcode_scan_input = (By.CSS_SELECTOR, '#patient_barcode .barcode_scan')
     logout_el = (By.CSS_SELECTOR, '.header-main li.logout .button')
+
+
+class PatientPageLocators(object):
+    """
+    A class to help identify things on the patient page
+    """
+    adhoc_obs_menu_button = (By.ID, 'obsButton')
+    open_obs_menu = (By.ID, 'obs_menu')
+    patient_info = (By.CSS_SELECTOR, '#obsButton h3.name')
+    patient_name = (By.CSS_SELECTOR, '#obsButton h3.name strong')
+    graph_tab_button = (By.CSS_SELECTOR,
+                        '.content .block .tabs li:first-child a')
+    table_tab_button = (By.CSS_SELECTOR,
+                        '.content .block .tabs li:last-child a')
+    graph_container = (By.ID, 'graph-content')
+    table_container = (By.ID, 'table-content')
+    graph_chart = (By.ID, 'chart')
+    start_time_control = (By.ID, 'start_time')
+    start_date_control = (By.ID, 'start_date')
+    end_time_control = (By.ID, 'end_time')
+    end_date_control = (By.ID, 'end_date')
+    rangify_control = (By.ID, 'rangify')
