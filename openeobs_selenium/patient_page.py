@@ -6,7 +6,7 @@ from selenium.webdriver.common.by import By
 
 class PatientPage(BasePage):
     """
-    Login Page methods and helps etc
+    Patient Page methods and helps etc
     """
 
     def open_adhoc_obs_menu(self):

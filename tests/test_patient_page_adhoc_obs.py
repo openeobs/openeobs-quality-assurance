@@ -5,7 +5,7 @@ from test_common import TestCommon
 from openeobs_selenium.page_helpers import PatientPageLocators
 
 
-class TestPatientPage(TestCommon):
+class TestPatientPageAdhocObs(TestCommon):
 
     def setUp(self):
         self.driver.get("http://localhost:8069/mobile/login")
@@ -18,7 +18,6 @@ class TestPatientPage(TestCommon):
         patient_to_test = patients[0]
         self.patient_url = patient_to_test.get_attribute('href')
         self.driver.get(self.patient_url)
-
 
     def test_can_logout(self):
         """
@@ -71,7 +70,7 @@ class TestPatientPage(TestCommon):
         menu_title = menu.find_element(
             *PatientPageLocators.open_obs_menu_title
         )
-        observations= menu.find_elements(
+        observations = menu.find_elements(
             *PatientPageLocators.open_obs_menu_list_items
         )
         self.assertGreater(len(observations), 0,

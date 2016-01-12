@@ -243,3 +243,28 @@ class PatientPageLocators(object):
     end_time_control = (By.ID, 'end_time')
     end_date_control = (By.ID, 'end_date')
     rangify_control = (By.ID, 'rangify')
+
+
+class TaskPageLocators(object):
+    """
+    A class to help identify things on the task page
+    """
+    patient_name_container = (By.ID, 'patientName')
+    patient_name_link = (By.CSS_SELECTOR, '#patientName > a')
+    patient_name_info = (By.CSS_SELECTOR, '#patientName .icon-info')
+    patient_info_popup = (By.ID, 'patient_info')
+    patient_info_popup_title = (By.TAG_NAME, 'h2')
+    patient_info_popup_fullscreen_button = (By.ID, 'patient_obs_fullscreen')
+    patient_info_fullscreen = (By.CSS_SELECTOR, '.no-scroll > .full-modal')
+    patient_info_fullscreen_iframe = (By.TAG_NAME, 'iframe')
+    patient_info_fullscreen_close = (By.ID, 'closeFullModal')
+    task_form = (By.ID, 'obsForm')
+    task_form_task_id = (By.NAME, 'taskId')
+    task_form_start_time = (By.ID, 'startTimestamp')
+    task_form_submit = (By.ID, 'submitButton')
+    task_form_input_field = (By.CLASS_NAME, 'obsField')
+    task_form_field_label = (By.CSS_SELECTOR, '.input-header > label')
+    task_form_field_input = (By.CSS_SELECTOR, '.input-header > input')
+    task_form_field_select = (By.CSS_SELECTOR, '.input-body > select')
+    task_form_field_errors = (By.CSS_SELECTOR, '.input-body > .errors')
+    task_form_field_help = (By.CSS_SELECTOR, '.input-body > .help')
