@@ -1,4 +1,5 @@
 from openeobs_selenium.page_helpers import BasePage, LoginPageLocators
+from selenium.common.exceptions import NoSuchElementException
 
 
 class LoginPage(BasePage):
@@ -36,4 +37,15 @@ class LoginPage(BasePage):
         """
         error_el = self.driver.find_element(*LoginPageLocators.error_el)
         return error_el.text == 'Invalid username/password'
+
+    def shows_dropdown_for_multiple_databases(self):
+        """
+        Check that the login page shows the dropdown for multiple databases
+        :return: Boolean of if the drop down is present
+        """
+        try:
+            self.driver.find_element(*LoginPageLocators.database_dropdown_el)
+        except NoSuchElementException:
+            return False
+        return True
 
