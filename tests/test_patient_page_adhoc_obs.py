@@ -2,6 +2,7 @@ from openeobs_selenium.patient_page import PatientPage
 from openeobs_selenium.login_page import LoginPage
 from openeobs_selenium.list_page import ListPage
 from test_common import TestCommon
+from openeobs_selenium.page_helpers import PatientPageLocators
 
 
 class TestPatientPage(TestCommon):
@@ -60,3 +61,46 @@ class TestPatientPage(TestCommon):
         )
         id_to_use = self.patient_page.patient_scan_helper(int(task_id))
         self.patient_page.do_barcode_scan(id_to_use['other_identifier'])
+
+    def test_can_open_a_menu_to_carry_out_adhoc_observation(self):
+        """
+        Test that can see and open a menu to select an adhoc observation to
+        carry out for the patient
+        """
+        menu = self.patient_page.open_adhoc_obs_menu()
+        menu_title = menu.find_element(
+            *PatientPageLocators.open_obs_menu_title
+        )
+        observations= menu.find_elements(
+            *PatientPageLocators.open_obs_menu_list_items
+        )
+        self.assertGreater(len(observations), 0,
+                           'Incorrect number of adhoc obs')
+        task_id = self.patient_url.replace(
+            'http://localhost:8069/mobile/patient/', ''
+        )
+        data = self.patient_page.patient_helper(int(task_id))[0]
+        patient_name = data['full_name']
+        self.assertEqual(menu_title.text,
+                         'Pick an observation for {0}'.format(patient_name),
+                         'Incorrect menu title')
+
+    def test_adhoc_news_observation_shows_deadline(self):
+        """
+        Test that the NEWS observation in the adhoc observation list shows
+        the deadline to the next scheduled NEWS observation
+        """
+        menu = self.patient_page.open_adhoc_obs_menu()
+        news_item = menu.find_element(
+            *PatientPageLocators.open_obs_menu_news_item
+        )
+        deadline = news_item.find_element(
+            *PatientPageLocators.open_obs_menu_news_item_deadline
+        )
+        task_id = self.patient_url.replace(
+            'http://localhost:8069/mobile/patient/', ''
+        )
+        data = self.patient_page.patient_helper(int(task_id))[0]
+        ews_deadline = data['next_ews_time']
+        self.assertEqual(deadline.text, ews_deadline,
+                         'Incorrect NEWS deadline')

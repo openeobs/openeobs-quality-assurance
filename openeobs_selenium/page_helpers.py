@@ -223,8 +223,12 @@ class PatientPageLocators(object):
     """
     A class to help identify things on the patient page
     """
-    adhoc_obs_menu_button = (By.ID, 'obsButton')
+    adhoc_obs_menu_button = (By.CLASS_NAME, 'obs')
     open_obs_menu = (By.ID, 'obs_menu')
+    open_obs_menu_title = (By.TAG_NAME, 'h2')
+    open_obs_menu_list_items = (By.TAG_NAME, 'li')
+    open_obs_menu_news_item = (By.CLASS_NAME, 'rightContent')
+    open_obs_menu_news_item_deadline = (By.CLASS_NAME, 'aside')
     patient_info = (By.CSS_SELECTOR, '#obsButton h3.name')
     patient_name = (By.CSS_SELECTOR, '#obsButton h3.name strong')
     graph_tab_button = (By.CSS_SELECTOR,
