@@ -1,6 +1,7 @@
 from openeobs_selenium.login_page import LoginPage
 from openeobs_selenium.list_page import ListPage
 from test_common import TestCommon
+from openeobs_selenium.page_helpers import ListPageLocators
 
 
 class TestTaskListPage(TestCommon):
@@ -53,8 +54,8 @@ class TestTaskListPage(TestCommon):
         task_id = patient_to_test.get_attribute('href').replace(
             'http://localhost:8069/mobile/task/', ''
         )
-        id_to_use = self.task_list_page.task_scan_helper(task_id)
-        self.task_list_page.do_barcode_scan(id_to_use)
+        id_to_use = self.task_list_page.task_helper(task_id)
+        self.task_list_page.do_barcode_scan(id_to_use['other_identifier'])
 
     def test_can_click_list_item_to_carry_out_task(self):
         """
@@ -68,3 +69,34 @@ class TestTaskListPage(TestCommon):
                         'Did not get to task page correctly')
         self.assertEqual(self.driver.current_url, task_url,
                          'Incorrect url')
+
+    def test_list_item_contains_patient_name(self):
+        """
+        Test that the patient name is in the list item
+        """
+        tasks = self.task_list_page.get_list_items()
+        patient_to_test = tasks[0]
+        task_id = patient_to_test.get_attribute('href').replace(
+            'http://localhost:8069/mobile/task/', ''
+        )
+        name_to_use = self.task_list_page.task_helper(task_id)['display_name']
+        patient_name = self.driver.find_element(
+            *ListPageLocators.list_item_patient_name
+        )
+        self.assertEqual(patient_name.text, name_to_use, 'Incorrect name')
+
+    def test_list_item_contains_patient_location(self):
+        """
+        Test that the patient name is in the list item
+        """
+        tasks = self.task_list_page.get_list_items()
+        patient_to_test = tasks[0]
+        task_id = patient_to_test.get_attribute('href').replace(
+            'http://localhost:8069/mobile/task/', ''
+        )
+        bed_to_use = \
+            self.task_list_page.task_helper(task_id)['current_location_id'][1]
+        patient_location = self.driver.find_element(
+            *ListPageLocators.list_item_patient_location
+        )
+        self.assertIn(bed_to_use, patient_location.text, 'Incorrect location')

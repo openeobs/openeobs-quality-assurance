@@ -43,7 +43,7 @@ class BasePage(object):
         standin_item = self.driver.find_element(*MenuLocators.stand_in_el)
         standin_item.click()
 
-    def task_scan_helper(self, task_id):
+    def task_helper(self, task_id):
         """
         use a task id to get id for do a barcode scan
         """
@@ -53,20 +53,28 @@ class BasePage(object):
         patient_api = odoo_client.model('nh.clinical.patient')
         activity_record = activity_api.read(int(task_id), ['patient_id'])
         patient_id = activity_record['patient_id'][0]
-        patient_record = patient_api.read(patient_id, ['other_identifier',
-                                                       'patient_identifier'])
-        return patient_record['other_identifier']
+        patient_record = patient_api.read(patient_id, [
+            'other_identifier',
+            'patient_identifier',
+            'display_name',
+            'current_location_id'
+        ])
+        return patient_record
 
-    def patient_scan_helper(self, patient_id):
+    def patient_helper(self, patient_id):
         """
         use a patient id to get id for do a barcode scan
         """
         odoo_client = Client('http://localhost:8069', db='nhclinical',
                              user='nasir', password='nasir')
         patient_api = odoo_client.model('nh.clinical.patient')
-        patient_record = patient_api.read(patient_id, ['other_identifier',
-                                                       'patient_identifier'])
-        return patient_record['other_identifier']
+        patient_record = patient_api.read(patient_id, [
+            'other_identifier',
+            'patient_identifier',
+            'display_name',
+            'current_location_id'
+        ])
+        return patient_record
 
     def do_barcode_scan(self, patient_id):
         """
@@ -89,7 +97,11 @@ class BasePage(object):
         try:
             barcode_input = \
                 self.driver.find_element(*MenuLocators.barcode_scan_input)
-            self.driver.execute_script("var scan = document.getElementsByName('barcode_scan')[0]; scan.setAttribute('value', ',{0},'); scan.textContent = ',{0},';".format(patient_id))
+            self.driver.execute_script(
+                "var scan = document.getElementsByName('barcode_scan')[0]; "
+                "scan.setAttribute('value', ',{0},'); "
+                "scan.textContent = ',{0},';".format(patient_id)
+            )
             barcode_input.send_keys(Keys.ENTER)
             UI.WebDriverWait(self.driver, 5).until(
                 EC.visibility_of_element_located(
