@@ -48,7 +48,7 @@ class BasePage(object):
         'respiration_rate': 11,
         'indirect_oxymetry_spo2': 99,
         'oxygen_administration_flag': True,
-        'device_id': 'Nasal Cannula',
+        'device_id': 36,
         'flow_rate': 8,
         'blood_pressure_systolic': 120,
         'blood_pressure_diastolic': 80,
@@ -61,7 +61,7 @@ class BasePage(object):
         'respiration_rate': 11,
         'indirect_oxymetry_spo2': 99,
         'oxygen_administration_flag': True,
-        'device_id': 'Simple Mask',
+        'device_id': 37,
         'flow_rate': 4,
         'blood_pressure_systolic': 110,
         'blood_pressure_diastolic': 80,
@@ -96,7 +96,7 @@ class BasePage(object):
         'respiration_rate': 11,
         'indirect_oxymetry_spo2': 99,
         'oxygen_administration_flag': True,
-        'device_id': 'Intubated',
+        'device_id': 43,
         'concentration': 40,
         'blood_pressure_systolic': 110,
         'blood_pressure_diastolic': 80,
@@ -109,7 +109,7 @@ class BasePage(object):
         'respiration_rate': 24,
         'indirect_oxymetry_spo2': 99,
         'oxygen_administration_flag': True,
-        'device_id': 'CPAP',
+        'device_id': 44,
         'concentration': 60,
         'cpap_peep': 2,
         'blood_pressure_systolic': 110,
@@ -123,7 +123,7 @@ class BasePage(object):
         'respiration_rate': 24,
         'indirect_oxymetry_spo2': 99,
         'oxygen_administration_flag': True,
-        'device_id': 'NIV BiPAP',
+        'device_id': 45,
         'concentration': 85,
         'niv_ipap': 2,
         'niv_epap': 2,
@@ -139,7 +139,7 @@ class BasePage(object):
         'respiration_rate': 24,
         'indirect_oxymetry_spo2': 99,
         'oxygen_administration_flag': True,
-        'device_id': 'With Reservoir',
+        'device_id': 38,
         'flow_rate': 10,
         'blood_pressure_systolic': 110,
         'blood_pressure_diastolic': 80,
@@ -152,7 +152,7 @@ class BasePage(object):
         'respiration_rate': 24,
         'indirect_oxymetry_spo2': 99,
         'oxygen_administration_flag': True,
-        'device_id': 'Inubated',
+        'device_id': 43,
         'flow_rate': 10,
         'blood_pressure_systolic': 100,
         'blood_pressure_diastolic': 80,
@@ -165,7 +165,7 @@ class BasePage(object):
         'respiration_rate': 24,
         'indirect_oxymetry_spo2': 95,
         'oxygen_administration_flag': True,
-        'device_id': 'Inubated',
+        'device_id': 43,
         'flow_rate': 10,
         'blood_pressure_systolic': 100,
         'blood_pressure_diastolic': 80,
@@ -178,7 +178,7 @@ class BasePage(object):
         'respiration_rate': 24,
         'indirect_oxymetry_spo2': 93,
         'oxygen_administration_flag': True,
-        'device_id': 'Inubated',
+        'device_id': 43,
         'flow_rate': 10,
         'blood_pressure_systolic': 100,
         'blood_pressure_diastolic': 80,
@@ -335,6 +335,85 @@ class BasePage(object):
         ews_activity_id = ews_api.create_activity({},
                                                   {'patient_id': patient_id})
         activity_api.submit(ews_activity_id, self.NO_RISK_EWS_DATA)
+        activity_api.complete(ews_activity_id)
+
+    def add_low_risk_observation_for_patient(
+            self, patient_id, database='openeobs_quality_assurance_db',
+            user='nasir', password='nasir'):
+        """
+        Add an observation that gives low clinical risk
+        :param patient_id: The patient to do observation for
+        :param database: The database to do observation on
+        :param user: User to carry out observation as
+        :param password: Password for the user
+        """
+        odoo_client = Client('http://localhost:8069', db=database,
+                             user=user, password=password)
+        activity_api = odoo_client.model('nh.activity')
+        ews_api = odoo_client.model('nh.clinical.patient.observation.ews')
+        ews_activity_id = ews_api.create_activity({},
+                                                  {'patient_id': patient_id})
+        activity_api.submit(ews_activity_id, self.LOW_RISK_SCORE_1_EWS_DATA)
+        activity_api.complete(ews_activity_id)
+
+    def add_three_in_one_observation_for_patient(
+            self, patient_id, database='openeobs_quality_assurance_db',
+            user='nasir', password='nasir'):
+        """
+        Add an observation that gives medium clinical risk due to 3in1
+        :param patient_id: The patient to do observation for
+        :param database: The database to do observation on
+        :param user: User to carry out observation as
+        :param password: Password for the user
+        """
+        odoo_client = Client('http://localhost:8069', db=database,
+                             user=user, password=password)
+        activity_api = odoo_client.model('nh.activity')
+        ews_api = odoo_client.model('nh.clinical.patient.observation.ews')
+        ews_activity_id = ews_api.create_activity({},
+                                                  {'patient_id': patient_id})
+        activity_api.submit(ews_activity_id,
+                            self.MEDIUM_RISK_SCORE_4_THREE_IN_ONE_EWS_DATA)
+        activity_api.complete(ews_activity_id)
+
+    def add_medium_risk_observation_for_patient(
+            self, patient_id, database='openeobs_quality_assurance_db',
+            user='nasir', password='nasir'):
+        """
+        Add an observation that gives medium clinical risk due to 3in1
+        :param patient_id: The patient to do observation for
+        :param database: The database to do observation on
+        :param user: User to carry out observation as
+        :param password: Password for the user
+        """
+        odoo_client = Client('http://localhost:8069', db=database,
+                             user=user, password=password)
+        activity_api = odoo_client.model('nh.activity')
+        ews_api = odoo_client.model('nh.clinical.patient.observation.ews')
+        ews_activity_id = ews_api.create_activity({},
+                                                  {'patient_id': patient_id})
+        activity_api.submit(ews_activity_id,
+                            self.MEDIUM_RISK_SCORE_6_EWS_DATA)
+        activity_api.complete(ews_activity_id)
+
+    def add_high_risk_observation_for_patient(
+            self, patient_id, database='openeobs_quality_assurance_db',
+            user='nasir', password='nasir'):
+        """
+        Add an observation that gives medium clinical risk due to 3in1
+        :param patient_id: The patient to do observation for
+        :param database: The database to do observation on
+        :param user: User to carry out observation as
+        :param password: Password for the user
+        """
+        odoo_client = Client('http://localhost:8069', db=database,
+                             user=user, password=password)
+        activity_api = odoo_client.model('nh.activity')
+        ews_api = odoo_client.model('nh.clinical.patient.observation.ews')
+        ews_activity_id = ews_api.create_activity({},
+                                                  {'patient_id': patient_id})
+        activity_api.submit(ews_activity_id,
+                            self.HIGH_RISK_SCORE_11_EWS_DATA)
         activity_api.complete(ews_activity_id)
 
     def do_barcode_scan(self, patient_id):

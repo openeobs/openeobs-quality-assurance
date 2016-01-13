@@ -7,7 +7,7 @@ import selenium.webdriver.support.ui as ui
 from selenium.webdriver.common.by import By
 
 
-class TestPatientPageVisualisationWithNoRiskObsData(TestCommon):
+class TestPatientPageVisualisationWithMediumRiskObsData(TestCommon):
 
     def setUp(self):
         self.driver.get("http://localhost:8069/mobile/login")
@@ -23,7 +23,8 @@ class TestPatientPageVisualisationWithNoRiskObsData(TestCommon):
             'http://localhost:8069/mobile/patient/', ''
         )
         self.patient_page.remove_observations_for_patient(int(patient_id))
-        self.patient_page.add_no_risk_observation_for_patient(int(patient_id))
+        self.patient_page.add_medium_risk_observation_for_patient(
+                int(patient_id))
         self.driver.get(self.patient_url)
         ui.WebDriverWait(self.driver, 5).until(
             ec.visibility_of_element_located(
@@ -108,7 +109,7 @@ class TestPatientPageVisualisationWithNoRiskObsData(TestCommon):
         rr_label = self.patient_page.get_graph_label(resp_rate_graph)
         rr_mes = self.patient_page.get_graph_measurement(resp_rate_graph)
         self.assertEqual(rr_label, 'RR', 'Incorrect Respiration Rate Label')
-        self.assertEqual(rr_mes, '18/min',
+        self.assertEqual(rr_mes, '24/min',
                          'Incorrect Respiration Rate Measurement')
 
         os_label = self.patient_page.get_graph_label(oxy_sat_graph)
@@ -125,12 +126,12 @@ class TestPatientPageVisualisationWithNoRiskObsData(TestCommon):
         hr_label = self.patient_page.get_graph_label(hr_graph)
         hr_mes = self.patient_page.get_graph_measurement(hr_graph)
         self.assertEqual(hr_label, 'HR', 'Incorrect Pulse Rate Label')
-        self.assertEqual(hr_mes, '65/min', 'Incorrect Pulse Rate Measurement')
+        self.assertEqual(hr_mes, '50/min', 'Incorrect Pulse Rate Measurement')
 
         bp_label = self.patient_page.get_graph_label(bp_graph)
         bp_mes = self.patient_page.get_graph_measurements(bp_graph)
         self.assertEqual(bp_label, 'BP', 'Incorrect Blood Pressure Label')
-        self.assertEqual(bp_mes[0].text, '120',
+        self.assertEqual(bp_mes[0].text, '110',
                          'Incorrect Blood Pressure Measurement - top')
         self.assertEqual(bp_mes[1].text, '80mmHg',
                          'Incorrect Blood Pressure Measurement - bottom')
@@ -147,10 +148,17 @@ class TestPatientPageVisualisationWithNoRiskObsData(TestCommon):
                          'Incorrect table headers')
         table_rows = self.patient_page.get_table_rows(tabular_values_table)
         tabular_values = self.patient_page.get_table_data(table_rows[1])
-        tab_vals = [vals for vals in tabular_values if vals]
-        self.assertEqual(len(tab_vals), 3, 'Incorrect number of data')
+        self.assertEqual(len(tabular_values), 4, 'Incorrect number of data')
         # TODO: I'm skipping the date field cos that will make things fragile
-        self.assertEqual(tab_vals[1:], ['A', 'No'], 'Incorrect data in table')
+        self.assertEqual(tabular_values[1], 'A',
+                         'Incorrect avpu data in table')
+        self.assertEqual(tabular_values[2], 'Yes',
+                         'Incorrect on suppl o2 data in table')
+        self.assertEqual(
+            tabular_values[3],
+            'Device: CPAP\nConcentration: 60%\nCPAP PEEP: 2',
+            'Incorrect inspired o2 data in table'
+        )
 
     def test_shows_the_correct_values_in_table(self):
         """
@@ -168,20 +176,20 @@ class TestPatientPageVisualisationWithNoRiskObsData(TestCommon):
         news_row = self.patient_page.get_table_data(rows[0])
         self.assertEqual(news_row[0], 'NEWS Score',
                          'Incorrect title on news score row')
-        self.assertEqual(news_row[1], '0',
+        self.assertEqual(news_row[1], '6',
                          'Incorrect value on news score row')
 
         rr_row = self.patient_page.get_table_data(rows[1])
         self.assertEqual(rr_row[0], 'Respiration Rate',
                          'Incorrect title on respiration rate row')
-        self.assertEqual(rr_row[1], '18',
+        self.assertEqual(rr_row[1], '24',
                          'Incorrect value on respiration rate row')
 
         os_row = self.patient_page.get_table_data(rows[2])
         self.assertEqual(os_row[0], 'O2 Saturation',
-                         'Incorrect title on O2 Saturation row')
+                         'Incorrect title on o2 sat row')
         self.assertEqual(os_row[1], '99',
-                         'Incorrect value on O2 Saturation row')
+                         'Incorrect value on o2 row')
 
         bt_row = self.patient_page.get_table_data(rows[3])
         self.assertEqual(bt_row[0], 'Body Temperature',
@@ -192,7 +200,7 @@ class TestPatientPageVisualisationWithNoRiskObsData(TestCommon):
         bps_row = self.patient_page.get_table_data(rows[4])
         self.assertEqual(bps_row[0], 'Blood Pressure Systolic',
                          'Incorrect title on Blood Pressure Systolic row')
-        self.assertEqual(bps_row[1], '120',
+        self.assertEqual(bps_row[1], '110',
                          'Incorrect value on Blood Pressure Systolic row')
 
         bpd_row = self.patient_page.get_table_data(rows[5])
@@ -204,7 +212,7 @@ class TestPatientPageVisualisationWithNoRiskObsData(TestCommon):
         ps_row = self.patient_page.get_table_data(rows[6])
         self.assertEqual(ps_row[0], 'Pulse Rate',
                          'Incorrect title on Pulse Rate row')
-        self.assertEqual(ps_row[1], '65',
+        self.assertEqual(ps_row[1], '50',
                          'Incorrect value on Pulse Rate row')
 
         as_row = self.patient_page.get_table_data(rows[7])
@@ -216,11 +224,12 @@ class TestPatientPageVisualisationWithNoRiskObsData(TestCommon):
         pos_row = self.patient_page.get_table_data(rows[8])
         self.assertEqual(pos_row[0], 'Patient on Supplemental O2',
                          'Incorrect title on Supplemental O2 row')
-        self.assertEqual(pos_row[1], 'No',
+        self.assertEqual(pos_row[1], 'Yes',
                          'Incorrect value on Supplemental O2 row')
 
         ios_row = self.patient_page.get_table_data(rows[9])
         self.assertEqual(ios_row[0], 'Inspired Oxygen',
                          'Incorrect title on Inspired Oxygen row')
-        self.assertEqual(ios_row[1], '',
+        self.assertEqual(ios_row[1],
+                         'Concentration: 60\nDevice: CPAP\nCPAP PEEP: 2',
                          'Incorrect value on Inspired Oxygen row')
