@@ -20,8 +20,8 @@ class TestCommon(unittest.TestCase):
         )
         cls.odoo_client = Client('http://localhost:8069', db='nhclinical',
                                  user='admin', password='admin')
-        cls.odoo_client.db.drop('changeme1', 'nhclinical_dupl')
         cls.test_database_name = 'openeobs_quality_assurance_db'
+        cls.odoo_client.db.drop('changeme1', cls.test_database_name)
         cls.odoo_client.db.duplicate_database('changeme1', 'nhclinical',
                                               cls.test_database_name)
 

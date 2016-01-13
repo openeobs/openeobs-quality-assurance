@@ -11,6 +11,182 @@ class BasePage(object):
     Base class to initialise the base page that will be called from all pages
     """
 
+    NO_RISK_EWS_DATA = {
+        'respiration_rate': 18,
+        'indirect_oxymetry_spo2': 99,
+        'oxygen_administration_flag': False,
+        'blood_pressure_systolic': 120,
+        'blood_pressure_diastolic': 80,
+        'avpu_text': 'A',
+        'pulse_rate': 65,
+        'body_temperature': 37.5,
+    }
+
+    LOW_RISK_SCORE_1_EWS_DATA = {
+        'respiration_rate': 11,
+        'indirect_oxymetry_spo2': 99,
+        'oxygen_administration_flag': False,
+        'blood_pressure_systolic': 120,
+        'blood_pressure_diastolic': 80,
+        'avpu_text': 'A',
+        'pulse_rate': 65,
+        'body_temperature': 37.5,
+    }
+
+    LOW_RISK_SCORE_2_EWS_DATA = {
+        'respiration_rate': 11,
+        'indirect_oxymetry_spo2': 99,
+        'oxygen_administration_flag': False,
+        'blood_pressure_systolic': 110,
+        'blood_pressure_diastolic': 80,
+        'avpu_text': 'A',
+        'pulse_rate': 65,
+        'body_temperature': 37.5,
+    }
+
+    LOW_RISK_SCORE_3_EWS_DATA = {
+        'respiration_rate': 11,
+        'indirect_oxymetry_spo2': 99,
+        'oxygen_administration_flag': True,
+        'device_id': 'Nasal Cannula',
+        'flow_rate': 8,
+        'blood_pressure_systolic': 120,
+        'blood_pressure_diastolic': 80,
+        'avpu_text': 'A',
+        'pulse_rate': 65,
+        'body_temperature': 37.5,
+    }
+
+    LOW_RISK_SCORE_4_EWS_DATA = {
+        'respiration_rate': 11,
+        'indirect_oxymetry_spo2': 99,
+        'oxygen_administration_flag': True,
+        'device_id': 'Simple Mask',
+        'flow_rate': 4,
+        'blood_pressure_systolic': 110,
+        'blood_pressure_diastolic': 80,
+        'avpu_text': 'A',
+        'pulse_rate': 65,
+        'body_temperature': 37.5,
+    }
+
+    MEDIUM_RISK_SCORE_3_THREE_IN_ONE_EWS_DATA = {
+        'respiration_rate': 18,
+        'indirect_oxymetry_spo2': 99,
+        'oxygen_administration_flag': False,
+        'blood_pressure_systolic': 120,
+        'blood_pressure_diastolic': 80,
+        'avpu_text': 'V',
+        'pulse_rate': 65,
+        'body_temperature': 37.5,
+    }
+
+    MEDIUM_RISK_SCORE_4_THREE_IN_ONE_EWS_DATA = {
+        'respiration_rate': 11,
+        'indirect_oxymetry_spo2': 99,
+        'oxygen_administration_flag': False,
+        'blood_pressure_systolic': 120,
+        'blood_pressure_diastolic': 80,
+        'avpu_text': 'V',
+        'pulse_rate': 65,
+        'body_temperature': 37.5,
+    }
+
+    MEDIUM_RISK_SCORE_5_EWS_DATA = {
+        'respiration_rate': 11,
+        'indirect_oxymetry_spo2': 99,
+        'oxygen_administration_flag': True,
+        'device_id': 'Intubated',
+        'concentration': 40,
+        'blood_pressure_systolic': 110,
+        'blood_pressure_diastolic': 80,
+        'avpu_text': 'A',
+        'pulse_rate': 50,
+        'body_temperature': 37.5,
+    }
+
+    MEDIUM_RISK_SCORE_6_EWS_DATA = {
+        'respiration_rate': 24,
+        'indirect_oxymetry_spo2': 99,
+        'oxygen_administration_flag': True,
+        'device_id': 'CPAP',
+        'concentration': 60,
+        'cpap_peep': 2,
+        'blood_pressure_systolic': 110,
+        'blood_pressure_diastolic': 80,
+        'avpu_text': 'A',
+        'pulse_rate': 50,
+        'body_temperature': 37.5,
+    }
+
+    HIGH_RISK_SCORE_7_EWS_DATA = {
+        'respiration_rate': 24,
+        'indirect_oxymetry_spo2': 99,
+        'oxygen_administration_flag': True,
+        'device_id': 'NIV BiPAP',
+        'concentration': 85,
+        'niv_ipap': 2,
+        'niv_epap': 2,
+        'niv_backup': 4,
+        'blood_pressure_systolic': 110,
+        'blood_pressure_diastolic': 80,
+        'avpu_text': 'A',
+        'pulse_rate': 50,
+        'body_temperature': 36.0,
+    }
+
+    HIGH_RISK_SCORE_8_EWS_DATA = {
+        'respiration_rate': 24,
+        'indirect_oxymetry_spo2': 99,
+        'oxygen_administration_flag': True,
+        'device_id': 'With Reservoir',
+        'flow_rate': 10,
+        'blood_pressure_systolic': 110,
+        'blood_pressure_diastolic': 80,
+        'avpu_text': 'A',
+        'pulse_rate': 50,
+        'body_temperature': 36.0,
+    }
+
+    HIGH_RISK_SCORE_9_EWS_DATA = {
+        'respiration_rate': 24,
+        'indirect_oxymetry_spo2': 99,
+        'oxygen_administration_flag': True,
+        'device_id': 'Inubated',
+        'flow_rate': 10,
+        'blood_pressure_systolic': 100,
+        'blood_pressure_diastolic': 80,
+        'avpu_text': 'A',
+        'pulse_rate': 130,
+        'body_temperature': 36.0,
+    }
+
+    HIGH_RISK_SCORE_10_EWS_DATA = {
+        'respiration_rate': 24,
+        'indirect_oxymetry_spo2': 95,
+        'oxygen_administration_flag': True,
+        'device_id': 'Inubated',
+        'flow_rate': 10,
+        'blood_pressure_systolic': 100,
+        'blood_pressure_diastolic': 80,
+        'avpu_text': 'A',
+        'pulse_rate': 130,
+        'body_temperature': 36.0,
+    }
+
+    HIGH_RISK_SCORE_11_EWS_DATA = {
+        'respiration_rate': 24,
+        'indirect_oxymetry_spo2': 93,
+        'oxygen_administration_flag': True,
+        'device_id': 'Inubated',
+        'flow_rate': 10,
+        'blood_pressure_systolic': 100,
+        'blood_pressure_diastolic': 80,
+        'avpu_text': 'A',
+        'pulse_rate': 130,
+        'body_temperature': 36.0,
+    }
+
     def __init__(self, driver):
         self.driver = driver
 
@@ -49,6 +225,9 @@ class BasePage(object):
         """
         use a task id to get id for do a barcode scan
         :param task_id: ID of Task to do foo
+        :param database: The database to do observation on
+        :param user: User to carry out observation as
+        :param password: Password for the user
         """
         odoo_client = Client('http://localhost:8069', db=database,
                              user=user, password=password)
@@ -60,6 +239,9 @@ class BasePage(object):
         """
         use a patient id to get id for do a barcode scan
         :param patient_id: ID of patient to do foo
+        :param database: The database to do observation on
+        :param user: User to carry out observation as
+        :param password: Password for the user
         """
         odoo_client = Client('http://localhost:8069', db=database,
                              user=user, password=password)
@@ -71,6 +253,9 @@ class BasePage(object):
         """
         use a task id to get id for do a barcode scan
         :param task_id: ID of Task to do foo
+        :param database: The database to do observation on
+        :param user: User to carry out observation as
+        :param password: Password for the user
         """
         odoo_client = Client('http://localhost:8069', db=database,
                              user=user, password=password)
@@ -93,6 +278,9 @@ class BasePage(object):
         """
         use a patient id to get id for do a barcode scan
         :param patient_id: ID of patient to do foo
+        :param database: The database to do observation on
+        :param user: User to carry out observation as
+        :param password: Password for the user
         """
         odoo_client = Client('http://localhost:8069', db=database,
                              user=user, password=password)
@@ -112,11 +300,12 @@ class BasePage(object):
         """
         Remove all the observations for the patient
         :param patient_id: The patient to remove obs for
-        :return: Boolean of if the operation was successful
+        :param database: The database to do observation on
+        :param user: User to carry out observation as
+        :param password: Password for the user
         """
         odoo_client = Client('http://localhost:8069', db=database,
                              user=user, password=password)
-        # Find activity of news type with parent id of patient spell
         activity_api = odoo_client.model('nh.activity')
         spells = activity_api.search([
             ['state', '=', 'started'],
@@ -128,6 +317,25 @@ class BasePage(object):
             ['parent_id', 'in', spells]
         ])
         activity_api.unlink(obs)
+
+    def add_no_risk_observation_for_patient(
+            self, patient_id, database='openeobs_quality_assurance_db',
+            user='nasir', password='nasir'):
+        """
+        Add an observation that gives no clinical risk
+        :param patient_id: The patient to do observation for
+        :param database: The database to do observation on
+        :param user: User to carry out observation as
+        :param password: Password for the user
+        """
+        odoo_client = Client('http://localhost:8069', db=database,
+                             user=user, password=password)
+        activity_api = odoo_client.model('nh.activity')
+        ews_api = odoo_client.model('nh.clinical.patient.observation.ews')
+        ews_activity_id = ews_api.create_activity({},
+                                                  {'patient_id': patient_id})
+        activity_api.submit(ews_activity_id, self.NO_RISK_EWS_DATA)
+        activity_api.complete(ews_activity_id)
 
     def do_barcode_scan(self, patient_id):
         """
@@ -266,13 +474,23 @@ class PatientPageLocators(object):
                         '.content .block .tabs li:last-child a')
     graph_container = (By.ID, 'graph-content')
     table_container = (By.ID, 'table-content')
+    table_container_table = (By.CSS_SELECTOR, '#table-content table')
     graph_chart = (By.ID, 'chart')
+    graph_chart_svg = (By.CSS_SELECTOR, '#chart svg')
     no_obs_in_chart = (By.CSS_SELECTOR, '#chart > h2')
+    tabular_values_table = (By.CSS_SELECTOR, '#chart .nhtable')
+    table_header = (By.TAG_NAME, 'th')
+    table_row = (By.TAG_NAME, 'tr')
+    table_data = (By.TAG_NAME, 'td')
     start_time_control = (By.ID, 'start_time')
     start_date_control = (By.ID, 'start_date')
     end_time_control = (By.ID, 'end_time')
     end_date_control = (By.ID, 'end_date')
     rangify_control = (By.ID, 'rangify')
+    chart_context_graph = (By.CSS_SELECTOR, '.nhcontext .nhgraph')
+    chart_focus_graphs = (By.CSS_SELECTOR, '.nhfocus .nhgraph')
+    chart_graph_label = (By.CSS_SELECTOR, '.background .label')
+    chart_graph_measurement = (By.CSS_SELECTOR, '.background .measurement')
 
 
 class TaskPageLocators(object):
