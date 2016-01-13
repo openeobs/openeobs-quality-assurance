@@ -22,7 +22,7 @@ class PatientPage(BasePage):
         )
         return self.driver.find_element(*PatientPageLocators.open_obs_menu)
 
-    def has_patient_data(self):
+    def has_no_patient_data(self):
         """
         Check that the patient's record shows data
         :return: Boolean if error message is shown or not

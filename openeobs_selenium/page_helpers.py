@@ -105,6 +105,30 @@ class BasePage(object):
         ])
         return patient_record
 
+    @staticmethod
+    def remove_observations_for_patient(
+            patient_id,  database='openeobs_quality_assurance_db',
+            user='admin', password='admin'):
+        """
+        Remove all the observations for the patient
+        :param patient_id: The patient to remove obs for
+        :return: Boolean of if the operation was successful
+        """
+        odoo_client = Client('http://localhost:8069', db=database,
+                             user=user, password=password)
+        # Find activity of news type with parent id of patient spell
+        activity_api = odoo_client.model('nh.activity')
+        spells = activity_api.search([
+            ['state', '=', 'started'],
+            ['data_model', '=', 'nh.clinical.spell'],
+            ['patient_id', '=', patient_id]
+        ])
+        obs = activity_api.search([
+            ['data_model', '=', 'nh.clinical.patient.observation.ews'],
+            ['parent_id', 'in', spells]
+        ])
+        activity_api.unlink(obs)
+
     def do_barcode_scan(self, patient_id):
         """
         Carry out a barcode scan with the patient id
@@ -243,6 +267,7 @@ class PatientPageLocators(object):
     graph_container = (By.ID, 'graph-content')
     table_container = (By.ID, 'table-content')
     graph_chart = (By.ID, 'chart')
+    no_obs_in_chart = (By.CSS_SELECTOR, '#chart > h2')
     start_time_control = (By.ID, 'start_time')
     start_date_control = (By.ID, 'start_date')
     end_time_control = (By.ID, 'end_time')
