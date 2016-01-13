@@ -1,13 +1,24 @@
 from openeobs_selenium.login_page import LoginPage
-from test_common import TestCommon
+import unittest
 from erppeek import Client
+import selenium.webdriver.support.expected_conditions as ec
+import selenium.webdriver.support.ui as ui
+from selenium.webdriver.common.by import By
+from selenium import webdriver
 
 
-class TestLoginPageWithMultipleDBs(TestCommon):
+class TestLoginPageWithMultipleDBs(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        super(TestLoginPageWithMultipleDBs, cls).setUpClass()
+        cls.driver = webdriver.Firefox()
+        cls.driver.get('http://localhost:8069/web?db=nhclinical')
+        ui.WebDriverWait(cls.driver, 5).until(
+            ec.visibility_of_element_located(
+                    (By.CSS_SELECTOR,
+                     '.oe_single_form_container.modal-content')
+            )
+        )
         cls.odoo_client = Client('http://localhost:8069', db='nhclinical',
                                  user='admin', password='admin')
         cls.odoo_client.db.drop('changeme1', 'nhclinical_dupl')

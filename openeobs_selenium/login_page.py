@@ -8,7 +8,8 @@ class LoginPage(BasePage):
     Login Page methods and helps etc
     """
 
-    def login(self, username, password):
+    def login(self, username, password,
+              database='openeobs_quality_assurance_db'):
         """
         Fill out the login form and press the submit button
         :param username: Username to login with
@@ -23,7 +24,7 @@ class LoginPage(BasePage):
             db = self.driver.find_element(
                 *LoginPageLocators.database_dropdown_el
             )
-            Select(db).select_by_value('nhclinical')
+            Select(db).select_by_value(database)
         except NoSuchElementException:
             pass
 

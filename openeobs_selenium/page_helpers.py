@@ -44,33 +44,36 @@ class BasePage(object):
         standin_item.click()
 
     @staticmethod
-    def task_helper(task_id):
+    def task_helper(task_id, database='openeobs_quality_assurance_db',
+                    user='nasir', password='nasir'):
         """
         use a task id to get id for do a barcode scan
         :param task_id: ID of Task to do foo
         """
-        odoo_client = Client('http://localhost:8069', db='nhclinical',
-                             user='nasir', password='nasir')
+        odoo_client = Client('http://localhost:8069', db=database,
+                             user=user, password=password)
         return odoo_client.model('nh.eobs.api').get_activities([task_id])
 
     @staticmethod
-    def patient_helper(patient_id):
+    def patient_helper(patient_id, database='openeobs_quality_assurance_db',
+                       user='nasir', password='nasir'):
         """
         use a patient id to get id for do a barcode scan
         :param patient_id: ID of patient to do foo
         """
-        odoo_client = Client('http://localhost:8069', db='nhclinical',
-                             user='nasir', password='nasir')
+        odoo_client = Client('http://localhost:8069', db=database,
+                             user=user, password=password)
         return odoo_client.model('nh.eobs.api').get_patients([int(patient_id)])
 
     @staticmethod
-    def task_scan_helper(task_id):
+    def task_scan_helper(task_id, database='openeobs_quality_assurance_db',
+                         user='nasir', password='nasir'):
         """
         use a task id to get id for do a barcode scan
         :param task_id: ID of Task to do foo
         """
-        odoo_client = Client('http://localhost:8069', db='nhclinical',
-                             user='nasir', password='nasir')
+        odoo_client = Client('http://localhost:8069', db=database,
+                             user=user, password=password)
         activity_api = odoo_client.model('nh.activity')
         patient_api = odoo_client.model('nh.clinical.patient')
         activity_record = activity_api.read(int(task_id), ['patient_id'])
@@ -84,13 +87,15 @@ class BasePage(object):
         return patient_record
 
     @staticmethod
-    def patient_scan_helper(patient_id):
+    def patient_scan_helper(patient_id,
+                            database='openeobs_quality_assurance_db',
+                            user='nasir', password='nasir'):
         """
         use a patient id to get id for do a barcode scan
         :param patient_id: ID of patient to do foo
         """
-        odoo_client = Client('http://localhost:8069', db='nhclinical',
-                             user='nasir', password='nasir')
+        odoo_client = Client('http://localhost:8069', db=database,
+                             user=user, password=password)
         patient_api = odoo_client.model('nh.clinical.patient')
         patient_record = patient_api.read(patient_id, [
             'other_identifier',

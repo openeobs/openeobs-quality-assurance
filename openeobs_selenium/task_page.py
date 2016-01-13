@@ -45,7 +45,7 @@ class TaskPage(BasePage):
         Check full screen isn't open
         """
         try:
-            full_obs = self.driver.find_element(
+            self.driver.find_element(
                 *TaskPageLocators.patient_info_fullscreen
             )
         except NoSuchElementException:
