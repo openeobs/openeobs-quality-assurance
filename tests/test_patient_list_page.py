@@ -1,7 +1,8 @@
+import time
 from openeobs_selenium.login_page import LoginPage
 from openeobs_selenium.list_page import ListPage
 from test_common import TestCommon
-from openeobs_selenium.page_helpers import ListPageLocators
+from openeobs_selenium.page_helpers import ListPageLocators, PatientPageLocators
 
 
 class TestPatientListPage(TestCommon):
@@ -143,3 +144,66 @@ class TestPatientListPage(TestCommon):
         )
         self.assertEqual(deadline, task_deadline.text,
                          'Incorrect deadline')
+
+    def test_shows_patients(self):
+        """
+        Test that the patient list shows patients for the user
+        """
+        patient_list = []
+        for patient in self.patient_list_page.get_list_items():
+            patient_list.append(patient)
+
+        self.assertNotEquals(patient_list, [], 'Patient list not showing patients')
+
+
+    def test_shows_patient_data(self):
+        """
+        Test that a patient record shows data (graph/table) for the patient
+        """
+        patients = self.patient_list_page.get_list_items()
+        patient_to_test = patients[0]
+        patient_to_test.click()
+
+        patient_graph = self.driver.find_element(
+            *PatientPageLocators.graph_chart
+        )
+
+        #NOT a permanent solution
+        time.sleep(3)
+
+        self.assertEqual(patient_graph.is_displayed(), True, 'Graph not found')
+
+        show_table = self.driver.find_element(
+            *PatientPageLocators.table_tab_button
+        )
+        show_table.click()
+
+        #NOT a permanent solution
+        time.sleep(3)
+
+        patient_table = self.driver.find_element(
+            *PatientPageLocators.table_container_table
+        )
+
+        self.assertEqual(patient_table.is_displayed(), True, 'Table not found')
+
+    def test_adhoc_obs(self):
+        """
+        Test that a patient record allows for adhoc obs
+        """
+        patients = self.patient_list_page.get_list_items()
+        patient_to_test = patients[0]
+        patient_to_test.click()
+
+        obs_button = self.driver.find_element(
+            *PatientPageLocators.adhoc_obs_menu_button
+        )
+
+        obs_button.click()
+
+        time.sleep(1)
+        obs_menu = self.driver.find_element(
+            *PatientPageLocators.open_obs_menu
+        )
+
+        self.assertEqual(obs_menu.is_displayed(), True, 'Obs menu is not present')

@@ -160,3 +160,13 @@ class TestTaskListPage(TestCommon):
         )
         self.assertEqual(summary, task_summary.text,
                          'Incorrect summary')
+
+    def test_shows_tasks(self):
+        """
+        Test that the task list shows tasks for the user
+        """
+        task_list = []
+        for patient in self.task_list_page.get_list_items():
+            task_list.append(patient)
+
+        self.assertNotEquals(task_list, [], 'Task list not showing tasks')
