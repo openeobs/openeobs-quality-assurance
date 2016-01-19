@@ -25,7 +25,7 @@ class BasePage(object):
     LOW_RISK_SCORE_1_EWS_DATA = {
         'respiration_rate': 11,
         'indirect_oxymetry_spo2': 99,
-        'oxygen_administration_flag': False,
+        'oxygen_administration_flag': 'No',
         'blood_pressure_systolic': 120,
         'blood_pressure_diastolic': 80,
         'avpu_text': 'A',
@@ -185,6 +185,12 @@ class BasePage(object):
         'avpu_text': 'A',
         'pulse_rate': 130,
         'body_temperature': 36.0,
+    }
+
+    GCS_SCORE_15_DATA = {
+            'eyes': 4,
+            'verbal': 5,
+            'motor': 6
     }
 
     def __init__(self, driver):
@@ -543,8 +549,9 @@ class PatientPageLocators(object):
     open_obs_menu = (By.ID, 'obs_menu')
     open_obs_menu_title = (By.TAG_NAME, 'h2')
     open_obs_menu_list_items = (By.TAG_NAME, 'li')
-    open_obs_menu_news_item = (By.CLASS_NAME, 'rightContent')
+    open_obs_menu_news_item = (By.CSS_SELECTOR, '#obs_menu > div > ul > li.rightContent')
     open_obs_menu_news_item_deadline = (By.CLASS_NAME, 'aside')
+    open_obs_menu_gcs_item = (By.CSS_SELECTOR, '#obs_menu > div > ul > li:nth-child(2)')
     patient_info = (By.CSS_SELECTOR, '#obsButton h3.name')
     patient_name = (By.CSS_SELECTOR, '#obsButton h3.name strong')
     graph_tab_button = (By.CSS_SELECTOR,
@@ -595,3 +602,5 @@ class TaskPageLocators(object):
     task_form_field_select = (By.CSS_SELECTOR, '.input-body > select')
     task_form_field_errors = (By.CSS_SELECTOR, '.input-body > .errors')
     task_form_field_help = (By.CSS_SELECTOR, '.input-body > .help')
+    confirm_submit = (By.CSS_SELECTOR, '#submit_observation > ul > li:nth-child(2)')
+    successful_submit = (By.CSS_SELECTOR, '#submit_success > h2')

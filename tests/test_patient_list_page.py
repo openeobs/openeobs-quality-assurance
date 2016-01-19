@@ -1,8 +1,13 @@
 import time
 from openeobs_selenium.login_page import LoginPage
 from openeobs_selenium.list_page import ListPage
+from openeobs_selenium.patient_page import PatientPage
 from test_common import TestCommon
-from openeobs_selenium.page_helpers import ListPageLocators, PatientPageLocators
+from openeobs_selenium.page_helpers import ListPageLocators, PatientPageLocators, \
+    BasePage, TaskPageLocators
+import selenium.webdriver.support.expected_conditions as ec
+import selenium.webdriver.support.ui as ui
+from selenium.webdriver.common.by import By
 
 
 class TestPatientListPage(TestCommon):
@@ -164,25 +169,17 @@ class TestPatientListPage(TestCommon):
         patient_to_test = patients[0]
         patient_to_test.click()
 
-        patient_graph = self.driver.find_element(
-            *PatientPageLocators.graph_chart
+        patient_graph = ui.WebDriverWait(self.driver, 1).until(
+            ec.visibility_of_element_located((PatientPageLocators.graph_chart))
         )
-
-        #NOT a permanent solution
-        time.sleep(3)
 
         self.assertEqual(patient_graph.is_displayed(), True, 'Graph not found')
 
-        show_table = self.driver.find_element(
-            *PatientPageLocators.table_tab_button
-        )
-        show_table.click()
+        self.driver.find_element(
+                *PatientPageLocators.table_tab_button).click()
 
-        #NOT a permanent solution
-        time.sleep(3)
-
-        patient_table = self.driver.find_element(
-            *PatientPageLocators.table_container_table
+        patient_table = ui.WebDriverWait(self.driver, 1).until(
+            ec.visibility_of_element_located((PatientPageLocators.table_container_table))
         )
 
         self.assertEqual(patient_table.is_displayed(), True, 'Table not found')
@@ -207,3 +204,89 @@ class TestPatientListPage(TestCommon):
         )
 
         self.assertEqual(obs_menu.is_displayed(), True, 'Obs menu is not present')
+
+    def test_assess_patient(self):
+        """
+        Test the correct response for a low NEWS score
+        """
+        patients = self.patient_list_page.get_list_items()
+        patient_to_test = patients[0]
+        patient_id = patient_to_test.get_attribute('href').replace(
+            'http://localhost:8069/mobile/patient/', ''
+        )
+        self.patient_list_page.add_low_risk_observation_for_patient(int(patient_id))
+
+
+    def test_news_ob(self):
+        """
+        Test that a NEWS form can be submitted
+        """
+        low_score = BasePage.LOW_RISK_SCORE_1_EWS_DATA
+
+        patients = self.patient_list_page.get_list_items()
+        patient_to_test = patients[0]
+        patient_to_test.click()
+
+        PatientPage(self.driver).open_adhoc_obs_menu()
+
+        ui.WebDriverWait(self.driver, 1).until(
+            ec.visibility_of_element_located(
+                    (PatientPageLocators.open_obs_menu_news_item))).click()
+
+        ui.WebDriverWait(self.driver, 1).until(
+            ec.visibility_of_element_located((TaskPageLocators.task_form))
+        )
+
+        for field, value in low_score.iteritems():
+            input = self.driver.find_element_by_name(field)
+            input.send_keys(value)
+
+        self.driver.find_element(*TaskPageLocators.task_form_submit).click()
+
+        ui.WebDriverWait(self.driver, 1).until(
+            ec.visibility_of_element_located((TaskPageLocators.confirm_submit))
+        ).click()
+
+        success = 'Successfully Submitted NEWS Observation'
+        response = ui.WebDriverWait(self.driver, 2).until(
+            ec.visibility_of_element_located((
+                TaskPageLocators.successful_submit))
+        )
+        self.assertEqual(success, response.text, 'Observation unsuccessful')
+
+    def test_gcs_obs(self):
+        """
+        Test that a GCS form can be submitted
+        """
+        gcs_inputs = BasePage.GCS_SCORE_15_DATA
+
+        patients = self.patient_list_page.get_list_items()
+        patient_to_test = patients[0]
+        patient_to_test.click()
+
+        PatientPage(self.driver).open_adhoc_obs_menu()
+
+        ui.WebDriverWait(self.driver, 1).until(
+            ec.visibility_of_element_located(
+                    (PatientPageLocators.open_obs_menu_gcs_item))).click()
+
+        ui.WebDriverWait(self.driver, 1).until(
+            ec.visibility_of_element_located((TaskPageLocators.task_form))
+        )
+
+        for field, value in gcs_inputs.iteritems():
+            input = self.driver.find_element_by_id(field)
+            input.send_keys(value)
+
+        self.driver.find_element(*TaskPageLocators.task_form_submit).click()
+        ui.WebDriverWait(self.driver, 1).until(
+            ec.visibility_of_element_located((TaskPageLocators.confirm_submit))
+        ).click()
+
+        success = 'Successfully Submitted GCS Observation'
+        response = ui.WebDriverWait(self.driver, 2).until(
+            ec.visibility_of_element_located((
+                TaskPageLocators.successful_submit))
+        )
+
+        self.assertEqual(success, response.text, 'Observation unsuccessful')
