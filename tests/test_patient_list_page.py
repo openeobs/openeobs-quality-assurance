@@ -417,4 +417,3 @@ class TestPatientListPage(TestCommon):
 
         self.assertEqual(
                 success, response.text, 'Postural blood pressure observation unsuccessful')
-
