@@ -123,6 +123,7 @@ class TestTaskListPage(TestCommon):
             *ListPageLocators.list_item_patient_trend
         )
         trend_str = 'icon-{0}-arrow'.format(trend)
+        patient_trend = patient_trend.get_attribute('class')
         self.assertEqual(patient_trend.get_attribute('class'), trend_str,
                          'Incorrect trend')
         self.assertIn(score_str, patient_to_test.text, 'Incorrect score')
