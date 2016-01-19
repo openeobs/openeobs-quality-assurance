@@ -193,6 +193,44 @@ class BasePage(object):
             'motor': 6
     }
 
+    HEIGHT_DATA = {
+            'height': 1.8
+    }
+
+    WEIGHT_DATA = {
+        'weight': 55
+    }
+
+    BLOOD_PRODUCT_DATA = {
+        'vol': 15,
+        'product': 'rbc'
+    }
+
+    BLOOD_SUGAR_DATA = {
+        'blood_sugar': 5
+    }
+
+    BRISTOL_STOOL_DATA = {
+        'bowel_open': 'no',
+        'nausea': 'no',
+        'vomiting': 'no',
+        'quantity': 'medium',
+        'colour': 'brown',
+        'bristol_type': 'type 1',
+        'offensive': 'no',
+        'strain': 'no',
+        'laxatives': 'no',
+        'samples': 'none',
+        'rectal_exam': 'no'
+    }
+
+    POSTURAL_BLOOD_PRESSURE_DATA = {
+        'systolic_sitting': 120,
+        'diastolic_sitting': 80,
+        'systolic_standing': 130,
+        'diastolic_standing': 90
+    }
+
     def __init__(self, driver):
         self.driver = driver
 
@@ -552,6 +590,12 @@ class PatientPageLocators(object):
     open_obs_menu_news_item = (By.CSS_SELECTOR, '#obs_menu > div > ul > li.rightContent')
     open_obs_menu_news_item_deadline = (By.CLASS_NAME, 'aside')
     open_obs_menu_gcs_item = (By.CSS_SELECTOR, '#obs_menu > div > ul > li:nth-child(2)')
+    open_obs_menu_height_item = (By.CSS_SELECTOR, '#obs_menu > div > ul > li:nth-child(3)')
+    open_obs_menu_weight_item = (By.CSS_SELECTOR, '#obs_menu > div > ul > li:nth-child(4)')
+    open_obs_menu_blood_product_item = (By.CSS_SELECTOR, '#obs_menu > div > ul > li:nth-child(5)')
+    open_obs_menu_blood_sugar_item = (By.CSS_SELECTOR, '#obs_menu > div > ul > li:nth-child(6)')
+    open_obs_menu_bristol_stool_item = (By.CSS_SELECTOR, '#obs_menu > div > ul > li:nth-child(7)')
+    open_obs_menu_postural_pressure_item = (By.CSS_SELECTOR, '#obs_menu > div > ul > li:nth-child(8)')
     patient_info = (By.CSS_SELECTOR, '#obsButton h3.name')
     patient_name = (By.CSS_SELECTOR, '#obsButton h3.name strong')
     graph_tab_button = (By.CSS_SELECTOR,

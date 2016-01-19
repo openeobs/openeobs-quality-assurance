@@ -3,7 +3,7 @@ import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
-
+from selenium.webdriver.common.keys import Keys
 
 class TaskPage(BasePage):
     """
@@ -51,3 +51,14 @@ class TaskPage(BasePage):
         except NoSuchElementException:
             return True
         return False
+
+    def enter_obs_data(self, data):
+        """
+        Enter data into an observation form
+        """
+        for field, value in data.iteritems():
+            input = self.driver.find_element_by_name(field)
+            input.send_keys(value)
+            input.send_keys(Keys.TAB)
+
+        self.driver.find_element(*TaskPageLocators.task_form_submit).click()

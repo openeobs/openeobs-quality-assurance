@@ -2,6 +2,7 @@ import time
 from openeobs_selenium.login_page import LoginPage
 from openeobs_selenium.list_page import ListPage
 from openeobs_selenium.patient_page import PatientPage
+from openeobs_selenium.task_page import TaskPage
 from test_common import TestCommon
 from openeobs_selenium.page_helpers import ListPageLocators, PatientPageLocators, \
     BasePage, TaskPageLocators
@@ -219,7 +220,7 @@ class TestPatientListPage(TestCommon):
 
     def test_news_ob(self):
         """
-        Test that a NEWS form can be submitted
+        Test that a NEWS observation can be submitted
         """
         low_score = BasePage.LOW_RISK_SCORE_1_EWS_DATA
 
@@ -228,35 +229,25 @@ class TestPatientListPage(TestCommon):
         patient_to_test.click()
 
         PatientPage(self.driver).open_adhoc_obs_menu()
+        PatientPage(self.driver).open_news_form()
 
-        ui.WebDriverWait(self.driver, 1).until(
-            ec.visibility_of_element_located(
-                    (PatientPageLocators.open_obs_menu_news_item))).click()
+        TaskPage(self.driver).enter_obs_data(low_score)
 
-        ui.WebDriverWait(self.driver, 1).until(
-            ec.visibility_of_element_located((TaskPageLocators.task_form))
-        )
-
-        for field, value in low_score.iteritems():
-            input = self.driver.find_element_by_name(field)
-            input.send_keys(value)
-
-        self.driver.find_element(*TaskPageLocators.task_form_submit).click()
-
-        ui.WebDriverWait(self.driver, 1).until(
+        ui.WebDriverWait(self.driver, 5).until(
             ec.visibility_of_element_located((TaskPageLocators.confirm_submit))
         ).click()
 
         success = 'Successfully Submitted NEWS Observation'
-        response = ui.WebDriverWait(self.driver, 2).until(
+        response = ui.WebDriverWait(self.driver, 5).until(
             ec.visibility_of_element_located((
                 TaskPageLocators.successful_submit))
         )
-        self.assertEqual(success, response.text, 'Observation unsuccessful')
+        self.assertEqual(
+                success, response.text, 'NEWS observation unsuccessful')
 
     def test_gcs_obs(self):
         """
-        Test that a GCS form can be submitted
+        Test that a GCS observation can be submitted
         """
         gcs_inputs = BasePage.GCS_SCORE_15_DATA
 
@@ -265,28 +256,165 @@ class TestPatientListPage(TestCommon):
         patient_to_test.click()
 
         PatientPage(self.driver).open_adhoc_obs_menu()
+        PatientPage(self.driver).open_gcs_form()
 
-        ui.WebDriverWait(self.driver, 1).until(
-            ec.visibility_of_element_located(
-                    (PatientPageLocators.open_obs_menu_gcs_item))).click()
+        TaskPage(self.driver).enter_obs_data(gcs_inputs)
 
-        ui.WebDriverWait(self.driver, 1).until(
-            ec.visibility_of_element_located((TaskPageLocators.task_form))
-        )
-
-        for field, value in gcs_inputs.iteritems():
-            input = self.driver.find_element_by_id(field)
-            input.send_keys(value)
-
-        self.driver.find_element(*TaskPageLocators.task_form_submit).click()
-        ui.WebDriverWait(self.driver, 1).until(
+        ui.WebDriverWait(self.driver, 5).until(
             ec.visibility_of_element_located((TaskPageLocators.confirm_submit))
         ).click()
 
         success = 'Successfully Submitted GCS Observation'
-        response = ui.WebDriverWait(self.driver, 2).until(
+        response = ui.WebDriverWait(self.driver, 5).until(
             ec.visibility_of_element_located((
                 TaskPageLocators.successful_submit))
         )
 
-        self.assertEqual(success, response.text, 'Observation unsuccessful')
+        self.assertEqual(
+                success, response.text, 'GCS observation unsuccessful')
+
+    def test_height_obs(self):
+        """
+        Test that a height observation can be submitted
+        """
+        height_input = BasePage.HEIGHT_DATA
+
+        patients = self.patient_list_page.get_list_items()
+        patient_to_test = patients[0]
+        patient_to_test.click()
+
+        PatientPage(self.driver).open_adhoc_obs_menu()
+        PatientPage(self.driver).open_height_form()
+
+        TaskPage(self.driver).enter_obs_data(height_input)
+
+        success = 'Successfully Submitted Height Observation'
+        response = ui.WebDriverWait(self.driver, 5).until(
+            ec.visibility_of_element_located((
+                TaskPageLocators.successful_submit))
+        )
+
+        self.assertEqual(
+                success, response.text, 'Height observation unsuccessful')
+
+    def test_weight_obs(self):
+        """
+        Test that a weight observation can be submitted
+        """
+        weight_input = BasePage.WEIGHT_DATA
+
+        patients = self.patient_list_page.get_list_items()
+        patient_to_test = patients[0]
+        patient_to_test.click()
+
+        PatientPage(self.driver).open_adhoc_obs_menu()
+        PatientPage(self.driver).open_weight_form()
+
+        TaskPage(self.driver).enter_obs_data(weight_input)
+
+        success = 'Successfully Submitted Weight Observation'
+        response = ui.WebDriverWait(self.driver, 5).until(
+            ec.visibility_of_element_located((
+                TaskPageLocators.successful_submit))
+        )
+
+        self.assertEqual(
+                success, response.text, 'Weight observation unsuccessful')
+
+    def test_blood_product_obs(self):
+        """
+        Test that a blood product observation can be submitted
+        """
+        blood_product_inputs = BasePage.BLOOD_PRODUCT_DATA
+
+        patients = self.patient_list_page.get_list_items()
+        patient_to_test = patients[0]
+        patient_to_test.click()
+
+        PatientPage(self.driver).open_adhoc_obs_menu()
+        PatientPage(self.driver).open_blood_product_form()
+
+        TaskPage(self.driver).enter_obs_data(blood_product_inputs)
+
+        success = 'Successfully Submitted Blood Product Observation'
+        response = ui.WebDriverWait(self.driver, 5).until(
+            ec.visibility_of_element_located((
+                TaskPageLocators.successful_submit))
+        )
+
+        self.assertEqual(
+                success, response.text, 'Blood product observation unsuccessful')
+
+    def test_blood_sugar_obs(self):
+        """
+        Test that a blood sugar observation can be submitted
+        """
+        blood_sugar_input = BasePage.BLOOD_SUGAR_DATA
+
+        patients = self.patient_list_page.get_list_items()
+        patient_to_test = patients[0]
+        patient_to_test.click()
+
+        PatientPage(self.driver).open_adhoc_obs_menu()
+        PatientPage(self.driver).open_blood_sugar_form()
+
+        TaskPage(self.driver).enter_obs_data(blood_sugar_input)
+
+        success = 'Successfully Submitted Blood Sugar Observation'
+        response = ui.WebDriverWait(self.driver, 5).until(
+            ec.visibility_of_element_located((
+                TaskPageLocators.successful_submit))
+        )
+
+        self.assertEqual(
+                success, response.text, 'Blood sugar observation unsuccessful')
+
+    def test_bristol_stool_obs(self):
+        """
+        Test that a bristol stool scale observation can be submitted
+        """
+        bristol_stool_inputs = BasePage.BRISTOL_STOOL_DATA
+
+        patients = self.patient_list_page.get_list_items()
+        patient_to_test = patients[0]
+        patient_to_test.click()
+
+        PatientPage(self.driver).open_adhoc_obs_menu()
+        PatientPage(self.driver).open_bristol_stool_form()
+
+        TaskPage(self.driver).enter_obs_data(bristol_stool_inputs)
+
+        success = 'Successfully Submitted Bristol Stool Scale Observation'
+        response = ui.WebDriverWait(self.driver, 5).until(
+            ec.visibility_of_element_located((
+                TaskPageLocators.successful_submit))
+        )
+
+        self.assertEqual(
+                success, response.text, 'Bristol Stool Scale observation unsuccessful')
+
+
+    def test_postural_blood_pressure_obs(self):
+        """
+        Test that a postural blood pressure observation can be submitted
+        """
+        postural_pressure_inputs = BasePage.POSTURAL_BLOOD_PRESSURE_DATA
+
+        patients = self.patient_list_page.get_list_items()
+        patient_to_test = patients[0]
+        patient_to_test.click()
+
+        PatientPage(self.driver).open_adhoc_obs_menu()
+        PatientPage(self.driver).open_postural_pressure_form()
+
+        TaskPage(self.driver).enter_obs_data(postural_pressure_inputs)
+
+        success = 'Successfully Submitted Postural Blood Pressure Observation'
+        response = ui.WebDriverWait(self.driver, 5).until(
+            ec.visibility_of_element_located((
+                TaskPageLocators.successful_submit))
+        )
+
+        self.assertEqual(
+                success, response.text, 'Postural blood pressure observation unsuccessful')
+
