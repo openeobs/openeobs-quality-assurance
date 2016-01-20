@@ -11,18 +11,18 @@ class TestCommon(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.driver = webdriver.Firefox()
-        cls.driver.get('http://localhost:8069/web?db=rc_test3')
+        cls.driver.get('http://localhost:8069/web?db=mobile_qa_db')
         ui.WebDriverWait(cls.driver, 5).until(
             ec.visibility_of_element_located(
                     (By.CSS_SELECTOR,
                      '.oe_single_form_container.modal-content')
             )
         )
-        cls.odoo_client = Client('http://localhost:8069', db='rc_test3',
+        cls.odoo_client = Client('http://localhost:8069', db='mobile_qa_db',
                                  user='admin', password='admin')
         cls.test_database_name = 'openeobs_quality_assurance_db'
         cls.odoo_client.db.drop('admin', cls.test_database_name)
-        cls.odoo_client.db.duplicate_database('admin', 'rc_test3',
+        cls.odoo_client.db.duplicate_database('admin', 'mobile_qa_db',
                                               cls.test_database_name)
 
     @classmethod

@@ -229,7 +229,7 @@ class TestPatientListPage(TestCommon):
         patient_to_test.click()
 
         PatientPage(self.driver).open_adhoc_obs_menu()
-        PatientPage(self.driver).open_news_form()
+        PatientPage(self.driver).open_form(PatientPageLocators.open_obs_menu_news_item)
 
         TaskPage(self.driver).enter_obs_data(low_score)
 
@@ -256,7 +256,7 @@ class TestPatientListPage(TestCommon):
         patient_to_test.click()
 
         PatientPage(self.driver).open_adhoc_obs_menu()
-        PatientPage(self.driver).open_gcs_form()
+        PatientPage(self.driver).open_form(PatientPageLocators.open_obs_menu_gcs_item)
 
         TaskPage(self.driver).enter_obs_data(gcs_inputs)
 
@@ -284,7 +284,7 @@ class TestPatientListPage(TestCommon):
         patient_to_test.click()
 
         PatientPage(self.driver).open_adhoc_obs_menu()
-        PatientPage(self.driver).open_height_form()
+        PatientPage(self.driver).open_form(PatientPageLocators.open_obs_menu_height_item)
 
         TaskPage(self.driver).enter_obs_data(height_input)
 
@@ -308,7 +308,7 @@ class TestPatientListPage(TestCommon):
         patient_to_test.click()
 
         PatientPage(self.driver).open_adhoc_obs_menu()
-        PatientPage(self.driver).open_weight_form()
+        PatientPage(self.driver).open_form(PatientPageLocators.open_obs_menu_weight_item)
 
         TaskPage(self.driver).enter_obs_data(weight_input)
 
@@ -332,7 +332,7 @@ class TestPatientListPage(TestCommon):
         patient_to_test.click()
 
         PatientPage(self.driver).open_adhoc_obs_menu()
-        PatientPage(self.driver).open_blood_product_form()
+        PatientPage(self.driver).open_form(PatientPageLocators.open_obs_menu_blood_product_item)
 
         TaskPage(self.driver).enter_obs_data(blood_product_inputs)
 
@@ -356,7 +356,7 @@ class TestPatientListPage(TestCommon):
         patient_to_test.click()
 
         PatientPage(self.driver).open_adhoc_obs_menu()
-        PatientPage(self.driver).open_blood_sugar_form()
+        PatientPage(self.driver).open_form(PatientPageLocators.open_obs_menu_blood_sugar_item)
 
         TaskPage(self.driver).enter_obs_data(blood_sugar_input)
 
@@ -380,7 +380,7 @@ class TestPatientListPage(TestCommon):
         patient_to_test.click()
 
         PatientPage(self.driver).open_adhoc_obs_menu()
-        PatientPage(self.driver).open_bristol_stool_form()
+        PatientPage(self.driver).open_form(PatientPageLocators.open_obs_menu_bristol_stool_item)
 
         TaskPage(self.driver).enter_obs_data(bristol_stool_inputs)
 
@@ -405,7 +405,7 @@ class TestPatientListPage(TestCommon):
         patient_to_test.click()
 
         PatientPage(self.driver).open_adhoc_obs_menu()
-        PatientPage(self.driver).open_postural_pressure_form()
+        PatientPage(self.driver).open_form(PatientPageLocators.open_obs_menu_postural_pressure_item)
 
         TaskPage(self.driver).enter_obs_data(postural_pressure_inputs)
 

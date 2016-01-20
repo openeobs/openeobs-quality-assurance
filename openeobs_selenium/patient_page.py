@@ -4,7 +4,7 @@ import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
-import time
+
 
 class PatientPage(BasePage):
     """
@@ -247,98 +247,14 @@ class PatientPage(BasePage):
             *PatientPageLocators.table_container
         )
 
-    def open_news_form(self):
+    def open_form(self, form_id):
         """
-        Open a NEWS observation form
-        """
-        ui.WebDriverWait(self.driver, 5).until(
-            ec.visibility_of_element_located(
-                    (PatientPageLocators.open_obs_menu_news_item))).click()
-
-        ui.WebDriverWait(self.driver, 5).until(
-            ec.visibility_of_element_located((TaskPageLocators.task_form))
-        )
-
-    def open_gcs_form(self):
-        """
-        Open a GCS observation form
+        Open an observation form
+        :param form_id: The type of observation
         """
         ui.WebDriverWait(self.driver, 5).until(
             ec.visibility_of_element_located(
-                    (PatientPageLocators.open_obs_menu_gcs_item))).click()
-
-        ui.WebDriverWait(self.driver, 5).until(
-            ec.visibility_of_element_located((TaskPageLocators.task_form))
-        )
-
-    def open_height_form(self):
-        """
-        Open a height observation form
-        """
-        ui.WebDriverWait(self.driver, 5).until(
-            ec.visibility_of_element_located(
-                    (PatientPageLocators.open_obs_menu_height_item))).click()
-
-        ui.WebDriverWait(self.driver, 5).until(
-            ec.visibility_of_element_located((TaskPageLocators.task_form))
-        )
-
-    def open_weight_form(self):
-        """
-        Open a weight observation form
-        """
-        ui.WebDriverWait(self.driver, 5).until(
-            ec.visibility_of_element_located(
-                    (PatientPageLocators.open_obs_menu_weight_item))).click()
-
-        ui.WebDriverWait(self.driver, 5).until(
-            ec.visibility_of_element_located((TaskPageLocators.task_form))
-        )
-
-    def open_blood_product_form(self):
-        """
-        Open a blood product observation form
-        """
-        ui.WebDriverWait(self.driver, 5).until(
-            ec.visibility_of_element_located(
-                    (PatientPageLocators.open_obs_menu_blood_product_item))).click()
-
-        ui.WebDriverWait(self.driver, 5).until(
-            ec.visibility_of_element_located((TaskPageLocators.task_form))
-        )
-
-    def open_blood_sugar_form(self):
-        """
-        Open a blood sugar observation form
-        """
-        ui.WebDriverWait(self.driver, 5).until(
-            ec.visibility_of_element_located(
-                    (PatientPageLocators.open_obs_menu_blood_sugar_item))).click()
-
-        ui.WebDriverWait(self.driver, 5).until(
-            ec.visibility_of_element_located((TaskPageLocators.task_form))
-        )
-
-    def open_bristol_stool_form(self):
-        """
-        Open a bristol stool scale observation form
-        """
-        ui.WebDriverWait(self.driver, 5).until(
-            ec.visibility_of_element_located(
-                    (PatientPageLocators.open_obs_menu_bristol_stool_item))).click()
-
-        ui.WebDriverWait(self.driver, 5).until(
-            ec.visibility_of_element_located((TaskPageLocators.task_form))
-        )
-
-    def open_postural_pressure_form(self):
-        """
-        Open a postural blood pressure observation form
-        """
-        ui.WebDriverWait(self.driver, 5).until(
-            ec.visibility_of_element_located(
-                    (PatientPageLocators.open_obs_menu_postural_pressure_item))
-        ).click()
+                    (form_id))).click()
 
         ui.WebDriverWait(self.driver, 5).until(
             ec.visibility_of_element_located((TaskPageLocators.task_form))
