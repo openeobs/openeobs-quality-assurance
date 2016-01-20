@@ -208,15 +208,57 @@ class TestPatientListPage(TestCommon):
 
     def test_assess_patient(self):
         """
-        Test the correct response for a low NEWS score
+        Test that an 'assess patient' task is triggered after a low NEWS score
         """
+        low_score = BasePage.LOW_RISK_SCORE_1_EWS_DATA
+
         patients = self.patient_list_page.get_list_items()
         patient_to_test = patients[0]
-        patient_id = patient_to_test.get_attribute('href').replace(
-            'http://localhost:8069/mobile/patient/', ''
-        )
-        self.patient_list_page.add_low_risk_observation_for_patient(int(patient_id))
+        patient_to_test.click()
 
+        PatientPage(self.driver).open_adhoc_obs_menu()
+        PatientPage(self.driver).open_form(PatientPageLocators.open_obs_menu_news_item)
+
+        TaskPage(self.driver).enter_obs_data(low_score)
+
+        ui.WebDriverWait(self.driver, 5).until(
+            ec.visibility_of_element_located((TaskPageLocators.confirm_submit))
+        ).click()
+
+        task = 'Assess Patient'
+        response = ui.WebDriverWait(self.driver, 5).until(
+            ec.visibility_of_element_located((
+                TaskPageLocators.related_task))
+        )
+        self.assertEqual(
+                task, response.text, 'Incorrect triggered action')
+
+    def test_urgently_inform_medical_team(self):
+        """
+        Test that an 'urgently inform medical team' task is triggered after a medium NEWS score
+        """
+        medium_score = BasePage.MEDIUM_RISK_SCORE_3_THREE_IN_ONE_EWS_DATA
+
+        patients = self.patient_list_page.get_list_items()
+        patient_to_test = patients[0]
+        patient_to_test.click()
+
+        PatientPage(self.driver).open_adhoc_obs_menu()
+        PatientPage(self.driver).open_form(PatientPageLocators.open_obs_menu_news_item)
+
+        TaskPage(self.driver).enter_obs_data(medium_score)
+
+        ui.WebDriverWait(self.driver, 5).until(
+            ec.visibility_of_element_located((TaskPageLocators.confirm_submit))
+        ).click()
+
+        task = 'Urgently inform medical team'
+        response = ui.WebDriverWait(self.driver, 5).until(
+            ec.visibility_of_element_located((
+                TaskPageLocators.related_task))
+        )
+        self.assertEqual(
+                task, response.text, 'Incorrect triggered action')
 
     def test_news_ob(self):
         """

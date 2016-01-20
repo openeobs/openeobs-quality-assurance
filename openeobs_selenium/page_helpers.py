@@ -14,7 +14,7 @@ class BasePage(object):
     NO_RISK_EWS_DATA = {
         'respiration_rate': 18,
         'indirect_oxymetry_spo2': 99,
-        'oxygen_administration_flag': False,
+        'oxygen_administration_flag': 'No',
         'blood_pressure_systolic': 120,
         'blood_pressure_diastolic': 80,
         'avpu_text': 'A',
@@ -36,7 +36,7 @@ class BasePage(object):
     LOW_RISK_SCORE_2_EWS_DATA = {
         'respiration_rate': 11,
         'indirect_oxymetry_spo2': 99,
-        'oxygen_administration_flag': False,
+        'oxygen_administration_flag': 'No',
         'blood_pressure_systolic': 110,
         'blood_pressure_diastolic': 80,
         'avpu_text': 'A',
@@ -47,7 +47,7 @@ class BasePage(object):
     LOW_RISK_SCORE_3_EWS_DATA = {
         'respiration_rate': 11,
         'indirect_oxymetry_spo2': 99,
-        'oxygen_administration_flag': True,
+        'oxygen_administration_flag': 'Yes',
         'device_id': 36,
         'flow_rate': 8,
         'blood_pressure_systolic': 120,
@@ -60,7 +60,7 @@ class BasePage(object):
     LOW_RISK_SCORE_4_EWS_DATA = {
         'respiration_rate': 11,
         'indirect_oxymetry_spo2': 99,
-        'oxygen_administration_flag': True,
+        'oxygen_administration_flag': 'Yes',
         'device_id': 37,
         'flow_rate': 4,
         'blood_pressure_systolic': 110,
@@ -73,7 +73,7 @@ class BasePage(object):
     MEDIUM_RISK_SCORE_3_THREE_IN_ONE_EWS_DATA = {
         'respiration_rate': 18,
         'indirect_oxymetry_spo2': 99,
-        'oxygen_administration_flag': False,
+        'oxygen_administration_flag': 'No',
         'blood_pressure_systolic': 120,
         'blood_pressure_diastolic': 80,
         'avpu_text': 'V',
@@ -84,7 +84,7 @@ class BasePage(object):
     MEDIUM_RISK_SCORE_4_THREE_IN_ONE_EWS_DATA = {
         'respiration_rate': 11,
         'indirect_oxymetry_spo2': 99,
-        'oxygen_administration_flag': False,
+        'oxygen_administration_flag': 'No',
         'blood_pressure_systolic': 120,
         'blood_pressure_diastolic': 80,
         'avpu_text': 'V',
@@ -95,20 +95,20 @@ class BasePage(object):
     MEDIUM_RISK_SCORE_5_EWS_DATA = {
         'respiration_rate': 11,
         'indirect_oxymetry_spo2': 99,
-        'oxygen_administration_flag': True,
-        'device_id': 43,
-        'concentration': 40,
+        'oxygen_administration_flag': 'Yes',
+        'device_id': 'nasal',
         'blood_pressure_systolic': 110,
         'blood_pressure_diastolic': 80,
         'avpu_text': 'A',
         'pulse_rate': 50,
         'body_temperature': 37.5,
+        'concentration': 40,
     }
 
     MEDIUM_RISK_SCORE_6_EWS_DATA = {
         'respiration_rate': 24,
         'indirect_oxymetry_spo2': 99,
-        'oxygen_administration_flag': True,
+        'oxygen_administration_flag': 'Yes',
         'device_id': 44,
         'concentration': 60,
         'cpap_peep': 2,
@@ -122,7 +122,7 @@ class BasePage(object):
     HIGH_RISK_SCORE_7_EWS_DATA = {
         'respiration_rate': 24,
         'indirect_oxymetry_spo2': 99,
-        'oxygen_administration_flag': True,
+        'oxygen_administration_flag': 'Yes',
         'device_id': 45,
         'concentration': 85,
         'niv_ipap': 2,
@@ -138,7 +138,7 @@ class BasePage(object):
     HIGH_RISK_SCORE_8_EWS_DATA = {
         'respiration_rate': 24,
         'indirect_oxymetry_spo2': 99,
-        'oxygen_administration_flag': True,
+        'oxygen_administration_flag': 'Yes',
         'device_id': 38,
         'flow_rate': 10,
         'blood_pressure_systolic': 110,
@@ -151,7 +151,7 @@ class BasePage(object):
     HIGH_RISK_SCORE_9_EWS_DATA = {
         'respiration_rate': 24,
         'indirect_oxymetry_spo2': 99,
-        'oxygen_administration_flag': True,
+        'oxygen_administration_flag': 'Yes',
         'device_id': 43,
         'flow_rate': 10,
         'blood_pressure_systolic': 100,
@@ -164,7 +164,7 @@ class BasePage(object):
     HIGH_RISK_SCORE_10_EWS_DATA = {
         'respiration_rate': 24,
         'indirect_oxymetry_spo2': 95,
-        'oxygen_administration_flag': True,
+        'oxygen_administration_flag': 'Yes',
         'device_id': 43,
         'flow_rate': 10,
         'blood_pressure_systolic': 100,
@@ -177,7 +177,7 @@ class BasePage(object):
     HIGH_RISK_SCORE_11_EWS_DATA = {
         'respiration_rate': 24,
         'indirect_oxymetry_spo2': 93,
-        'oxygen_administration_flag': True,
+        'oxygen_administration_flag': 'Yes',
         'device_id': 43,
         'flow_rate': 10,
         'blood_pressure_systolic': 100,
@@ -648,3 +648,5 @@ class TaskPageLocators(object):
     task_form_field_help = (By.CSS_SELECTOR, '.input-body > .help')
     confirm_submit = (By.CSS_SELECTOR, '#submit_observation > ul > li:nth-child(2)')
     successful_submit = (By.CSS_SELECTOR, '#submit_success > h2')
+    related_task = (By.CSS_SELECTOR, '#submit_success > div > p')
+
