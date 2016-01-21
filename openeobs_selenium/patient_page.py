@@ -1,5 +1,5 @@
 from openeobs_selenium.page_helpers import BasePage, PatientPageLocators, \
-    TaskPageLocators
+    TaskPageLocators, ListPageLocators
 import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
 from selenium.webdriver.common.by import By
@@ -36,6 +36,14 @@ class PatientPage(BasePage):
         except NoSuchElementException:
             return False
         return True
+
+    def has_patient(self):
+        """
+        check that number of patient in patient in my patient page
+        :return: number of patients
+        """
+        patient_list = self.driver.find_element(*ListPageLocators.list_item_patient)
+        return patient_list
 
     def has_no_patient_data(self):
         """
