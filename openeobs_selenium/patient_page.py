@@ -4,6 +4,8 @@ import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.common.keys import Keys
+from collections import OrderedDict
 
 
 class PatientPage(BasePage):
@@ -247,6 +249,14 @@ class PatientPage(BasePage):
             *PatientPageLocators.table_container
         )
 
+    def select_patient(self, patients):
+        """
+        Select a patient to observe
+        :param patients: a list of patients
+        """
+        patient_to_test = patients[0]
+        patient_to_test.click()
+
     def open_form(self, form_id):
         """
         Open an observation form
@@ -259,3 +269,23 @@ class PatientPage(BasePage):
         ui.WebDriverWait(self.driver, 5).until(
             ec.visibility_of_element_located((TaskPageLocators.task_form))
         )
+
+    def enter_obs_data(self, data):
+        """
+        Enter data into an observation form
+        :param data: The data to be entered
+        """
+        if type(data) is dict:
+            for field, value in data.iteritems():
+                input = self.driver.find_element_by_name(field)
+                input.send_keys(value)
+                input.send_keys(Keys.TAB)
+        else:
+            for item in data:
+                input = self.driver.find_element_by_name(item[0])
+                input.send_keys(item[1])
+                input.send_keys(Keys.TAB)
+
+        self.driver.find_element(*TaskPageLocators.task_form_submit).click()
+
+

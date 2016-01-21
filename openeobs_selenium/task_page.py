@@ -1,9 +1,10 @@
-from openeobs_selenium.page_helpers import BasePage, TaskPageLocators
+from openeobs_selenium.login_page import LoginPage
+from openeobs_selenium.page_helpers import BasePage, TaskPageLocators, \
+    ListPageLocators
 import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
-from selenium.webdriver.common.keys import Keys
 
 class TaskPage(BasePage):
     """
@@ -52,13 +53,45 @@ class TaskPage(BasePage):
             return True
         return False
 
-    def enter_obs_data(self, data):
+    def submit_stand_in(self):
         """
-        Enter data into an observation form
+        Select a patient to share with a nurse
+        :return: The name of the nurse who is receiving the patient
         """
-        for field, value in data.iteritems():
-            input = self.driver.find_element_by_name(field)
-            input.send_keys(value)
-            input.send_keys(Keys.TAB)
+        self.driver.find_element(*ListPageLocators.stand_in_select).click()
+        self.driver.find_element(*ListPageLocators.stand_in_share).click()
 
-        self.driver.find_element(*TaskPageLocators.task_form_submit).click()
+        ui.WebDriverWait(self.driver, 5).until(
+                ec.visibility_of_element_located(
+                    (ListPageLocators.stand_in_nurse))).click()
+
+        nurses = self.driver.find_element(*ListPageLocators.stand_in_list)
+        nurses.find_elements_by_tag_name('input')[0].click()
+
+        nurse_name = self.driver.find_element(
+                *ListPageLocators.stand_in_nurse_name).text
+
+        ui.WebDriverWait(self.driver, 5).until(
+                ec.visibility_of_element_located(
+                    (ListPageLocators.stand_in_assign))).click()
+
+        return nurse_name
+
+    def confirm_stand_in(self, nurse, task_list):
+        """
+        Accept a shared patient from another nurse
+        :param nurse: the nurse who has received the patient request
+        :param task_list: the task list object
+        """
+        self.driver.get('http://localhost:8069/mobile/login')
+        LoginPage(self.driver).login(nurse, nurse)
+
+        task_list.go_to_patient_list()
+
+        ui.WebDriverWait(self.driver, 5).until(
+            ec.visibility_of_element_located(
+                    (ListPageLocators.stand_in_accept_button))).click()
+
+        ui.WebDriverWait(self.driver, 5).until(
+            ec.visibility_of_element_located(
+                    (ListPageLocators.stand_in_accept_confirm))).click()

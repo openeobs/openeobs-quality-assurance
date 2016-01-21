@@ -152,7 +152,7 @@ class BasePage(object):
         'respiration_rate': 24,
         'indirect_oxymetry_spo2': 99,
         'oxygen_administration_flag': 'Yes',
-        'device_id': 43,
+        'device_id': 'Nasal',
         'flow_rate': 10,
         'blood_pressure_systolic': 100,
         'blood_pressure_diastolic': 80,
@@ -565,6 +565,16 @@ class ListPageLocators(object):
     list_item_patient_location = (By.TAG_NAME, 'em')
     list_item_deadline = (By.CSS_SELECTOR, 'div.task-right .aside')
     list_item_title = (By.CSS_SELECTOR, 'p.taskInfo')
+    stand_in_select = (By.CSS_SELECTOR, '#handover_form > ul > li:nth-child(2) > label > input')
+    stand_in_share = (By.CSS_SELECTOR, 'body > div.share-footer > ul > li:nth-child(1) > a')
+    stand_in_list = (By.CLASS_NAME, 'sharelist')
+    stand_in_nurse = (By.CSS_SELECTOR, '#nurse_list > ul > li:nth-child(1) > input')
+    stand_in_nurse_name = (By.CSS_SELECTOR, '#nurse_list > ul > li:nth-child(1) > label')
+    stand_in_assign = (By.CSS_SELECTOR, '#assign_nurse > ul > li:nth-child(1) > a')
+    stand_in_accept_button = (By.CSS_SELECTOR, 'body > div.content > ul > li:nth-child(1) > a > div > div.task-right > p')
+    stand_in_accept_confirm = (By.CSS_SELECTOR, '#accept_invite > ul > li:nth-child(3) > a')
+    stand_in_success = (By.CSS_SELECTOR, '#invite_success > h2')
+
 
 
 class MenuLocators(object):
@@ -587,15 +597,23 @@ class PatientPageLocators(object):
     open_obs_menu = (By.ID, 'obs_menu')
     open_obs_menu_title = (By.TAG_NAME, 'h2')
     open_obs_menu_list_items = (By.TAG_NAME, 'li')
-    open_obs_menu_news_item = (By.CSS_SELECTOR, '#obs_menu > div > ul > li.rightContent')
+    open_obs_menu_news_item = (By.CSS_SELECTOR,
+                               '#obs_menu > div > ul > li.rightContent')
     open_obs_menu_news_item_deadline = (By.CLASS_NAME, 'aside')
-    open_obs_menu_gcs_item = (By.CSS_SELECTOR, '#obs_menu > div > ul > li:nth-child(2)')
-    open_obs_menu_height_item = (By.CSS_SELECTOR, '#obs_menu > div > ul > li:nth-child(3)')
-    open_obs_menu_weight_item = (By.CSS_SELECTOR, '#obs_menu > div > ul > li:nth-child(4)')
-    open_obs_menu_blood_product_item = (By.CSS_SELECTOR, '#obs_menu > div > ul > li:nth-child(5)')
-    open_obs_menu_blood_sugar_item = (By.CSS_SELECTOR, '#obs_menu > div > ul > li:nth-child(6)')
-    open_obs_menu_bristol_stool_item = (By.CSS_SELECTOR, '#obs_menu > div > ul > li:nth-child(7)')
-    open_obs_menu_postural_pressure_item = (By.CSS_SELECTOR, '#obs_menu > div > ul > li:nth-child(8)')
+    open_obs_menu_gcs_item = (
+        By.CSS_SELECTOR, '#obs_menu > div > ul > li:nth-child(2)')
+    open_obs_menu_height_item = (
+        By.CSS_SELECTOR, '#obs_menu > div > ul > li:nth-child(3)')
+    open_obs_menu_weight_item = (
+        By.CSS_SELECTOR,'#obs_menu > div > ul > li:nth-child(4)')
+    open_obs_menu_blood_product_item = (
+        By.CSS_SELECTOR, '#obs_menu > div > ul > li:nth-child(5)')
+    open_obs_menu_blood_sugar_item = (
+        By.CSS_SELECTOR, '#obs_menu > div > ul > li:nth-child(6)')
+    open_obs_menu_bristol_stool_item = (
+        By.CSS_SELECTOR, '#obs_menu > div > ul > li:nth-child(7)')
+    open_obs_menu_postural_pressure_item = (
+        By.CSS_SELECTOR, '#obs_menu > div > ul > li:nth-child(8)')
     patient_info = (By.CSS_SELECTOR, '#obsButton h3.name')
     patient_name = (By.CSS_SELECTOR, '#obsButton h3.name strong')
     graph_tab_button = (By.CSS_SELECTOR,

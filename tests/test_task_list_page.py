@@ -1,8 +1,11 @@
 from openeobs_selenium.login_page import LoginPage
 from openeobs_selenium.list_page import ListPage
+from openeobs_selenium.task_page import TaskPage
 from test_common import TestCommon
 from openeobs_selenium.page_helpers import ListPageLocators
-
+import selenium.webdriver.support.expected_conditions as ec
+import selenium.webdriver.support.ui as ui
+import time
 
 class TestTaskListPage(TestCommon):
 
@@ -171,3 +174,20 @@ class TestTaskListPage(TestCommon):
             task_list.append(patient)
 
         self.assertNotEquals(task_list, [], 'Task list not showing tasks')
+
+    def test_stand_in(self):
+        """
+        Test that the stand-in function works
+        """
+        self.task_list_page.go_to_standin()
+        nurse_name = TaskPage(self.driver).submit_stand_in()
+
+        nurse = nurse_name.split(' ', 1)[0].lower()
+        TaskPage(self.driver).confirm_stand_in(nurse, self.task_list_page)
+
+        success = 'Successfully accepted stand-in invite'
+        response = ui.WebDriverWait(self.driver, 5).until(
+            ec.visibility_of_element_located(
+                    (ListPageLocators.stand_in_success)))
+
+        self.assertEqual(success, response.text, 'Stand in was unsuccessful')

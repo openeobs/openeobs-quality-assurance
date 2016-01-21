@@ -213,13 +213,11 @@ class TestPatientListPage(TestCommon):
         low_score = BasePage.LOW_RISK_SCORE_1_EWS_DATA
 
         patients = self.patient_list_page.get_list_items()
-        patient_to_test = patients[0]
-        patient_to_test.click()
 
+        PatientPage(self.driver).select_patient(patients)
         PatientPage(self.driver).open_adhoc_obs_menu()
         PatientPage(self.driver).open_form(PatientPageLocators.open_obs_menu_news_item)
-
-        TaskPage(self.driver).enter_obs_data(low_score)
+        PatientPage(self.driver).enter_obs_data(low_score)
 
         ui.WebDriverWait(self.driver, 5).until(
             ec.visibility_of_element_located((TaskPageLocators.confirm_submit))
@@ -240,13 +238,11 @@ class TestPatientListPage(TestCommon):
         medium_score = BasePage.MEDIUM_RISK_SCORE_3_THREE_IN_ONE_EWS_DATA
 
         patients = self.patient_list_page.get_list_items()
-        patient_to_test = patients[0]
-        patient_to_test.click()
 
+        PatientPage(self.driver).select_patient(patients)
         PatientPage(self.driver).open_adhoc_obs_menu()
         PatientPage(self.driver).open_form(PatientPageLocators.open_obs_menu_news_item)
-
-        TaskPage(self.driver).enter_obs_data(medium_score)
+        PatientPage(self.driver).enter_obs_data(medium_score)
 
         ui.WebDriverWait(self.driver, 5).until(
             ec.visibility_of_element_located((TaskPageLocators.confirm_submit))
@@ -260,20 +256,45 @@ class TestPatientListPage(TestCommon):
         self.assertEqual(
                 task, response.text, 'Incorrect triggered action')
 
+    def test_immediately_inform_medical_team(self):
+        """
+        Test that an 'immediately inform medical team' task is triggered after a high NEWS score
+        """
+        high_score = BasePage.HIGH_RISK_SCORE_9_EWS_DATA
+        defined_order = sorted(high_score.items(), key=lambda x:x[1])
+        data_list = list(reversed(defined_order))
+
+        patients = self.patient_list_page.get_list_items()
+
+        PatientPage(self.driver).select_patient(patients)
+        PatientPage(self.driver).open_adhoc_obs_menu()
+        PatientPage(self.driver).open_form(PatientPageLocators.open_obs_menu_news_item)
+        PatientPage(self.driver).enter_obs_data(data_list)
+
+        ui.WebDriverWait(self.driver, 5).until(
+            ec.visibility_of_element_located((TaskPageLocators.confirm_submit))
+        ).click()
+
+        task = 'Immediately inform medical team'
+        response = ui.WebDriverWait(self.driver, 5).until(
+            ec.visibility_of_element_located((
+                TaskPageLocators.related_task))
+        )
+        self.assertEqual(
+                task, response.text, 'Incorrect triggered action')
+
     def test_news_ob(self):
         """
         Test that a NEWS observation can be submitted
         """
-        low_score = BasePage.LOW_RISK_SCORE_1_EWS_DATA
+        score = BasePage.NO_RISK_EWS_DATA
 
         patients = self.patient_list_page.get_list_items()
-        patient_to_test = patients[0]
-        patient_to_test.click()
 
+        PatientPage(self.driver).select_patient(patients)
         PatientPage(self.driver).open_adhoc_obs_menu()
         PatientPage(self.driver).open_form(PatientPageLocators.open_obs_menu_news_item)
-
-        TaskPage(self.driver).enter_obs_data(low_score)
+        PatientPage(self.driver).enter_obs_data(score)
 
         ui.WebDriverWait(self.driver, 5).until(
             ec.visibility_of_element_located((TaskPageLocators.confirm_submit))
@@ -294,13 +315,11 @@ class TestPatientListPage(TestCommon):
         gcs_inputs = BasePage.GCS_SCORE_15_DATA
 
         patients = self.patient_list_page.get_list_items()
-        patient_to_test = patients[0]
-        patient_to_test.click()
 
+        PatientPage(self.driver).select_patient(patients)
         PatientPage(self.driver).open_adhoc_obs_menu()
         PatientPage(self.driver).open_form(PatientPageLocators.open_obs_menu_gcs_item)
-
-        TaskPage(self.driver).enter_obs_data(gcs_inputs)
+        PatientPage(self.driver).enter_obs_data(gcs_inputs)
 
         ui.WebDriverWait(self.driver, 5).until(
             ec.visibility_of_element_located((TaskPageLocators.confirm_submit))
@@ -322,13 +341,11 @@ class TestPatientListPage(TestCommon):
         height_input = BasePage.HEIGHT_DATA
 
         patients = self.patient_list_page.get_list_items()
-        patient_to_test = patients[0]
-        patient_to_test.click()
 
+        PatientPage(self.driver).select_patient(patients)
         PatientPage(self.driver).open_adhoc_obs_menu()
         PatientPage(self.driver).open_form(PatientPageLocators.open_obs_menu_height_item)
-
-        TaskPage(self.driver).enter_obs_data(height_input)
+        PatientPage(self.driver).enter_obs_data(height_input)
 
         success = 'Successfully Submitted Height Observation'
         response = ui.WebDriverWait(self.driver, 5).until(
@@ -346,13 +363,11 @@ class TestPatientListPage(TestCommon):
         weight_input = BasePage.WEIGHT_DATA
 
         patients = self.patient_list_page.get_list_items()
-        patient_to_test = patients[0]
-        patient_to_test.click()
 
+        PatientPage(self.driver).select_patient(patients)
         PatientPage(self.driver).open_adhoc_obs_menu()
         PatientPage(self.driver).open_form(PatientPageLocators.open_obs_menu_weight_item)
-
-        TaskPage(self.driver).enter_obs_data(weight_input)
+        PatientPage(self.driver).enter_obs_data(weight_input)
 
         success = 'Successfully Submitted Weight Observation'
         response = ui.WebDriverWait(self.driver, 5).until(
@@ -370,13 +385,11 @@ class TestPatientListPage(TestCommon):
         blood_product_inputs = BasePage.BLOOD_PRODUCT_DATA
 
         patients = self.patient_list_page.get_list_items()
-        patient_to_test = patients[0]
-        patient_to_test.click()
 
+        PatientPage(self.driver).select_patient(patients)
         PatientPage(self.driver).open_adhoc_obs_menu()
         PatientPage(self.driver).open_form(PatientPageLocators.open_obs_menu_blood_product_item)
-
-        TaskPage(self.driver).enter_obs_data(blood_product_inputs)
+        PatientPage(self.driver).enter_obs_data(blood_product_inputs)
 
         success = 'Successfully Submitted Blood Product Observation'
         response = ui.WebDriverWait(self.driver, 5).until(
@@ -394,13 +407,11 @@ class TestPatientListPage(TestCommon):
         blood_sugar_input = BasePage.BLOOD_SUGAR_DATA
 
         patients = self.patient_list_page.get_list_items()
-        patient_to_test = patients[0]
-        patient_to_test.click()
 
+        PatientPage(self.driver).select_patient(patients)
         PatientPage(self.driver).open_adhoc_obs_menu()
         PatientPage(self.driver).open_form(PatientPageLocators.open_obs_menu_blood_sugar_item)
-
-        TaskPage(self.driver).enter_obs_data(blood_sugar_input)
+        PatientPage(self.driver).enter_obs_data(blood_sugar_input)
 
         success = 'Successfully Submitted Blood Sugar Observation'
         response = ui.WebDriverWait(self.driver, 5).until(
@@ -418,13 +429,11 @@ class TestPatientListPage(TestCommon):
         bristol_stool_inputs = BasePage.BRISTOL_STOOL_DATA
 
         patients = self.patient_list_page.get_list_items()
-        patient_to_test = patients[0]
-        patient_to_test.click()
 
+        PatientPage(self.driver).select_patient(patients)
         PatientPage(self.driver).open_adhoc_obs_menu()
         PatientPage(self.driver).open_form(PatientPageLocators.open_obs_menu_bristol_stool_item)
-
-        TaskPage(self.driver).enter_obs_data(bristol_stool_inputs)
+        PatientPage(self.driver).enter_obs_data(bristol_stool_inputs)
 
         success = 'Successfully Submitted Bristol Stool Scale Observation'
         response = ui.WebDriverWait(self.driver, 5).until(
@@ -443,13 +452,11 @@ class TestPatientListPage(TestCommon):
         postural_pressure_inputs = BasePage.POSTURAL_BLOOD_PRESSURE_DATA
 
         patients = self.patient_list_page.get_list_items()
-        patient_to_test = patients[0]
-        patient_to_test.click()
 
+        PatientPage(self.driver).select_patient(patients)
         PatientPage(self.driver).open_adhoc_obs_menu()
         PatientPage(self.driver).open_form(PatientPageLocators.open_obs_menu_postural_pressure_item)
-
-        TaskPage(self.driver).enter_obs_data(postural_pressure_inputs)
+        PatientPage(self.driver).enter_obs_data(postural_pressure_inputs)
 
         success = 'Successfully Submitted Postural Blood Pressure Observation'
         response = ui.WebDriverWait(self.driver, 5).until(
