@@ -167,8 +167,8 @@ class TestPatientListPage(TestCommon):
         Test that a patient record shows data (graph/table) for the patient
         """
         patients = self.patient_list_page.get_list_items()
-        patient_to_test = patients[0]
-        patient_to_test.click()
+
+        PatientPage(self.driver).select_patient(patients)
 
         patient_graph = ui.WebDriverWait(self.driver, 1).until(
             ec.visibility_of_element_located((PatientPageLocators.graph_chart))
@@ -190,19 +190,9 @@ class TestPatientListPage(TestCommon):
         Test that a patient record allows for adhoc obs
         """
         patients = self.patient_list_page.get_list_items()
-        patient_to_test = patients[0]
-        patient_to_test.click()
 
-        obs_button = self.driver.find_element(
-            *PatientPageLocators.adhoc_obs_menu_button
-        )
-
-        obs_button.click()
-
-        time.sleep(1)
-        obs_menu = self.driver.find_element(
-            *PatientPageLocators.open_obs_menu
-        )
+        PatientPage(self.driver).select_patient(patients)
+        obs_menu = PatientPage(self.driver).open_adhoc_obs_menu()
 
         self.assertEqual(obs_menu.is_displayed(), True, 'Obs menu is not present')
 
@@ -215,7 +205,6 @@ class TestPatientListPage(TestCommon):
         patients = self.patient_list_page.get_list_items()
 
         PatientPage(self.driver).select_patient(patients)
-        PatientPage(self.driver).open_adhoc_obs_menu()
         PatientPage(self.driver).open_form(PatientPageLocators.open_obs_menu_news_item)
         PatientPage(self.driver).enter_obs_data(low_score)
 
@@ -240,7 +229,6 @@ class TestPatientListPage(TestCommon):
         patients = self.patient_list_page.get_list_items()
 
         PatientPage(self.driver).select_patient(patients)
-        PatientPage(self.driver).open_adhoc_obs_menu()
         PatientPage(self.driver).open_form(PatientPageLocators.open_obs_menu_news_item)
         PatientPage(self.driver).enter_obs_data(medium_score)
 
@@ -265,7 +253,6 @@ class TestPatientListPage(TestCommon):
         patients = self.patient_list_page.get_list_items()
 
         PatientPage(self.driver).select_patient(patients)
-        PatientPage(self.driver).open_adhoc_obs_menu()
         PatientPage(self.driver).open_form(PatientPageLocators.open_obs_menu_news_item)
         PatientPage(self.driver).enter_obs_data(high_score)
 
@@ -290,7 +277,6 @@ class TestPatientListPage(TestCommon):
         patients = self.patient_list_page.get_list_items()
 
         PatientPage(self.driver).select_patient(patients)
-        PatientPage(self.driver).open_adhoc_obs_menu()
         PatientPage(self.driver).open_form(PatientPageLocators.open_obs_menu_news_item)
         PatientPage(self.driver).enter_obs_data(score)
 
@@ -315,7 +301,6 @@ class TestPatientListPage(TestCommon):
         patients = self.patient_list_page.get_list_items()
 
         PatientPage(self.driver).select_patient(patients)
-        PatientPage(self.driver).open_adhoc_obs_menu()
         PatientPage(self.driver).open_form(PatientPageLocators.open_obs_menu_gcs_item)
         PatientPage(self.driver).enter_obs_data(gcs_inputs)
 
@@ -341,7 +326,6 @@ class TestPatientListPage(TestCommon):
         patients = self.patient_list_page.get_list_items()
 
         PatientPage(self.driver).select_patient(patients)
-        PatientPage(self.driver).open_adhoc_obs_menu()
         PatientPage(self.driver).open_form(PatientPageLocators.open_obs_menu_height_item)
         PatientPage(self.driver).enter_obs_data(height_input)
 
@@ -363,7 +347,6 @@ class TestPatientListPage(TestCommon):
         patients = self.patient_list_page.get_list_items()
 
         PatientPage(self.driver).select_patient(patients)
-        PatientPage(self.driver).open_adhoc_obs_menu()
         PatientPage(self.driver).open_form(PatientPageLocators.open_obs_menu_weight_item)
         PatientPage(self.driver).enter_obs_data(weight_input)
 
@@ -385,7 +368,6 @@ class TestPatientListPage(TestCommon):
         patients = self.patient_list_page.get_list_items()
 
         PatientPage(self.driver).select_patient(patients)
-        PatientPage(self.driver).open_adhoc_obs_menu()
         PatientPage(self.driver).open_form(PatientPageLocators.open_obs_menu_blood_product_item)
         PatientPage(self.driver).enter_obs_data(blood_product_inputs)
 
@@ -407,7 +389,6 @@ class TestPatientListPage(TestCommon):
         patients = self.patient_list_page.get_list_items()
 
         PatientPage(self.driver).select_patient(patients)
-        PatientPage(self.driver).open_adhoc_obs_menu()
         PatientPage(self.driver).open_form(PatientPageLocators.open_obs_menu_blood_sugar_item)
         PatientPage(self.driver).enter_obs_data(blood_sugar_input)
 
@@ -429,7 +410,6 @@ class TestPatientListPage(TestCommon):
         patients = self.patient_list_page.get_list_items()
 
         PatientPage(self.driver).select_patient(patients)
-        PatientPage(self.driver).open_adhoc_obs_menu()
         PatientPage(self.driver).open_form(PatientPageLocators.open_obs_menu_bristol_stool_item)
         PatientPage(self.driver).enter_obs_data(bristol_stool_inputs)
 
@@ -442,7 +422,6 @@ class TestPatientListPage(TestCommon):
         self.assertEqual(
                 success, response.text, 'Bristol Stool Scale observation unsuccessful')
 
-
     def test_postural_blood_pressure_obs(self):
         """
         Test that a postural blood pressure observation can be submitted
@@ -452,7 +431,6 @@ class TestPatientListPage(TestCommon):
         patients = self.patient_list_page.get_list_items()
 
         PatientPage(self.driver).select_patient(patients)
-        PatientPage(self.driver).open_adhoc_obs_menu()
         PatientPage(self.driver).open_form(PatientPageLocators.open_obs_menu_postural_pressure_item)
         PatientPage(self.driver).enter_obs_data(postural_pressure_inputs)
 

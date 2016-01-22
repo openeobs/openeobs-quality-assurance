@@ -5,8 +5,6 @@ import selenium.webdriver.support.ui as ui
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.keys import Keys
-from collections import OrderedDict
-
 
 class PatientPage(BasePage):
     """
@@ -262,6 +260,8 @@ class PatientPage(BasePage):
         Open an observation form
         :param form_id: The type of observation
         """
+        self.open_adhoc_obs_menu()
+
         ui.WebDriverWait(self.driver, 5).until(
             ec.visibility_of_element_located(
                     (form_id))).click()
@@ -289,6 +289,3 @@ class PatientPage(BasePage):
             self.enter_obs_data(new_dict)
         else:
             self.driver.find_element(*TaskPageLocators.task_form_submit).click()
-
-
-
