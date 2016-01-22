@@ -183,11 +183,7 @@ class TestTaskListPage(TestCommon):
         nurse_name = TaskPage(self.driver).submit_stand_in()
 
         nurse = nurse_name.split(' ', 1)[0].lower()
-        TaskPage(self.driver).confirm_stand_in(nurse, self.task_list_page)
+        response = TaskPage(self.driver).confirm_stand_in(nurse, self.task_list_page)
 
         success = 'Successfully accepted stand-in invite'
-        response = ui.WebDriverWait(self.driver, 5).until(
-            ec.visibility_of_element_located(
-                    (ListPageLocators.stand_in_success)))
-
         self.assertEqual(success, response.text, 'Stand in was unsuccessful')

@@ -82,6 +82,7 @@ class TaskPage(BasePage):
         Accept a shared patient from another nurse
         :param nurse: the nurse who has received the patient request
         :param task_list: the task list object
+        :return response: The submission response
         """
         self.driver.get('http://localhost:8069/mobile/login')
         LoginPage(self.driver).login(nurse, nurse)
@@ -95,3 +96,9 @@ class TaskPage(BasePage):
         ui.WebDriverWait(self.driver, 5).until(
             ec.visibility_of_element_located(
                     (ListPageLocators.stand_in_accept_confirm))).click()
+
+        response = ui.WebDriverWait(self.driver, 5).until(
+            ec.visibility_of_element_located(
+                    (ListPageLocators.stand_in_success)))
+
+        return response
