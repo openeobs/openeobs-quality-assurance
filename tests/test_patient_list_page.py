@@ -261,15 +261,13 @@ class TestPatientListPage(TestCommon):
         Test that an 'immediately inform medical team' task is triggered after a high NEWS score
         """
         high_score = BasePage.HIGH_RISK_SCORE_9_EWS_DATA
-        defined_order = sorted(high_score.items(), key=lambda x:x[1])
-        data_list = list(reversed(defined_order))
 
         patients = self.patient_list_page.get_list_items()
 
         PatientPage(self.driver).select_patient(patients)
         PatientPage(self.driver).open_adhoc_obs_menu()
         PatientPage(self.driver).open_form(PatientPageLocators.open_obs_menu_news_item)
-        PatientPage(self.driver).enter_obs_data(data_list)
+        PatientPage(self.driver).enter_obs_data(high_score)
 
         ui.WebDriverWait(self.driver, 5).until(
             ec.visibility_of_element_located((TaskPageLocators.confirm_submit))

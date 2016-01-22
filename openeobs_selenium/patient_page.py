@@ -275,17 +275,20 @@ class PatientPage(BasePage):
         Enter data into an observation form
         :param data: The data to be entered
         """
-        if type(data) is dict:
-            for field, value in data.iteritems():
+        new_dict = {}
+
+        for field, value in data.iteritems():
+            if(self.driver.find_element_by_name(field).is_displayed()):
                 input = self.driver.find_element_by_name(field)
                 input.send_keys(value)
                 input.send_keys(Keys.TAB)
-        else:
-            for item in data:
-                input = self.driver.find_element_by_name(item[0])
-                input.send_keys(item[1])
-                input.send_keys(Keys.TAB)
+            else:
+                new_dict[field] = value
 
-        self.driver.find_element(*TaskPageLocators.task_form_submit).click()
+        if new_dict:
+            self.enter_obs_data(new_dict)
+        else:
+            self.driver.find_element(*TaskPageLocators.task_form_submit).click()
+
 
 
