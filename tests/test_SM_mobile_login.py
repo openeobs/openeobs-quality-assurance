@@ -27,15 +27,29 @@ class TestSMPatientPage(TestCommon):
             task_list.append(patient)
             self.assertEquals(task_list,[],'There are no tasks')
 
+    def test_go_to_patients_list_page(self):
+        """
+        Test that senior manager can go on patients list
+        """
+
+        self.patient_list_page.go_to_patient_list()
+        self.assertTrue(self.patient_page.is_patient_list_page(),'Did not go to patient page correctly')
+
     def test_can_not_take_patient_observation(self):
         """
         Test that user can not take observation
         """
+        self.patient_list_page.go_to_patient_list()
+
         patients = self.patient_list_page.get_list_items()
         patients_to_test = patients[0]
         patients_to_test.click()
 
-        self.
+
+
+
+
+
 
 
 
