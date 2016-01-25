@@ -247,7 +247,8 @@ class PatientPage(BasePage):
             *PatientPageLocators.table_container
         )
 
-    def select_patient(self, patients):
+    @staticmethod
+    def select_patient(patients):
         """
         Select a patient to observe
         :param patients: a list of patients
@@ -263,11 +264,10 @@ class PatientPage(BasePage):
         self.open_adhoc_obs_menu()
 
         ui.WebDriverWait(self.driver, 5).until(
-            ec.visibility_of_element_located(
-                    (form_id))).click()
+            ec.visibility_of_element_located(form_id)).click()
 
         ui.WebDriverWait(self.driver, 5).until(
-            ec.visibility_of_element_located((TaskPageLocators.task_form))
+            ec.visibility_of_element_located(TaskPageLocators.task_form)
         )
 
     def enter_obs_data(self, data):
@@ -278,7 +278,7 @@ class PatientPage(BasePage):
         new_dict = {}
 
         for field, value in data.iteritems():
-            if(self.driver.find_element_by_name(field).is_displayed()):
+            if self.driver.find_element_by_name(field).is_displayed():
                 input = self.driver.find_element_by_name(field)
                 input.send_keys(value)
                 input.send_keys(Keys.TAB)
