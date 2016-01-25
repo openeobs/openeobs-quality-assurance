@@ -1,4 +1,4 @@
-from openeobs_selenium.login_page import LoginPage
+from openeobs_mobile.login_page import LoginPage
 from test_common import TestCommon
 
 

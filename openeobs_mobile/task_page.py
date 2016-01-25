@@ -1,5 +1,5 @@
-from openeobs_selenium.login_page import LoginPage
-from openeobs_selenium.page_helpers import BasePage, TaskPageLocators, \
+from openeobs_mobile.login_page import LoginPage
+from openeobs_mobile.page_helpers import BasePage, TaskPageLocators, \
     ListPageLocators
 import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui

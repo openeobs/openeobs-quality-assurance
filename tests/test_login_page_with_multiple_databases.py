@@ -1,4 +1,4 @@
-from openeobs_selenium.login_page import LoginPage
+from openeobs_mobile.login_page import LoginPage
 import unittest
 from erppeek import Client
 import selenium.webdriver.support.expected_conditions as ec

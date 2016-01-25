@@ -1,4 +1,4 @@
-from openeobs_selenium.page_helpers import BasePage, ListPageLocators
+from openeobs_mobile.page_helpers import BasePage, ListPageLocators
 
 
 class ListPage(BasePage):
