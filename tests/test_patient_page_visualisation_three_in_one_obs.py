@@ -1,11 +1,11 @@
 from test_visualisation_common import TestVisualisationCommon
 
 
-class TestPatientPageVisualisationWithLowRiskObsData(TestVisualisationCommon):
+class TestPatientPageVisualisationWith3in1RiskObsData(TestVisualisationCommon):
 
     def setUp(self):
-        self.risk = 'low'
-        super(TestPatientPageVisualisationWithLowRiskObsData, self).setUp()
+        self.risk = '3in1'
+        super(TestPatientPageVisualisationWith3in1RiskObsData, self).setUp()
 
     def test_shows_correct_labels_on_chart(self):
         """
