@@ -1,6 +1,6 @@
 """Stores data dictionaries for QA testing"""
 
-class Data_Dicts(object):
+class DataDicts(object):
 
     NO_RISK_EWS_DATA = {
             'respiration_rate': 18,

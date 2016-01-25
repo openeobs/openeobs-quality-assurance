@@ -1,4 +1,4 @@
-from openeobs_mobile.data import Data_Dicts
+from openeobs_mobile.data import DataDicts
 from selenium.webdriver.common.by import By
 import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
@@ -159,7 +159,7 @@ class BasePage(object):
         ews_api = odoo_client.model('nh.clinical.patient.observation.ews')
         ews_activity_id = ews_api.create_activity({},
                                                   {'patient_id': patient_id})
-        activity_api.submit(ews_activity_id, Data_Dicts.NO_RISK_EWS_DATA)
+        activity_api.submit(ews_activity_id, DataDicts.NO_RISK_EWS_DATA)
         activity_api.complete(ews_activity_id)
 
     def add_low_risk_observation_for_patient(
@@ -178,7 +178,7 @@ class BasePage(object):
         ews_api = odoo_client.model('nh.clinical.patient.observation.ews')
         ews_activity_id = ews_api.create_activity({},
                                                   {'patient_id': patient_id})
-        activity_api.submit(ews_activity_id, Data_Dicts.LOW_RISK_SCORE_1_EWS_DATA)
+        activity_api.submit(ews_activity_id, DataDicts.LOW_RISK_SCORE_1_EWS_DATA)
         activity_api.complete(ews_activity_id)
 
     def add_three_in_one_observation_for_patient(
@@ -198,7 +198,7 @@ class BasePage(object):
         ews_activity_id = ews_api.create_activity({},
                                                   {'patient_id': patient_id})
         activity_api.submit(ews_activity_id,
-                            Data_Dicts.MEDIUM_RISK_SCORE_4_THREE_IN_ONE_EWS_DATA)
+                            DataDicts.MEDIUM_RISK_SCORE_4_THREE_IN_ONE_EWS_DATA)
         activity_api.complete(ews_activity_id)
 
     def add_medium_risk_observation_for_patient(
@@ -218,7 +218,7 @@ class BasePage(object):
         ews_activity_id = ews_api.create_activity({},
                                                   {'patient_id': patient_id})
         activity_api.submit(ews_activity_id,
-                            Data_Dicts.MEDIUM_RISK_SCORE_6_EWS_DATA)
+                            DataDicts.MEDIUM_RISK_SCORE_6_EWS_DATA)
         activity_api.complete(ews_activity_id)
 
     def add_high_risk_observation_for_patient(
@@ -238,7 +238,7 @@ class BasePage(object):
         ews_activity_id = ews_api.create_activity({},
                                                   {'patient_id': patient_id})
         activity_api.submit(ews_activity_id,
-                            Data_Dicts.HIGH_RISK_SCORE_11_EWS_DATA)
+                            DataDicts.HIGH_RISK_SCORE_11_EWS_DATA)
         activity_api.complete(ews_activity_id)
 
     def do_barcode_scan(self, patient_id):
