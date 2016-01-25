@@ -44,63 +44,56 @@ class TestVisualisationCommon(TestCommon):
             )
         )
 
-    def test_doesnt_show_no_obs_message(self):
-        """
-        Test that the No observation data available for patient message is
-        shown on no obs being available
-        """
-        self.assertFalse(self.patient_page.has_no_patient_data(),
-                         'No Observation Data Available message not found')
+        # Focus Graphs
+        focus_graphs = self.patient_page.get_focus_graphs()
+        self.assertEqual(len(focus_graphs), 5, 'Incorrect number of graphs')
+        self.resp_rate_graph = focus_graphs[0]
+        self.oxy_sat_graph = focus_graphs[1]
+        self.temp_graph = focus_graphs[2]
+        self.hr_graph = focus_graphs[3]
+        self.bp_graph = focus_graphs[4]
+        self.rr_mes = \
+            self.patient_page.get_graph_measurement(self.resp_rate_graph)
+        self.os_mes = \
+            self.patient_page.get_graph_measurement(self.oxy_sat_graph)
+        self.bt_mes = self.patient_page.get_graph_measurement(self.temp_graph)
+        self.hr_mes = self.patient_page.get_graph_measurement(self.hr_graph)
+        self.bp_mes = self.patient_page.get_graph_measurements(self.bp_graph)
 
-    def test_shows_tabs(self):
-        """
-        Test that the tabs are shown
-        """
-        self.assertTrue(self.patient_page.tabs_are_shown(),
-                        'Tabs to switch between chart and table are not shown')
+        # Tabular Values table
+        tabular_values_table = self.patient_page.get_tabular_values()
+        self.tabular_values_headers = \
+            self.patient_page.get_table_headers(tabular_values_table)
+        self.tabular_values_rows = \
+            self.patient_page.get_table_rows(tabular_values_table)
 
-    def test_shows_chart(self):
+    def get_focus_chart_labels(self):
         """
-        Test that the chart is displayed with a single data point present
+        Helper function to get an dict of the focus chart labels
+        :return: dict of strings from focus chart labels
         """
-        self.assertTrue(self.patient_page.chart_is_shown(),
-                        'Chart is not shown')
+        rr_label = self.patient_page.get_graph_label(self.resp_rate_graph)
+        os_label = self.patient_page.get_graph_label(self.oxy_sat_graph)
+        bt_label = self.patient_page.get_graph_label(self.temp_graph)
+        hr_label = self.patient_page.get_graph_label(self.hr_graph)
+        bp_label = self.patient_page.get_graph_label(self.bp_graph)
+        return {
+            'resp_rate': rr_label,
+            'oxy_sat': os_label,
+            'body_temp': bt_label,
+            'pulse_rate': hr_label,
+            'blood_press': bp_label
+        }
 
-    def test_shows_tabular_values(self):
+    def get_tabular_values_value(self, row, column):
         """
-        Test that shows the tabular values table
+        Helper function to get the value from a row and column in the tabular
+        values table
+        :param row: Row to get value from
+        :param column: Column to get value from
+        :return: String from row/column combo
         """
-        self.assertTrue(self.patient_page.tabular_values_are_shown(),
-                        'Tabular values aren\'t shown')
-
-    def test_shows_table(self):
-        """
-        Test that pressing the table tab shows the table
-        """
-        self.patient_page.change_to_table()
-        self.assertTrue(self.patient_page.obs_table_is_shown(),
-                        'Observation table is not shown')
-
-    def test_shows_obs_menu(self):
-        """
-        Test that pressing the take Observation button still works
-        """
-        self.patient_page.open_adhoc_obs_menu()
-        self.assertTrue(self.patient_page.adhoc_obs_menu_is_open(),
-                        'Adhoc observation menu is not open')
-
-    def test_shows_chart_after_viewing_table(self):
-        """
-        Test that pressing the chart tab after being on table tab works
-        """
-        self.patient_page.change_to_table()
-        self.patient_page.change_to_chart()
-        self.assertTrue(self.patient_page.chart_is_shown(),
-                        'Chart does not display when returning from table')
-
-    def test_shows_ranged_values_control(self):
-        """
-        Test that the ranged values control is shown
-        """
-        self.assertTrue(self.patient_page.rangify_control_is_shown(),
-                        'Rangify control not shown')
+        tabular_values = \
+            self.patient_page.get_table_data(self.tabular_values_rows[row])
+        self.assertEqual(len(tabular_values), 4, 'Incorrect number of data')
+        return tabular_values[column]

@@ -8,68 +8,63 @@ class TestPatientPageVisualisationWithMediumRiskObsData(
         self.risk = 'medium'
         super(TestPatientPageVisualisationWithMediumRiskObsData, self).setUp()
 
-    def test_shows_correct_labels_on_chart(self):
+    def test_shows_correct_resp_rate_value_on_chart(self):
         """
-        Test that the labels on the chart are correct
+        Test that the value for resp rate on the chart is correct
         """
-        graphs = self.patient_page.get_focus_graphs()
-        self.assertEqual(len(graphs), 5, 'Incorrect number of graphs')
-        resp_rate_graph = graphs[0]
-        oxy_sat_graph = graphs[1]
-        temp_graph = graphs[2]
-        hr_graph = graphs[3]
-        bp_graph = graphs[4]
-
-        rr_label = self.patient_page.get_graph_label(resp_rate_graph)
-        rr_mes = self.patient_page.get_graph_measurement(resp_rate_graph)
-        self.assertEqual(rr_label, 'RR', 'Incorrect Respiration Rate Label')
-        self.assertEqual(rr_mes, '24/min',
+        self.assertEqual(self.rr_mes, '24/min',
                          'Incorrect Respiration Rate Measurement')
 
-        os_label = self.patient_page.get_graph_label(oxy_sat_graph)
-        os_mes = self.patient_page.get_graph_measurement(oxy_sat_graph)
-        self.assertEqual(os_label, 'Spo2', 'Incorrect O2 Saturation Label')
-        self.assertEqual(os_mes, '99%', 'Incorrect O2 Saturation Measurement')
+    def test_shows_correct_oxy_sat_value_on_chart(self):
+        """
+        Test that the value for oxygen saturation on the chart is correct
+        """
+        self.assertEqual(self.os_mes, '99%',
+                         'Incorrect O2 Saturation Measurement')
 
-        bt_label = self.patient_page.get_graph_label(temp_graph)
-        bt_mes = self.patient_page.get_graph_measurement(temp_graph)
-        self.assertEqual(bt_label, 'Temp', 'Incorrect Body Temperature Label')
-        self.assertIn('37.5', bt_mes,
+    def test_shows_correct_body_temp_value_on_chart(self):
+        """
+        Test that the value for body temperature on the chart is correct
+        """
+        self.assertIn('37.5', self.bt_mes,
                       'Incorrect Body Temperature Measurement')
 
-        hr_label = self.patient_page.get_graph_label(hr_graph)
-        hr_mes = self.patient_page.get_graph_measurement(hr_graph)
-        self.assertEqual(hr_label, 'HR', 'Incorrect Pulse Rate Label')
-        self.assertEqual(hr_mes, '50/min', 'Incorrect Pulse Rate Measurement')
+    def test_shows_correct_pulse_rate_value_on_chart(self):
+        """
+        Test that the value for pulse rate on the chart is correct
+        """
+        self.assertEqual(self.hr_mes, '50/min',
+                         'Incorrect Pulse Rate Measurement')
 
-        bp_label = self.patient_page.get_graph_label(bp_graph)
-        bp_mes = self.patient_page.get_graph_measurements(bp_graph)
-        self.assertEqual(bp_label, 'BP', 'Incorrect Blood Pressure Label')
-        self.assertEqual(bp_mes[0].text, '110',
+    def test_shows_correct_blood_pressure_value_on_chart(self):
+        """
+        Test that the value for blood pressure on the chart is correct
+        """
+        self.assertEqual(self.bp_mes[0].text, '110',
                          'Incorrect Blood Pressure Measurement - top')
-        self.assertEqual(bp_mes[1].text, '80mmHg',
+        self.assertEqual(self.bp_mes[1].text, '80mmHg',
                          'Incorrect Blood Pressure Measurement - bottom')
 
-    def test_shows_the_correct_values_in_tabular_values(self):
+    def test_shows_the_correct_avpu_value_in_tabular_values(self):
         """
         Test that the tabular values table shows the correct data
         """
-        tabular_values_table = self.patient_page.get_tabular_values()
-        headers = self.patient_page.get_table_headers(tabular_values_table)
-        self.assertEqual(len(headers), 4, 'Incorrect number of headers')
-        self.assertEqual(headers, ['Date', 'AVPU', 'On Supplemental O2',
-                                   'Inspired Oxygen'],
-                         'Incorrect table headers')
-        table_rows = self.patient_page.get_table_rows(tabular_values_table)
-        tabular_values = self.patient_page.get_table_data(table_rows[1])
-        self.assertEqual(len(tabular_values), 4, 'Incorrect number of data')
-        # TODO: I'm skipping the date field cos that will make things fragile
-        self.assertEqual(tabular_values[1], 'A',
+        self.assertEqual(self.get_tabular_values_value(1, 1), 'A',
                          'Incorrect avpu data in table')
-        self.assertEqual(tabular_values[2], 'Yes',
+
+    def test_shows_the_correct_supple_oxy_value_in_tabular_values(self):
+        """
+        Test that the tabular values table shows the correct data
+        """
+        self.assertEqual(self.get_tabular_values_value(1, 2), 'Yes',
                          'Incorrect on suppl o2 data in table')
+
+    def test_shows_the_correct_inspired_oxy_value_in_tabular_values(self):
+        """
+        Test that the tabular values table shows the correct data
+        """
         self.assertEqual(
-            tabular_values[3],
+            self.get_tabular_values_value(1, 3),
             'Device: CPAP\nConcentration: 60%\nCPAP PEEP: 2',
             'Incorrect inspired o2 data in table'
         )

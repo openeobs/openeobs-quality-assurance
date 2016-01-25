@@ -181,7 +181,8 @@ class BasePage(object):
         ews_api = odoo_client.model('nh.clinical.patient.observation.ews')
         ews_activity_id = ews_api.create_activity({},
                                                   {'patient_id': patient_id})
-        activity_api.submit(ews_activity_id, DataDicts.LOW_RISK_SCORE_1_EWS_DATA)
+        activity_api.submit(ews_activity_id,
+                            DataDicts.LOW_RISK_SCORE_1_EWS_DATA)
         activity_api.complete(ews_activity_id)
 
     @staticmethod
