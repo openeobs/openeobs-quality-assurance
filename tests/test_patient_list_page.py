@@ -6,7 +6,7 @@ from openeobs_mobile.list_page import ListPage
 from openeobs_mobile.patient_page import PatientPage
 from openeobs_mobile.task_page import TaskPage
 from test_common import TestCommon
-from openeobs_mobile.page_helpers import ListPageLocators, PatientPageLocators, \
+from openeobs_mobile.locators import ListPageLocators, PatientPageLocators, \
     TaskPageLocators
 import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui

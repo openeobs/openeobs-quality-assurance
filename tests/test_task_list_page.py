@@ -2,7 +2,7 @@ from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.list_page import ListPage
 from openeobs_mobile.task_page import TaskPage
 from test_common import TestCommon
-from openeobs_mobile.page_helpers import ListPageLocators
+from openeobs_mobile.locators import ListPageLocators
 import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
 import time

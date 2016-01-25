@@ -1,5 +1,5 @@
-from openeobs_mobile.page_helpers import BasePage, PatientPageLocators, \
-    TaskPageLocators
+from openeobs_mobile.page_helpers import BasePage
+from openeobs_mobile.locators import PatientPageLocators, TaskPageLocators
 import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
 from selenium.webdriver.common.by import By

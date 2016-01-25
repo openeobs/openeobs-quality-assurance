@@ -1,4 +1,5 @@
-from openeobs_mobile.page_helpers import BasePage, LoginPageLocators
+from openeobs_mobile.page_helpers import BasePage
+from openeobs_mobile.locators import LoginPageLocators
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.support.select import Select
 

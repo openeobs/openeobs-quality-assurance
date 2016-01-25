@@ -2,7 +2,7 @@ from openeobs_mobile.patient_page import PatientPage
 from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.list_page import ListPage
 from test_common import TestCommon
-from openeobs_mobile.page_helpers import PatientPageLocators
+from openeobs_mobile.locators import PatientPageLocators
 
 
 class TestPatientPageAdhocObs(TestCommon):
