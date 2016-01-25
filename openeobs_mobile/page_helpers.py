@@ -143,8 +143,10 @@ class BasePage(object):
         ])
         activity_api.unlink(obs)
 
-    def add_no_risk_observation_for_patient(
-            self, patient_id, database='openeobs_quality_assurance_db',
+
+    @staticmethod
+    def add_no_risk_observation_for_patient(patient_id,
+        database='openeobs_quality_assurance_db',
             user='nasir', password='nasir'):
         """
         Add an observation that gives no clinical risk
@@ -162,8 +164,9 @@ class BasePage(object):
         activity_api.submit(ews_activity_id, DataDicts.NO_RISK_EWS_DATA)
         activity_api.complete(ews_activity_id)
 
-    def add_low_risk_observation_for_patient(
-            self, patient_id, database='openeobs_quality_assurance_db',
+    @staticmethod
+    def add_low_risk_observation_for_patient(patient_id,
+        database='openeobs_quality_assurance_db',
             user='nasir', password='nasir'):
         """
         Add an observation that gives low clinical risk
@@ -181,8 +184,9 @@ class BasePage(object):
         activity_api.submit(ews_activity_id, DataDicts.LOW_RISK_SCORE_1_EWS_DATA)
         activity_api.complete(ews_activity_id)
 
-    def add_three_in_one_observation_for_patient(
-            self, patient_id, database='openeobs_quality_assurance_db',
+    @staticmethod
+    def add_three_in_one_observation_for_patient(patient_id,
+        database='openeobs_quality_assurance_db',
             user='nasir', password='nasir'):
         """
         Add an observation that gives medium clinical risk due to 3in1
@@ -201,8 +205,9 @@ class BasePage(object):
                             DataDicts.MEDIUM_RISK_SCORE_4_THREE_IN_ONE_EWS_DATA)
         activity_api.complete(ews_activity_id)
 
-    def add_medium_risk_observation_for_patient(
-            self, patient_id, database='openeobs_quality_assurance_db',
+    @staticmethod
+    def add_medium_risk_observation_for_patient(patient_id,
+        database='openeobs_quality_assurance_db',
             user='nasir', password='nasir'):
         """
         Add an observation that gives medium clinical risk due to 3in1
@@ -221,8 +226,9 @@ class BasePage(object):
                             DataDicts.MEDIUM_RISK_SCORE_6_EWS_DATA)
         activity_api.complete(ews_activity_id)
 
-    def add_high_risk_observation_for_patient(
-            self, patient_id, database='openeobs_quality_assurance_db',
+    @staticmethod
+    def add_high_risk_observation_for_patient(patient_id,
+        database='openeobs_quality_assurance_db',
             user='nasir', password='nasir'):
         """
         Add an observation that gives medium clinical risk due to 3in1
