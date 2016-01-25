@@ -1,8 +1,9 @@
 from test_common import TestCommon
+from openeobs_selenium.patient_page import PatientPage
 from openeobs_selenium.login_page import LoginPage
 from openeobs_selenium.task_page import TaskPage
 from openeobs_selenium.list_page import ListPage
-
+from openeobs_selenium.page_helpers import PatientPageLocators
 
 class TestSMPatientPage(TestCommon):
     def setUp(self):
@@ -10,6 +11,7 @@ class TestSMPatientPage(TestCommon):
         self.login_page = LoginPage(self.driver)
         self.task_list_page = ListPage(self.driver)
         self.patient_list_page = ListPage(self.driver)
+        self.patient_page = PatientPage(self.driver)
         self.login_page.login('saint', 'saint')
         self.task_list_page.go_to_task_list()
 
@@ -37,13 +39,19 @@ class TestSMPatientPage(TestCommon):
 
     def test_can_not_take_patient_observation(self):
         """
-        Test that user can not take observation
+        Test that senior manager can not take observation
         """
+        menu = self.patient_page.open_adhoc_obs_menu()
+        adhoc_obs_menu_button =menu.find_element(*PatientPageLocators.adhoc_obs_menu_button)
+
         self.patient_list_page.go_to_patient_list()
 
         patients = self.patient_list_page.get_list_items()
         patients_to_test = patients[0]
         patients_to_test.click()
+
+        if(self.driver.find_element_by_name(adhoc_obs_menu_button).is_displayed()):
+            print('SM is not allowed to take observation')
 
 
 
