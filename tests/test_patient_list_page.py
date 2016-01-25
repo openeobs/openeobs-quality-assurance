@@ -1,11 +1,13 @@
 import time
+
+from openeobs_mobile.data_dicts import Data_Dicts
 from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.list_page import ListPage
 from openeobs_mobile.patient_page import PatientPage
 from openeobs_mobile.task_page import TaskPage
 from test_common import TestCommon
 from openeobs_mobile.page_helpers import ListPageLocators, PatientPageLocators, \
-    BasePage, TaskPageLocators
+    TaskPageLocators
 import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
 from selenium.webdriver.common.by import By
@@ -200,7 +202,7 @@ class TestPatientListPage(TestCommon):
         """
         Test that an 'assess patient' task is triggered after a low NEWS score
         """
-        low_score = BasePage.LOW_RISK_SCORE_1_EWS_DATA
+        low_score = Data_Dicts.LOW_RISK_SCORE_1_EWS_DATA
 
         patients = self.patient_list_page.get_list_items()
 
@@ -224,7 +226,7 @@ class TestPatientListPage(TestCommon):
         """
         Test that an 'urgently inform medical team' task is triggered after a medium NEWS score
         """
-        medium_score = BasePage.MEDIUM_RISK_SCORE_3_THREE_IN_ONE_EWS_DATA
+        medium_score = Data_Dicts.MEDIUM_RISK_SCORE_3_THREE_IN_ONE_EWS_DATA
 
         patients = self.patient_list_page.get_list_items()
 
@@ -248,7 +250,7 @@ class TestPatientListPage(TestCommon):
         """
         Test that an 'immediately inform medical team' task is triggered after a high NEWS score
         """
-        high_score = BasePage.HIGH_RISK_SCORE_9_EWS_DATA
+        high_score = Data_Dicts.HIGH_RISK_SCORE_9_EWS_DATA
 
         patients = self.patient_list_page.get_list_items()
 
@@ -272,7 +274,7 @@ class TestPatientListPage(TestCommon):
         """
         Test that a NEWS observation can be submitted
         """
-        score = BasePage.NO_RISK_EWS_DATA
+        score = Data_Dicts.NO_RISK_EWS_DATA
 
         patients = self.patient_list_page.get_list_items()
 
@@ -296,7 +298,7 @@ class TestPatientListPage(TestCommon):
         """
         Test that a GCS observation can be submitted
         """
-        gcs_inputs = BasePage.GCS_SCORE_15_DATA
+        gcs_inputs = Data_Dicts.GCS_SCORE_15_DATA
 
         patients = self.patient_list_page.get_list_items()
 
@@ -321,7 +323,7 @@ class TestPatientListPage(TestCommon):
         """
         Test that a height observation can be submitted
         """
-        height_input = BasePage.HEIGHT_DATA
+        height_input = Data_Dicts.HEIGHT_DATA
 
         patients = self.patient_list_page.get_list_items()
 
@@ -342,7 +344,7 @@ class TestPatientListPage(TestCommon):
         """
         Test that a weight observation can be submitted
         """
-        weight_input = BasePage.WEIGHT_DATA
+        weight_input = Data_Dicts.WEIGHT_DATA
 
         patients = self.patient_list_page.get_list_items()
 
@@ -363,7 +365,7 @@ class TestPatientListPage(TestCommon):
         """
         Test that a blood product observation can be submitted
         """
-        blood_product_inputs = BasePage.BLOOD_PRODUCT_DATA
+        blood_product_inputs = Data_Dicts.BLOOD_PRODUCT_DATA
 
         patients = self.patient_list_page.get_list_items()
 
@@ -384,7 +386,7 @@ class TestPatientListPage(TestCommon):
         """
         Test that a blood sugar observation can be submitted
         """
-        blood_sugar_input = BasePage.BLOOD_SUGAR_DATA
+        blood_sugar_input = Data_Dicts.BLOOD_SUGAR_DATA
 
         patients = self.patient_list_page.get_list_items()
 
@@ -405,7 +407,7 @@ class TestPatientListPage(TestCommon):
         """
         Test that a bristol stool scale observation can be submitted
         """
-        bristol_stool_inputs = BasePage.BRISTOL_STOOL_DATA
+        bristol_stool_inputs = Data_Dicts.BRISTOL_STOOL_DATA
 
         patients = self.patient_list_page.get_list_items()
 
@@ -426,7 +428,7 @@ class TestPatientListPage(TestCommon):
         """
         Test that a postural blood pressure observation can be submitted
         """
-        postural_pressure_inputs = BasePage.POSTURAL_BLOOD_PRESSURE_DATA
+        postural_pressure_inputs = Data_Dicts.POSTURAL_BLOOD_PRESSURE_DATA
 
         patients = self.patient_list_page.get_list_items()
 
