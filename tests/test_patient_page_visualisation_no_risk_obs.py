@@ -7,67 +7,6 @@ class TestPatientPageVisualisationWithNoRiskObsData(TestVisualisationCommon):
         self.risk = 'none'
         super(TestPatientPageVisualisationWithNoRiskObsData, self).setUp()
 
-    def test_doesnt_show_no_obs_message(self):
-        """
-        Test that the No observation data available for patient message is
-        shown on no obs being available
-        """
-        self.assertFalse(self.patient_page.has_no_patient_data(),
-                         'No Observation Data Available message not found')
-
-    def test_shows_tabs(self):
-        """
-        Test that the tabs are shown
-        """
-        self.assertTrue(self.patient_page.tabs_are_shown(),
-                        'Tabs to switch between chart and table are not shown')
-
-    def test_shows_chart(self):
-        """
-        Test that the chart is displayed with a single data point present
-        """
-        self.assertTrue(self.patient_page.chart_is_shown(),
-                        'Chart is not shown')
-
-    def test_shows_tabular_values(self):
-        """
-        Test that shows the tabular values table
-        """
-        self.assertTrue(self.patient_page.tabular_values_are_shown(),
-                        'Tabular values aren\'t shown')
-
-    def test_shows_table(self):
-        """
-        Test that pressing the table tab shows the table
-        """
-        self.patient_page.change_to_table()
-        self.assertTrue(self.patient_page.obs_table_is_shown(),
-                        'Observation table is not shown')
-
-    def test_shows_obs_menu(self):
-        """
-        Test that pressing the take Observation button still works
-        """
-        self.patient_page.open_adhoc_obs_menu()
-        self.assertTrue(self.patient_page.adhoc_obs_menu_is_open(),
-                        'Adhoc observation menu is not open')
-
-    def test_shows_chart_after_viewing_table(self):
-        """
-        Test that pressing the chart tab after being on table tab works
-        """
-        self.patient_page.change_to_table()
-        self.patient_page.change_to_chart()
-        self.assertTrue(self.patient_page.chart_is_shown(),
-                        'Chart does not display when returning from table')
-
-    def test_shows_ranged_values_control(self):
-        """
-        Test that the ranged values control is shown
-        """
-        self.assertTrue(self.patient_page.rangify_control_is_shown(),
-                        'Rangify control not shown')
-
     def test_shows_correct_labels_on_chart(self):
         """
         Test that the labels on the chart are correct
