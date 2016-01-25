@@ -1,6 +1,6 @@
 import time
 
-from openeobs_mobile.data_dicts import Data_Dicts
+from openeobs_mobile.data import Data_Dicts
 from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.list_page import ListPage
 from openeobs_mobile.patient_page import PatientPage

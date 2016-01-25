@@ -1,4 +1,4 @@
-from openeobs_mobile.data_dicts import Data_Dicts
+from openeobs_mobile.data import Data_Dicts
 from selenium.webdriver.common.by import By
 import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
