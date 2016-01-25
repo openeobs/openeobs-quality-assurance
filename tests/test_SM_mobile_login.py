@@ -1,3 +1,4 @@
+from selenium.common.exceptions import NoSuchElementException
 from test_common import TestCommon
 from openeobs_selenium.patient_page import PatientPage
 from openeobs_selenium.login_page import LoginPage
@@ -23,7 +24,7 @@ class TestSMPatientPage(TestCommon):
         """
         Test that task list show no task for user
         """
-        task_list=[]
+        task_list = []
 
         for patient in self.task_list_page.get_list_items():
             task_list.append(patient)
@@ -41,17 +42,23 @@ class TestSMPatientPage(TestCommon):
         """
         Test that senior manager can not take observation
         """
-        menu = self.patient_page.open_adhoc_obs_menu()
-        adhoc_obs_menu_button =menu.find_element(*PatientPageLocators.adhoc_obs_menu_button)
-
+        # menu = self.patient_page.open_adhoc_obs_menu()
         self.patient_list_page.go_to_patient_list()
 
         patients = self.patient_list_page.get_list_items()
         patients_to_test = patients[0]
         patients_to_test.click()
 
-        if(self.driver.find_element_by_name(adhoc_obs_menu_button).is_displayed()):
-            print('SM is not allowed to take observation')
+        # try:
+        #     adhoc_obs_menu_button = self.driver.find_element(*PatientPageLocators.adhoc_obs_menu_button).is_displayed()
+        #
+         #except NoSuchElementException:
+          #   print('test')
+        adhoc_obs_menu_button = self.driver.find_elements(*PatientPageLocators.adhoc_obs_menu_button)
+        # print(adhoc_obs_menu_button)
+        self.assertEquals(adhoc_obs_menu_button,[],'Obs button should not be visible to Senior Manager ')
+        #    if adhoc_obs_menu_button:
+        #        print('SM is not allowed to take observation')
 
 
 
