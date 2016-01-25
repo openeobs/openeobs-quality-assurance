@@ -5,11 +5,8 @@ class TestPatientPageVisualisationWithMediumRiskObsData(
         TestVisualisationCommon):
 
     def setUp(self):
+        self.risk = 'medium'
         super(TestPatientPageVisualisationWithMediumRiskObsData, self).setUp()
-        self.patient_page.add_medium_risk_observation_for_patient(
-                int(self.patient_id)
-        )
-        self.post_setup()
 
     def test_doesnt_show_no_obs_message(self):
         """

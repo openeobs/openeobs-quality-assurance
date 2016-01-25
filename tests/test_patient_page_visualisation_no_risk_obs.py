@@ -1,13 +1,11 @@
 from test_visualisation_common import TestVisualisationCommon
 
+
 class TestPatientPageVisualisationWithNoRiskObsData(TestVisualisationCommon):
 
     def setUp(self):
+        self.risk = 'none'
         super(TestPatientPageVisualisationWithNoRiskObsData, self).setUp()
-        self.patient_page.add_no_risk_observation_for_patient(
-            int(self.patient_id)
-        )
-        self.post_setup()
 
     def test_doesnt_show_no_obs_message(self):
         """
