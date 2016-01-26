@@ -8,7 +8,6 @@ from openeobs_mobile.locators import ListPageLocators, PatientPageLocators, \
 import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
 
-
 class TestPatientListPage(TestCommon):
 
     def setUp(self):
@@ -265,27 +264,3 @@ class TestPatientListPage(TestCommon):
         )
         self.assertEqual(
                 task, response.text, 'Incorrect triggered action')
-
-    def test_news_ob(self):
-        """
-        Test that a NEWS observation can be submitted
-        """
-        score = DataDicts.NO_RISK_EWS_DATA
-
-        patients = self.patient_list_page.get_list_items()
-
-        PatientPage(self.driver).select_patient(patients)
-        PatientPage(self.driver).open_form(PatientPageLocators.open_obs_menu_news_item)
-        PatientPage(self.driver).enter_obs_data(score)
-
-        ui.WebDriverWait(self.driver, 5).until(
-            ec.visibility_of_element_located(TaskPageLocators.confirm_submit)
-        ).click()
-
-        success = 'Successfully Submitted NEWS Observation'
-        response = ui.WebDriverWait(self.driver, 5).until(
-            ec.visibility_of_element_located((
-                TaskPageLocators.successful_submit))
-        )
-        self.assertEqual(
-                success, response.text, 'NEWS observation unsuccessful')
