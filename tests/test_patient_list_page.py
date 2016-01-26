@@ -193,29 +193,6 @@ class TestPatientListPage(TestCommon):
 
         self.assertEqual(obs_menu.is_displayed(), True, 'Obs menu is not present')
 
-    def test_assess_patient(self):
-        """
-        Test that an 'assess patient' task is triggered after a low NEWS score
-        """
-        low_score = DataDicts.LOW_RISK_SCORE_1_EWS_DATA
-
-        patients = self.patient_list_page.get_list_items()
-
-        PatientPage(self.driver).select_patient(patients)
-        PatientPage(self.driver).open_form(PatientPageLocators.open_obs_menu_news_item)
-        PatientPage(self.driver).enter_obs_data(low_score)
-
-        ui.WebDriverWait(self.driver, 5).until(
-            ec.visibility_of_element_located(TaskPageLocators.confirm_submit)
-        ).click()
-
-        task = 'Assess Patient'
-        response = ui.WebDriverWait(self.driver, 5).until(
-            ec.visibility_of_element_located((
-                TaskPageLocators.related_task))
-        )
-        self.assertEqual(
-                task, response.text, 'Incorrect triggered action')
 
     def test_urgently_inform_medical_team(self):
         """

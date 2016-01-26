@@ -7,7 +7,7 @@ from openeobs_mobile.locators import PatientPageLocators, TaskPageLocators
 import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
 
-class TestNewsPage(TestCommon):
+class TestLowRiskPage(TestCommon):
 
     def setUp(self):
         self.driver.get("http://localhost:8069/mobile/login")
@@ -16,26 +16,26 @@ class TestNewsPage(TestCommon):
         self.login_page.login('nasir', 'nasir')
         self.patient_list_page.go_to_patient_list()
 
-    def test_news_obs(self):
+    def test_low_risk_obs(self):
         """
-        Test that a NEWS observation can be submitted
+        Test that an 'assess patient' task is triggered after a low NEWS score
         """
-        score = DataDicts.NO_RISK_EWS_DATA
+        low_score = DataDicts.LOW_RISK_SCORE_1_EWS_DATA
 
         patients = self.patient_list_page.get_list_items()
 
         PatientPage(self.driver).select_patient(patients)
         PatientPage(self.driver).open_form(PatientPageLocators.open_obs_menu_news_item)
-        PatientPage(self.driver).enter_obs_data(score)
+        PatientPage(self.driver).enter_obs_data(low_score)
 
         ui.WebDriverWait(self.driver, 5).until(
             ec.visibility_of_element_located(TaskPageLocators.confirm_submit)
         ).click()
 
-        success = 'Successfully Submitted NEWS Observation'
+        task = 'Assess Patient'
         response = ui.WebDriverWait(self.driver, 5).until(
             ec.visibility_of_element_located((
-                TaskPageLocators.successful_submit))
+                TaskPageLocators.related_task))
         )
         self.assertEqual(
-                success, response.text, 'NEWS observation unsuccessful')
+                task, response.text, 'Incorrect triggered action')
