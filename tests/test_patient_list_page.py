@@ -290,27 +290,6 @@ class TestPatientListPage(TestCommon):
         self.assertEqual(
                 success, response.text, 'NEWS observation unsuccessful')
 
-    def test_blood_sugar_obs(self):
-        """
-        Test that a blood sugar observation can be submitted
-        """
-        blood_sugar_input = DataDicts.BLOOD_SUGAR_DATA
-
-        patients = self.patient_list_page.get_list_items()
-
-        PatientPage(self.driver).select_patient(patients)
-        PatientPage(self.driver).open_form(PatientPageLocators.open_obs_menu_blood_sugar_item)
-        PatientPage(self.driver).enter_obs_data(blood_sugar_input)
-
-        success = 'Successfully Submitted Blood Sugar Observation'
-        response = ui.WebDriverWait(self.driver, 5).until(
-            ec.visibility_of_element_located((
-                TaskPageLocators.successful_submit))
-        )
-
-        self.assertEqual(
-                success, response.text, 'Blood sugar observation unsuccessful')
-
     def test_bristol_stool_obs(self):
         """
         Test that a bristol stool scale observation can be submitted
