@@ -8,7 +8,7 @@ from openeobs_selenium.page_helpers import PatientPageLocators
 
 class TestSMPatientPage(TestCommon):
     def setUp(self):
-        self.driver.get("http://localhost:8069/mobile/")
+        self.driver.get("http://localhost:8069/mobile/login")
         self.login_page = LoginPage(self.driver)
         self.task_list_page = ListPage(self.driver)
         self.patient_list_page = ListPage(self.driver)
@@ -18,12 +18,13 @@ class TestSMPatientPage(TestCommon):
 
     def test_can_logout(self):
         self.task_list_page.logout()
-        self.assertTrue(self.task_list_page.is_login_page(), 'did notget to the logout')
+        self.assertTrue(self.task_list_page.is_login_page(), 'did not get to the logout')
 
     def test_has_no_task(self):
         """
-        Test that task list show no task for user
+        Senior Manager should not see any observation related tasks in tasks list
         """
+
         task_list = []
 
         for patient in self.task_list_page.get_list_items():
@@ -32,15 +33,14 @@ class TestSMPatientPage(TestCommon):
 
     def test_go_to_patients_list_page(self):
         """
-        Test that senior manager can go on patients list
+        Senior manager should allowed to see patient list
         """
-
         self.patient_list_page.go_to_patient_list()
         self.assertTrue(self.patient_page.is_patient_list_page(),'Did not go to patient page correctly')
 
     def test_can_not_take_patient_observation(self):
         """
-        Test that senior manager can not take observation
+        Senior manager should not allowed to take ad-hoc observation from mobile version of eobs.
         """
         # menu = self.patient_page.open_adhoc_obs_menu()
         self.patient_list_page.go_to_patient_list()
