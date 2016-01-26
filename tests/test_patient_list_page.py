@@ -1,5 +1,3 @@
-import time
-
 from openeobs_mobile.data import DataDicts
 from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.list_page import ListPage
@@ -291,52 +289,6 @@ class TestPatientListPage(TestCommon):
         )
         self.assertEqual(
                 success, response.text, 'NEWS observation unsuccessful')
-
-    def test_gcs_obs(self):
-        """
-        Test that a GCS observation can be submitted
-        """
-        gcs_inputs = DataDicts.GCS_SCORE_15_DATA
-
-        patients = self.patient_list_page.get_list_items()
-
-        PatientPage(self.driver).select_patient(patients)
-        PatientPage(self.driver).open_form(PatientPageLocators.open_obs_menu_gcs_item)
-        PatientPage(self.driver).enter_obs_data(gcs_inputs)
-
-        ui.WebDriverWait(self.driver, 5).until(
-            ec.visibility_of_element_located(TaskPageLocators.confirm_submit)
-        ).click()
-
-        success = 'Successfully Submitted GCS Observation'
-        response = ui.WebDriverWait(self.driver, 5).until(
-            ec.visibility_of_element_located((
-                TaskPageLocators.successful_submit))
-        )
-
-        self.assertEqual(
-                success, response.text, 'GCS observation unsuccessful')
-
-    def test_height_obs(self):
-        """
-        Test that a height observation can be submitted
-        """
-        height_input = DataDicts.HEIGHT_DATA
-
-        patients = self.patient_list_page.get_list_items()
-
-        PatientPage(self.driver).select_patient(patients)
-        PatientPage(self.driver).open_form(PatientPageLocators.open_obs_menu_height_item)
-        PatientPage(self.driver).enter_obs_data(height_input)
-
-        success = 'Successfully Submitted Height Observation'
-        response = ui.WebDriverWait(self.driver, 5).until(
-            ec.visibility_of_element_located((
-                TaskPageLocators.successful_submit))
-        )
-
-        self.assertEqual(
-                success, response.text, 'Height observation unsuccessful')
 
     def test_weight_obs(self):
         """
