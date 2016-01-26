@@ -7,7 +7,7 @@ from openeobs_mobile.locators import PatientPageLocators, TaskPageLocators
 import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
 
-class TestHeightObsPage(TestCommon):
+class TestWeightObsPage(TestCommon):
 
     def setUp(self):
         self.driver.get("http://localhost:8069/mobile/login")
@@ -16,24 +16,23 @@ class TestHeightObsPage(TestCommon):
         self.login_page.login('nasir', 'nasir')
         self.patient_list_page.go_to_patient_list()
 
-
-    def test_height_obs(self):
+    def test_weight_obs(self):
         """
-        Test that a height observation can be submitted
+        Test that a weight observation can be submitted
         """
-        height_input = DataDicts.HEIGHT_DATA
+        weight_input = DataDicts.WEIGHT_DATA
 
         patients = self.patient_list_page.get_list_items()
 
         PatientPage(self.driver).select_patient(patients)
-        PatientPage(self.driver).open_form(PatientPageLocators.open_obs_menu_height_item)
-        PatientPage(self.driver).enter_obs_data(height_input)
+        PatientPage(self.driver).open_form(PatientPageLocators.open_obs_menu_weight_item)
+        PatientPage(self.driver).enter_obs_data(weight_input)
 
-        success = 'Successfully Submitted Height Observation'
+        success = 'Successfully Submitted Weight Observation'
         response = ui.WebDriverWait(self.driver, 5).until(
             ec.visibility_of_element_located((
                 TaskPageLocators.successful_submit))
         )
 
         self.assertEqual(
-                success, response.text, 'Height observation unsuccessful')
+                success, response.text, 'Weight observation unsuccessful')
