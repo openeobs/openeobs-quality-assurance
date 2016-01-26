@@ -1,5 +1,6 @@
 from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.list_page import ListPage
+from openeobs_mobile.stand_in_page import StandInPage
 from openeobs_mobile.task_page import TaskPage
 from test_common import TestCommon
 from openeobs_mobile.locators import ListPageLocators
@@ -175,15 +176,3 @@ class TestTaskListPage(TestCommon):
 
         self.assertNotEquals(task_list, [], 'Task list not showing tasks')
 
-    def test_stand_in(self):
-        """
-        Test that the stand-in function works
-        """
-        self.task_list_page.go_to_standin()
-        nurse_name = TaskPage(self.driver).submit_stand_in()
-
-        nurse = nurse_name.split(' ', 1)[0].lower()
-        response = TaskPage(self.driver).confirm_stand_in(nurse, self.task_list_page)
-
-        success = 'Successfully accepted stand-in invite'
-        self.assertEqual(success, response.text, 'Stand in was unsuccessful')
