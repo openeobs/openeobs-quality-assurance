@@ -4,13 +4,11 @@ from openeobs_mobile.data import DataDicts
 from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.list_page import ListPage
 from openeobs_mobile.patient_page import PatientPage
-from openeobs_mobile.task_page import TaskPage
 from test_common import TestCommon
 from openeobs_mobile.locators import ListPageLocators, PatientPageLocators, \
     TaskPageLocators
 import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
-from selenium.webdriver.common.by import By
 
 
 class TestPatientListPage(TestCommon):
@@ -173,7 +171,7 @@ class TestPatientListPage(TestCommon):
         PatientPage(self.driver).select_patient(patients)
 
         patient_graph = ui.WebDriverWait(self.driver, 1).until(
-            ec.visibility_of_element_located((PatientPageLocators.graph_chart))
+            ec.visibility_of_element_located(PatientPageLocators.graph_chart)
         )
 
         self.assertEqual(patient_graph.is_displayed(), True, 'Graph not found')
@@ -182,7 +180,7 @@ class TestPatientListPage(TestCommon):
                 *PatientPageLocators.table_tab_button).click()
 
         patient_table = ui.WebDriverWait(self.driver, 1).until(
-            ec.visibility_of_element_located((PatientPageLocators.table_container_table))
+            ec.visibility_of_element_located(PatientPageLocators.table_container_table)
         )
 
         self.assertEqual(patient_table.is_displayed(), True, 'Table not found')
@@ -211,7 +209,7 @@ class TestPatientListPage(TestCommon):
         PatientPage(self.driver).enter_obs_data(low_score)
 
         ui.WebDriverWait(self.driver, 5).until(
-            ec.visibility_of_element_located((TaskPageLocators.confirm_submit))
+            ec.visibility_of_element_located(TaskPageLocators.confirm_submit)
         ).click()
 
         task = 'Assess Patient'
@@ -235,7 +233,7 @@ class TestPatientListPage(TestCommon):
         PatientPage(self.driver).enter_obs_data(medium_score)
 
         ui.WebDriverWait(self.driver, 5).until(
-            ec.visibility_of_element_located((TaskPageLocators.confirm_submit))
+            ec.visibility_of_element_located(TaskPageLocators.confirm_submit)
         ).click()
 
         task = 'Urgently inform medical team'
@@ -259,7 +257,7 @@ class TestPatientListPage(TestCommon):
         PatientPage(self.driver).enter_obs_data(high_score)
 
         ui.WebDriverWait(self.driver, 5).until(
-            ec.visibility_of_element_located((TaskPageLocators.confirm_submit))
+            ec.visibility_of_element_located(TaskPageLocators.confirm_submit)
         ).click()
 
         task = 'Immediately inform medical team'
@@ -283,7 +281,7 @@ class TestPatientListPage(TestCommon):
         PatientPage(self.driver).enter_obs_data(score)
 
         ui.WebDriverWait(self.driver, 5).until(
-            ec.visibility_of_element_located((TaskPageLocators.confirm_submit))
+            ec.visibility_of_element_located(TaskPageLocators.confirm_submit)
         ).click()
 
         success = 'Successfully Submitted NEWS Observation'
@@ -307,7 +305,7 @@ class TestPatientListPage(TestCommon):
         PatientPage(self.driver).enter_obs_data(gcs_inputs)
 
         ui.WebDriverWait(self.driver, 5).until(
-            ec.visibility_of_element_located((TaskPageLocators.confirm_submit))
+            ec.visibility_of_element_located(TaskPageLocators.confirm_submit)
         ).click()
 
         success = 'Successfully Submitted GCS Observation'
