@@ -67,6 +67,9 @@ class TestVisualisationCommon(TestCommon):
         self.tabular_values_rows = \
             self.patient_page.get_table_rows(tabular_values_table)
 
+        #Table
+
+
     def get_focus_chart_labels(self):
         """
         Helper function to get an dict of the focus chart labels
@@ -97,3 +100,23 @@ class TestVisualisationCommon(TestCommon):
             self.patient_page.get_table_data(self.tabular_values_rows[row])
         self.assertEqual(len(tabular_values), 4, 'Incorrect number of data')
         return tabular_values[column]
+
+    def get_table_values(self):
+        """
+        Helper function to get the value from a row and column in the patient
+        table
+        """
+        self.patient_page.change_to_table()
+        obs_table = self.patient_page.get_obs_table()
+        rows = self.patient_page.get_table_rows(obs_table)[1:]
+
+        self.news_row = self.patient_page.get_table_data(rows[0])
+        self.rr_row = self.patient_page.get_table_data(rows[1])
+        self.os_row = self.patient_page.get_table_data(rows[2])
+        self.bt_row = self.patient_page.get_table_data(rows[3])
+        self.bps_row = self.patient_page.get_table_data(rows[4])
+        self.bpd_row = self.patient_page.get_table_data(rows[5])
+        self.ps_row = self.patient_page.get_table_data(rows[6])
+        self.as_row = self.patient_page.get_table_data(rows[7])
+        self.pos_row = self.patient_page.get_table_data(rows[8])
+        self.ios_row = self.patient_page.get_table_data(rows[9])
