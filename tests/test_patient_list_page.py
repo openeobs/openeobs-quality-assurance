@@ -290,27 +290,6 @@ class TestPatientListPage(TestCommon):
         self.assertEqual(
                 success, response.text, 'NEWS observation unsuccessful')
 
-    def test_bristol_stool_obs(self):
-        """
-        Test that a bristol stool scale observation can be submitted
-        """
-        bristol_stool_inputs = DataDicts.BRISTOL_STOOL_DATA
-
-        patients = self.patient_list_page.get_list_items()
-
-        PatientPage(self.driver).select_patient(patients)
-        PatientPage(self.driver).open_form(PatientPageLocators.open_obs_menu_bristol_stool_item)
-        PatientPage(self.driver).enter_obs_data(bristol_stool_inputs)
-
-        success = 'Successfully Submitted Bristol Stool Scale Observation'
-        response = ui.WebDriverWait(self.driver, 5).until(
-            ec.visibility_of_element_located((
-                TaskPageLocators.successful_submit))
-        )
-
-        self.assertEqual(
-                success, response.text, 'Bristol Stool Scale observation unsuccessful')
-
     def test_postural_blood_pressure_obs(self):
         """
         Test that a postural blood pressure observation can be submitted
