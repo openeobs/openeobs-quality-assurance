@@ -68,7 +68,6 @@ class TestPatientPageVisualisationWithHighRiskObsData(TestVisualisationCommon):
             'Incorrect inspired o2 data in table'
         )
 
-
     def test_correct_number_of_headers(self):
         """
         Test that the table of obs has the correct number of headers
@@ -98,7 +97,6 @@ class TestPatientPageVisualisationWithHighRiskObsData(TestVisualisationCommon):
                 self.patient_page.get_table_rows(
                         self.patient_page.get_obs_table())[1:]),
                 10, 'Incorrect number of rows')
-
 
     def test_news_score_value(self):
         """

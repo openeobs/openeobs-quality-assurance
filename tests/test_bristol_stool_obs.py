@@ -7,6 +7,7 @@ from openeobs_mobile.locators import PatientPageLocators, TaskPageLocators
 import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
 
+
 class TestBristolStoolObsPage(TestCommon):
 
     def setUp(self):
@@ -25,7 +26,8 @@ class TestBristolStoolObsPage(TestCommon):
         patients = self.patient_list_page.get_list_items()
 
         PatientPage(self.driver).select_patient(patients)
-        PatientPage(self.driver).open_form(PatientPageLocators.open_obs_menu_bristol_stool_item)
+        PatientPage(self.driver).open_form(
+                PatientPageLocators.open_obs_menu_bristol_stool_item)
         PatientPage(self.driver).enter_obs_data(bristol_stool_inputs)
 
         success = 'Successfully Submitted Bristol Stool Scale Observation'
@@ -35,4 +37,5 @@ class TestBristolStoolObsPage(TestCommon):
         )
 
         self.assertEqual(
-                success, response.text, 'Bristol Stool Scale observation unsuccessful')
+                success, response.text,
+                'Bristol Stool Scale observation unsuccessful')

@@ -7,6 +7,7 @@ from openeobs_mobile.locators import PatientPageLocators, TaskPageLocators
 import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
 
+
 class TestBloodSugarObsPage(TestCommon):
 
     def setUp(self):
@@ -25,7 +26,8 @@ class TestBloodSugarObsPage(TestCommon):
         patients = self.patient_list_page.get_list_items()
 
         PatientPage(self.driver).select_patient(patients)
-        PatientPage(self.driver).open_form(PatientPageLocators.open_obs_menu_blood_sugar_item)
+        PatientPage(self.driver).open_form(
+                PatientPageLocators.open_obs_menu_blood_sugar_item)
         PatientPage(self.driver).enter_obs_data(blood_sugar_input)
 
         success = 'Successfully Submitted Blood Sugar Observation'
