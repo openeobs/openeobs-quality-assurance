@@ -2,6 +2,7 @@
 
 class DataDicts(object):
 
+
     NO_RISK_EWS_DATA = {
         'respiration_rate': 18,
         'indirect_oxymetry_spo2': 99,
@@ -22,7 +23,7 @@ class DataDicts(object):
             'avpu_text': 'A',
             'pulse_rate': 65,
             'body_temperature': 37.5,
-        }
+    }
 
     LOW_RISK_SCORE_2_EWS_DATA = {
             'respiration_rate': 11,
@@ -33,7 +34,7 @@ class DataDicts(object):
             'avpu_text': 'A',
             'pulse_rate': 65,
             'body_temperature': 37.5,
-        }
+    }
 
     LOW_RISK_SCORE_3_EWS_DATA = {
             'respiration_rate': 11,
@@ -46,7 +47,7 @@ class DataDicts(object):
             'avpu_text': 'A',
             'pulse_rate': 65,
             'body_temperature': 37.5,
-        }
+    }
 
     LOW_RISK_SCORE_4_EWS_DATA = {
             'respiration_rate': 11,
@@ -59,7 +60,7 @@ class DataDicts(object):
             'avpu_text': 'A',
             'pulse_rate': 65,
             'body_temperature': 37.5,
-        }
+    }
 
     MEDIUM_RISK_SCORE_3_THREE_IN_ONE_EWS_DATA = {
             'respiration_rate': 18,
@@ -70,7 +71,7 @@ class DataDicts(object):
             'avpu_text': 'V',
             'pulse_rate': 65,
             'body_temperature': 37.5,
-        }
+    }
 
     MEDIUM_RISK_SCORE_4_THREE_IN_ONE_EWS_DATA = {
             'respiration_rate': 11,
@@ -81,7 +82,7 @@ class DataDicts(object):
             'avpu_text': 'V',
             'pulse_rate': 65,
             'body_temperature': 37.5,
-        }
+    }
 
     MEDIUM_RISK_SCORE_5_EWS_DATA = {
             'respiration_rate': 11,
@@ -94,7 +95,7 @@ class DataDicts(object):
             'pulse_rate': 50,
             'body_temperature': 37.5,
             'concentration': 40,
-        }
+    }
 
     MEDIUM_RISK_SCORE_6_EWS_DATA = {
             'respiration_rate': 24,
@@ -108,7 +109,7 @@ class DataDicts(object):
             'avpu_text': 'A',
             'pulse_rate': 50,
             'body_temperature': 37.5,
-        }
+    }
 
     HIGH_RISK_SCORE_7_EWS_DATA = {
             'respiration_rate': 24,
@@ -124,7 +125,7 @@ class DataDicts(object):
             'avpu_text': 'A',
             'pulse_rate': 50,
             'body_temperature': 36.0,
-        }
+    }
 
     HIGH_RISK_SCORE_8_EWS_DATA = {
             'respiration_rate': 24,
@@ -137,7 +138,7 @@ class DataDicts(object):
             'avpu_text': 'A',
             'pulse_rate': 50,
             'body_temperature': 36.0,
-        }
+    }
 
     HIGH_RISK_SCORE_9_EWS_DATA = {
             'respiration_rate': 24,
@@ -150,7 +151,7 @@ class DataDicts(object):
             'avpu_text': 'A',
             'pulse_rate': 130,
             'body_temperature': 36.0,
-        }
+    }
 
     HIGH_RISK_SCORE_10_EWS_DATA = {
             'respiration_rate': 24,
@@ -163,7 +164,7 @@ class DataDicts(object):
             'avpu_text': 'A',
             'pulse_rate': 130,
             'body_temperature': 36.0,
-        }
+    }
 
     HIGH_RISK_SCORE_11_EWS_DATA = {
             'respiration_rate': 24,
@@ -176,30 +177,30 @@ class DataDicts(object):
             'avpu_text': 'A',
             'pulse_rate': 130,
             'body_temperature': 36.0,
-        }
+    }
 
     GCS_SCORE_15_DATA = {
                 'eyes': 4,
                 'verbal': 5,
                 'motor': 6
-        }
+    }
 
     HEIGHT_DATA = {
                 'height': 1.8
-        }
+    }
 
     WEIGHT_DATA = {
             'weight': 55
-        }
+    }
 
     BLOOD_PRODUCT_DATA = {
             'vol': 15,
             'product': 'rbc'
-        }
+    }
 
     BLOOD_SUGAR_DATA = {
             'blood_sugar': 5
-        }
+    }
 
     BRISTOL_STOOL_DATA = {
             'bowel_open': 'no',
@@ -213,7 +214,7 @@ class DataDicts(object):
             'laxatives': 'no',
             'samples': 'none',
             'rectal_exam': 'no'
-        }
+    }
 
     POSTURAL_BLOOD_PRESSURE_DATA = {
             'systolic_sitting': 120,
