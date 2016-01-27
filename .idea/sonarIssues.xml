@@ -93,6 +93,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/tests/test_postural_blood_pressure_obs.py">
+          <value>
+            <set />
+          </value>
+        </entry>
       </map>
     </option>
   </component>

@@ -120,8 +120,8 @@ class BasePage(object):
 
     @staticmethod
     def remove_observations_for_patient(
-            patient_id,  database='openeobs_quality_assurance_db',
-            user='admin', password='admin'):
+            patient_id, database='openeobs_quality_assurance_db',user='admin',
+            password='admin'):
         """
         Remove all the observations for the patient
         :param patient_id: The patient to remove obs for
@@ -145,8 +145,8 @@ class BasePage(object):
 
     @staticmethod
     def add_no_risk_observation_for_patient(
-            patient_id, database= 'openeobs_quality_assurance_db',
-            user='nasir', password='nasir'):
+            patient_id, database='openeobs_quality_assurance_db', user='nasir',
+            password='nasir'):
         """
         Add an observation that gives no clinical risk
         :param patient_id: The patient to do observation for
@@ -165,8 +165,8 @@ class BasePage(object):
 
     @staticmethod
     def add_low_risk_observation_for_patient(
-        patient_id, database='openeobs_quality_assurance_db',
-        user='nasir', password='nasir'):
+        patient_id, database='openeobs_quality_assurance_db', user='nasir',
+        password='nasir'):
         """
         Add an observation that gives low clinical risk
         :param patient_id: The patient to do observation for
@@ -186,8 +186,8 @@ class BasePage(object):
 
     @staticmethod
     def add_three_in_one_observation_for_patient(
-        patient_id, database='openeobs_quality_assurance_db',
-        user='nasir', password='nasir'):
+        patient_id, database='openeobs_quality_assurance_db', user='nasir',
+        password='nasir'):
         """
         Add an observation that gives medium clinical risk due to 3in1
         :param patient_id: The patient to do observation for
@@ -207,8 +207,8 @@ class BasePage(object):
 
     @staticmethod
     def add_medium_risk_observation_for_patient(
-        patient_id, database='openeobs_quality_assurance_db',
-        user='nasir', password='nasir'):
+        patient_id, database='openeobs_quality_assurance_db', user='nasir',
+        password='nasir'):
         """
         Add an observation that gives medium clinical risk due to 3in1
         :param patient_id: The patient to do observation for
@@ -228,8 +228,8 @@ class BasePage(object):
 
     @staticmethod
     def add_high_risk_observation_for_patient(
-        patient_id, database='openeobs_quality_assurance_db',
-        user='nasir', password='nasir'):
+        patient_id, database='openeobs_quality_assurance_db', user='nasir',
+        password='nasir'):
         """
         Add an observation that gives medium clinical risk due to 3in1
         :param patient_id: The patient to do observation for
