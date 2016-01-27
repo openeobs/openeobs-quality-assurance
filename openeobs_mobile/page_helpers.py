@@ -10,7 +10,8 @@ from openeobs_mobile.locators import MenuLocators
 
 class BasePage(object):
     """
-        Base class to initialise the base page that will be called from all pages
+        Base class to initialise the base page
+        that will be called from all pages
     """
     def __init__(self, driver):
         self.driver = driver
@@ -54,8 +55,8 @@ class BasePage(object):
         :param user: User to carry out observation as
         :param password: Password for the user
         """
-        odoo_client = Client('http://localhost:8069', db=database,
-            user=user, password=password)
+        odoo_client = Client('http://localhost:8069', db=database, user=user,
+                             password=password)
         return odoo_client.model('nh.eobs.api').get_activities([task_id])
 
     @staticmethod
@@ -202,7 +203,7 @@ class BasePage(object):
         ews_activity_id = ews_api.create_activity({},
                                                   {'patient_id': patient_id})
         activity_api.submit(ews_activity_id,
-                DataDicts.MEDIUM_RISK_SCORE_4_THREE_IN_ONE_EWS_DATA)
+                    DataDicts.MEDIUM_RISK_SCORE_4_THREE_IN_ONE_EWS_DATA)
         activity_api.complete(ews_activity_id)
 
     @staticmethod
