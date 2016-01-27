@@ -7,6 +7,7 @@ from openeobs_mobile.locators import PatientPageLocators, TaskPageLocators
 import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
 
+
 class TestHighRiskPage(TestCommon):
 
     def setUp(self):
@@ -18,14 +19,16 @@ class TestHighRiskPage(TestCommon):
 
     def test_immediately_inform_medical_team(self):
         """
-        Test that an 'immediately inform medical team' task is triggered after a high NEWS score
+        Test that an 'immediately inform medical team' task is triggered
+        after a high NEWS score
         """
         high_score = DataDicts.HIGH_RISK_SCORE_9_EWS_DATA
 
         patients = self.patient_list_page.get_list_items()
 
         PatientPage(self.driver).select_patient(patients)
-        PatientPage(self.driver).open_form(PatientPageLocators.open_obs_menu_news_item)
+        PatientPage(self.driver).open_form(
+                PatientPageLocators.open_obs_menu_news_item)
         PatientPage(self.driver).enter_obs_data(high_score)
 
         ui.WebDriverWait(self.driver, 5).until(

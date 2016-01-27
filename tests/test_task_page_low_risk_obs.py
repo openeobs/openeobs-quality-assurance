@@ -7,6 +7,7 @@ from openeobs_mobile.locators import PatientPageLocators, TaskPageLocators
 import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
 
+
 class TestLowRiskPage(TestCommon):
 
     def setUp(self):
@@ -25,7 +26,8 @@ class TestLowRiskPage(TestCommon):
         patients = self.patient_list_page.get_list_items()
 
         PatientPage(self.driver).select_patient(patients)
-        PatientPage(self.driver).open_form(PatientPageLocators.open_obs_menu_news_item)
+        PatientPage(self.driver).open_form(
+                PatientPageLocators.open_obs_menu_news_item)
         PatientPage(self.driver).enter_obs_data(low_score)
 
         ui.WebDriverWait(self.driver, 5).until(

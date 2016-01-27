@@ -98,6 +98,41 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/tests/test_stand_in_page.py">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/tests/test_task_list_page.py">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/tests/test_task_page_high_risk_obs.py">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/tests/test_task_page_low_risk_obs.py">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/tests/test_task_page_patient_info.py">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/tests/test_visualisation_common.py">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/tests/test_weight_obs.py">
+          <value>
+            <set />
+          </value>
+        </entry>
       </map>
     </option>
   </component>

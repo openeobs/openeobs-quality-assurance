@@ -3,6 +3,7 @@ from openeobs_mobile.list_page import ListPage
 from test_common import TestCommon
 from openeobs_mobile.locators import ListPageLocators
 
+
 class TestTaskListPage(TestCommon):
 
     def setUp(self):
@@ -170,4 +171,3 @@ class TestTaskListPage(TestCommon):
             task_list.append(patient)
 
         self.assertNotEquals(task_list, [], 'Task list not showing tasks')
-

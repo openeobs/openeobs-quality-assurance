@@ -3,6 +3,7 @@ from openeobs_mobile.list_page import ListPage
 from openeobs_mobile.stand_in_page import StandInPage
 from test_common import TestCommon
 
+
 class TestStandInPage(TestCommon):
 
     def setUp(self):
@@ -19,7 +20,8 @@ class TestStandInPage(TestCommon):
         nurse_name = StandInPage(self.driver).submit_stand_in()
 
         nurse = nurse_name.split(' ', 1)[0].lower()
-        response = StandInPage(self.driver).confirm_stand_in(nurse, self.patient_list_page)
+        response = StandInPage(self.driver).confirm_stand_in(
+                nurse, self.patient_list_page)
 
         success = 'Successfully accepted stand-in invite'
         self.assertEqual(success, response.text, 'Stand in was unsuccessful')
