@@ -17,7 +17,7 @@ class StandInPage(BasePage):
 
         ui.WebDriverWait(self.driver, 5).until(
                 ec.visibility_of_element_located(
-                ListPageLocators.stand_in_nurse)).click()
+                        ListPageLocators.stand_in_nurse)).click()
 
         nurses = self.driver.find_element(*ListPageLocators.stand_in_list)
         nurses.find_elements_by_tag_name('input')[0].click()
@@ -27,7 +27,7 @@ class StandInPage(BasePage):
 
         ui.WebDriverWait(self.driver, 5).until(
                 ec.visibility_of_element_located(
-                ListPageLocators.stand_in_assign)).click()
+                        ListPageLocators.stand_in_assign)).click()
 
         return nurse_name
 
