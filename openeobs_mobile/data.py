@@ -3,15 +3,15 @@
 class DataDicts(object):
 
     NO_RISK_EWS_DATA = {
-            'respiration_rate': 18,
-            'indirect_oxymetry_spo2': 99,
-            'oxygen_administration_flag': 'No',
-            'blood_pressure_systolic': 120,
-            'blood_pressure_diastolic': 80,
-            'avpu_text': 'A',
-            'pulse_rate': 65,
-            'body_temperature': 37.5,
-        }
+        'respiration_rate': 18,
+        'indirect_oxymetry_spo2': 99,
+        'oxygen_administration_flag': 'No',
+        'blood_pressure_systolic': 120,
+        'blood_pressure_diastolic': 80,
+        'avpu_text': 'A',
+        'pulse_rate': 65,
+        'body_temperature': 37.5,
+    }
 
     LOW_RISK_SCORE_1_EWS_DATA = {
             'respiration_rate': 11,

@@ -68,75 +68,83 @@ class TestPatientPageVisualisationWith3in1RiskObsData(TestVisualisationCommon):
             'Incorrect inspired o2 data in table'
         )
 
-    def test_shows_the_correct_values_in_table(self):
+    def test_news_score_value(self):
         """
-        Test that the table of obs shows the correct data
+        Test that the NEWS score value is correct
         """
-        self.patient_page.change_to_table()
-        obs_table = self.patient_page.get_obs_table()
-        headers = self.patient_page.get_table_headers(obs_table)
-        self.assertEqual(len(headers), 2, 'Incorrect number of headers')
-        # TODO: I'm skipping date header due to fragile ness
-        self.assertEqual(headers[0], 'Date', 'Incorrect header')
-        rows = self.patient_page.get_table_rows(obs_table)[1:]
-        self.assertEqual(len(rows), 10, 'Incorrect number of rows')
-
-        news_row = self.patient_page.get_table_data(rows[0])
-        self.assertEqual(news_row[0], 'NEWS Score',
-                         'Incorrect title on news score row')
-        self.assertEqual(news_row[1], '4',
+        self.get_table_values()
+        self.assertEqual(self.news_row[1], '4',
                          'Incorrect value on news score row')
 
-        rr_row = self.patient_page.get_table_data(rows[1])
-        self.assertEqual(rr_row[0], 'Respiration Rate',
-                         'Incorrect title on respiration rate row')
-        self.assertEqual(rr_row[1], '11',
+    def test_respiration_rate_value(self):
+        """
+        Test that the respiration rate value is correct
+        """
+        self.get_table_values()
+        self.assertEqual(self.rr_row[1], '11',
                          'Incorrect value on respiration rate row')
 
-        os_row = self.patient_page.get_table_data(rows[2])
-        self.assertEqual(os_row[0], 'O2 Saturation',
-                         'Incorrect title on O2 Saturation row')
-        self.assertEqual(os_row[1], '99',
-                         'Incorrect value on O2 Saturation row')
+    def test_o2_saturation_value(self):
+        """
+        Test that the o2 saturation value is correct
+        """
+        self.get_table_values()
+        self.assertEqual(self.os_row[1], '99',
+                         'Incorrect value on o2 row')
 
-        bt_row = self.patient_page.get_table_data(rows[3])
-        self.assertEqual(bt_row[0], 'Body Temperature',
-                         'Incorrect title on body temp row')
-        self.assertEqual(bt_row[1], '37.5',
-                         'Incorrect value on body temp row')
+    def test_body_temperature_value(self):
+        """
+        Test that the body temperature value is correct
+        """
+        self.get_table_values()
+        self.assertEqual(self.bt_row[1], '37.5',
+                         'Incorrect value on Body Temperature row')
 
-        bps_row = self.patient_page.get_table_data(rows[4])
-        self.assertEqual(bps_row[0], 'Blood Pressure Systolic',
-                         'Incorrect title on blood pressure sys row')
-        self.assertEqual(bps_row[1], '120',
-                         'Incorrect value on BP sys row')
+    def test_blood_pressure_systolic_value(self):
+        """
+        Test that the systolic blood pressure value is correct
+        """
+        self.get_table_values()
+        self.assertEqual(self.bps_row[1], '120',
+                         'Incorrect value on Blood Pressure Systolic row')
 
-        bpd_row = self.patient_page.get_table_data(rows[5])
-        self.assertEqual(bpd_row[0], 'Blood Pressure Diastolic',
-                         'Incorrect title on BP dia row')
-        self.assertEqual(bpd_row[1], '80',
-                         'Incorrect value on Bp dia row')
+    def test_blood_pressure_diastolic_value(self):
+        """
+        Test that the diastolic blood pressure value is correct
+        """
+        self.get_table_values()
+        self.assertEqual(self.bpd_row[1], '80',
+                         'Incorrect value on Blood Pressure Diastolic row')
 
-        ps_row = self.patient_page.get_table_data(rows[6])
-        self.assertEqual(ps_row[0], 'Pulse Rate',
-                         'Incorrect title on pulse rate row')
-        self.assertEqual(ps_row[1], '65',
-                         'Incorrect value on pulse rate row')
+    def test_pulse_rate_value(self):
+        """
+        Test that the pulse rate value is correct
+        """
+        self.get_table_values()
+        self.assertEqual(self.ps_row[1], '65',
+                         'Incorrect value on Pulse Rate row')
 
-        as_row = self.patient_page.get_table_data(rows[7])
-        self.assertEqual(as_row[0], 'AVPU',
-                         'Incorrect title on avpu row')
-        self.assertEqual(as_row[1], 'V',
-                         'Incorrect value on avpu row')
+    def test_avpu_value(self):
+        """
+        Test that the avpu value is correct
+        """
+        self.get_table_values()
+        self.assertEqual(self.as_row[1], 'V',
+                         'Incorrect value on AVPU row')
 
-        pos_row = self.patient_page.get_table_data(rows[8])
-        self.assertEqual(pos_row[0], 'Patient on Supplemental O2',
-                         'Incorrect title on supplemental o2 row')
-        self.assertEqual(pos_row[1], 'No',
-                         'Incorrect value on supplemental o2 row')
+    def test_supplemental_value(self):
+        """
+        Test that the supplemental o2 value is correct
+        """
+        self.get_table_values()
+        self.assertEqual(self.pos_row[1], 'No',
+                         'Incorrect value on Supplemental O2 row')
 
-        ios_row = self.patient_page.get_table_data(rows[9])
-        self.assertEqual(ios_row[0], 'Inspired Oxygen',
-                         'Incorrect title on inspired o2 row')
-        self.assertEqual(ios_row[1], '',
-                         'Incorrect value on inspired o2 row')
+    def test_device_value(self):
+        """
+        Test that the device value is correct
+        """
+        self.get_table_values()
+        self.assertEqual(self.ios_row[1],
+                         '',
+                         'Incorrect value on Inspired Oxygen row')

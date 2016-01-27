@@ -18,8 +18,11 @@ class TestPatientPageVisualisationWithNoRiskObsData(TestVisualisationCommon):
         """
         Test that the value for oxygen saturation on the chart is correct
         """
-        self.assertEqual(self.os_mes, '99%',
-                         'Incorrect O2 Saturation Measurement')
+        self.assertEqual(
+            self.os_mes,
+            '99%',
+            'Incorrect O2 Saturation Measurement'
+        )
 
     def test_shows_correct_body_temp_value_on_chart(self):
         """
