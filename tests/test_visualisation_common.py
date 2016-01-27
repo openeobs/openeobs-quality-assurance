@@ -67,8 +67,6 @@ class TestVisualisationCommon(TestCommon):
         self.tabular_values_rows = \
             self.patient_page.get_table_rows(tabular_values_table)
 
-        #Table
-
 
     def get_focus_chart_labels(self):
         """

@@ -114,6 +114,36 @@ class TestPatientPageVisualisationStructure(TestVisualisationCommon):
                           'Inspired Oxygen'],
                          'Incorrect table headers')
 
+    def test_correct_number_of_headers(self):
+        """
+        Test that the table of obs has the correct number of headers
+        """
+        self.patient_page.change_to_table()
+        self.assertEqual(len(
+                self.patient_page.get_table_headers(
+                        self.patient_page.get_obs_table())), 2,
+                'Incorrect number of headers')
+
+    def test_date_header(self):
+        """
+        Test the date header
+        """
+        self.get_table_values()
+        self.assertEqual(
+                self.patient_page.get_table_headers(
+                        self.patient_page.get_obs_table())[0],
+                'Date', 'Incorrect header')
+
+    def test_number_of_rows(self):
+        """
+        Test that the number of rows is correct
+        """
+        self.get_table_values()
+        self.assertEqual(len(
+                self.patient_page.get_table_rows(
+                        self.patient_page.get_obs_table())[1:]),
+                10, 'Incorrect number of rows')
+
     def test_news_score_title(self):
         """
         Test that the NEWS score title in the table is correct
