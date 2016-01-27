@@ -22,8 +22,7 @@ install:
 script:
 - flake8 openeobs_mobile
 - flake8 tests
-- pylint openeobs_mobile
-- pylint tests
+- pylint openeobs_mobile tests --msg-template="{path}:{line}: [{msg_id}({symbol}), {obj}] {msg}" > pylint_output
 after_script:
 - echo -e "\nsonar.branch=${TRAVIS_BRANCH}" >> sonar-project.properties
 - ssh -o StrictHostKeyChecking=no $DEPLOY_USER@$DEPLOY_HOST -L 2000:localhost:2000
