@@ -45,7 +45,6 @@ class ListPageLocators(object):
     stand_in_success = (By.CSS_SELECTOR, '#invite_success > h2')
 
 
-
 class MenuLocators(object):
     """
     A class to help identify things in the menu
@@ -74,7 +73,7 @@ class PatientPageLocators(object):
     open_obs_menu_height_item = (
         By.CSS_SELECTOR, '#obs_menu > div > ul > li:nth-child(3)')
     open_obs_menu_weight_item = (
-        By.CSS_SELECTOR,'#obs_menu > div > ul > li:nth-child(4)')
+        By.CSS_SELECTOR, '#obs_menu > div > ul > li:nth-child(4)')
     open_obs_menu_blood_product_item = (
         By.CSS_SELECTOR, '#obs_menu > div > ul > li:nth-child(5)')
     open_obs_menu_blood_sugar_item = (

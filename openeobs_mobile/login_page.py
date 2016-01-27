@@ -59,4 +59,3 @@ class LoginPage(BasePage):
         except NoSuchElementException:
             return False
         return True
-

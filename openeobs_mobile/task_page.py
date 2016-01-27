@@ -5,6 +5,7 @@ import selenium.webdriver.support.ui as ui
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
 
+
 class TaskPage(BasePage):
     """
     Task Page methods and interactions

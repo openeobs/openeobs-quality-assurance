@@ -4,6 +4,7 @@ from openeobs_mobile.locators import ListPageLocators
 import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
 
+
 class StandInPage(BasePage):
 
     def submit_stand_in(self):

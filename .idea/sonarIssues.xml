@@ -23,6 +23,31 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/openeobs_mobile/login_page.py">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/openeobs_mobile/page_helpers.py">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/openeobs_mobile/patient_page.py">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/openeobs_mobile/stand_in_page.py">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/openeobs_mobile/task_page.py">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/tests/test_patient_page_visualisation_three_in_one_obs.py">
           <value>
             <set />

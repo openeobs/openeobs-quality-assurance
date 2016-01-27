@@ -143,11 +143,10 @@ class BasePage(object):
         ])
         activity_api.unlink(obs)
 
-
     @staticmethod
     def add_no_risk_observation_for_patient(patient_id,
         database='openeobs_quality_assurance_db',
-            user='nasir', password='nasir'):
+        user='nasir', password='nasir'):
         """
         Add an observation that gives no clinical risk
         :param patient_id: The patient to do observation for
@@ -203,7 +202,7 @@ class BasePage(object):
         ews_activity_id = ews_api.create_activity({},
                                                   {'patient_id': patient_id})
         activity_api.submit(ews_activity_id,
-                            DataDicts.MEDIUM_RISK_SCORE_4_THREE_IN_ONE_EWS_DATA)
+        DataDicts.MEDIUM_RISK_SCORE_4_THREE_IN_ONE_EWS_DATA)
         activity_api.complete(ews_activity_id)
 
     @staticmethod
