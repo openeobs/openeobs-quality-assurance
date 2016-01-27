@@ -27,7 +27,7 @@ class TestBloodProductObsPage(TestCommon):
 
         PatientPage(self.driver).select_patient(patients)
         PatientPage(self.driver).open_form(
-                PatientPageLocators.open_obs_menu_blood_product_item)
+            PatientPageLocators.open_obs_menu_blood_product_item)
         PatientPage(self.driver).enter_obs_data(blood_product_inputs)
 
         success = 'Successfully Submitted Blood Product Observation'

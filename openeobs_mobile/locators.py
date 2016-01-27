@@ -1,3 +1,4 @@
+"""Locators for elements on mobile pages"""
 from selenium.webdriver.common.by import By
 
 
