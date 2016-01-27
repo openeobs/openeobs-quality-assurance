@@ -23,9 +23,10 @@ script:
 - flake8 openeobs_mobile
 - flake8 tests
 - |-
-  pylint openeobs_mobile tests --msg-template="{path}:{line}: [{msg_id}({symbol}), {obj}] {msg}" > pylint_output
+  pylint openeobs_mobile tests --msg-template="{path}:{line}: [{msg_id}({symbol}), {obj}] {msg}" | tee pylint_output
 after_script:
 - echo -e "\nsonar.branch=${TRAVIS_BRANCH}" >> sonar-project.properties
+- echo -e "\nsonar.python.pylint.reportPath=${HOME}/pylint_output" >> sonar-project.properties
 - ssh -o StrictHostKeyChecking=no $DEPLOY_USER@$DEPLOY_HOST -L 2000:localhost:2000
   -L 6432:localhost:5432 -fN
 - if [ "$SONAR" == "1" ] ; then "${HOME}/sonar-runner-2.4/bin/sonar-runner" ; fi
