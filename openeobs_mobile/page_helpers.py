@@ -10,21 +10,21 @@ from openeobs_mobile.locators import MenuLocators
 
 class BasePage(object):
     """
-    Base class to initialise the base page that will be called from all pages
+        Base class to initialise the base page that will be called from all pages
     """
     def __init__(self, driver):
         self.driver = driver
 
     def go_to_task_list(self):
         """
-        Navigate to the task list
+            Navigate to the task list
         """
         task_list_item = self.driver.find_element(*MenuLocators.task_list_el)
         task_list_item.click()
 
     def go_to_patient_list(self):
         """
-        Navigate to the patient list
+            Navigate to the patient list
         """
         patient_list_item = self.driver.find_element(
             *MenuLocators.patient_list_el)
@@ -32,14 +32,14 @@ class BasePage(object):
 
     def logout(self):
         """
-        Log out of the app
+            Log out of the app
         """
         logout = self.driver.find_element(*MenuLocators.logout_el)
         logout.click()
 
     def go_to_standin(self):
         """
-        Go to the stand in page
+            Go to the stand in page
         """
         standin_item = self.driver.find_element(*MenuLocators.stand_in_el)
         standin_item.click()
@@ -55,7 +55,7 @@ class BasePage(object):
         :param password: Password for the user
         """
         odoo_client = Client('http://localhost:8069', db=database,
-                              user=user, password=password)
+            user=user, password=password)
         return odoo_client.model('nh.eobs.api').get_activities([task_id])
 
     @staticmethod
@@ -202,7 +202,7 @@ class BasePage(object):
         ews_activity_id = ews_api.create_activity({},
                                                   {'patient_id': patient_id})
         activity_api.submit(ews_activity_id,
-            DataDicts.MEDIUM_RISK_SCORE_4_THREE_IN_ONE_EWS_DATA)
+                DataDicts.MEDIUM_RISK_SCORE_4_THREE_IN_ONE_EWS_DATA)
         activity_api.complete(ews_activity_id)
 
     @staticmethod
