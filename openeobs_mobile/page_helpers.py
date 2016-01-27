@@ -203,7 +203,7 @@ class BasePage(object):
         ews_activity_id = ews_api.create_activity({},
                                                   {'patient_id': patient_id})
         activity_api.submit(ews_activity_id,
-                    DataDicts.MEDIUM_RISK_SCORE_4_THREE_IN_ONE_EWS_DATA)
+                            DataDicts.MEDIUM_RISK_SCORE_4_THREE_IN_ONE_EWS_DATA)
         activity_api.complete(ews_activity_id)
 
     @staticmethod
@@ -256,16 +256,11 @@ class BasePage(object):
         scan_item = self.driver.find_element(*MenuLocators.barcode_scan_el)
         scan_item.click()
         ui.WebDriverWait(self.driver, 5).until(
-            ec.visibility_of_element_located(
-                    (By.ID,
-                     'patient_barcode')
-            )
-        )
+            ec.visibility_of_element_located((By.ID, 'patient_barcode')))
+
         ui.WebDriverWait(self.driver, 5).until(
             ec.visibility_of_element_located(
-                (By.CSS_SELECTOR, '#patient_barcode .barcode_scan')
-            )
-        )
+                (By.CSS_SELECTOR, '#patient_barcode .barcode_scan')))
         try:
             barcode_input = \
                 self.driver.find_element(*MenuLocators.barcode_scan_input)
@@ -276,11 +271,7 @@ class BasePage(object):
             )
             barcode_input.send_keys(Keys.ENTER)
             ui.WebDriverWait(self.driver, 5).until(
-                ec.visibility_of_element_located(
-                        (By.TAG_NAME,
-                         'dl')
-                )
-            )
+                ec.visibility_of_element_located((By.TAG_NAME, 'dl')))
         except NoSuchElementException:
             return False
         except TimeoutException:
