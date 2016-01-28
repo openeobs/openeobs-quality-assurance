@@ -1,3 +1,4 @@
+"""Test that the user is notified for a patient having no observation data"""
 from openeobs_mobile.patient_page import PatientPage
 from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.list_page import ListPage
@@ -6,7 +7,8 @@ from tests.test_common import TestCommon
 
 class TestPatientPageVisualisationWithNoObsData(TestCommon):
     """
-    Test that the No observation data available for patient message is shown on no obs being available
+    Test that the No observation data available for patient message
+    is shown on no obs being available
     """
     def setUp(self):
         self.driver.get("http://localhost:8069/mobile/login")
