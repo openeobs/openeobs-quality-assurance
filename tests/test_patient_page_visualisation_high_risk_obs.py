@@ -1,4 +1,4 @@
-from test_visualisation_common import TestVisualisationCommon
+from tests.test_visualisation_common import TestVisualisationCommon
 
 
 class TestPatientPageVisualisationWithHighRiskObsData(TestVisualisationCommon):

@@ -2,13 +2,17 @@ from openeobs_mobile.data import POSTURAL_BLOOD_PRESSURE_DATA
 from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.list_page import ListPage
 from openeobs_mobile.patient_page import PatientPage
-from test_common import TestCommon
+from tests.test_common import TestCommon
 from openeobs_mobile.locators import PatientPageLocators, TaskPageLocators
 import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
 
 
 class TestPosturalBloodPressurePage(TestCommon):
+    """
+    Setup a session and test that a postural blood pressure
+    observation can be submitted
+    """
 
     def setUp(self):
         self.driver.get("http://localhost:8069/mobile/login")

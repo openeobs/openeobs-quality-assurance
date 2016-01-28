@@ -11,7 +11,10 @@ import selenium.webdriver.support.ui as ui
 
 
 class TestBristolStoolObsPage(TestCommon):
-
+    """
+    Setup a session and test that a Bristol stool scale
+    observation can be submitted
+    """
     def setUp(self):
         self.driver.get("http://localhost:8069/mobile/login")
         self.login_page = LoginPage(self.driver)

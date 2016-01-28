@@ -4,11 +4,13 @@ from openeobs_mobile.list_page import ListPage
 import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
 from selenium.webdriver.common.by import By
-from test_common import TestCommon
+from tests.test_common import TestCommon
 
 
 class TestVisualisationCommon(TestCommon):
-
+    """
+    Setup a session and ensure that patient data displays correctly
+    """
     risk = 'none'
 
     def setUp(self):
@@ -38,11 +40,7 @@ class TestVisualisationCommon(TestCommon):
         risk_mapping[self.risk](int(self.patient_id))
         self.driver.get(self.patient_url)
         ui.WebDriverWait(self.driver, 5).until(
-            ec.visibility_of_element_located(
-                    (By.CSS_SELECTOR,
-                     '#chart svg')
-            )
-        )
+            ec.visibility_of_element_located((By.CSS_SELECTOR,'#chart svg')))
 
         # Focus Graphs
         focus_graphs = self.patient_page.get_focus_graphs()

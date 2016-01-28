@@ -3,13 +3,16 @@ from openeobs_mobile.data import WEIGHT_DATA
 from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.list_page import ListPage
 from openeobs_mobile.patient_page import PatientPage
-from test_common import TestCommon
+from tests.test_common import TestCommon
 from openeobs_mobile.locators import PatientPageLocators, TaskPageLocators
 import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
 
 
 class TestWeightObsPage(TestCommon):
+    """
+    Setup a session and test that a weight observation can be submitted
+    """
 
     def setUp(self):
         self.driver.get("http://localhost:8069/mobile/login")
@@ -27,7 +30,8 @@ class TestWeightObsPage(TestCommon):
         patients = self.patient_list_page.get_list_items()
 
         PatientPage(self.driver).select_patient(patients)
-        PatientPage(self.driver).open_form(
+        PatientPage(
+                self.driver).open_form(
                 PatientPageLocators.open_obs_menu_weight)
         PatientPage(self.driver).enter_obs_data(weight_input)
 
@@ -37,5 +41,5 @@ class TestWeightObsPage(TestCommon):
                 TaskPageLocators.successful_submit))
         )
 
-        self.assertEqual(
-                success, response.text, 'Weight observation unsuccessful')
+        self.assertEqual(success, response.text,
+                         'Weight observation unsuccessful')

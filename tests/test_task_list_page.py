@@ -1,6 +1,6 @@
 from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.list_page import ListPage
-from test_common import TestCommon
+from tests.test_common import TestCommon
 from openeobs_mobile.locators import ListPageLocators
 
 

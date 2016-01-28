@@ -3,14 +3,17 @@ from openeobs_mobile.data import LOW_RISK_SCORE_1_EWS_DATA
 from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.list_page import ListPage
 from openeobs_mobile.patient_page import PatientPage
-from test_common import TestCommon
+from tests.test_common import TestCommon
 from openeobs_mobile.locators import PatientPageLocators, TaskPageLocators
 import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
 
 
 class TestLowRiskPage(TestCommon):
-
+    """
+    Setup a session and test that a low risk NEWS observation
+    can be submitted, and that the correct action triggers
+    """
     def setUp(self):
         self.driver.get("http://localhost:8069/mobile/login")
         self.login_page = LoginPage(self.driver)
@@ -27,7 +30,8 @@ class TestLowRiskPage(TestCommon):
         patients = self.patient_list_page.get_list_items()
 
         PatientPage(self.driver).select_patient(patients)
-        PatientPage(self.driver).open_form(
+        PatientPage(
+                self.driver).open_form(
                 PatientPageLocators.open_obs_menu_news_item)
         PatientPage(self.driver).enter_obs_data(low_score)
 
@@ -40,5 +44,4 @@ class TestLowRiskPage(TestCommon):
             ec.visibility_of_element_located((
                 TaskPageLocators.related_task))
         )
-        self.assertEqual(
-                task, response.text, 'Incorrect triggered action')
+        self.assertEqual(task, response.text, 'Incorrect triggered action')

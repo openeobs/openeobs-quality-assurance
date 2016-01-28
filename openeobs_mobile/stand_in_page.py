@@ -8,7 +8,9 @@ import selenium.webdriver.support.ui as ui
 
 
 class StandInPage(BasePage):
-    """Methods to submit and confirm a stand-in"""
+    """
+    Standin Page methods and helps etc
+    """
 
     def submit_stand_in(self):
         """

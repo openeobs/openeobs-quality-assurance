@@ -5,7 +5,9 @@ from tests.test_common import TestCommon
 
 
 class TestLoginPage(TestCommon):
-
+    """
+    Setup a session and test the login page
+    """
     def setUp(self):
         self.driver.get("http://localhost:8069/mobile/login")
         self.login_page = LoginPage(self.driver)

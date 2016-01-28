@@ -3,13 +3,17 @@ from openeobs_mobile.data import MEDIUM_RISK_SCORE_3_THREE_IN_ONE_EWS_DATA
 from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.list_page import ListPage
 from openeobs_mobile.patient_page import PatientPage
-from test_common import TestCommon
+from tests.test_common import TestCommon
 from openeobs_mobile.locators import PatientPageLocators, TaskPageLocators
 import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
 
 
 class TestMediumRiskPage(TestCommon):
+    """
+    Setup a session and test that a medium risk NEWS observation
+    can be submitted, and that the correct action triggers
+    """
 
     def setUp(self):
         self.driver.get("http://localhost:8069/mobile/login")
@@ -28,7 +32,8 @@ class TestMediumRiskPage(TestCommon):
         patients = self.patient_list_page.get_list_items()
 
         PatientPage(self.driver).select_patient(patients)
-        PatientPage(self.driver).open_form(
+        PatientPage(
+                self.driver).open_form(
                 PatientPageLocators.open_obs_menu_news_item)
         PatientPage(self.driver).enter_obs_data(medium_score)
 
@@ -41,5 +46,4 @@ class TestMediumRiskPage(TestCommon):
             ec.visibility_of_element_located((
                 TaskPageLocators.related_task))
         )
-        self.assertEqual(
-                task, response.text, 'Incorrect triggered action')
+        self.assertEqual(task, response.text, 'Incorrect triggered action')

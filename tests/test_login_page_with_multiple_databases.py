@@ -10,7 +10,9 @@ from selenium import webdriver
 
 
 class TestLoginPageWithMultipleDBs(unittest.TestCase):
-
+    """
+    Setup a session and test the login page with multiple databases
+    """
     @classmethod
     def setUpClass(cls):
         cls.driver = webdriver.Firefox()

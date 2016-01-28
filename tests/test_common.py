@@ -5,7 +5,7 @@ import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
 from selenium.webdriver.common.by import By
 from erppeek import Client
-from environment import ConfigVars
+from tests.environment import ConfigVars
 
 
 class TestCommon(unittest.TestCase):
