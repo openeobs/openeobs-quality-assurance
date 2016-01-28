@@ -124,7 +124,7 @@ class TestPatientPageVisualisationStructure(TestVisualisationCommon):
         self.patient_page.change_to_table()
         self.assertEqual(len(self.patient_page.get_table_headers
                              (self.patient_page.get_obs_table())), 2,
-             'Incorrect number of headers')
+                              'Incorrect number of headers')
 
     def test_date_header(self):
         """
