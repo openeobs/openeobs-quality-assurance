@@ -1,3 +1,4 @@
+"""Test to ensure that the adhoc obs work correctly"""
 from openeobs_mobile.patient_page import PatientPage
 from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.list_page import ListPage

@@ -1,3 +1,5 @@
+"""Test to ensure that the Height ob works correctly"""
+
 from openeobs_mobile.data import HEIGHT_DATA
 from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.list_page import ListPage

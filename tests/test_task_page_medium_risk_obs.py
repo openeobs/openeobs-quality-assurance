@@ -1,3 +1,4 @@
+"""Test to ensure that a medium risk NEWS ob works correctly"""
 from openeobs_mobile.data import MEDIUM_RISK_SCORE_3_THREE_IN_ONE_EWS_DATA
 from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.list_page import ListPage

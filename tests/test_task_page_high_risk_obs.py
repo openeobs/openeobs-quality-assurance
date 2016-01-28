@@ -1,3 +1,4 @@
+"""Test to ensure that a high risk NEWS ob works correctly"""
 from openeobs_mobile.data import HIGH_RISK_SCORE_9_EWS_DATA
 from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.list_page import ListPage
