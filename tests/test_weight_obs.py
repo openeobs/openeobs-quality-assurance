@@ -30,8 +30,8 @@ class TestWeightObsPage(TestCommon):
         patients = self.patient_list_page.get_list_items()
 
         PatientPage(self.driver).select_patient(patients)
-        PatientPage(self.driver).open_form\
-            (PatientPageLocators.open_obs_menu_weight)
+        PatientPage(self.driver).open_form(PatientPageLocators
+                                           .open_obs_menu_weight)
         PatientPage(self.driver).enter_obs_data(weight_input)
 
         success = 'Successfully Submitted Weight Observation'
