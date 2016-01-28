@@ -1,8 +1,11 @@
+"""Test to ensure that the patient data is correct for a three in one ob"""
 from tests.test_visualisation_common import TestVisualisationCommon
 
 
 class TestPatientPageVisualisationWith3in1RiskObsData(TestVisualisationCommon):
-
+    """
+    Setup a session and test that the data is accurate
+    """
     def setUp(self):
         self.risk = '3in1'
         super(TestPatientPageVisualisationWith3in1RiskObsData, self).setUp()

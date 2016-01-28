@@ -30,8 +30,9 @@ class TestPosturalBloodPressurePage(TestCommon):
         patients = self.patient_list_page.get_list_items()
 
         PatientPage(self.driver).select_patient(patients)
-        PatientPage(self.driver).open_form(
-                PatientPageLocators.open_obs_menu_postural_pressure)
+        PatientPage\
+            (self.driver).open_form\
+            (PatientPageLocators.open_obs_menu_postural_pressure)
         PatientPage(self.driver).enter_obs_data(postural_pressure_inputs)
 
         success = 'Successfully Submitted Postural Blood Pressure Observation'
@@ -40,6 +41,5 @@ class TestPosturalBloodPressurePage(TestCommon):
                 TaskPageLocators.successful_submit))
         )
 
-        self.assertEqual(
-                success, response.text,
-                'Postural blood pressure observation unsuccessful')
+        self.assertEqual(success, response.text,
+                         'Postural blood pressure observation unsuccessful')
