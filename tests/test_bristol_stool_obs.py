@@ -32,7 +32,7 @@ class TestBristolStoolObsPage(TestCommon):
 
         PatientPage(self.driver).select_patient(patients)
         PatientPage(self.driver).open_form(
-                PatientPageLocators.open_obs_menu_bs_scale)
+            PatientPageLocators.open_obs_menu_bs_scale)
         PatientPage(self.driver).enter_obs_data(bristol_stool_inputs)
 
         success = 'Successfully Submitted Bristol Stool Scale Observation'

@@ -30,8 +30,7 @@ class TestHeightObsPage(TestCommon):
         patients = self.patient_list_page.get_list_items()
 
         PatientPage(self.driver).select_patient(patients)
-        PatientPage(self.driver).open_form(
-                PatientPageLocators.open_obs_menu_height)
+        PatientPage(self.driver).open_form(PatientPageLocators.open_obs_menu_height)
         PatientPage(self.driver).enter_obs_data(height_input)
 
         success = 'Successfully Submitted Height Observation'

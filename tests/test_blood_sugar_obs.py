@@ -31,7 +31,7 @@ class TestBloodSugarObsPage(TestCommon):
 
         PatientPage(self.driver).select_patient(patients)
         PatientPage(self.driver).open_form(
-                PatientPageLocators.open_obs_menu_blood_sugar)
+            PatientPageLocators.open_obs_menu_blood_sugar)
         PatientPage(self.driver).enter_obs_data(blood_sugar_input)
 
         success = 'Successfully Submitted Blood Sugar Observation'

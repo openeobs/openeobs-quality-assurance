@@ -23,8 +23,7 @@ class TestCommon(unittest.TestCase):
         ui.WebDriverWait(cls.driver, 5).until(
             ec.visibility_of_element_located((
                 By.CSS_SELECTOR,
-                '.oe_single_form_container.modal-content')
-            )
+                '.oe_single_form_container.modal-content'))
         )
         cls.odoo_client = Client(odoo_client_url, db=database,
                                  user='admin', password='admin')

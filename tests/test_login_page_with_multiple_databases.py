@@ -20,8 +20,7 @@ class TestLoginPageWithMultipleDBs(unittest.TestCase):
         ui.WebDriverWait(cls.driver, 5).until(
             ec.visibility_of_element_located((
                 By.CSS_SELECTOR,
-                '.oe_single_form_container.modal-content')
-            )
+                '.oe_single_form_container.modal-content'))
         )
         cls.odoo_client = Client('http://localhost:8069', db='nhclinical',
                                  user='admin', password='admin')
