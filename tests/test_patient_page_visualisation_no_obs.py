@@ -5,7 +5,9 @@ from tests.test_common import TestCommon
 
 
 class TestPatientPageVisualisationWithNoObsData(TestCommon):
-
+    """
+    Test that the No observation data available for patient message is shown on no obs being available
+    """
     def setUp(self):
         self.driver.get("http://localhost:8069/mobile/login")
         self.login_page = LoginPage(self.driver)

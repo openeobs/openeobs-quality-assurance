@@ -1,4 +1,4 @@
-"""Test to ensure that a no risk NEWS ob works correctly"""
+"""Test to ensure that a no risk NEWS obs works correctly"""
 from openeobs_mobile.data import NO_RISK_EWS_DATA
 from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.list_page import ListPage
@@ -44,5 +44,4 @@ class TestNewsPage(TestCommon):
             ec.visibility_of_element_located((
                 TaskPageLocators.successful_submit))
         )
-        self.assertEqual(
-                success, response.text, 'NEWS observation unsuccessful')
+        self.assertEqual(success, response.text, 'NEWS observation unsuccessful')

@@ -3,6 +3,9 @@ from tests.test_visualisation_common import TestVisualisationCommon
 
 class TestPatientPageVisualisationWithMediumRiskObsData(
         TestVisualisationCommon):
+    """
+        assert value of ews for high risk observation
+    """
 
     def setUp(self):
         self.risk = 'medium'

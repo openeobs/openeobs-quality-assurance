@@ -1,4 +1,4 @@
-"""Test to ensure that the patient list page works correctly"""
+
 from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.list_page import ListPage
 from openeobs_mobile.patient_page import PatientPage
@@ -9,6 +9,9 @@ import selenium.webdriver.support.ui as ui
 
 
 class TestPatientListPage(TestCommon):
+    """
+    Test to ensure that the patient list page works correctly
+    """
 
     def setUp(self):
         self.driver.get("http://localhost:8069/mobile/login")
@@ -156,8 +159,7 @@ class TestPatientListPage(TestCommon):
         for patient in self.patient_list_page.get_list_items():
             patient_list.append(patient)
 
-        self.assertNotEquals(
-                patient_list, [], 'Patient list not showing patients')
+        self.assertNotEquals(patient_list, [], 'Patient list not showing patients')
 
     def test_shows_patient_data(self):
         """
@@ -173,13 +175,10 @@ class TestPatientListPage(TestCommon):
 
         self.assertEqual(patient_graph.is_displayed(), True, 'Graph not found')
 
-        self.driver.find_element(
-                *PatientPageLocators.table_tab_button).click()
+        self.driver.find_element(*PatientPageLocators.table_tab_button).click()
 
         patient_table = ui.WebDriverWait(self.driver, 1).until(
-            ec.visibility_of_element_located(
-                    PatientPageLocators.table_container_table)
-        )
+            ec.visibility_of_element_located(PatientPageLocators.table_container_table))
 
         self.assertEqual(patient_table.is_displayed(), True, 'Table not found')
 
@@ -192,5 +191,4 @@ class TestPatientListPage(TestCommon):
         PatientPage(self.driver).select_patient(patients)
         obs_menu = PatientPage(self.driver).open_adhoc_obs_menu()
 
-        self.assertEqual(
-                obs_menu.is_displayed(), True, 'Obs menu is not present')
+        self.assertEqual(obs_menu.is_displayed(), True, 'Obs menu is not present')

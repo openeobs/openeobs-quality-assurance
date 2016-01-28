@@ -1,4 +1,3 @@
-"""Test to ensure that the adhoc obs work correctly"""
 from openeobs_mobile.patient_page import PatientPage
 from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.list_page import ListPage
@@ -7,6 +6,9 @@ from openeobs_mobile.locators import PatientPageLocators
 
 
 class TestPatientPageAdhocObs(TestCommon):
+    """
+    Test to ensure that the adhoc observation work correctly
+    """
 
     def setUp(self):
         self.driver.get("http://localhost:8069/mobile/login")
