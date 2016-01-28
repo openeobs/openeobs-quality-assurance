@@ -122,9 +122,8 @@ class TestPatientPageVisualisationStructure(TestVisualisationCommon):
         Test that the table of obs has the correct number of headers
         """
         self.patient_page.change_to_table()
-        self.assertEqual\
-            (len(self.patient_page.get_table_headers
-                 (self.patient_page.get_obs_table())), 2,
+        self.assertEqual(len(self.patient_page.get_table_headers
+                             (self.patient_page.get_obs_table())), 2,
              'Incorrect number of headers')
 
     def test_date_header(self):
