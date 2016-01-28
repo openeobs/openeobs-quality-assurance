@@ -65,7 +65,7 @@ class DataDicts(object):
         'body_temperature': 37.5,
     }
 
-    MEDIUM_RISK_SCORE_3_TIO_EWS_DATA = {
+    MEDIUM_RISK_SCORE_3_THREE_IN_ONE_EWS_DATA = {
         'respiration_rate': 18,
         'indirect_oxymetry_spo2': 99,
         'oxygen_administration_flag': 'No',
@@ -76,7 +76,7 @@ class DataDicts(object):
         'body_temperature': 37.5,
     }
 
-    MEDIUM_RISK_SCORE_4_TIO_EWS_DATA = {
+    MEDIUM_RISK_SCORE_4_THREE_IN_ONE_EWS_DATA = {
         'respiration_rate': 11,
         'indirect_oxymetry_spo2': 99,
         'oxygen_administration_flag': 'No',

@@ -203,7 +203,7 @@ class BasePage(object):
         ews_activity_id = ews_api.create_activity({},
                                                   {'patient_id': patient_id})
         activity_api.submit(ews_activity_id,
-                            DataDicts.MEDIUM_RISK_SCORE_4_TIO_EWS_DATA)
+                            DataDicts.MEDIUM_RISK_SCORE_4_THREE_IN_ONE_EWS_DATA)
         activity_api.complete(ews_activity_id)
 
     @staticmethod

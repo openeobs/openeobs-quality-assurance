@@ -1,3 +1,5 @@
+"""Methods for the patient page"""
+
 from openeobs_mobile.page_helpers import BasePage
 from openeobs_mobile.locators import PatientPageLocators, TaskPageLocators
 import selenium.webdriver.support.expected_conditions as ec
@@ -280,9 +282,9 @@ class PatientPage(BasePage):
 
         for field, value in data.iteritems():
             if self.driver.find_element_by_name(field).is_displayed():
-                input = self.driver.find_element_by_name(field)
-                input.send_keys(value)
-                input.send_keys(Keys.TAB)
+                input_field = self.driver.find_element_by_name(field)
+                input_field.send_keys(value)
+                input_field.send_keys(Keys.TAB)
             else:
                 new_dict[field] = value
 

@@ -22,10 +22,10 @@ class LoginPage(BasePage):
             *LoginPageLocators.login_button_el
         )
         try:
-            db = self.driver.find_element(
+            database_selector = self.driver.find_element(
                 *LoginPageLocators.database_dropdown_el
             )
-            Select(db).select_by_value(database)
+            Select(database_selector).select_by_value(database)
         except NoSuchElementException:
             pass
 

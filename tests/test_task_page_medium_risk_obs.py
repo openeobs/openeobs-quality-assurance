@@ -22,7 +22,7 @@ class TestMediumRiskPage(TestCommon):
         Test that an 'urgently inform medical team' task
         is triggered after a medium NEWS score
         """
-        medium_score = DataDicts.MEDIUM_RISK_SCORE_3_TIO_EWS_DATA
+        medium_score = DataDicts.MEDIUM_RISK_SCORE_3_THREE_IN_ONE_EWS_DATA
 
         patients = self.patient_list_page.get_list_items()
 
