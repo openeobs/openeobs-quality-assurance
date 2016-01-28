@@ -1,8 +1,11 @@
+"""Tests to ensure that the values for a no risk NEWS ob are correct"""
 from tests.test_visualisation_common import TestVisualisationCommon
 
 
 class TestPatientPageVisualisationWithNoRiskObsData(TestVisualisationCommon):
-
+    """
+        Assert value of ews for no risk observation
+    """
     def setUp(self):
         self.risk = 'none'
         super(TestPatientPageVisualisationWithNoRiskObsData, self).setUp()

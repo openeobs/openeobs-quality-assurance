@@ -1,9 +1,10 @@
+"""Tests to ensure that the values for a high risk NEWS ob are correct"""
 from tests.test_visualisation_common import TestVisualisationCommon
 
 
 class TestPatientPageVisualisationWithHighRiskObsData(TestVisualisationCommon):
     """
-    assert value of ews for high risk observation
+    Assert value of ews for high risk observation
     """
 
     def setUp(self):

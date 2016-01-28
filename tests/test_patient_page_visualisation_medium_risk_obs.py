@@ -1,10 +1,11 @@
+"""Tests to ensure that the values for a medium risk NEWS ob are correct"""
 from tests.test_visualisation_common import TestVisualisationCommon
 
 
 class TestPatientPageVisualisationWithMediumRiskObsData(
         TestVisualisationCommon):
     """
-        assert value of ews for high risk observation
+        Assert value of ews for medium risk observation
     """
 
     def setUp(self):

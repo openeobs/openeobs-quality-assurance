@@ -22,7 +22,7 @@ class TestMediumRiskPage(TestCommon):
         self.login_page.login('nasir', 'nasir')
         self.patient_list_page.go_to_patient_list()
 
-    def test_urgently_inform_medical_team(self):
+    def test_medium_risk_obs(self):
         """
         Test that an 'urgently inform medical team' task
         is triggered after a medium NEWS score

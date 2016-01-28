@@ -21,7 +21,7 @@ class TestHighRiskPage(TestCommon):
         self.login_page.login('nasir', 'nasir')
         self.patient_list_page.go_to_patient_list()
 
-    def test_immediately_inform_medical_team(self):
+    def test_high_risk_obs(self):
         """
         Test that an 'immediately inform medical team' task is triggered
         after a high NEWS score

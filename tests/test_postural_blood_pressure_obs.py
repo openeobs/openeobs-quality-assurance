@@ -1,3 +1,4 @@
+"""Test to ensure that the postural blood pressure ob works correctly"""
 from openeobs_mobile.data import POSTURAL_BLOOD_PRESSURE_DATA
 from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.list_page import ListPage

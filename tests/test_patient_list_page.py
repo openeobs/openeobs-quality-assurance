@@ -1,4 +1,4 @@
-
+"""Tests to ensure that the patient list page works correctly"""
 from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.list_page import ListPage
 from openeobs_mobile.patient_page import PatientPage
@@ -10,9 +10,8 @@ import selenium.webdriver.support.ui as ui
 
 class TestPatientListPage(TestCommon):
     """
-    Test to ensure that the patient list page works correctly
+    Setup a session and test that the task list page works correctly
     """
-
     def setUp(self):
         self.driver.get("http://localhost:8069/mobile/login")
         self.login_page = LoginPage(self.driver)
