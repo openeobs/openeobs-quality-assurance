@@ -75,7 +75,8 @@ class TestPatientPageVisualisationWithMediumRiskObsData(
         """
         self.get_table_values()
         self.assertEqual(self.news_row[1], '6',
-                         'Incorrect value on news score row')
+                         'Incorrect value on news score row '
+                         'for medium risk ob')
 
     def test_respiration_rate_value(self):
         """
@@ -83,7 +84,8 @@ class TestPatientPageVisualisationWithMediumRiskObsData(
         """
         self.get_table_values()
         self.assertEqual(self.rr_row[1], '24',
-                         'Incorrect value on respiration rate row')
+                         'Incorrect value on respiration rate row '
+                         'for medium risk ob')
 
     def test_o2_saturation_value(self):
         """
@@ -91,7 +93,8 @@ class TestPatientPageVisualisationWithMediumRiskObsData(
         """
         self.get_table_values()
         self.assertEqual(self.os_row[1], '99',
-                         'Incorrect value on o2 row')
+                         'Incorrect value on o2 row '
+                         'for medium risk ob')
 
     def test_body_temperature_value(self):
         """
@@ -99,7 +102,8 @@ class TestPatientPageVisualisationWithMediumRiskObsData(
         """
         self.get_table_values()
         self.assertEqual(self.bt_row[1], '37.5',
-                         'Incorrect value on Body Temperature row')
+                         'Incorrect value on Body Temperature row '
+                         'for medium risk ob')
 
     def test_blood_pressure_systolic_value(self):
         """
@@ -107,7 +111,8 @@ class TestPatientPageVisualisationWithMediumRiskObsData(
         """
         self.get_table_values()
         self.assertEqual(self.bps_row[1], '110',
-                         'Incorrect value on Blood Pressure Systolic row')
+                         'Incorrect value on Blood Pressure Systolic row '
+                         'for medium risk ob')
 
     def test_blood_pressure_diastolic_value(self):
         """
@@ -115,7 +120,8 @@ class TestPatientPageVisualisationWithMediumRiskObsData(
         """
         self.get_table_values()
         self.assertEqual(self.bpd_row[1], '80',
-                         'Incorrect value on Blood Pressure Diastolic row')
+                         'Incorrect value on Blood Pressure Diastolic row '
+                         'for medium risk ob')
 
     def test_pulse_rate_value(self):
         """
@@ -123,7 +129,8 @@ class TestPatientPageVisualisationWithMediumRiskObsData(
         """
         self.get_table_values()
         self.assertEqual(self.ps_row[1], '50',
-                         'Incorrect value on Pulse Rate row')
+                         'Incorrect value on Pulse Rate row '
+                         'for medium risk ob')
 
     def test_avpu_value(self):
         """
@@ -131,7 +138,8 @@ class TestPatientPageVisualisationWithMediumRiskObsData(
         """
         self.get_table_values()
         self.assertEqual(self.as_row[1], 'A',
-                         'Incorrect value on AVPU row')
+                         'Incorrect value on AVPU row '
+                         'for medium risk ob')
 
     def test_supplemental_value(self):
         """
@@ -139,7 +147,8 @@ class TestPatientPageVisualisationWithMediumRiskObsData(
         """
         self.get_table_values()
         self.assertEqual(self.pos_row[1], 'Yes',
-                         'Incorrect value on Supplemental O2 row')
+                         'Incorrect value on Supplemental O2 row '
+                         'for medium risk ob')
 
     def test_device_value(self):
         """
@@ -148,4 +157,5 @@ class TestPatientPageVisualisationWithMediumRiskObsData(
         self.get_table_values()
         self.assertEqual(self.ios_row[1],
                          'Concentration: 60\nDevice: CPAP\nCPAP PEEP: 2',
-                         'Incorrect value on Inspired Oxygen row')
+                         'Incorrect value on Inspired Oxygen row '
+                         'for medium risk ob')

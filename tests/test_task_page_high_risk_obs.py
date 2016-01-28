@@ -31,8 +31,8 @@ class TestHighRiskPage(TestCommon):
         patients = self.patient_list_page.get_list_items()
 
         PatientPage(self.driver).select_patient(patients)
-        PatientPage(
-                self.driver).open_form(
+        PatientPage\
+            (self.driver).open_form(
                 PatientPageLocators.open_obs_menu_news_item)
         PatientPage(self.driver).enter_obs_data(high_score)
 
@@ -45,4 +45,5 @@ class TestHighRiskPage(TestCommon):
             ec.visibility_of_element_located((
                 TaskPageLocators.related_task))
         )
-        self.assertEqual(task, response.text, 'Incorrect triggered action')
+        self.assertEqual(task, response.text,
+                         'Incorrect triggered action for high risk ob')

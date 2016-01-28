@@ -68,40 +68,13 @@ class TestPatientPageVisualisationWithHighRiskObsData(TestVisualisationCommon):
             'Incorrect inspired o2 data in table'
         )
 
-    def test_correct_number_of_headers(self):
-        """
-        Test that the table of obs has the correct number of headers
-        """
-        self.patient_page.change_to_table()
-        self.assertEqual(len(self.patient_page.get_table_headers(
-                        self.patient_page.get_obs_table())), 2,
-                'Incorrect number of headers')
-
-    def test_date_header(self):
-        """
-        Test the date header
-        """
-        self.get_table_values()
-        self.assertEqual(self.patient_page.get_table_headers(
-                        self.patient_page.get_obs_table())[0],
-                'Date', 'Incorrect header')
-
-    def test_number_of_rows(self):
-        """
-        Test that the number of rows is correct
-        """
-        self.get_table_values()
-        self.assertEqual(len(self.patient_page.get_table_rows(
-                        self.patient_page.get_obs_table())[1:]),
-                10, 'Incorrect number of rows')
-
     def test_news_score_value(self):
         """
         Test that the NEWS score value is correct
         """
         self.get_table_values()
         self.assertEqual(self.news_row[1], '11',
-                         'Incorrect value on news score row')
+                         'Incorrect value on news score row for high risk ob')
 
     def test_respiration_rate_value(self):
         """
@@ -109,14 +82,16 @@ class TestPatientPageVisualisationWithHighRiskObsData(TestVisualisationCommon):
         """
         self.get_table_values()
         self.assertEqual(self.rr_row[1], '24',
-                         'Incorrect value on respiration rate row')
+                         'Incorrect value on respiration rate row '
+                         'for high risk ob')
 
     def test_o2_saturation_value(self):
         """
         Test that the o2 saturation value is correct
         """
         self.get_table_values()
-        self.assertEqual(self.os_row[1], '93', 'Incorrect value on o2 row')
+        self.assertEqual(self.os_row[1], '93', 'Incorrect value on o2 row '
+                                               'for high risk ob')
 
     def test_body_temperature_value(self):
         """
@@ -124,7 +99,8 @@ class TestPatientPageVisualisationWithHighRiskObsData(TestVisualisationCommon):
         """
         self.get_table_values()
         self.assertEqual(self.bt_row[1], '36',
-                         'Incorrect value on Body Temperature row')
+                         'Incorrect value on Body Temperature row '
+                         'for high risk ob')
 
     def test_blood_pressure_systolic_value(self):
         """
@@ -132,7 +108,8 @@ class TestPatientPageVisualisationWithHighRiskObsData(TestVisualisationCommon):
         """
         self.get_table_values()
         self.assertEqual(self.bps_row[1], '100',
-                         'Incorrect value on Blood Pressure Systolic row')
+                         'Incorrect value on Blood Pressure Systolic row '
+                         'for high risk ob')
 
     def test_blood_pressure_diastolic_value(self):
         """
@@ -140,7 +117,8 @@ class TestPatientPageVisualisationWithHighRiskObsData(TestVisualisationCommon):
         """
         self.get_table_values()
         self.assertEqual(self.bpd_row[1], '80',
-                         'Incorrect value on Blood Pressure Diastolic row')
+                         'Incorrect value on Blood Pressure Diastolic row '
+                         'for high risk ob')
 
     def test_pulse_rate_value(self):
         """
@@ -148,14 +126,16 @@ class TestPatientPageVisualisationWithHighRiskObsData(TestVisualisationCommon):
         """
         self.get_table_values()
         self.assertEqual(self.ps_row[1], '130',
-                         'Incorrect value on Pulse Rate row')
+                         'Incorrect value on Pulse Rate row '
+                         'for high risk ob')
 
     def test_avpu_value(self):
         """
         Test that the avpu value is correct
         """
         self.get_table_values()
-        self.assertEqual(self.as_row[1], 'A', 'Incorrect value on AVPU row')
+        self.assertEqual(self.as_row[1], 'A', 'Incorrect value on AVPU row '
+                                              'for high risk ob')
 
     def test_supplemental_value(self):
         """
@@ -163,7 +143,8 @@ class TestPatientPageVisualisationWithHighRiskObsData(TestVisualisationCommon):
         """
         self.get_table_values()
         self.assertEqual(self.pos_row[1], 'Yes',
-                         'Incorrect value on Supplemental O2 row')
+                         'Incorrect value on Supplemental O2 row '
+                         'for high risk ob')
 
     def test_device_value(self):
         """
@@ -172,4 +153,5 @@ class TestPatientPageVisualisationWithHighRiskObsData(TestVisualisationCommon):
         self.get_table_values()
         self.assertEqual(self.ios_row[1],
                          'Flow Rate: 10\nDevice: Intubated',
-                         'Incorrect value on Inspired Oxygen row')
+                         'Incorrect value on Inspired Oxygen row '
+                         'for high risk ob')
