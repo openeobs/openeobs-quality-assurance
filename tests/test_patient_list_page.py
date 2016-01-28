@@ -158,7 +158,8 @@ class TestPatientListPage(TestCommon):
         for patient in self.patient_list_page.get_list_items():
             patient_list.append(patient)
 
-        self.assertNotEquals(patient_list, [], 'Patient list not showing patients')
+        self.assertNotEquals(patient_list, [],
+                             'Patient list not showing patients')
 
     def test_shows_patient_data(self):
         """
@@ -177,7 +178,8 @@ class TestPatientListPage(TestCommon):
         self.driver.find_element(*PatientPageLocators.table_tab_button).click()
 
         patient_table = ui.WebDriverWait(self.driver, 1).until(
-            ec.visibility_of_element_located(PatientPageLocators.table_container_table))
+            ec.visibility_of_element_located
+            (PatientPageLocators.table_container_table))
 
         self.assertEqual(patient_table.is_displayed(), True, 'Table not found')
 
@@ -190,4 +192,5 @@ class TestPatientListPage(TestCommon):
         PatientPage(self.driver).select_patient(patients)
         obs_menu = PatientPage(self.driver).open_adhoc_obs_menu()
 
-        self.assertEqual(obs_menu.is_displayed(), True, 'Obs menu is not present')
+        self.assertEqual(obs_menu.is_displayed(), True,
+                         'Obs menu is not present')
