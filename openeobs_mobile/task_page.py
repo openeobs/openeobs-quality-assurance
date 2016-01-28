@@ -1,3 +1,4 @@
+"""Methods for the task page"""
 from openeobs_mobile.page_helpers import BasePage
 from openeobs_mobile.locators import TaskPageLocators
 import selenium.webdriver.support.expected_conditions as ec

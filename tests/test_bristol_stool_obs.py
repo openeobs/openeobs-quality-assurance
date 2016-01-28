@@ -1,8 +1,10 @@
+"""Test to ensure Bristol Stool Scale ob works correctly"""
+
 from openeobs_mobile.data import BRISTOL_STOOL_DATA
 from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.list_page import ListPage
 from openeobs_mobile.patient_page import PatientPage
-from test_common import TestCommon
+from tests.test_common import TestCommon
 from openeobs_mobile.locators import PatientPageLocators, TaskPageLocators
 import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
@@ -19,7 +21,7 @@ class TestBristolStoolObsPage(TestCommon):
 
     def test_bristol_stool_obs(self):
         """
-        Test that a bristol stool scale observation can be submitted
+        Test that a Bristol Stool Scale observation can be submitted
         """
         bristol_stool_inputs = BRISTOL_STOOL_DATA
 
@@ -27,7 +29,7 @@ class TestBristolStoolObsPage(TestCommon):
 
         PatientPage(self.driver).select_patient(patients)
         PatientPage(self.driver).open_form(
-                PatientPageLocators.open_obs_menu_bristol_stool_item)
+                PatientPageLocators.open_obs_menu_bs_scale)
         PatientPage(self.driver).enter_obs_data(bristol_stool_inputs)
 
         success = 'Successfully Submitted Bristol Stool Scale Observation'
@@ -36,6 +38,5 @@ class TestBristolStoolObsPage(TestCommon):
                 TaskPageLocators.successful_submit))
         )
 
-        self.assertEqual(
-                success, response.text,
-                'Bristol Stool Scale observation unsuccessful')
+        self.assertEqual(success, response.text,
+                         'Bristol Stool Scale observation unsuccessful')

@@ -7,7 +7,7 @@ from openeobs_mobile.locators import ListPageLocators
 class ListPage(BasePage):
 
     """
-    Login Page methods and helps etc
+    List Page methods and helps etc
     """
 
     def get_list_items(self):

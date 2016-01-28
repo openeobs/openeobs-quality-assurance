@@ -1,3 +1,5 @@
+"""Helper methods for different types of pages"""
+
 from openeobs_mobile.data import NO_RISK_EWS_DATA, LOW_RISK_SCORE_1_EWS_DATA, \
     MEDIUM_RISK_SCORE_4_THREE_IN_ONE_EWS_DATA, MEDIUM_RISK_SCORE_6_EWS_DATA, \
     HIGH_RISK_SCORE_11_EWS_DATA
@@ -147,7 +149,7 @@ class BasePage(object):
         activity_api.unlink(obs)
 
     @staticmethod
-    def add_no_risk_observation_for_patient(
+    def add_no_risk_observation(
             patient_id, database='openeobs_quality_assurance_db', user='nasir',
             password='nasir'):
         """
@@ -167,7 +169,7 @@ class BasePage(object):
         activity_api.complete(ews_activity_id)
 
     @staticmethod
-    def add_low_risk_observation_for_patient(
+    def add_low_risk_observation(
             patient_id, database='openeobs_quality_assurance_db', user='nasir',
             password='nasir'):
         """
@@ -188,7 +190,7 @@ class BasePage(object):
         activity_api.complete(ews_activity_id)
 
     @staticmethod
-    def add_three_in_one_observation_for_patient(
+    def add_three_in_one_observation(
             patient_id, database='openeobs_quality_assurance_db', user='nasir',
             password='nasir'):
         """
@@ -209,7 +211,7 @@ class BasePage(object):
         activity_api.complete(ews_activity_id)
 
     @staticmethod
-    def add_medium_risk_observation_for_patient(
+    def add_medium_risk_observation(
             patient_id, database='openeobs_quality_assurance_db', user='nasir',
             password='nasir'):
         """
@@ -230,7 +232,7 @@ class BasePage(object):
         activity_api.complete(ews_activity_id)
 
     @staticmethod
-    def add_high_risk_observation_for_patient(
+    def add_high_risk_observation(
             patient_id, database='openeobs_quality_assurance_db', user='nasir',
             password='nasir'):
         """

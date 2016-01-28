@@ -27,7 +27,7 @@ class TestBloodProductObsPage(TestCommon):
 
         PatientPage(self.driver).select_patient(patients)
         PatientPage(self.driver).open_form(
-            PatientPageLocators.open_obs_menu_blood_product_item)
+            PatientPageLocators.open_obs_menu_blood_product)
         PatientPage(self.driver).enter_obs_data(blood_product_inputs)
 
         success = 'Successfully Submitted Blood Product Observation'
@@ -36,6 +36,5 @@ class TestBloodProductObsPage(TestCommon):
                 TaskPageLocators.successful_submit))
         )
 
-        self.assertEqual(
-                success, response.text,
-                'Blood product observation unsuccessful')
+        self.assertEqual(success, response.text,
+                         'Blood product observation unsuccessful')

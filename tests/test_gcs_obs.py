@@ -1,3 +1,5 @@
+"""Test to ensure that the Glasgow Coma Scale ob works correctly"""
+
 from openeobs_mobile.data import GCS_SCORE_15_DATA
 from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.list_page import ListPage
@@ -26,8 +28,8 @@ class TestGcsObsPage(TestCommon):
         patients = self.patient_list_page.get_list_items()
 
         PatientPage(self.driver).select_patient(patients)
-        PatientPage(self.driver).open_form(
-                PatientPageLocators.open_obs_menu_gcs_item)
+        PatientPage(
+                self.driver).open_form(PatientPageLocators.open_obs_menu_gcs)
         PatientPage(self.driver).enter_obs_data(gcs_inputs)
 
         ui.WebDriverWait(self.driver, 5).until(
@@ -40,5 +42,5 @@ class TestGcsObsPage(TestCommon):
                 TaskPageLocators.successful_submit))
         )
 
-        self.assertEqual(
-                success, response.text, 'GCS observation unsuccessful')
+        self.assertEqual(success, response.text,
+                         'GCS observation unsuccessful')

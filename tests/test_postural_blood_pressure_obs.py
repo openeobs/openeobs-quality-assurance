@@ -27,7 +27,7 @@ class TestPosturalBloodPressurePage(TestCommon):
 
         PatientPage(self.driver).select_patient(patients)
         PatientPage(self.driver).open_form(
-                PatientPageLocators.open_obs_menu_postural_pressure_item)
+                PatientPageLocators.open_obs_menu_postural_pressure)
         PatientPage(self.driver).enter_obs_data(postural_pressure_inputs)
 
         success = 'Successfully Submitted Postural Blood Pressure Observation'

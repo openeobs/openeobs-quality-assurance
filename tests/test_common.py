@@ -1,3 +1,4 @@
+"""Sets up and tears down a test class"""
 import unittest
 from selenium import webdriver
 import selenium.webdriver.support.expected_conditions as ec
@@ -8,6 +9,7 @@ from environment import configVars
 
 
 class TestCommon(unittest.TestCase):
+    """Setup and teardown methods"""
 
     @classmethod
     def setUpClass(cls):
@@ -19,9 +21,9 @@ class TestCommon(unittest.TestCase):
         cls.driver = webdriver.Firefox()
         cls.driver.get(url)
         ui.WebDriverWait(cls.driver, 5).until(
-            ec.visibility_of_element_located(
-                    (By.CSS_SELECTOR,
-                     '.oe_single_form_container.modal-content')
+            ec.visibility_of_element_located((
+                By.CSS_SELECTOR,
+                '.oe_single_form_container.modal-content')
             )
         )
         cls.odoo_client = Client(odoo_client_url, db=database,

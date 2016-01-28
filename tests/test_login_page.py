@@ -1,5 +1,7 @@
+"""Test to ensure that the login page works correctly"""
+
 from openeobs_mobile.login_page import LoginPage
-from test_common import TestCommon
+from tests.test_common import TestCommon
 
 
 class TestLoginPage(TestCommon):

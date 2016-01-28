@@ -27,7 +27,7 @@ class TestHeightObsPage(TestCommon):
 
         PatientPage(self.driver).select_patient(patients)
         PatientPage(self.driver).open_form(
-                PatientPageLocators.open_obs_menu_height_item)
+                PatientPageLocators.open_obs_menu_height)
         PatientPage(self.driver).enter_obs_data(height_input)
 
         success = 'Successfully Submitted Height Observation'
@@ -36,5 +36,5 @@ class TestHeightObsPage(TestCommon):
                 TaskPageLocators.successful_submit))
         )
 
-        self.assertEqual(
-                success, response.text, 'Height observation unsuccessful')
+        self.assertEqual(success, response.text,
+                         'Height observation unsuccessful')

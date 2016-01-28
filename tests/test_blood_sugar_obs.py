@@ -1,3 +1,5 @@
+"""Test to ensure that the Blood Sugar ob works correctly"""
+
 from openeobs_mobile.data import BLOOD_SUGAR_DATA
 from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.list_page import ListPage
@@ -27,7 +29,7 @@ class TestBloodSugarObsPage(TestCommon):
 
         PatientPage(self.driver).select_patient(patients)
         PatientPage(self.driver).open_form(
-                PatientPageLocators.open_obs_menu_blood_sugar_item)
+                PatientPageLocators.open_obs_menu_blood_sugar)
         PatientPage(self.driver).enter_obs_data(blood_sugar_input)
 
         success = 'Successfully Submitted Blood Sugar Observation'
@@ -36,5 +38,5 @@ class TestBloodSugarObsPage(TestCommon):
                 TaskPageLocators.successful_submit))
         )
 
-        self.assertEqual(
-                success, response.text, 'Blood sugar observation unsuccessful')
+        self.assertEqual(success,
+                         response.text, 'Blood sugar observation unsuccessful')

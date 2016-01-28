@@ -68,20 +68,20 @@ class PatientPageLocators(object):
     open_obs_menu_list_items = (By.TAG_NAME, 'li')
     open_obs_menu_news_item = (By.CSS_SELECTOR,
                                '#obs_menu > div > ul > li.rightContent')
-    open_obs_menu_news_item_deadline = (By.CLASS_NAME, 'aside')
-    open_obs_menu_gcs_item = (
+    open_obs_menu_news_deadline = (By.CLASS_NAME, 'aside')
+    open_obs_menu_gcs = (
         By.CSS_SELECTOR, '#obs_menu > div > ul > li:nth-child(2)')
-    open_obs_menu_height_item = (
+    open_obs_menu_height = (
         By.CSS_SELECTOR, '#obs_menu > div > ul > li:nth-child(3)')
-    open_obs_menu_weight_item = (
+    open_obs_menu_weight = (
         By.CSS_SELECTOR, '#obs_menu > div > ul > li:nth-child(4)')
-    open_obs_menu_blood_product_item = (
+    open_obs_menu_blood_product = (
         By.CSS_SELECTOR, '#obs_menu > div > ul > li:nth-child(5)')
-    open_obs_menu_blood_sugar_item = (
+    open_obs_menu_blood_sugar = (
         By.CSS_SELECTOR, '#obs_menu > div > ul > li:nth-child(6)')
-    open_obs_menu_bristol_stool_item = (
+    open_obs_menu_bs_scale = (
         By.CSS_SELECTOR, '#obs_menu > div > ul > li:nth-child(7)')
-    open_obs_menu_postural_pressure_item = (
+    open_obs_menu_postural_pressure = (
         By.CSS_SELECTOR, '#obs_menu > div > ul > li:nth-child(8)')
     patient_info = (By.CSS_SELECTOR, '#obsButton h3.name')
     patient_name = (By.CSS_SELECTOR, '#obsButton h3.name strong')

@@ -73,8 +73,7 @@ class TestPatientPageVisualisationWithHighRiskObsData(TestVisualisationCommon):
         Test that the table of obs has the correct number of headers
         """
         self.patient_page.change_to_table()
-        self.assertEqual(len(
-                self.patient_page.get_table_headers(
+        self.assertEqual(len(self.patient_page.get_table_headers(
                         self.patient_page.get_obs_table())), 2,
                 'Incorrect number of headers')
 
@@ -83,8 +82,7 @@ class TestPatientPageVisualisationWithHighRiskObsData(TestVisualisationCommon):
         Test the date header
         """
         self.get_table_values()
-        self.assertEqual(
-                self.patient_page.get_table_headers(
+        self.assertEqual(self.patient_page.get_table_headers(
                         self.patient_page.get_obs_table())[0],
                 'Date', 'Incorrect header')
 
@@ -93,8 +91,7 @@ class TestPatientPageVisualisationWithHighRiskObsData(TestVisualisationCommon):
         Test that the number of rows is correct
         """
         self.get_table_values()
-        self.assertEqual(len(
-                self.patient_page.get_table_rows(
+        self.assertEqual(len(self.patient_page.get_table_rows(
                         self.patient_page.get_obs_table())[1:]),
                 10, 'Incorrect number of rows')
 
@@ -119,8 +116,7 @@ class TestPatientPageVisualisationWithHighRiskObsData(TestVisualisationCommon):
         Test that the o2 saturation value is correct
         """
         self.get_table_values()
-        self.assertEqual(self.os_row[1], '93',
-                         'Incorrect value on o2 row')
+        self.assertEqual(self.os_row[1], '93', 'Incorrect value on o2 row')
 
     def test_body_temperature_value(self):
         """
@@ -159,8 +155,7 @@ class TestPatientPageVisualisationWithHighRiskObsData(TestVisualisationCommon):
         Test that the avpu value is correct
         """
         self.get_table_values()
-        self.assertEqual(self.as_row[1], 'A',
-                         'Incorrect value on AVPU row')
+        self.assertEqual(self.as_row[1], 'A', 'Incorrect value on AVPU row')
 
     def test_supplemental_value(self):
         """

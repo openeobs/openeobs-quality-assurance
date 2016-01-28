@@ -1,3 +1,5 @@
+"""Methods for the stand-in page"""
+
 from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.page_helpers import BasePage
 from openeobs_mobile.locators import ListPageLocators
@@ -6,6 +8,7 @@ import selenium.webdriver.support.ui as ui
 
 
 class StandInPage(BasePage):
+    """Methods to submit and confirm a stand-in"""
 
     def submit_stand_in(self):
         """
@@ -16,8 +19,8 @@ class StandInPage(BasePage):
         self.driver.find_element(*ListPageLocators.stand_in_share).click()
 
         ui.WebDriverWait(self.driver, 5).until(
-                ec.visibility_of_element_located(
-                        ListPageLocators.stand_in_nurse)).click()
+            ec.visibility_of_element_located(
+                ListPageLocators.stand_in_nurse)).click()
 
         nurses = self.driver.find_element(*ListPageLocators.stand_in_list)
         nurses.find_elements_by_tag_name('input')[0].click()
@@ -26,8 +29,8 @@ class StandInPage(BasePage):
                 *ListPageLocators.stand_in_nurse_name).text
 
         ui.WebDriverWait(self.driver, 5).until(
-                ec.visibility_of_element_located(
-                        ListPageLocators.stand_in_assign)).click()
+            ec.visibility_of_element_located(
+                ListPageLocators.stand_in_assign)).click()
 
         return nurse_name
 

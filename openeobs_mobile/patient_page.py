@@ -292,4 +292,4 @@ class PatientPage(BasePage):
             self.enter_obs_data(new_dict)
         else:
             self.driver.find_element(
-                    *TaskPageLocators.task_form_submit).click()
+                *TaskPageLocators.task_form_submit).click()

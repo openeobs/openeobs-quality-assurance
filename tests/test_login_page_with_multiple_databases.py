@@ -1,3 +1,5 @@
+"""Test to ensure that the login page works correctly
+with multiple databases"""
 from openeobs_mobile.login_page import LoginPage
 import unittest
 from erppeek import Client
@@ -14,9 +16,9 @@ class TestLoginPageWithMultipleDBs(unittest.TestCase):
         cls.driver = webdriver.Firefox()
         cls.driver.get('http://localhost:8069/web?db=nhclinical')
         ui.WebDriverWait(cls.driver, 5).until(
-            ec.visibility_of_element_located(
-                    (By.CSS_SELECTOR,
-                     '.oe_single_form_container.modal-content')
+            ec.visibility_of_element_located((
+                By.CSS_SELECTOR,
+                '.oe_single_form_container.modal-content')
             )
         )
         cls.odoo_client = Client('http://localhost:8069', db='nhclinical',

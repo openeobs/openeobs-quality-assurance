@@ -94,7 +94,7 @@ class TestPatientPageAdhocObs(TestCommon):
             *PatientPageLocators.open_obs_menu_news_item
         )
         deadline = news_item.find_element(
-            *PatientPageLocators.open_obs_menu_news_item_deadline
+            *PatientPageLocators.open_obs_menu_news_deadline
         )
         task_id = self.patient_url.replace(
             'http://localhost:8069/mobile/patient/', ''

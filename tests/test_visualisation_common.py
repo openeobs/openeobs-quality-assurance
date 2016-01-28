@@ -18,12 +18,12 @@ class TestVisualisationCommon(TestCommon):
         self.patient_page = PatientPage(self.driver)
 
         risk_mapping = {
-            'none': self.patient_page.add_no_risk_observation_for_patient,
-            'low': self.patient_page.add_low_risk_observation_for_patient,
+            'none': self.patient_page.add_no_risk_observation,
+            'low': self.patient_page.add_low_risk_observation,
             'medium':
-                self.patient_page.add_medium_risk_observation_for_patient,
-            'high': self.patient_page.add_high_risk_observation_for_patient,
-            '3in1': self.patient_page.add_three_in_one_observation_for_patient
+                self.patient_page.add_medium_risk_observation,
+            'high': self.patient_page.add_high_risk_observation,
+            '3in1': self.patient_page.add_three_in_one_observation
         }
 
         self.login_page.login('nasir', 'nasir')
