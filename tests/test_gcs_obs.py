@@ -1,4 +1,4 @@
-from openeobs_mobile.data import DataDicts
+from openeobs_mobile.data import GCS_SCORE_15_DATA
 from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.list_page import ListPage
 from openeobs_mobile.patient_page import PatientPage
@@ -21,7 +21,7 @@ class TestGcsObsPage(TestCommon):
         """
         Test that a GCS observation can be submitted
         """
-        gcs_inputs = DataDicts.GCS_SCORE_15_DATA
+        gcs_inputs = GCS_SCORE_15_DATA
 
         patients = self.patient_list_page.get_list_items()
 

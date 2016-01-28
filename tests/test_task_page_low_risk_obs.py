@@ -1,4 +1,4 @@
-from openeobs_mobile.data import DataDicts
+from openeobs_mobile.data import LOW_RISK_SCORE_1_EWS_DATA
 from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.list_page import ListPage
 from openeobs_mobile.patient_page import PatientPage
@@ -21,7 +21,7 @@ class TestLowRiskPage(TestCommon):
         """
         Test that an 'assess patient' task is triggered after a low NEWS score
         """
-        low_score = DataDicts.LOW_RISK_SCORE_1_EWS_DATA
+        low_score = LOW_RISK_SCORE_1_EWS_DATA
 
         patients = self.patient_list_page.get_list_items()
 

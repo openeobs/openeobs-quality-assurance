@@ -1,4 +1,4 @@
-from openeobs_mobile.data import DataDicts
+from openeobs_mobile.data import BLOOD_PRODUCT_DATA
 from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.list_page import ListPage
 from openeobs_mobile.patient_page import PatientPage
@@ -21,7 +21,7 @@ class TestBloodProductObsPage(TestCommon):
         """
         Test that a blood product observation can be submitted
         """
-        blood_product_inputs = DataDicts.BLOOD_PRODUCT_DATA
+        blood_product_inputs = BLOOD_PRODUCT_DATA
 
         patients = self.patient_list_page.get_list_items()
 

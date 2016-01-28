@@ -1,4 +1,4 @@
-from openeobs_mobile.data import DataDicts
+from openeobs_mobile.data import BLOOD_SUGAR_DATA
 from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.list_page import ListPage
 from openeobs_mobile.patient_page import PatientPage
@@ -21,7 +21,7 @@ class TestBloodSugarObsPage(TestCommon):
         """
         Test that a blood sugar observation can be submitted
         """
-        blood_sugar_input = DataDicts.BLOOD_SUGAR_DATA
+        blood_sugar_input = BLOOD_SUGAR_DATA
 
         patients = self.patient_list_page.get_list_items()
 

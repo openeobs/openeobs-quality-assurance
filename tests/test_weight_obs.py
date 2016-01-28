@@ -1,4 +1,4 @@
-from openeobs_mobile.data import DataDicts
+from openeobs_mobile.data import WEIGHT_DATA
 from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.list_page import ListPage
 from openeobs_mobile.patient_page import PatientPage
@@ -21,7 +21,7 @@ class TestWeightObsPage(TestCommon):
         """
         Test that a weight observation can be submitted
         """
-        weight_input = DataDicts.WEIGHT_DATA
+        weight_input = WEIGHT_DATA
 
         patients = self.patient_list_page.get_list_items()
 

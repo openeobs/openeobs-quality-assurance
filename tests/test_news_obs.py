@@ -1,4 +1,4 @@
-from openeobs_mobile.data import DataDicts
+from openeobs_mobile.data import NO_RISK_EWS_DATA
 from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.list_page import ListPage
 from openeobs_mobile.patient_page import PatientPage
@@ -21,7 +21,7 @@ class TestNewsPage(TestCommon):
         """
         Test that a NEWS observation can be submitted
         """
-        score = DataDicts.NO_RISK_EWS_DATA
+        score = NO_RISK_EWS_DATA
 
         patients = self.patient_list_page.get_list_items()
 

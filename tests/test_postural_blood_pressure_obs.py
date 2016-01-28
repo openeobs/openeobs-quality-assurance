@@ -1,4 +1,4 @@
-from openeobs_mobile.data import DataDicts
+from openeobs_mobile.data import POSTURAL_BLOOD_PRESSURE_DATA
 from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.list_page import ListPage
 from openeobs_mobile.patient_page import PatientPage
@@ -21,7 +21,7 @@ class TestPosturalBloodPressurePage(TestCommon):
         """
         Test that a postural blood pressure observation can be submitted
         """
-        postural_pressure_inputs = DataDicts.POSTURAL_BLOOD_PRESSURE_DATA
+        postural_pressure_inputs = POSTURAL_BLOOD_PRESSURE_DATA
 
         patients = self.patient_list_page.get_list_items()
 

@@ -1,4 +1,4 @@
-from openeobs_mobile.data import DataDicts
+from openeobs_mobile.data import BRISTOL_STOOL_DATA
 from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.list_page import ListPage
 from openeobs_mobile.patient_page import PatientPage
@@ -21,7 +21,7 @@ class TestBristolStoolObsPage(TestCommon):
         """
         Test that a bristol stool scale observation can be submitted
         """
-        bristol_stool_inputs = DataDicts.BRISTOL_STOOL_DATA
+        bristol_stool_inputs = BRISTOL_STOOL_DATA
 
         patients = self.patient_list_page.get_list_items()
 

@@ -1,4 +1,4 @@
-from openeobs_mobile.data import DataDicts
+from openeobs_mobile.data import MEDIUM_RISK_SCORE_3_THREE_IN_ONE_EWS_DATA
 from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.list_page import ListPage
 from openeobs_mobile.patient_page import PatientPage
@@ -22,7 +22,7 @@ class TestMediumRiskPage(TestCommon):
         Test that an 'urgently inform medical team' task
         is triggered after a medium NEWS score
         """
-        medium_score = DataDicts.MEDIUM_RISK_SCORE_3_THREE_IN_ONE_EWS_DATA
+        medium_score = MEDIUM_RISK_SCORE_3_THREE_IN_ONE_EWS_DATA
 
         patients = self.patient_list_page.get_list_items()
 

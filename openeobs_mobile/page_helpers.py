@@ -1,4 +1,6 @@
-from openeobs_mobile.data import DataDicts
+from openeobs_mobile.data import NO_RISK_EWS_DATA, LOW_RISK_SCORE_1_EWS_DATA, \
+    MEDIUM_RISK_SCORE_4_THREE_IN_ONE_EWS_DATA, MEDIUM_RISK_SCORE_6_EWS_DATA, \
+    HIGH_RISK_SCORE_11_EWS_DATA
 from selenium.webdriver.common.by import By
 import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
@@ -161,7 +163,7 @@ class BasePage(object):
         ews_api = odoo_client.model('nh.clinical.patient.observation.ews')
         ews_activity_id = ews_api.create_activity({},
                                                   {'patient_id': patient_id})
-        activity_api.submit(ews_activity_id, DataDicts.NO_RISK_EWS_DATA)
+        activity_api.submit(ews_activity_id, NO_RISK_EWS_DATA)
         activity_api.complete(ews_activity_id)
 
     @staticmethod
@@ -182,7 +184,7 @@ class BasePage(object):
         ews_activity_id = ews_api.create_activity({},
                                                   {'patient_id': patient_id})
         activity_api.submit(ews_activity_id,
-                            DataDicts.LOW_RISK_SCORE_1_EWS_DATA)
+                            LOW_RISK_SCORE_1_EWS_DATA)
         activity_api.complete(ews_activity_id)
 
     @staticmethod
@@ -203,7 +205,7 @@ class BasePage(object):
         ews_activity_id = ews_api.create_activity({},
                                                   {'patient_id': patient_id})
         activity_api.submit(ews_activity_id,
-                            DataDicts.MEDIUM_RISK_SCORE_4_THREE_IN_ONE_EWS_DATA)
+                            MEDIUM_RISK_SCORE_4_THREE_IN_ONE_EWS_DATA)
         activity_api.complete(ews_activity_id)
 
     @staticmethod
@@ -224,7 +226,7 @@ class BasePage(object):
         ews_activity_id = ews_api.create_activity({},
                                                   {'patient_id': patient_id})
         activity_api.submit(ews_activity_id,
-                            DataDicts.MEDIUM_RISK_SCORE_6_EWS_DATA)
+                            MEDIUM_RISK_SCORE_6_EWS_DATA)
         activity_api.complete(ews_activity_id)
 
     @staticmethod
@@ -245,7 +247,7 @@ class BasePage(object):
         ews_activity_id = ews_api.create_activity({},
                                                   {'patient_id': patient_id})
         activity_api.submit(ews_activity_id,
-                            DataDicts.HIGH_RISK_SCORE_11_EWS_DATA)
+                            HIGH_RISK_SCORE_11_EWS_DATA)
         activity_api.complete(ews_activity_id)
 
     def do_barcode_scan(self, patient_id):

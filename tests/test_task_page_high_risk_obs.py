@@ -1,4 +1,4 @@
-from openeobs_mobile.data import DataDicts
+from openeobs_mobile.data import HIGH_RISK_SCORE_9_EWS_DATA
 from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.list_page import ListPage
 from openeobs_mobile.patient_page import PatientPage
@@ -22,7 +22,7 @@ class TestHighRiskPage(TestCommon):
         Test that an 'immediately inform medical team' task is triggered
         after a high NEWS score
         """
-        high_score = DataDicts.HIGH_RISK_SCORE_9_EWS_DATA
+        high_score = HIGH_RISK_SCORE_9_EWS_DATA
 
         patients = self.patient_list_page.get_list_items()
 
