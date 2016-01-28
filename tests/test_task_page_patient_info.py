@@ -1,3 +1,4 @@
+"""Tests to ensure that the patient info displays correctly"""
 from openeobs_mobile.task_page import TaskPage
 from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.list_page import ListPage
@@ -6,7 +7,9 @@ from openeobs_mobile.locators import TaskPageLocators
 
 
 class TestTaskPagePatientInfo(TestCommon):
-
+    """
+    Setup a session and test that the patient info is correct
+    """
     def setUp(self):
         self.driver.get("http://localhost:8069/mobile/login")
         self.login_page = LoginPage(self.driver)

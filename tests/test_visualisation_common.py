@@ -1,3 +1,4 @@
+"""Methods and helpers for patient data visualisation"""
 from openeobs_mobile.patient_page import PatientPage
 from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.list_page import ListPage
@@ -40,7 +41,7 @@ class TestVisualisationCommon(TestCommon):
         risk_mapping[self.risk](int(self.patient_id))
         self.driver.get(self.patient_url)
         ui.WebDriverWait(self.driver, 5).until(
-            ec.visibility_of_element_located((By.CSS_SELECTOR,'#chart svg')))
+            ec.visibility_of_element_located((By.CSS_SELECTOR, '#chart svg')))
 
         # Focus Graphs
         focus_graphs = self.patient_page.get_focus_graphs()
