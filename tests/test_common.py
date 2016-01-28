@@ -5,7 +5,7 @@ import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
 from selenium.webdriver.common.by import By
 from erppeek import Client
-from environment import configVars
+from environment import ConfigVars
 
 
 class TestCommon(unittest.TestCase):
@@ -13,10 +13,10 @@ class TestCommon(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        database = configVars.database
-        url = configVars.url
-        odoo_client_url = configVars.odoo_client_url
-        test_db = configVars.test_db_name
+        database = ConfigVars.database
+        url = ConfigVars.url
+        odoo_client_url = ConfigVars.odoo_client_url
+        test_db = ConfigVars.test_db_name
 
         cls.driver = webdriver.Firefox()
         cls.driver.get(url)
@@ -32,11 +32,10 @@ class TestCommon(unittest.TestCase):
         cls.test_database_name = test_db
 
         cls.odoo_client.db.drop('admin', cls.test_database_name)
-        cls.odoo_client.db.duplicate_database('admin', database ,
+        cls.odoo_client.db.duplicate_database('admin', database,
                                               cls.test_database_name)
 
     @classmethod
     def tearDownClass(cls):
         cls.odoo_client.db.drop('admin', cls.test_database_name)
         cls.driver.close()
-

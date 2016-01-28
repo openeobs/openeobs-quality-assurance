@@ -30,7 +30,7 @@ class ListPageLocators(object):
         '#handover_form > ul > li:nth-child(2) > label > input')
     stand_in_share = (
         By.CSS_SELECTOR, 'body > div.share-footer > ul > li:nth-child(1) > a')
-    stand_in_list = (By.CLASS_NAME, 'sharelist')
+    stand_in_list = (By.ID, 'assign_nurse')
     stand_in_nurse = (
         By.CSS_SELECTOR, '#nurse_list > ul > li:nth-child(1) > input')
     stand_in_nurse_name = (
