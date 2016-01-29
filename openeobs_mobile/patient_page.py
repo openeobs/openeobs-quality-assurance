@@ -267,7 +267,10 @@ class PatientPage(BasePage):
         self.open_adhoc_obs_menu()
 
         ui.WebDriverWait(self.driver, 5).until(
-            ec.visibility_of_element_located(form_id)).click()
+            ec.visibility_of_element_located(form_id)
+        )
+
+        self.driver.find_element(*form_id).click()
 
         ui.WebDriverWait(self.driver, 5).until(
             ec.visibility_of_element_located(TaskPageLocators.task_form)
