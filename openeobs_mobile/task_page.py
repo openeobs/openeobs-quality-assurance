@@ -31,7 +31,7 @@ class TaskPage(BasePage):
         """
         popup = self.open_patient_info()
         full_obs_button = popup.find_element(
-            *TaskPageLocators.patient_info_popup_fullscreen_button
+            *TaskPageLocators.patient_info_popup_fscreen_btn
         )
         full_obs_button.click()
         ui.WebDriverWait(self.driver, 5).until(

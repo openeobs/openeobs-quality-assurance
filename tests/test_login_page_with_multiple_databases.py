@@ -42,6 +42,6 @@ class TestLoginPageWithMultipleDBs(unittest.TestCase):
         Test that the title of the login page is Open-eObs
         """
         self.assertTrue(
-            self.login_page.shows_dropdown_for_multiple_databases(),
+            self.login_page.show_dropdown_for_databases(),
             'Incorrect page title'
         )

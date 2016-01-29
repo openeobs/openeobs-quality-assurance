@@ -51,7 +51,7 @@ class LoginPage(BasePage):
         error_el = self.driver.find_element(*LoginPageLocators.error_el)
         return error_el.text == 'Invalid username/password'
 
-    def shows_dropdown_for_multiple_databases(self):
+    def show_dropdown_for_databases(self):
         """
         Check that the login page shows the dropdown for multiple databases
         :return: Boolean of if the drop down is present

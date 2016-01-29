@@ -119,7 +119,7 @@ class TaskPageLocators(object):
     patient_name_info = (By.CSS_SELECTOR, '#patientName .icon-info')
     patient_info_popup = (By.ID, 'patient_info')
     patient_info_popup_title = (By.TAG_NAME, 'h2')
-    patient_info_popup_fullscreen_button = (By.ID, 'patient_obs_fullscreen')
+    patient_info_popup_fscreen_btn = (By.ID, 'patient_obs_fullscreen')
     patient_info_fullscreen = (By.CSS_SELECTOR, '.no-scroll > .full-modal')
     patient_info_fullscreen_iframe = (By.TAG_NAME, 'iframe')
     patient_info_fullscreen_close = (By.ID, 'closeFullModal')
