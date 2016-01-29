@@ -25,7 +25,7 @@ class TaskPage(BasePage):
         )
         return self.driver.find_element(*TaskPageLocators.patient_info_popup)
 
-    def open_patient_obs_data_fullscreen(self):
+    def open_full_patient_obs_data(self):
         """
         Open up the full patient obs data modal
         """
