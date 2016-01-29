@@ -38,7 +38,7 @@ class TestTaskPagePatientInfo(TestCommon):
         self.assertTrue(self.task_page.is_task_list_page(),
                         'Did not get to the task list page correctly')
 
-    def test_can_go_to_patient_list_page(self):
+    def test_go_to_patient_list_page(self):
         """
         Test that can go to the patient list page
         """
@@ -64,7 +64,7 @@ class TestTaskPagePatientInfo(TestCommon):
         id_to_use = self.task_page.task_scan_helper(int(task_id))
         self.task_page.do_barcode_scan(id_to_use['other_identifier'])
 
-    def test_can_see_patient_info_on_pressing_patient_name(self):
+    def test_patient_info_name(self):
         """
         Test that can get the patient info popup on pressing patient name
         """
@@ -83,7 +83,7 @@ class TestTaskPagePatientInfo(TestCommon):
         self.assertEqual(popup_title, popup_header.text.replace('\n', ' '),
                          'Incorrect popup name')
 
-    def test_can_see_patient_info_on_pressing_info_button(self):
+    def test_patient_info_button(self):
         """
         Test that can get the patient info popup on pressing patient name
         """
@@ -102,7 +102,7 @@ class TestTaskPagePatientInfo(TestCommon):
         self.assertEqual(popup_title, popup_header.text.replace('\n', ' '),
                          'Incorrect popup name')
 
-    def test_pressing_patient_obs_data_button_shows_patient_page(self):
+    def test_press_obs_data_button(self):
         """
         Test that pressing the 'View Patient Observation Data' shows the
         patient page in a fullscreen modal
@@ -121,7 +121,7 @@ class TestTaskPagePatientInfo(TestCommon):
         )
         self.assertEqual(iframe_url, patient_url, 'Incorrect iframe src url')
 
-    def test_can_close_full_patient_obs_modal(self):
+    def test_close_full_obs_modal(self):
         """
         Test that can close the fullscreen modal
         """
