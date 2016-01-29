@@ -40,6 +40,7 @@ class TestBloodProductObsPage(TestCommon):
                 TaskPageLocators.successful_submit))
         )
 
-        response = self.driver.find_element(*TaskPageLocators.successful_submit)
+        response = self.driver.find_element(*
+                                            TaskPageLocators.successful_submit)
         self.assertEqual(success, response.text,
                          'Blood product observation unsuccessful')

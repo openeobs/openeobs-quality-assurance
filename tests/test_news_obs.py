@@ -44,6 +44,7 @@ class TestNewsPage(TestCommon):
             ec.visibility_of_element_located((
                 TaskPageLocators.successful_submit))
         )
-        response = self.driver.find_element(*TaskPageLocators.successful_submit)
+        response = self.driver.find_element(*
+                                            TaskPageLocators.successful_submit)
         self.assertEqual(success, response.text,
                          'NEWS observation unsuccessful')

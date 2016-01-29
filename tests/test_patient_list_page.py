@@ -173,7 +173,10 @@ class TestPatientListPage(TestCommon):
             ec.visibility_of_element_located(PatientPageLocators.graph_chart)
         )
 
-        patient_graph = self.driver.find_element(*PatientPageLocators.graph_chart)
+        patient_graph = self.driver.find_element(*
+                                                 PatientPageLocators
+                                                 .graph_chart)
+
         self.assertEqual(patient_graph.is_displayed(), True, 'Graph not found')
 
         self.driver.find_element(*PatientPageLocators.table_tab_button).click()
@@ -182,7 +185,9 @@ class TestPatientListPage(TestCommon):
             ec.visibility_of_element_located
             (PatientPageLocators.table_container_table))
 
-        patient_table = self.driver.find_element(*PatientPageLocators.table_container_table)
+        patient_table = self.driver.find_element(*
+                                                 PatientPageLocators
+                                                 .table_container_table)
         self.assertEqual(patient_table.is_displayed(), True, 'Table not found')
 
     def test_adhoc_obs(self):
