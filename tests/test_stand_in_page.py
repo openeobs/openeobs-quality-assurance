@@ -24,7 +24,7 @@ class TestStandInPage(TestCommon):
 
         nurse = nurse_name.split(' ', 1)[0].lower()
         response = StandInPage(self.driver).confirm_stand_in(
-                nurse, self.patient_list_page)
+            nurse, self.patient_list_page)
 
         success = 'Successfully accepted stand-in invite'
         self.assertEqual(success, response.text, 'Stand in was unsuccessful')
