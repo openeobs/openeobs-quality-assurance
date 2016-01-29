@@ -36,13 +36,14 @@ class TestGcsObsPage(TestCommon):
 
         ui.WebDriverWait(self.driver, 5).until(
             ec.visibility_of_element_located(TaskPageLocators.confirm_submit)
-        ).click()
+        )
+        self.driver.find_element(*TaskPageLocators.confirm_submit).click()
 
         success = 'Successfully Submitted GCS Observation'
-        response = ui.WebDriverWait(self.driver, 5).until(
+        ui.WebDriverWait(self.driver, 5).until(
             ec.visibility_of_element_located((
                 TaskPageLocators.successful_submit))
         )
-
+        response = self.driver.find_element(*TaskPageLocators.successful_submit)
         self.assertEqual(success, response.text,
                          'GCS observation unsuccessful')
