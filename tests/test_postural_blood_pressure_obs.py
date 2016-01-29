@@ -22,7 +22,7 @@ class TestPosturalBloodPressurePage(TestCommon):
         self.login_page.login('nasir', 'nasir')
         self.patient_list_page.go_to_patient_list()
 
-    def test_postural_blood_pressure_obs(self):
+    def test_pbp_obs(self):
         """
         Test that a postural blood pressure observation can be submitted
         """
