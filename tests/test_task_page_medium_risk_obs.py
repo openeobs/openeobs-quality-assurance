@@ -44,11 +44,10 @@ class TestMediumRiskPage(TestCommon):
 
         task = 'Urgently inform medical team'
         ui.WebDriverWait(self.driver, 5).until(
-            ec.visibility_of_element_located((
-                TaskPageLocators.related_task))
+            ec.visibility_of_element_located((TaskPageLocators.related_task))
         )
         response = self.driver.find_element(*
-                                            TaskPageLocators.related_task).text
+                                            TaskPageLocators.related_task)
 
         self.assertEqual(task, response.text,
                          'Incorrect triggered action for medium risk ob')

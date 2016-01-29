@@ -45,6 +45,6 @@ class TestLowRiskPage(TestCommon):
             ec.visibility_of_element_located((TaskPageLocators.related_task))
         )
         response = self.driver.find_element(*
-                                            TaskPageLocators.related_task).text
+                                            TaskPageLocators.related_task)
         self.assertEqual(task, response.text,
                          'Incorrect triggered action for low risk ob')
