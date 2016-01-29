@@ -111,7 +111,7 @@ class TestTaskPagePatientInfo(TestCommon):
             *TaskPageLocators.patient_name_info
         )
         patient_id = patient_name_button.get_attribute('patient-id')
-        fullscreen = self.task_page.open_patient_obs_data_fullscreen()
+        fullscreen = self.task_page.open_full_patient_obs_data()
         iframe = fullscreen.find_element(
             *TaskPageLocators.patient_info_fullscreen_iframe
         )
@@ -125,7 +125,7 @@ class TestTaskPagePatientInfo(TestCommon):
         """
         Test that can close the fullscreen modal
         """
-        fullscreen = self.task_page.open_patient_obs_data_fullscreen()
+        fullscreen = self.task_page.open_full_patient_obs_data()
         close_button = fullscreen.find_element(
             *TaskPageLocators.patient_info_fullscreen_close
         )

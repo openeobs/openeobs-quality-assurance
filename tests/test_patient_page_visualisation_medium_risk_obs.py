@@ -12,35 +12,35 @@ class TestPatientPageVisualisationWithMediumRiskObsData(
         self.risk = 'medium'
         super(TestPatientPageVisualisationWithMediumRiskObsData, self).setUp()
 
-    def test_shows_correct_resp_rate_value_on_chart(self):
+    def test_chart_resp_rate_value(self):
         """
         Test that the value for resp rate on the chart is correct
         """
         self.assertEqual(self.rr_mes, '24/min',
                          'Incorrect Respiration Rate Measurement')
 
-    def test_shows_correct_oxy_sat_value_on_chart(self):
+    def test_chart_oxy_sat_value(self):
         """
         Test that the value for oxygen saturation on the chart is correct
         """
         self.assertEqual(self.os_mes, '99%',
                          'Incorrect O2 Saturation Measurement')
 
-    def test_shows_correct_body_temp_value_on_chart(self):
+    def test_chart_body_temp_value(self):
         """
         Test that the value for body temperature on the chart is correct
         """
         self.assertIn('37.5', self.bt_mes,
                       'Incorrect Body Temperature Measurement')
 
-    def test_shows_correct_pulse_rate_value_on_chart(self):
+    def test_chart_pulse_rate_value(self):
         """
         Test that the value for pulse rate on the chart is correct
         """
         self.assertEqual(self.hr_mes, '50/min',
                          'Incorrect Pulse Rate Measurement')
 
-    def test_shows_correct_blood_pressure_value_on_chart(self):
+    def test_chart_blood_pressure_value(self):
         """
         Test that the value for blood pressure on the chart is correct
         """
@@ -49,21 +49,21 @@ class TestPatientPageVisualisationWithMediumRiskObsData(
         self.assertEqual(self.bp_mes[1].text, '80mmHg',
                          'Incorrect Blood Pressure Measurement - bottom')
 
-    def test_shows_the_correct_avpu_value_in_tabular_values(self):
+    def test_tabular_avpu_value(self):
         """
         Test that the tabular values table shows the correct data
         """
         self.assertEqual(self.get_tabular_values_value(1, 1), 'A',
                          'Incorrect avpu data in table')
 
-    def test_shows_the_correct_supple_oxy_value_in_tabular_values(self):
+    def test_tabular_supple_oxy_value(self):
         """
         Test that the tabular values table shows the correct data
         """
         self.assertEqual(self.get_tabular_values_value(1, 2), 'Yes',
                          'Incorrect on suppl o2 data in table')
 
-    def test_shows_the_correct_inspired_oxy_value_in_tabular_values(self):
+    def test_tabular_inspired_oxy_value(self):
         """
         Test that the tabular values table shows the correct data
         """
@@ -109,7 +109,7 @@ class TestPatientPageVisualisationWithMediumRiskObsData(
                          'Incorrect value on Body Temperature row '
                          'for medium risk ob')
 
-    def test_blood_pressure_systolic_value(self):
+    def test_blood_pressure_s_value(self):
         """
         Test that the systolic blood pressure value is correct
         """
@@ -118,7 +118,7 @@ class TestPatientPageVisualisationWithMediumRiskObsData(
                          'Incorrect value on Blood Pressure Systolic row '
                          'for medium risk ob')
 
-    def test_blood_pressure_diastolic_value(self):
+    def test_blood_pressure_d_value(self):
         """
         Test that the diastolic blood pressure value is correct
         """
