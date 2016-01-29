@@ -36,12 +36,15 @@ class TestLowRiskPage(TestCommon):
 
         ui.WebDriverWait(self.driver, 5).until(
             ec.visibility_of_element_located(TaskPageLocators.confirm_submit)
-        ).click()
+        )
+
+        self.driver.find_element(*TaskPageLocators.confirm_submit).click()
 
         task = 'Assess Patient'
-        response = ui.WebDriverWait(self.driver, 5).until(
-            ec.visibility_of_element_located((
-                TaskPageLocators.related_task))
+        ui.WebDriverWait(self.driver, 5).until(
+            ec.visibility_of_element_located((TaskPageLocators.related_task))
         )
+        response = self.driver.find_element(*
+                                            TaskPageLocators.related_task).text
         self.assertEqual(task, response.text,
                          'Incorrect triggered action for low risk ob')
