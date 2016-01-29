@@ -36,10 +36,10 @@ class TestBristolStoolObsPage(TestCommon):
         PatientPage(self.driver).enter_obs_data(bristol_stool_inputs)
 
         success = 'Successfully Submitted Bristol Stool Scale Observation'
-        response = ui.WebDriverWait(self.driver, 5).until(
+        ui.WebDriverWait(self.driver, 5).until(
             ec.visibility_of_element_located((
                 TaskPageLocators.successful_submit))
         )
-
+        response = self.driver.find_element(TaskPageLocators.successful_submit)
         self.assertEqual(success, response.text,
                          'Bristol Stool Scale observation unsuccessful')
