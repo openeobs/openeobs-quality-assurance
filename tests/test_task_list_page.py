@@ -32,7 +32,7 @@ class TestTaskListPage(TestCommon):
         self.assertTrue(self.task_list_page.is_task_list_page(),
                         'Did not get to the task list page correctly')
 
-    def test_can_go_to_patient_list_page(self):
+    def test_go_to_patient_list_page(self):
         """
         Test that can go to the patient list page
         """
@@ -60,7 +60,7 @@ class TestTaskListPage(TestCommon):
         id_to_use = self.task_list_page.task_scan_helper(task_id)
         self.task_list_page.do_barcode_scan(id_to_use['other_identifier'])
 
-    def test_can_click_list_item_to_carry_out_task(self):
+    def test_click_list_item(self):
         """
         Test that clicking on a work item tasks user to carry out the task
         """
@@ -73,7 +73,7 @@ class TestTaskListPage(TestCommon):
         self.assertEqual(self.driver.current_url, task_url,
                          'Incorrect url')
 
-    def test_list_item_contains_patient_name(self):
+    def test_list_item_patient_name(self):
         """
         Test that the patient name is in the list item
         """
@@ -90,7 +90,7 @@ class TestTaskListPage(TestCommon):
         self.assertEqual(patient_name.text, name_to_use.strip(),
                          'Incorrect name')
 
-    def test_list_item_contains_patient_location(self):
+    def test_list_item_patient_location(self):
         """
         Test that the patient name is in the list item
         """
@@ -109,7 +109,7 @@ class TestTaskListPage(TestCommon):
         self.assertEqual(bed_to_use, patient_location.text,
                          'Incorrect location')
 
-    def test_list_item_contains_score_and_trend(self):
+    def test_list_item_score_trend(self):
         """
         Test that the score and trend are present in list item
         """
@@ -131,7 +131,7 @@ class TestTaskListPage(TestCommon):
                          'Incorrect trend')
         self.assertIn(score_str, patient_to_test.text, 'Incorrect score')
 
-    def test_list_item_contains_task_deadline(self):
+    def test_list_item_task_deadline(self):
         """
         Test that the patient name is in the list item
         """
@@ -148,7 +148,7 @@ class TestTaskListPage(TestCommon):
         self.assertEqual(deadline, task_deadline.text,
                          'Incorrect deadline')
 
-    def test_list_item_contains_task_summary(self):
+    def test_list_item_task_summary(self):
         """
         Test that the patient name is in the list item
         """
