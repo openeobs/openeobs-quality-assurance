@@ -47,11 +47,13 @@ class StandInPage(BasePage):
 
         ui.WebDriverWait(self.driver, 5).until(
             ec.visibility_of_element_located(
-                ListPageLocators.stand_in_accept_button)).click()
+                ListPageLocators.stand_in_accept_button))
+        self.driver.find_element(*ListPageLocators.stand_in_accept_button).click()
 
         ui.WebDriverWait(self.driver, 5).until(
             ec.visibility_of_element_located(
-                ListPageLocators.stand_in_accept_confirm)).click()
+                ListPageLocators.stand_in_accept_confirm))
+        self.driver.find_element(*ListPageLocators.stand_in_accept_confirm).click()
 
         response = ui.WebDriverWait(self.driver, 5).until(
             ec.visibility_of_element_located(
