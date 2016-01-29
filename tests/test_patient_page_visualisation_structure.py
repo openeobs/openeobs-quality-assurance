@@ -55,7 +55,7 @@ class TestPatientPageVisualisationStructure(TestVisualisationCommon):
         self.assertTrue(self.patient_page.adhoc_obs_menu_is_open(),
                         'Adhoc observation menu is not open')
 
-    def test_shows_chart_after_viewing_table(self):
+    def test_show_chart_after_table(self):
         """
         Test that pressing the chart tab after being on table tab works
         """
@@ -64,51 +64,51 @@ class TestPatientPageVisualisationStructure(TestVisualisationCommon):
         self.assertTrue(self.patient_page.chart_is_shown(),
                         'Chart does not display when returning from table')
 
-    def test_shows_ranged_values_control(self):
+    def test_show_ranged_values_control(self):
         """
         Test that the ranged values control is shown
         """
         self.assertTrue(self.patient_page.rangify_control_is_shown(),
                         'Rangify control not shown')
 
-    def test_resp_rate_focus_chart_label(self):
+    def test_chart_resp_rate_label(self):
         """
         Test that the resp rate label on focus chart says RR
         """
         rr_label = self.get_focus_chart_labels()['resp_rate']
         self.assertEqual(rr_label, 'RR', 'Incorrect Respiration Rate Label')
 
-    def test_oxygen_saturation_focus_chart_label(self):
+    def test_chart_oxy_sat_label(self):
         """
         TEst that the oxygen saturation label on focus chart is correct
         """
         os_label = self.get_focus_chart_labels()['oxy_sat']
         self.assertEqual(os_label, 'Spo2', 'Incorrect O2 Saturation Label')
 
-    def test_body_temperature_focus_chart_label(self):
+    def test_chart_body_temp_label(self):
         """
         Test that the body temperature label on focus chart is correct
         """
         bt_label = self.get_focus_chart_labels()['body_temp']
         self.assertEqual(bt_label, 'Temp', 'Incorrect Body Temperature Label')
 
-    def test_pulse_rate_focus_chart_label(self):
+    def test_chart_pulse_rate_label(self):
         """
         Test that the pulse rrate label for focus chart is correct
         """
         hr_label = self.get_focus_chart_labels()['pulse_rate']
         self.assertEqual(hr_label, 'HR', 'Incorrect Pulse Rate Label')
 
-    def test_blood_pressure_focus_chart_label(self):
+    def test_chart_blood_pressure_label(self):
         """
         Test that the blood pressure label for focus chart is correct
         """
         bp_label = self.get_focus_chart_labels()['blood_press']
         self.assertEqual(bp_label, 'BP', 'Incorrect Blood Pressure Label')
 
-    def test_shows_the_correct_headers_in_tabular_values(self):
+    def test_correct_tabular_headers(self):
         """
-        Test that the tabular values table shows the correct data
+        Test that the tabular values have the correct headers
         """
         self.assertEqual(len(self.tabular_values_headers), 4,
                          'Incorrect number of headers')
@@ -176,7 +176,7 @@ class TestPatientPageVisualisationStructure(TestVisualisationCommon):
         self.assertEqual(self.bt_row[0], 'Body Temperature',
                          'Incorrect title on Body Temperature row')
 
-    def test_blood_pressure_systolic_title(self):
+    def test_blood_pressure_s_title(self):
         """
         Test that the systolic blood pressure title in the table is correct
         """
@@ -184,7 +184,7 @@ class TestPatientPageVisualisationStructure(TestVisualisationCommon):
         self.assertEqual(self.bps_row[0], 'Blood Pressure Systolic',
                          'Incorrect title on Blood Pressure Systolic row')
 
-    def test_blood_pressure_diastolic_title(self):
+    def test_blood_pressure_d_title(self):
         """
         Test that the diastolic blood pressure title in the table is correct
         """
