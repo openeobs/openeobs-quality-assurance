@@ -39,7 +39,7 @@ class TestPatientPageAdhocObs(TestCommon):
         self.assertTrue(self.patient_page.is_task_list_page(),
                         'Did not get to the task list page correctly')
 
-    def test_can_go_to_patient_list_page(self):
+    def test_go_to_patient_list_page(self):
         """
         Test that can go to the patient list page
         """
@@ -65,7 +65,7 @@ class TestPatientPageAdhocObs(TestCommon):
         id_to_use = self.patient_page.patient_scan_helper(int(task_id))
         self.patient_page.do_barcode_scan(id_to_use['other_identifier'])
 
-    def test_can_open_a_menu_to_carry_out_adhoc_observation(self):
+    def test_can_open_adhoc_menu(self):
         """
         Test that can see and open a menu to select an adhoc observation to
         carry out for the patient
@@ -88,7 +88,7 @@ class TestPatientPageAdhocObs(TestCommon):
                          'Pick an observation for {0}'.format(patient_name),
                          'Incorrect menu title')
 
-    def test_adhoc_news_observation_shows_deadline(self):
+    def test_adhoc_news_ob_deadline(self):
         """
         Test that the NEWS observation in the adhoc observation list shows
         the deadline to the next scheduled NEWS observation
