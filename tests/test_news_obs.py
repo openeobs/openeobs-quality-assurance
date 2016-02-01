@@ -4,7 +4,7 @@ from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.list_page import ListPage
 from openeobs_mobile.patient_page import PatientPage
 from tests.test_common import TestCommon
-from openeobs_mobile.locators import TaskPageLocators
+from openeobs_mobile.TaskPageLocators import *
 import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
 from openeobs_mobile.PatientPageLocators import *
@@ -35,16 +35,15 @@ class TestNewsPage(TestCommon):
         PatientPage(self.driver).enter_obs_data(score)
 
         ui.WebDriverWait(self.driver, 5).until(
-            ec.visibility_of_element_located(TaskPageLocators.confirm_submit)
+            ec.visibility_of_element_located(confirm_submit)
         )
-        self.driver.find_element(*TaskPageLocators.confirm_submit).click()
+        self.driver.find_element(*confirm_submit).click()
 
         success = 'Successfully Submitted NEWS Observation'
         ui.WebDriverWait(self.driver, 5).until(
             ec.visibility_of_element_located((
-                TaskPageLocators.successful_submit))
+                successful_submit))
         )
-        response = self.driver.find_element(*
-                                            TaskPageLocators.successful_submit)
+        response = self.driver.find_element(*successful_submit)
         self.assertEqual(success, response.text,
                          'NEWS observation unsuccessful')

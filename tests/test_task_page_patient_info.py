@@ -3,7 +3,7 @@ from openeobs_mobile.task_page import TaskPage
 from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.list_page import ListPage
 from tests.test_common import TestCommon
-from openeobs_mobile.locators import TaskPageLocators
+from openeobs_mobile.TaskPageLocators import *
 
 
 class TestTaskPagePatientInfo(TestCommon):
@@ -69,13 +69,13 @@ class TestTaskPagePatientInfo(TestCommon):
         Test that can get the patient info popup on pressing patient name
         """
         patient_name_button = self.driver.find_element(
-            *TaskPageLocators.patient_name_link
+            *patient_name_link
         )
         patient_id = patient_name_button.get_attribute('patient-id')
 
         popup = self.task_page.open_patient_info()
         popup_header = popup.find_element(
-            *TaskPageLocators.patient_info_popup_title
+            *patient_info_popup_title
         )
         patient_data = self.task_page.patient_helper(int(patient_id))[0]
         popup_title = '{0}{1}'.format(patient_data['full_name'],
@@ -88,13 +88,13 @@ class TestTaskPagePatientInfo(TestCommon):
         Test that can get the patient info popup on pressing patient name
         """
         patient_name_button = self.driver.find_element(
-            *TaskPageLocators.patient_name_info
+            *patient_name_info
         )
         patient_id = patient_name_button.get_attribute('patient-id')
 
         popup = self.task_page.open_patient_info()
         popup_header = popup.find_element(
-            *TaskPageLocators.patient_info_popup_title
+            *patient_info_popup_title
         )
         patient_data = self.task_page.patient_helper(int(patient_id))[0]
         popup_title = '{0}{1}'.format(patient_data['full_name'],
@@ -108,12 +108,12 @@ class TestTaskPagePatientInfo(TestCommon):
         patient page in a fullscreen modal
         """
         patient_name_button = self.driver.find_element(
-            *TaskPageLocators.patient_name_info
+            *patient_name_info
         )
         patient_id = patient_name_button.get_attribute('patient-id')
         fullscreen = self.task_page.open_full_patient_obs_data()
         iframe = fullscreen.find_element(
-            *TaskPageLocators.patient_info_fullscreen_iframe
+            *patient_info_fullscreen_iframe
         )
         iframe_url = iframe.get_attribute('src')
         patient_url = 'http://localhost:8069/mobile/patient/{0}'.format(
@@ -127,7 +127,7 @@ class TestTaskPagePatientInfo(TestCommon):
         """
         fullscreen = self.task_page.open_full_patient_obs_data()
         close_button = fullscreen.find_element(
-            *TaskPageLocators.patient_info_fullscreen_close
+            *patient_info_fullscreen_close
         )
         close_button.click()
         self.assertTrue(self.task_page.fullscreen_not_open(),

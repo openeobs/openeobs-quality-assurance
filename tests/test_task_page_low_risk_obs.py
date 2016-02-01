@@ -4,7 +4,7 @@ from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.list_page import ListPage
 from openeobs_mobile.patient_page import PatientPage
 from tests.test_common import TestCommon
-from openeobs_mobile.locators import TaskPageLocators
+from openeobs_mobile.TaskPageLocators import *
 import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
 from openeobs_mobile.PatientPageLocators import *
@@ -35,16 +35,15 @@ class TestLowRiskPage(TestCommon):
         PatientPage(self.driver).enter_obs_data(low_score)
 
         ui.WebDriverWait(self.driver, 5).until(
-            ec.visibility_of_element_located(TaskPageLocators.confirm_submit)
+            ec.visibility_of_element_located(confirm_submit)
         )
 
-        self.driver.find_element(*TaskPageLocators.confirm_submit).click()
+        self.driver.find_element(*confirm_submit).click()
 
         task = 'Assess Patient'
         ui.WebDriverWait(self.driver, 5).until(
-            ec.visibility_of_element_located((TaskPageLocators.related_task))
+            ec.visibility_of_element_located((related_task))
         )
-        response = self.driver.find_element(*
-                                            TaskPageLocators.related_task)
+        response = self.driver.find_element(*related_task)
         self.assertEqual(task, response.text,
                          'Incorrect triggered action for low risk ob')

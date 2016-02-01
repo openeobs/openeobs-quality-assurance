@@ -1,7 +1,7 @@
 """Methods for the patient page"""
 
 from openeobs_mobile.page_helpers import BasePage
-from openeobs_mobile.locators import TaskPageLocators
+from openeobs_mobile.TaskPageLocators import *
 from openeobs_mobile.PatientPageLocators import *
 import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
@@ -274,7 +274,7 @@ class PatientPage(BasePage):
         self.driver.find_element(*form_id).click()
 
         ui.WebDriverWait(self.driver, 5).until(
-            ec.visibility_of_element_located(TaskPageLocators.task_form)
+            ec.visibility_of_element_located(task_form)
         )
 
     def enter_obs_data(self, data):
@@ -296,4 +296,4 @@ class PatientPage(BasePage):
             self.enter_obs_data(new_dict)
         else:
             self.driver.find_element(
-                *TaskPageLocators.task_form_submit).click()
+                *task_form_submit).click()

@@ -4,7 +4,7 @@ from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.list_page import ListPage
 from openeobs_mobile.patient_page import PatientPage
 from tests.test_common import TestCommon
-from openeobs_mobile.locators import TaskPageLocators
+from openeobs_mobile.TaskPageLocators import *
 import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
 from openeobs_mobile.PatientPageLocators import *
@@ -37,11 +37,10 @@ class TestWeightObsPage(TestCommon):
         success = 'Successfully Submitted Weight Observation'
         ui.WebDriverWait(self.driver, 5).until(
             ec.visibility_of_element_located((
-                TaskPageLocators.successful_submit))
+                successful_submit))
         )
 
-        response = self.driver.find_element(*
-                                            TaskPageLocators.successful_submit)
+        response = self.driver.find_element(*successful_submit)
 
         self.assertEqual(success, response.text,
                          'Weight observation unsuccessful')
