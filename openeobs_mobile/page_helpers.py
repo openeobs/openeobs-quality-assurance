@@ -1,7 +1,7 @@
 """Helper methods for different types of pages"""
 
 from selenium.webdriver.common.by import By
-from openeobs_mobile.data import, NO_RISK_EWS_DATA, LOW_RISK_SCORE_1_EWS_DATA, \
+from openeobs_mobile.data import NO_RISK_EWS_DATA, LOW_RISK_SCORE_1_EWS_DATA, \
 HIGH_RISK_SCORE_11_EWS_DATA, MEDIUM_RISK_SCORE_6_EWS_DATA, \
 MEDIUM_RISK_SCORE_4_THREE_IN_ONE_EWS_DATA
 import selenium.webdriver.support.expected_conditions as ec
