@@ -1,7 +1,6 @@
 """Creates a list of patients or tasks """
-
+from openeobs_mobile import ListPageLocators
 from openeobs_mobile.page_helpers import BasePage
-from openeobs_mobile.locators import ListPageLocators
 
 
 class ListPage(BasePage):

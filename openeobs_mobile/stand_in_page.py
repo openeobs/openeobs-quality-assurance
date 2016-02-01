@@ -1,8 +1,8 @@
 """Methods for the stand-in page"""
+from openeobs_mobile import ListPageLocators
 
 from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.page_helpers import BasePage
-from openeobs_mobile.locators import ListPageLocators
 import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
 
