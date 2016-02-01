@@ -114,10 +114,3 @@ class TestVisualisationCommon(TestCommon):
             self.patient_page.get_table_data(self.tabular_values_rows[row])
         self.assertEqual(len(tabular_values), 4, 'Incorrect number of data')
         return tabular_values[column]
-
-    def get_table_values(self):
-        """
-        Helper function to get the value from a row and column in the patient
-        table
-        """
-

@@ -39,7 +39,8 @@ class TestLoginPageWithMultipleDBs(unittest.TestCase):
 
     def test_db_dropdown_on_login(self):
         """
-        Test that the dropdown of databases is loaded successfully on login page
+        Test that the dropdown of databases is loaded successfully
+        on login page
         """
         self.assertTrue(
             self.login_page.show_dropdown_for_databases(),
