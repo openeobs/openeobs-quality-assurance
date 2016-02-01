@@ -37,11 +37,29 @@ class TestVisualisationCommon(TestCommon):
         self.patient_id = self.patient_url.replace(
             'http://localhost:8069/mobile/patient/', ''
         )
+
         self.patient_page.remove_observations_for_patient(int(self.patient_id))
         risk_mapping[self.risk](int(self.patient_id))
         self.driver.get(self.patient_url)
         ui.WebDriverWait(self.driver, 5).until(
             ec.visibility_of_element_located((By.CSS_SELECTOR, '#chart svg')))
+
+        self.patient_page.change_to_table()
+        obs_table = self.patient_page.get_obs_table()
+        rows = self.patient_page.get_table_rows(obs_table)[1:]
+
+        self.news_row = self.patient_page.get_table_data(rows[0])
+        self.rr_row = self.patient_page.get_table_data(rows[1])
+        self.os_row = self.patient_page.get_table_data(rows[2])
+        self.bt_row = self.patient_page.get_table_data(rows[3])
+        self.bps_row = self.patient_page.get_table_data(rows[4])
+        self.bpd_row = self.patient_page.get_table_data(rows[5])
+        self.ps_row = self.patient_page.get_table_data(rows[6])
+        self.as_row = self.patient_page.get_table_data(rows[7])
+        self.pos_row = self.patient_page.get_table_data(rows[8])
+        self.ios_row = self.patient_page.get_table_data(rows[9])
+
+        self.patient_page.change_to_chart()
 
         # Focus Graphs
         focus_graphs = self.patient_page.get_focus_graphs()
@@ -102,17 +120,4 @@ class TestVisualisationCommon(TestCommon):
         Helper function to get the value from a row and column in the patient
         table
         """
-        self.patient_page.change_to_table()
-        obs_table = self.patient_page.get_obs_table()
-        rows = self.patient_page.get_table_rows(obs_table)[1:]
 
-        self.news_row = self.patient_page.get_table_data(rows[0])
-        self.rr_row = self.patient_page.get_table_data(rows[1])
-        self.os_row = self.patient_page.get_table_data(rows[2])
-        self.bt_row = self.patient_page.get_table_data(rows[3])
-        self.bps_row = self.patient_page.get_table_data(rows[4])
-        self.bpd_row = self.patient_page.get_table_data(rows[5])
-        self.ps_row = self.patient_page.get_table_data(rows[6])
-        self.as_row = self.patient_page.get_table_data(rows[7])
-        self.pos_row = self.patient_page.get_table_data(rows[8])
-        self.ios_row = self.patient_page.get_table_data(rows[9])
