@@ -130,7 +130,7 @@ class TestPatientPageVisualisationStructure(TestVisualisationCommon):
         """
         Test the date header
         """
-        self.get_table_values()
+
         self.assertEqual(self.patient_page.get_table_headers
                          (self.patient_page.get_obs_table())[0],
                          'Date', 'Incorrect header')
@@ -139,7 +139,6 @@ class TestPatientPageVisualisationStructure(TestVisualisationCommon):
         """
         Test that the number of rows is correct
         """
-        self.get_table_values()
         self.assertEqual(len(self.patient_page.get_table_rows
                              (self.patient_page.get_obs_table())[1:]), 10,
                          'Incorrect number of rows')
@@ -148,7 +147,6 @@ class TestPatientPageVisualisationStructure(TestVisualisationCommon):
         """
         Test that the NEWS score title in the table is correct
         """
-        self.get_table_values()
         self.assertEqual(self.news_row[0], 'NEWS Score',
                          'Incorrect title on news score row')
 
@@ -156,7 +154,6 @@ class TestPatientPageVisualisationStructure(TestVisualisationCommon):
         """
         Test that the respiration rate title in the table is correct
         """
-        self.get_table_values()
         self.assertEqual(self.rr_row[0], 'Respiration Rate',
                          'Incorrect title on respiration rate row')
 
@@ -164,7 +161,6 @@ class TestPatientPageVisualisationStructure(TestVisualisationCommon):
         """
         Test that the o2 saturation title in the table is correct
         """
-        self.get_table_values()
         self.assertEqual(self.os_row[0], 'O2 Saturation',
                          'Incorrect title on o2 sat row')
 
@@ -172,7 +168,6 @@ class TestPatientPageVisualisationStructure(TestVisualisationCommon):
         """
         Test that the body temperature title in the table is correct
         """
-        self.get_table_values()
         self.assertEqual(self.bt_row[0], 'Body Temperature',
                          'Incorrect title on Body Temperature row')
 
@@ -180,7 +175,6 @@ class TestPatientPageVisualisationStructure(TestVisualisationCommon):
         """
         Test that the systolic blood pressure title in the table is correct
         """
-        self.get_table_values()
         self.assertEqual(self.bps_row[0], 'Blood Pressure Systolic',
                          'Incorrect title on Blood Pressure Systolic row')
 
@@ -188,7 +182,6 @@ class TestPatientPageVisualisationStructure(TestVisualisationCommon):
         """
         Test that the diastolic blood pressure title in the table is correct
         """
-        self.get_table_values()
         self.assertEqual(self.bpd_row[0], 'Blood Pressure Diastolic',
                          'Incorrect title on Blood Pressure Diastolic row')
 
@@ -196,7 +189,6 @@ class TestPatientPageVisualisationStructure(TestVisualisationCommon):
         """
         Test that the pulse rate title in the table is correct
         """
-        self.get_table_values()
         self.assertEqual(self.ps_row[0], 'Pulse Rate',
                          'Incorrect title on Pulse Rate row')
 
@@ -204,7 +196,6 @@ class TestPatientPageVisualisationStructure(TestVisualisationCommon):
         """
         Test that the avpu title in the table is correct
         """
-        self.get_table_values()
         self.assertEqual(self.as_row[0], 'AVPU',
                          'Incorrect title on AVPU row')
 
@@ -212,7 +203,6 @@ class TestPatientPageVisualisationStructure(TestVisualisationCommon):
         """
         Test that the supplemental o2 title in the table is correct
         """
-        self.get_table_values()
         self.assertEqual(self.pos_row[0], 'Patient on Supplemental O2',
                          'Incorrect title on Supplemental O2 row')
 
@@ -220,6 +210,5 @@ class TestPatientPageVisualisationStructure(TestVisualisationCommon):
         """
         Test that the device title in the table is correct
         """
-        self.get_table_values()
         self.assertEqual(self.ios_row[0], 'Inspired Oxygen',
                          'Incorrect title on Inspired Oxygen row')
