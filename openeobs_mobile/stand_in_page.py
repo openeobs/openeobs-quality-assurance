@@ -26,8 +26,7 @@ class StandInPage(BasePage):
 
         self.driver.find_element(*list_page_locators.stand_in_nurse).click()
         nurse_name = \
-            self.driver.find_element(*
-                                     list_page_locators.stand_in_nurse_name).text
+            self.driver.find_element(*list_page_locators.stand_in_nurse_name).text
 
         self.driver.find_element(*list_page_locators.stand_in_assign).click()
 
@@ -63,5 +62,4 @@ class StandInPage(BasePage):
             ec.visibility_of_element_located(
                 list_page_locators.stand_in_success))
         response = self.driver.find_element(*list_page_locators.stand_in_success)
-
         return response
