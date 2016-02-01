@@ -1,6 +1,7 @@
 """Methods for the task page"""
 from openeobs_mobile.page_helpers import BasePage
-from openeobs_mobile.TaskPageLocators import *
+from openeobs_mobile.task_page_locators import patient_name_info, \
+patient_info_popup_fscreen_btn, patient_info_popup
 import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
 from selenium.webdriver.common.by import By

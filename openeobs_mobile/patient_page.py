@@ -1,8 +1,12 @@
 """Methods for the patient page"""
 
 from openeobs_mobile.page_helpers import BasePage
-from openeobs_mobile.TaskPageLocators import *
-from openeobs_mobile.PatientPageLocators import *
+from openeobs_mobile.task_page_locators import task_form_submit, task_form
+from openeobs_mobile.patient_page_locators import adhoc_obs_menu_button, \
+    open_obs_menu, graph_chart, table_tab_button, graph_tab_button, \
+    graph_chart_svg, tabular_values_table, table_container, rangify_control, \
+    chart_context_graph, chart_focus_graphs, chart_graph_label, \
+    chart_graph_measurement, table_data, table_row, table_header
 import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
 from selenium.webdriver.common.by import By

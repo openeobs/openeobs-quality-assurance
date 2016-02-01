@@ -1,12 +1,16 @@
 """Helper methods for different types of pages"""
 
-from openeobs_mobile.data import *
+from selenium.webdriver.common.by import By
+from openeobs_mobile.data import, NO_RISK_EWS_DATA, LOW_RISK_SCORE_1_EWS_DATA, \
+HIGH_RISK_SCORE_11_EWS_DATA, MEDIUM_RISK_SCORE_6_EWS_DATA, \
+MEDIUM_RISK_SCORE_4_THREE_IN_ONE_EWS_DATA
 import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
 from erppeek import Client
-from openeobs_mobile.MenuLocators import *
+from openeobs_mobile.menu_locators import patient_list_el, task_list_el, \
+stand_in_el, logout_el, barcode_scan_el, barcode_scan_input
 
 
 class BasePage(object):

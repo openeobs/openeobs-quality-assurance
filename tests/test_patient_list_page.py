@@ -1,6 +1,6 @@
 """Tests to ensure that the patient list page works correctly"""
-from openeobs_mobile import ListPageLocators
-from openeobs_mobile import PatientPageLocators
+from openeobs_mobile import list_page_locators
+from openeobs_mobile import patient_page_locators
 from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.list_page import ListPage
 from openeobs_mobile.patient_page import PatientPage
@@ -89,7 +89,7 @@ class TestPatientListPage(TestCommon):
         task_data = self.patient_list_page.patient_helper(task_id)[0]
         name_to_use = task_data['full_name']
         patient_name = self.driver.find_element(
-            *ListPageLocators.list_item_patient_name
+            *list_page_locators.list_item_patient_name
         )
         self.assertEqual(patient_name.text, name_to_use.strip(),
                          'Incorrect name')
@@ -108,7 +108,7 @@ class TestPatientListPage(TestCommon):
         parent_location = task_data['parent_location']
         bed_to_use = '{0}, {1}'.format(location, parent_location)
         patient_location = self.driver.find_element(
-            *ListPageLocators.list_item_patient_location
+            *list_page_locators.list_item_patient_location
         )
         self.assertEqual(bed_to_use, patient_location.text,
                          'Incorrect location')
@@ -127,7 +127,7 @@ class TestPatientListPage(TestCommon):
         trend = task_data['ews_trend']
         score_str = '({0} )'.format(score)
         patient_trend = self.driver.find_element(
-            *ListPageLocators.list_item_patient_trend
+            *list_page_locators.list_item_patient_trend
         )
         trend_str = 'icon-{0}-arrow'.format(trend)
         self.assertEqual(patient_trend.get_attribute('class'), trend_str,
@@ -146,7 +146,7 @@ class TestPatientListPage(TestCommon):
         task_data = self.patient_list_page.patient_helper(task_id)[0]
         deadline = task_data['next_ews_time']
         task_deadline = self.driver.find_element(
-            *ListPageLocators.list_item_deadline
+            *list_page_locators.list_item_deadline
         )
         self.assertEqual(deadline, task_deadline.text,
                          'Incorrect deadline')
@@ -171,23 +171,23 @@ class TestPatientListPage(TestCommon):
         PatientPage(self.driver).select_patient(patients)
 
         ui.WebDriverWait(self.driver, 1).until(
-            ec.visibility_of_element_located(PatientPageLocators.graph_chart)
+            ec.visibility_of_element_located(patient_page_locators.graph_chart)
         )
 
         patient_graph = self.driver.find_element(*
-                                                 PatientPageLocators
+                                                 patient_page_locators
                                                  .graph_chart)
 
         self.assertEqual(patient_graph.is_displayed(), True, 'Graph not found')
 
-        self.driver.find_element(*PatientPageLocators.table_tab_button).click()
+        self.driver.find_element(*patient_page_locators.table_tab_button).click()
 
         ui.WebDriverWait(self.driver, 1).until(
             ec.visibility_of_element_located
-            (PatientPageLocators.table_container_table))
+            (patient_page_locators.table_container_table))
 
         patient_table = self.driver.find_element(*
-                                                 PatientPageLocators
+                                                 patient_page_locators
                                                  .table_container_table)
         self.assertEqual(patient_table.is_displayed(), True, 'Table not found')
 

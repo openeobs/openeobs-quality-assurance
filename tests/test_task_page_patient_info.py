@@ -3,7 +3,9 @@ from openeobs_mobile.task_page import TaskPage
 from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.list_page import ListPage
 from tests.test_common import TestCommon
-from openeobs_mobile.TaskPageLocators import *
+from openeobs_mobile.task_page_locators import patient_name_link, \
+    patient_name_info, patient_info_popup_title, \
+    patient_info_fullscreen_iframe, patient_info_fullscreen_close
 
 
 class TestTaskPagePatientInfo(TestCommon):

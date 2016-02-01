@@ -4,10 +4,10 @@ from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.list_page import ListPage
 from openeobs_mobile.patient_page import PatientPage
 from tests.test_common import TestCommon
-from openeobs_mobile.TaskPageLocators import *
+from openeobs_mobile.task_page_locators import confirm_submit, related_task
 import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
-from openeobs_mobile.PatientPageLocators import *
+from openeobs_mobile.patient_page_locators import open_obs_menu_news_item
 
 
 class TestLowRiskPage(TestCommon):

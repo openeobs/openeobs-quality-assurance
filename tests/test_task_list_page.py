@@ -1,5 +1,5 @@
 """Tests to ensure that the task list page works correctly"""
-from openeobs_mobile import ListPageLocators
+from openeobs_mobile import list_page_locators
 from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.list_page import ListPage
 from tests.test_common import TestCommon
@@ -86,7 +86,7 @@ class TestTaskListPage(TestCommon):
         task_data = self.task_list_page.task_helper(task_id)[0]
         name_to_use = task_data['full_name']
         patient_name = self.driver.find_element(
-            *ListPageLocators.list_item_patient_name
+            *list_page_locators.list_item_patient_name
         )
         self.assertEqual(patient_name.text, name_to_use.strip(),
                          'Incorrect name')
@@ -105,7 +105,7 @@ class TestTaskListPage(TestCommon):
         parent_location = task_data['parent_location']
         bed_to_use = '{0}, {1}'.format(location, parent_location)
         patient_location = self.driver.find_element(
-            *ListPageLocators.list_item_patient_location
+            *list_page_locators.list_item_patient_location
         )
         self.assertEqual(bed_to_use, patient_location.text,
                          'Incorrect location')
@@ -124,7 +124,7 @@ class TestTaskListPage(TestCommon):
         trend = task_data['ews_trend']
         score_str = '({0} )'.format(score)
         patient_trend = self.driver.find_element(
-            *ListPageLocators.list_item_patient_trend
+            *list_page_locators.list_item_patient_trend
         )
         trend_str = 'icon-{0}-arrow'.format(trend)
         patient_trend = patient_trend.get_attribute('class')
@@ -144,7 +144,7 @@ class TestTaskListPage(TestCommon):
         task_data = self.task_list_page.task_helper(task_id)[0]
         deadline = task_data['deadline_time']
         task_deadline = self.driver.find_element(
-            *ListPageLocators.list_item_deadline
+            *list_page_locators.list_item_deadline
         )
         self.assertEqual(deadline, task_deadline.text,
                          'Incorrect deadline')
@@ -161,7 +161,7 @@ class TestTaskListPage(TestCommon):
         task_data = self.task_list_page.task_helper(task_id)[0]
         summary = task_data['summary']
         task_summary = self.driver.find_element(
-            *ListPageLocators.list_item_title
+            *list_page_locators.list_item_title
         )
         self.assertEqual(summary, task_summary.text,
                          'Incorrect summary')

@@ -3,7 +3,9 @@ from openeobs_mobile.patient_page import PatientPage
 from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.list_page import ListPage
 from tests.test_common import TestCommon
-from openeobs_mobile.PatientPageLocators import *
+from openeobs_mobile.patient_page_locators import open_obs_menu_title, \
+    open_obs_menu_news_deadline, open_obs_menu_news_item, \
+    open_obs_menu_list_items
 
 
 class TestPatientPageAdhocObs(TestCommon):
