@@ -2,15 +2,15 @@
 
 from selenium.webdriver.common.by import By
 from openeobs_mobile.data import NO_RISK_EWS_DATA, LOW_RISK_SCORE_1_EWS_DATA, \
-HIGH_RISK_SCORE_11_EWS_DATA, MEDIUM_RISK_SCORE_6_EWS_DATA, \
-MEDIUM_RISK_SCORE_4_THREE_IN_ONE_EWS_DATA
+    HIGH_RISK_SCORE_11_EWS_DATA, MEDIUM_RISK_SCORE_6_EWS_DATA, \
+    MEDIUM_RISK_SCORE_4_THREE_IN_ONE_EWS_DATA
 import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
 from erppeek import Client
 from openeobs_mobile.menu_locators import PATIENT_LIST_EL, TASK_LIST_EL, \
-STAND_IN_EL, LOGOUT_EL, BARCODE_SCAN_EL, BARCODE_SCAN_INPUT
+    STAND_IN_EL, LOGOUT_EL, BARCODE_SCAN_EL, BARCODE_SCAN_INPUT
 
 
 class BasePage(object):
