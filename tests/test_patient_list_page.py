@@ -180,7 +180,8 @@ class TestPatientListPage(TestCommon):
 
         self.assertEqual(patient_graph.is_displayed(), True, 'Graph not found')
 
-        self.driver.find_element(*patient_page_locators.TABLE_TAB_BUTTON).click()
+        self.driver.find_element(*patient_page_locators
+                                 .TABLE_TAB_BUTTON).click()
 
         ui.WebDriverWait(self.driver, 1).until(
             ec.visibility_of_element_located

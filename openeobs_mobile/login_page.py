@@ -3,7 +3,9 @@
 from openeobs_mobile.page_helpers import BasePage
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.support.select import Select
-from openeobs_mobile.login_page_locators import *
+from openeobs_mobile.login_page_locators import USERNAME_EL, PASSWORD_EL, \
+    ERROR_EL, DATABASE_DROPDOWN_EL, LOGIN_BUTTON_EL
+
 
 class LoginPage(BasePage):
     """

@@ -27,7 +27,8 @@ class StandInPage(BasePage):
         self.driver.find_element(*list_page_locators.STAND_IN_NURSE).click()
         nurse_name = \
             self.driver.find_element(*
-                                     list_page_locators.STAND_IN_NURSE_NAME).text
+                                     list_page_locators
+                                     .STAND_IN_NURSE_NAME).text
 
         self.driver.find_element(*list_page_locators.STAND_IN_ASSIGN).click()
 
@@ -62,6 +63,8 @@ class StandInPage(BasePage):
         ui.WebDriverWait(self.driver, 5).until(
             ec.visibility_of_element_located(
                 list_page_locators.STAND_IN_SUCCESS))
-        response = self.driver.find_element(*list_page_locators.STAND_IN_SUCCESS)
+        response = self.driver.find_element(*
+                                            list_page_locators
+                                            .STAND_IN_SUCCESS)
 
         return response

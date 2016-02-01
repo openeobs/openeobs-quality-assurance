@@ -12,7 +12,7 @@ LIST_ITEM_DEADLINE = (By.CSS_SELECTOR, 'div.task-right .aside')
 LIST_ITEM_TITLE = (By.CSS_SELECTOR, 'p.taskInfo')
 
 STAND_IN_SELECT = (By.CSS_SELECTOR,
-    '#handover_form > ul > li:nth-child(2) > label > input')
+                   '#handover_form > ul > li:nth-child(2) > label > input')
 
 STAND_IN_SHARE = (By.CSS_SELECTOR,
                   'body > div.share-footer > ul > li:nth-child(1) > a')
