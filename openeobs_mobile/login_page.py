@@ -1,10 +1,9 @@
 """Methods for the login page"""
 
 from openeobs_mobile.page_helpers import BasePage
-from openeobs_mobile.locators import LoginPageLocators
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.support.select import Select
-
+from openeobs_mobile.LoginPageLocators import *
 
 class LoginPage(BasePage):
     """
@@ -18,21 +17,19 @@ class LoginPage(BasePage):
         :param username: Username to login with
         :param password: Password for the username supplied
         """
-        username_el = self.driver.find_element(*LoginPageLocators.username_el)
-        password_el = self.driver.find_element(*LoginPageLocators.password_el)
-        login_button = self.driver.find_element(
-            *LoginPageLocators.login_button_el
-        )
+        username_e = self.driver.find_element(*username_el)
+        password_e = self.driver.find_element(*password_el)
+        login_button = self.driver.find_element(*login_button_el)
         try:
             database_selector = self.driver.find_element(
-                *LoginPageLocators.database_dropdown_el
+                *database_dropdown_el
             )
             Select(database_selector).select_by_value(database)
         except NoSuchElementException:
             pass
 
-        username_el.send_keys(username)
-        password_el.send_keys(password)
+        username_e.send_keys(username)
+        password_e.send_keys(password)
         login_button.click()
 
     def has_logged_in(self):
@@ -48,8 +45,8 @@ class LoginPage(BasePage):
         Check that the login page shows an error message
         :return: Boolean of if the error message is shown
         """
-        error_el = self.driver.find_element(*LoginPageLocators.error_el)
-        return error_el.text == 'Invalid username/password'
+        error_e = self.driver.find_element(*error_el)
+        return error_e.text == 'Invalid username/password'
 
     def show_dropdown_for_databases(self):
         """
@@ -57,7 +54,7 @@ class LoginPage(BasePage):
         :return: Boolean of if the drop down is present
         """
         try:
-            self.driver.find_element(*LoginPageLocators.database_dropdown_el)
+            self.driver.find_element(*database_dropdown_el)
         except NoSuchElementException:
             return False
         return True
