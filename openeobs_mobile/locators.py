@@ -35,18 +35,6 @@ class ListPageLocators(object):
     stand_in_success = (By.CSS_SELECTOR, '#invite_success > h2')
 
 
-class MenuLocators(object):
-    """
-    A class to help identify things in the menu
-    """
-    task_list_el = (By.ID, 'taskNavItem')
-    patient_list_el = (By.ID, 'patientNavItem')
-    stand_in_el = (By.LINK_TEXT, 'Stand In')
-    barcode_scan_el = (By.CSS_SELECTOR, '.header-main li.scan_parent .scan')
-    barcode_scan_input = (By.CSS_SELECTOR, '#patient_barcode .barcode_scan')
-    logout_el = (By.CSS_SELECTOR, '.header-main li.logout .button')
-
-
 class PatientPageLocators(object):
     """
     A class to help identify things on the patient page

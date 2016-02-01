@@ -1,5 +1,3 @@
-__author__ = 'amipatel'
-
 from selenium.webdriver.common.by import By
 
 username_el = (By.ID, 'username')

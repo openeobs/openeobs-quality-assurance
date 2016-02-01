@@ -1,15 +1,12 @@
 """Helper methods for different types of pages"""
 
-from openeobs_mobile.data import NO_RISK_EWS_DATA, LOW_RISK_SCORE_1_EWS_DATA, \
-    MEDIUM_RISK_SCORE_4_THREE_IN_ONE_EWS_DATA, MEDIUM_RISK_SCORE_6_EWS_DATA, \
-    HIGH_RISK_SCORE_11_EWS_DATA
-from selenium.webdriver.common.by import By
+from openeobs_mobile.data import *
 import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
 from erppeek import Client
-from openeobs_mobile.locators import MenuLocators
+from openeobs_mobile.MenuLocators import *
 
 
 class BasePage(object):
@@ -24,7 +21,7 @@ class BasePage(object):
         """
             Navigate to the task list
         """
-        task_list_item = self.driver.find_element(*MenuLocators.task_list_el)
+        task_list_item = self.driver.find_element(*task_list_el)
         task_list_item.click()
 
     def go_to_patient_list(self):
@@ -32,21 +29,21 @@ class BasePage(object):
             Navigate to the patient list
         """
         patient_list_item = self.driver.find_element(
-            *MenuLocators.patient_list_el)
+            *patient_list_el)
         patient_list_item.click()
 
     def logout(self):
         """
             Log out of the app
         """
-        logout = self.driver.find_element(*MenuLocators.logout_el)
+        logout = self.driver.find_element(*logout_el)
         logout.click()
 
     def go_to_standin(self):
         """
             Go to the stand in page
         """
-        standin_item = self.driver.find_element(*MenuLocators.stand_in_el)
+        standin_item = self.driver.find_element(*stand_in_el)
         standin_item.click()
 
     @staticmethod
@@ -257,7 +254,7 @@ class BasePage(object):
         Carry out a barcode scan with the patient id
         :param patient_id:
         """
-        scan_item = self.driver.find_element(*MenuLocators.barcode_scan_el)
+        scan_item = self.driver.find_element(*barcode_scan_el)
         scan_item.click()
         ui.WebDriverWait(self.driver, 5).until(
             ec.visibility_of_element_located((By.ID, 'patient_barcode')))
@@ -267,7 +264,7 @@ class BasePage(object):
                 (By.CSS_SELECTOR, '#patient_barcode .barcode_scan')))
         try:
             barcode_input = \
-                self.driver.find_element(*MenuLocators.barcode_scan_input)
+                self.driver.find_element(*barcode_scan_input)
             self.driver.execute_script(
                 "var scan = document.getElementsByName('barcode_scan')[0]; "
                 "scan.setAttribute('value', ',{0},'); "
