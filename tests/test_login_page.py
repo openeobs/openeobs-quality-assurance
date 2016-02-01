@@ -19,14 +19,14 @@ class TestLoginPage(TestCommon):
         self.assertTrue(self.login_page.is_login_page(),
                         'Incorrect page title')
 
-    def test_login_correct_credentials(self):
+    def test_correct_credentials(self):
         """
         Test that can log into the app with correct credentials
         """
         self.login_page.login('nasir', 'nasir')
         self.assertTrue(self.login_page.has_logged_in(), 'Unable to log in')
 
-    def test_login_error_incorrect_credentials(self):
+    def test_error_incorrect_credentials(self):
         """
         Test that the login page shows an error on trying to login without
         correct credentials

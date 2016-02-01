@@ -27,7 +27,7 @@ class TestPatientListPage(TestCommon):
         self.assertTrue(self.patient_list_page.is_login_page(),
                         'Did not get to the logout page correctly')
 
-    def test_can_go_to_task_list_page(self):
+    def test_can_go_task_list_page(self):
         """
         Test that can go to task list page
         """
@@ -35,7 +35,7 @@ class TestPatientListPage(TestCommon):
         self.assertTrue(self.patient_list_page.is_task_list_page(),
                         'Did not get to the task list page correctly')
 
-    def test_can_go_to_patient_list_page(self):
+    def test_patient_list_page(self):
         """
         Test that can go to the patient list page
         """
@@ -43,7 +43,7 @@ class TestPatientListPage(TestCommon):
         self.assertTrue(self.patient_list_page.is_patient_list_page(),
                         'Did not get to patient list page correctly')
 
-    def test_can_go_to_stand_in_page(self):
+    def test_can_go_stand_in_page(self):
         """
         Test that can navigate to the stand in page
         """
@@ -51,7 +51,7 @@ class TestPatientListPage(TestCommon):
         self.assertTrue(self.patient_list_page.is_stand_in_page(),
                         'Did not get to stand in page correctly')
 
-    def test_can_carry_out_barcode_scan(self):
+    def test_can_do_barcode_scan(self):
         """
         Test that can do a barcode scan
         """
@@ -63,7 +63,7 @@ class TestPatientListPage(TestCommon):
         id_to_use = self.patient_list_page.patient_scan_helper(int(patient_id))
         self.patient_list_page.do_barcode_scan(id_to_use['other_identifier'])
 
-    def test_can_click_list_item_to_view_patient_details(self):
+    def test_view_patient_details(self):
         """
         Test that clicking on a work item tasks user to carry out the task
         """
@@ -76,7 +76,7 @@ class TestPatientListPage(TestCommon):
         self.assertEqual(self.driver.current_url, patient_url,
                          'Incorrect url')
 
-    def test_list_item_contains_patient_name(self):
+    def test_patient_name_in_list(self):
         """
         Test that the patient name is in the list item
         """
@@ -93,7 +93,7 @@ class TestPatientListPage(TestCommon):
         self.assertEqual(patient_name.text, name_to_use.strip(),
                          'Incorrect name')
 
-    def test_list_item_contains_patient_location(self):
+    def test_patient_location_in_list(self):
         """
         Test that the patient name is in the list item
         """
@@ -112,7 +112,7 @@ class TestPatientListPage(TestCommon):
         self.assertEqual(bed_to_use, patient_location.text,
                          'Incorrect location')
 
-    def test_list_item_contains_score_and_trend(self):
+    def test_score_and_trend_in_list(self):
         """
         Test that the score and trend are present in list item
         """
@@ -133,7 +133,7 @@ class TestPatientListPage(TestCommon):
                          'Incorrect trend')
         self.assertIn(score_str, patient_to_test.text, 'Incorrect score')
 
-    def test_list_item_contains_task_deadline(self):
+    def test_task_deadline_in_list(self):
         """
         Test that the patient name is in the list item
         """

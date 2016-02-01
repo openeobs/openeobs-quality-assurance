@@ -37,7 +37,7 @@ class TestLoginPageWithMultipleDBs(unittest.TestCase):
         self.driver.get("http://localhost:8069/mobile/login")
         self.login_page = LoginPage(self.driver)
 
-    def test_login_page_shows_dropdown_for_multiple_dbs(self):
+    def test_login_dropdown_for_multiple_dbs(self):
         """
         Test that the title of the login page is Open-eObs
         """
