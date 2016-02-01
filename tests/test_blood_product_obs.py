@@ -5,10 +5,10 @@ from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.list_page import ListPage
 from openeobs_mobile.patient_page import PatientPage
 from tests.test_common import TestCommon
-from openeobs_mobile.locators import PatientPageLocators, TaskPageLocators
+from openeobs_mobile.locators import TaskPageLocators
 import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
-
+from openeobs_mobile.PatientPageLocators import *
 
 class TestBloodProductObsPage(TestCommon):
     """
@@ -31,7 +31,7 @@ class TestBloodProductObsPage(TestCommon):
 
         PatientPage(self.driver).select_patient(patients)
         PatientPage(self.driver).open_form(
-            PatientPageLocators.open_obs_menu_blood_product)
+            open_obs_menu_blood_product)
         PatientPage(self.driver).enter_obs_data(blood_product_inputs)
 
         success = 'Successfully Submitted Blood Product Observation'

@@ -3,9 +3,10 @@ from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.list_page import ListPage
 from openeobs_mobile.patient_page import PatientPage
 from tests.test_common import TestCommon
-from openeobs_mobile.locators import ListPageLocators, PatientPageLocators
+from openeobs_mobile.locators import ListPageLocators
 import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
+from openeobs_mobile.PatientPageLocators import *
 
 
 class TestPatientListPage(TestCommon):
@@ -170,24 +171,20 @@ class TestPatientListPage(TestCommon):
         PatientPage(self.driver).select_patient(patients)
 
         ui.WebDriverWait(self.driver, 1).until(
-            ec.visibility_of_element_located(PatientPageLocators.graph_chart)
+            ec.visibility_of_element_located(graph_chart)
         )
 
-        patient_graph = self.driver.find_element(*
-                                                 PatientPageLocators
-                                                 .graph_chart)
+        patient_graph = self.driver.find_element(*graph_chart)
 
         self.assertEqual(patient_graph.is_displayed(), True, 'Graph not found')
 
-        self.driver.find_element(*PatientPageLocators.table_tab_button).click()
+        self.driver.find_element(*table_tab_button).click()
 
         ui.WebDriverWait(self.driver, 1).until(
             ec.visibility_of_element_located
-            (PatientPageLocators.table_container_table))
+            (table_container_table))
 
-        patient_table = self.driver.find_element(*
-                                                 PatientPageLocators
-                                                 .table_container_table)
+        patient_table = self.driver.find_element(*table_container_table)
         self.assertEqual(patient_table.is_displayed(), True, 'Table not found')
 
     def test_adhoc_obs(self):

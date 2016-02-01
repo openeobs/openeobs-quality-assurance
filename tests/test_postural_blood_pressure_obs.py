@@ -4,9 +4,10 @@ from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.list_page import ListPage
 from openeobs_mobile.patient_page import PatientPage
 from tests.test_common import TestCommon
-from openeobs_mobile.locators import PatientPageLocators, TaskPageLocators
+from openeobs_mobile.locators import TaskPageLocators
 import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
+from openeobs_mobile.PatientPageLocators import *
 
 
 class TestPosturalBloodPressurePage(TestCommon):
@@ -31,8 +32,7 @@ class TestPosturalBloodPressurePage(TestCommon):
         patients = self.patient_list_page.get_list_items()
 
         PatientPage(self.driver).select_patient(patients)
-        PatientPage(self.driver).open_form(PatientPageLocators
-                                           .open_obs_menu_postural_pressure)
+        PatientPage(self.driver).open_form(open_obs_menu_postural_pressure)
         PatientPage(self.driver).enter_obs_data(postural_pressure_inputs)
 
         success = 'Successfully Submitted Postural Blood Pressure Observation'

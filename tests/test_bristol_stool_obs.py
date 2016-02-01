@@ -5,9 +5,10 @@ from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.list_page import ListPage
 from openeobs_mobile.patient_page import PatientPage
 from tests.test_common import TestCommon
-from openeobs_mobile.locators import PatientPageLocators, TaskPageLocators
+from openeobs_mobile.locators import TaskPageLocators
 import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
+from openeobs_mobile.PatientPageLocators import *
 
 
 class TestBristolStoolObsPage(TestCommon):
@@ -32,7 +33,7 @@ class TestBristolStoolObsPage(TestCommon):
 
         PatientPage(self.driver).select_patient(patients)
         PatientPage(self.driver).open_form(
-            PatientPageLocators.open_obs_menu_bs_scale)
+            open_obs_menu_bs_scale)
         PatientPage(self.driver).enter_obs_data(bristol_stool_inputs)
 
         success = 'Successfully Submitted Bristol Stool Scale Observation'
