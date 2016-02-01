@@ -26,10 +26,10 @@ class TestLoginPage(TestCommon):
         self.login_page.login('nasir', 'nasir')
         self.assertTrue(self.login_page.has_logged_in(), 'Unable to log in')
 
-    def test_error_message_unsuccessful_login(self):
+    def test_error_message_login(self):
         """
-        Test that the login page shows an error on trying to login without
-        correct credentials
+        Test that the login page shows an error on trying to login with
+        incorrect credentials
         """
         self.login_page.login('invalid_credentials', 'invalid_credentials')
         self.assertTrue(self.login_page.shows_login_error(),
