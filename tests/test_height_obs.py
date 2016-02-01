@@ -5,10 +5,10 @@ from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.list_page import ListPage
 from openeobs_mobile.patient_page import PatientPage
 from tests.test_common import TestCommon
-from openeobs_mobile.task_page_locators import successful_submit
+from openeobs_mobile.task_page_locators import SUCCESSFUL_SUBMIT
 import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
-from openeobs_mobile.patient_page_locators import open_obs_menu_height
+from openeobs_mobile.patient_page_locators import OPEN_OBS_MENU_HEIGHT
 
 
 class TestHeightObsPage(TestCommon):
@@ -31,15 +31,15 @@ class TestHeightObsPage(TestCommon):
         patients = self.patient_list_page.get_list_items()
 
         PatientPage(self.driver).select_patient(patients)
-        PatientPage(self.driver).open_form(open_obs_menu_height)
+        PatientPage(self.driver).open_form(OPEN_OBS_MENU_HEIGHT)
         PatientPage(self.driver).enter_obs_data(height_input)
 
         success = 'Successfully Submitted Height Observation'
         ui.WebDriverWait(self.driver, 5).until(
             ec.visibility_of_element_located((
-                successful_submit))
+                SUCCESSFUL_SUBMIT))
         )
 
-        response = self.driver.find_element(*successful_submit)
+        response = self.driver.find_element(*SUCCESSFUL_SUBMIT)
         self.assertEqual(success, response.text,
                          'Height observation unsuccessful')

@@ -1,8 +1,9 @@
+"""Helpers for the menu page"""
 from selenium.webdriver.common.by import By
 
-task_list_el = (By.ID, 'taskNavItem')
-patient_list_el = (By.ID, 'patientNavItem')
-stand_in_el = (By.LINK_TEXT, 'Stand In')
-barcode_scan_el = (By.CSS_SELECTOR, '.header-main li.scan_parent .scan')
-barcode_scan_input = (By.CSS_SELECTOR, '#patient_barcode .barcode_scan')
-logout_el = (By.CSS_SELECTOR, '.header-main li.logout .button')
+TASK_LIST_EL = (By.ID, 'taskNavItem')
+PATIENT_LIST_EL = (By.ID, 'patientNavItem')
+STAND_IN_EL = (By.LINK_TEXT, 'Stand In')
+BARCODE_SCAN_EL = (By.CSS_SELECTOR, '.header-main li.scan_parent .scan')
+BARCODE_SCAN_INPUT = (By.CSS_SELECTOR, '#patient_barcode .barcode_scan')
+LOGOUT_EL = (By.CSS_SELECTOR, '.header-main li.logout .button')

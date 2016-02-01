@@ -17,12 +17,12 @@ class LoginPage(BasePage):
         :param username: Username to login with
         :param password: Password for the username supplied
         """
-        username_e = self.driver.find_element(*username_el)
-        password_e = self.driver.find_element(*password_el)
-        login_button = self.driver.find_element(*login_button_el)
+        username_e = self.driver.find_element(*USERNAME_EL)
+        password_e = self.driver.find_element(*PASSWORD_EL)
+        login_button = self.driver.find_element(*LOGIN_BUTTON_EL)
         try:
             database_selector = self.driver.find_element(
-                *database_dropdown_el
+                *DATABASE_DROPDOWN_EL
             )
             Select(database_selector).select_by_value(database)
         except NoSuchElementException:
@@ -45,7 +45,7 @@ class LoginPage(BasePage):
         Check that the login page shows an error message
         :return: Boolean of if the error message is shown
         """
-        error_e = self.driver.find_element(*error_el)
+        error_e = self.driver.find_element(*ERROR_EL)
         return error_e.text == 'Invalid username/password'
 
     def show_dropdown_for_databases(self):
@@ -54,7 +54,7 @@ class LoginPage(BasePage):
         :return: Boolean of if the drop down is present
         """
         try:
-            self.driver.find_element(*database_dropdown_el)
+            self.driver.find_element(*DATABASE_DROPDOWN_EL)
         except NoSuchElementException:
             return False
         return True

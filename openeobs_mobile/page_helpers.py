@@ -9,8 +9,8 @@ import selenium.webdriver.support.ui as ui
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
 from erppeek import Client
-from openeobs_mobile.menu_locators import patient_list_el, task_list_el, \
-stand_in_el, logout_el, barcode_scan_el, barcode_scan_input
+from openeobs_mobile.menu_locators import PATIENT_LIST_EL, TASK_LIST_EL, \
+STAND_IN_EL, LOGOUT_EL, BARCODE_SCAN_EL, BARCODE_SCAN_INPUT
 
 
 class BasePage(object):
@@ -25,7 +25,7 @@ class BasePage(object):
         """
             Navigate to the task list
         """
-        task_list_item = self.driver.find_element(*task_list_el)
+        task_list_item = self.driver.find_element(*TASK_LIST_EL)
         task_list_item.click()
 
     def go_to_patient_list(self):
@@ -33,21 +33,21 @@ class BasePage(object):
             Navigate to the patient list
         """
         patient_list_item = self.driver.find_element(
-            *patient_list_el)
+            *PATIENT_LIST_EL)
         patient_list_item.click()
 
     def logout(self):
         """
             Log out of the app
         """
-        logout = self.driver.find_element(*logout_el)
+        logout = self.driver.find_element(*LOGOUT_EL)
         logout.click()
 
     def go_to_standin(self):
         """
             Go to the stand in page
         """
-        standin_item = self.driver.find_element(*stand_in_el)
+        standin_item = self.driver.find_element(*STAND_IN_EL)
         standin_item.click()
 
     @staticmethod
@@ -258,7 +258,7 @@ class BasePage(object):
         Carry out a barcode scan with the patient id
         :param patient_id:
         """
-        scan_item = self.driver.find_element(*barcode_scan_el)
+        scan_item = self.driver.find_element(*BARCODE_SCAN_EL)
         scan_item.click()
         ui.WebDriverWait(self.driver, 5).until(
             ec.visibility_of_element_located((By.ID, 'patient_barcode')))
@@ -268,7 +268,7 @@ class BasePage(object):
                 (By.CSS_SELECTOR, '#patient_barcode .barcode_scan')))
         try:
             barcode_input = \
-                self.driver.find_element(*barcode_scan_input)
+                self.driver.find_element(*BARCODE_SCAN_INPUT)
             self.driver.execute_script(
                 "var scan = document.getElementsByName('barcode_scan')[0]; "
                 "scan.setAttribute('value', ',{0},'); "

@@ -3,9 +3,9 @@ from openeobs_mobile.patient_page import PatientPage
 from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.list_page import ListPage
 from tests.test_common import TestCommon
-from openeobs_mobile.patient_page_locators import open_obs_menu_title, \
-    open_obs_menu_news_deadline, open_obs_menu_news_item, \
-    open_obs_menu_list_items
+from openeobs_mobile.patient_page_locators import OPEN_OBS_MENU_TITLE, \
+    OPEN_OBS_MENU_NEWS_DEADLINE, OPEN_OBS_MENU_NEWS_ITEM, \
+    OPEN_OBS_MENU_LIST_ITEMS
 
 
 class TestPatientPageAdhocObs(TestCommon):
@@ -74,10 +74,10 @@ class TestPatientPageAdhocObs(TestCommon):
         """
         menu = self.patient_page.open_adhoc_obs_menu()
         menu_title = menu.find_element(
-            *open_obs_menu_title
+            *OPEN_OBS_MENU_TITLE
         )
         observations = menu.find_elements(
-            *open_obs_menu_list_items
+            *OPEN_OBS_MENU_LIST_ITEMS
         )
         self.assertGreater(len(observations), 0,
                            'Incorrect number of adhoc obs')
@@ -97,10 +97,10 @@ class TestPatientPageAdhocObs(TestCommon):
         """
         menu = self.patient_page.open_adhoc_obs_menu()
         news_item = menu.find_element(
-            *open_obs_menu_news_item
+            *OPEN_OBS_MENU_NEWS_ITEM
         )
         deadline = news_item.find_element(
-            *open_obs_menu_news_deadline
+            *OPEN_OBS_MENU_NEWS_DEADLINE
         )
         task_id = self.patient_url.replace(
             'http://localhost:8069/mobile/patient/', ''

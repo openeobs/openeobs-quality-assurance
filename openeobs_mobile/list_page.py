@@ -14,5 +14,5 @@ class ListPage(BasePage):
         Return a list of items in the task list
         :return: A list of elements in the task list
         """
-        list_items = self.driver.find_element(*list_page_locators.list_el)
-        return list_items.find_elements(*list_page_locators.list_item_el)
+        list_items = self.driver.find_element(*list_page_locators.LIST_EL)
+        return list_items.find_elements(*list_page_locators.LIST_ITEM_EL)

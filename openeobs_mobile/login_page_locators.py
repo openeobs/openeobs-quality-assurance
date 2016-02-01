@@ -1,7 +1,8 @@
+"""Helpers for the login page"""
 from selenium.webdriver.common.by import By
 
-username_el = (By.ID, 'username')
-password_el = (By.ID, 'password')
-login_button_el = (By.ID, 'loginbutton')
-database_dropdown_el = (By.ID, 'database')
-error_el = (By.CSS_SELECTOR, '.alert.alert-error')
+USERNAME_EL = (By.ID, 'username')
+PASSWORD_EL = (By.ID, 'password')
+LOGIN_BUTTON_EL = (By.ID, 'loginbutton')
+DATABASE_DROPDOWN_EL = (By.ID, 'database')
+ERROR_EL = (By.CSS_SELECTOR, '.alert.alert-error')

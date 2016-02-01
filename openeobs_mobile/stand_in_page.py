@@ -17,18 +17,19 @@ class StandInPage(BasePage):
         Select a patient to share with a nurse
         :return: The name of the nurse who is receiving the patient
         """
-        self.driver.find_element(*list_page_locators.stand_in_select).click()
-        self.driver.find_element(*list_page_locators.stand_in_share).click()
+        self.driver.find_element(*list_page_locators.STAND_IN_SELECT).click()
+        self.driver.find_element(*list_page_locators.STAND_IN_SHARE).click()
 
         ui.WebDriverWait(self.driver, 5).until(
             ec.visibility_of_element_located(
-                list_page_locators.stand_in_list))
+                list_page_locators.STAND_IN_LIST))
 
-        self.driver.find_element(*list_page_locators.stand_in_nurse).click()
+        self.driver.find_element(*list_page_locators.STAND_IN_NURSE).click()
         nurse_name = \
-            self.driver.find_element(*list_page_locators.stand_in_nurse_name).text
+            self.driver.find_element(*
+                                     list_page_locators.STAND_IN_NURSE_NAME).text
 
-        self.driver.find_element(*list_page_locators.stand_in_assign).click()
+        self.driver.find_element(*list_page_locators.STAND_IN_ASSIGN).click()
 
         return nurse_name
 
@@ -46,20 +47,21 @@ class StandInPage(BasePage):
 
         ui.WebDriverWait(self.driver, 5).until(
             ec.visibility_of_element_located(
-                list_page_locators.stand_in_accept_button))
+                list_page_locators.STAND_IN_ACCEPT_BUTTON))
         self.driver.find_element(*
                                  list_page_locators
-                                 .stand_in_accept_button).click()
+                                 .STAND_IN_ACCEPT_BUTTON).click()
 
         ui.WebDriverWait(self.driver, 5).until(
             ec.visibility_of_element_located(
-                list_page_locators.stand_in_accept_confirm))
+                list_page_locators.STAND_IN_ACCEPT_CONFIRM))
         self.driver.find_element(*
                                  list_page_locators
-                                 .stand_in_accept_confirm).click()
+                                 .STAND_IN_ACCEPT_CONFIRM).click()
 
         ui.WebDriverWait(self.driver, 5).until(
             ec.visibility_of_element_located(
-                list_page_locators.stand_in_success))
-        response = self.driver.find_element(*list_page_locators.stand_in_success)
+                list_page_locators.STAND_IN_SUCCESS))
+        response = self.driver.find_element(*list_page_locators.STAND_IN_SUCCESS)
+
         return response
