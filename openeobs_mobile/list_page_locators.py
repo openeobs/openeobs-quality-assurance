@@ -1,6 +1,6 @@
-"""Helpers for the list page"""
-__author__ = 'amipatel'
 from selenium.webdriver.common.by import By
+
+"""Helpers for the list page"""
 
 LIST_EL = (By.CSS_SELECTOR, '.content > .tasklist')
 LIST_ITEM_EL = (By.CSS_SELECTOR, 'li > a.block')

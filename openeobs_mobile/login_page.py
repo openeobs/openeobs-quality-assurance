@@ -6,6 +6,7 @@ from selenium.webdriver.support.select import Select
 from openeobs_mobile.login_page_locators import USERNAME_EL, PASSWORD_EL, \
     ERROR_EL, DATABASE_DROPDOWN_EL, LOGIN_BUTTON_EL
 
+
 class LoginPage(BasePage):
     """
     Login Page methods and helps etc
