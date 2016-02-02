@@ -66,12 +66,12 @@ class TestVisualisationCommon(TestCommon):
             self.patient_page_graph.get_graph_measurement(self.graph_data[0])
         self.os_mes = \
             self.patient_page_graph.get_graph_measurement(self.graph_data[1])
-        self.bt_mes = self.patient_page_graph.get_graph_measurement(
-                self.graph_data[2])
-        self.hr_mes = self.patient_page_graph.get_graph_measurement(
-                self.graph_data[3])
-        self.bp_mes = self.patient_page_graph.get_graph_measurements(
-                self.graph_data[4])
+        self.bt_mes = \
+            self.patient_page_graph.get_graph_measurement(self.graph_data[2])
+        self.hr_mes = \
+            self.patient_page_graph.get_graph_measurement(self.graph_data[3])
+        self.bp_mes = \
+            self.patient_page_graph.get_graph_measurements(self.graph_data[4])
 
         # Tabular Values table
         tabular_values_table = self.patient_page.get_tabular_values()
