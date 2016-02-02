@@ -1,9 +1,11 @@
-"""Confirm the current page the user is on"""
+"""Helper class to confirm user location"""
 from openeobs_mobile.page_helpers import BasePage
 
 
 class PageConfirm(BasePage):
-
+    """
+    Methods to confirm what page the user is currently on
+    """
     def is_login_page(self):
         """
         Check that the page's title matches that of the login page
