@@ -12,7 +12,6 @@ class TaskPage(BasePage):
     """
     Task Page methods and interactions
     """
-
     def open_patient_info(self):
         """
         Open up the adhoc observation menu

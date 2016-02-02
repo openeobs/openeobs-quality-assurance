@@ -1,6 +1,6 @@
-from selenium.webdriver.common.by import By
-
 """Helpers for the list page"""
+
+from selenium.webdriver.common.by import By
 
 LIST_EL = (By.CSS_SELECTOR, '.content > .tasklist')
 LIST_ITEM_EL = (By.CSS_SELECTOR, 'li > a.block')
