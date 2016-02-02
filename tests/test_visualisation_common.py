@@ -54,7 +54,6 @@ class TestVisualisationCommon(TestCommon):
         for row in rows:
             self.row_data.append(self.patient_page.get_table_data(row))
 
-
         self.patient_page_graph.change_to_chart()
 
         # Focus Graphs

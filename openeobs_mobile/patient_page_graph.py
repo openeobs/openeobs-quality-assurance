@@ -10,6 +10,7 @@ import selenium.webdriver.support.expected_conditions as ec
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 
+
 class PatientPageGraphs(BasePage):
     """
     helpers on graphs in patient page
@@ -94,4 +95,3 @@ class PatientPageGraphs(BasePage):
             ec.visibility_of_element_located((By.CSS_SELECTOR,
                                               '#graph-content #chart svg'))
         )
-

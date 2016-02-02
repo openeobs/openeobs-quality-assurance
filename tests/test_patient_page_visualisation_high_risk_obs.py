@@ -91,8 +91,8 @@ class TestPatientPageVisualisationWithHighRiskObsData(TestVisualisationCommon):
         """
         Test that the o2 saturation value is correct
         """
-        self.assertEqual(self.row_data[2][1], '93', 'Incorrect value on o2 row '
-                                               'for high risk ob')
+        self.assertEqual(self.row_data[2][1], '93', 'Incorrect value on o2 row'
+                                                    ' for high risk ob')
 
     def test_body_temperature_value(self):
         """
@@ -130,8 +130,8 @@ class TestPatientPageVisualisationWithHighRiskObsData(TestVisualisationCommon):
         """
         Test that the avpu value is correct
         """
-        self.assertEqual(self.row_data[7][1], 'A', 'Incorrect value on AVPU row '
-                                              'for high risk ob')
+        self.assertEqual(self.row_data[7][1], 'A', 'Incorrect value on AVPU '
+                                                   'row for high risk ob')
 
     def test_supplemental_value(self):
         """
