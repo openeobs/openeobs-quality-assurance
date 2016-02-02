@@ -6,7 +6,7 @@ import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
 from selenium.webdriver.common.by import By
 from tests.test_common import TestCommon
-
+from openeobs_mobile.patient_page_graph import PatientPageGraphs
 
 class TestVisualisationCommon(TestCommon):
     """
@@ -19,6 +19,7 @@ class TestVisualisationCommon(TestCommon):
         self.login_page = LoginPage(self.driver)
         self.list_page = ListPage(self.driver)
         self.patient_page = PatientPage(self.driver)
+        self.patient_page_graph = PatientPageGraphs(self.driver)
 
         risk_mapping = {
             'none': self.patient_page.add_no_risk_observation,
@@ -59,10 +60,10 @@ class TestVisualisationCommon(TestCommon):
         self.pos_row = self.patient_page.get_table_data(rows[8])
         self.ios_row = self.patient_page.get_table_data(rows[9])
 
-        self.patient_page.change_to_chart()
+        self.patient_page_graph.change_to_chart()
 
         # Focus Graphs
-        focus_graphs = self.patient_page.get_focus_graphs()
+        focus_graphs = self.patient_page_graph.get_focus_graphs()
         self.assertEqual(len(focus_graphs), 5, 'Incorrect number of graphs')
         self.resp_rate_graph = focus_graphs[0]
         self.oxy_sat_graph = focus_graphs[1]
@@ -70,12 +71,15 @@ class TestVisualisationCommon(TestCommon):
         self.hr_graph = focus_graphs[3]
         self.bp_graph = focus_graphs[4]
         self.rr_mes = \
-            self.patient_page.get_graph_measurement(self.resp_rate_graph)
+            self.patient_page_graph.get_graph_measurement(self.resp_rate_graph)
         self.os_mes = \
-            self.patient_page.get_graph_measurement(self.oxy_sat_graph)
-        self.bt_mes = self.patient_page.get_graph_measurement(self.temp_graph)
-        self.hr_mes = self.patient_page.get_graph_measurement(self.hr_graph)
-        self.bp_mes = self.patient_page.get_graph_measurements(self.bp_graph)
+            self.patient_page_graph.get_graph_measurement(self.oxy_sat_graph)
+        self.bt_mes = self.patient_page_graph.get_graph_measurement(self.
+                                                                    temp_graph)
+        self.hr_mes = self.patient_page_graph.get_graph_measurement(self.
+                                                                    hr_graph)
+        self.bp_mes = self.patient_page_graph.get_graph_measurements(self.
+                                                                     bp_graph)
 
         # Tabular Values table
         tabular_values_table = self.patient_page.get_tabular_values()
@@ -89,11 +93,11 @@ class TestVisualisationCommon(TestCommon):
         Helper function to get an dict of the focus chart labels
         :return: dict of strings from focus chart labels
         """
-        rr_label = self.patient_page.get_graph_label(self.resp_rate_graph)
-        os_label = self.patient_page.get_graph_label(self.oxy_sat_graph)
-        bt_label = self.patient_page.get_graph_label(self.temp_graph)
-        hr_label = self.patient_page.get_graph_label(self.hr_graph)
-        bp_label = self.patient_page.get_graph_label(self.bp_graph)
+        rr_label = self.patient_page_graph.get_graph_label(self.resp_rate_graph)
+        os_label = self.patient_page_graph.get_graph_label(self.oxy_sat_graph)
+        bt_label = self.patient_page_graph.get_graph_label(self.temp_graph)
+        hr_label = self.patient_page_graph.get_graph_label(self.hr_graph)
+        bp_label = self.patient_page_graph.get_graph_label(self.bp_graph)
         return {
             'resp_rate': rr_label,
             'oxy_sat': os_label,

@@ -1,7 +1,6 @@
 """Test to ensure that the patient data can display correctly"""
 from tests.test_visualisation_common import TestVisualisationCommon
 
-
 class TestPatientPageVisualisationStructure(TestVisualisationCommon):
     """
     Setup a session and test that the data displays correctly
@@ -60,7 +59,7 @@ class TestPatientPageVisualisationStructure(TestVisualisationCommon):
         Test that pressing the chart tab after being on table tab works
         """
         self.patient_page.change_to_table()
-        self.patient_page.change_to_chart()
+        self.patient_page_graph.change_to_chart()
         self.assertTrue(self.patient_page.chart_is_shown(),
                         'Chart does not display when returning from table')
 
@@ -68,7 +67,7 @@ class TestPatientPageVisualisationStructure(TestVisualisationCommon):
         """
         Test that the ranged values control is shown
         """
-        self.assertTrue(self.patient_page.rangify_control_is_shown(),
+        self.assertTrue(self.patient_page_graph.rangify_control_is_shown(),
                         'Rangify control not shown')
 
     def test_chart_resp_rate_label(self):
