@@ -62,19 +62,16 @@ class TestVisualisationCommon(TestCommon):
         for graph in focus_graphs:
             self.graph_data.append(graph)
 
-       # self.resp_rate_graph = focus_graphs[0]
-        #self.oxy_sat_graph = focus_graphs[1]
-        #self.temp_graph = focus_graphs[2]
-        #self.hr_graph = focus_graphs[3]
-        #self.bp_graph = focus_graphs[4]
-
         self.rr_mes = \
             self.patient_page_graph.get_graph_measurement(self.graph_data[0])
         self.os_mes = \
             self.patient_page_graph.get_graph_measurement(self.graph_data[1])
-        self.bt_mes = self.patient_page_graph.get_graph_measurement(self.graph_data[2])
-        self.hr_mes = self.patient_page_graph.get_graph_measurement(self.graph_data[3])
-        self.bp_mes = self.patient_page_graph.get_graph_measurements(self.graph_data[4])
+        self.bt_mes = self.patient_page_graph.get_graph_measurement(
+                self.graph_data[2])
+        self.hr_mes = self.patient_page_graph.get_graph_measurement(
+                self.graph_data[3])
+        self.bp_mes = self.patient_page_graph.get_graph_measurements(
+                self.graph_data[4])
 
         # Tabular Values table
         tabular_values_table = self.patient_page.get_tabular_values()
