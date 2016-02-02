@@ -8,6 +8,7 @@ from selenium.webdriver.common.by import By
 from tests.test_common import TestCommon
 from openeobs_mobile.patient_page_graph import PatientPageGraphs
 
+
 class TestVisualisationCommon(TestCommon):
     """
     Setup a session and ensure that patient data displays correctly
@@ -93,7 +94,8 @@ class TestVisualisationCommon(TestCommon):
         Helper function to get an dict of the focus chart labels
         :return: dict of strings from focus chart labels
         """
-        rr_label = self.patient_page_graph.get_graph_label(self.resp_rate_graph)
+        rr_label = self.patient_page_graph.get_graph_label(self.resp_rate_graph
+                                                           )
         os_label = self.patient_page_graph.get_graph_label(self.oxy_sat_graph)
         bt_label = self.patient_page_graph.get_graph_label(self.temp_graph)
         hr_label = self.patient_page_graph.get_graph_label(self.hr_graph)
