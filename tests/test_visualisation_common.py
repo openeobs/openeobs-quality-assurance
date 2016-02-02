@@ -50,16 +50,10 @@ class TestVisualisationCommon(TestCommon):
         obs_table = self.patient_page.get_obs_table()
         rows = self.patient_page.get_table_rows(obs_table)[1:]
 
-        self.news_row = self.patient_page.get_table_data(rows[0])
-        self.rr_row = self.patient_page.get_table_data(rows[1])
-        self.os_row = self.patient_page.get_table_data(rows[2])
-        self.bt_row = self.patient_page.get_table_data(rows[3])
-        self.bps_row = self.patient_page.get_table_data(rows[4])
-        self.bpd_row = self.patient_page.get_table_data(rows[5])
-        self.ps_row = self.patient_page.get_table_data(rows[6])
-        self.as_row = self.patient_page.get_table_data(rows[7])
-        self.pos_row = self.patient_page.get_table_data(rows[8])
-        self.ios_row = self.patient_page.get_table_data(rows[9])
+        self.row_data = []
+        for row in rows:
+            self.row_data.append(self.patient_page.get_table_data(row))
+
 
         self.patient_page_graph.change_to_chart()
 

@@ -1,6 +1,7 @@
 """Test to ensure that the patient data can display correctly"""
 from tests.test_visualisation_common import TestVisualisationCommon
 
+
 class TestPatientPageVisualisationStructure(TestVisualisationCommon):
     """
     Setup a session and test that the data displays correctly

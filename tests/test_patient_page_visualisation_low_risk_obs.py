@@ -76,14 +76,14 @@ class TestPatientPageVisualisationWithLowRiskObsData(TestVisualisationCommon):
         """
         Test that the NEWS score value is correct
         """
-        self.assertEqual(self.news_row[1], '1',
+        self.assertEqual(self.row_data[0][1], '1',
                          'Incorrect value on news score row for low risk ob')
 
     def test_respiration_rate_value(self):
         """
         Test that the respiration rate value is correct
         """
-        self.assertEqual(self.rr_row[1], '11',
+        self.assertEqual(self.row_data[1][1], '11',
                          'Incorrect value on respiration rate row '
                          'for low risk ob')
 
@@ -91,14 +91,14 @@ class TestPatientPageVisualisationWithLowRiskObsData(TestVisualisationCommon):
         """
         Test that the o2 saturation value is correct
         """
-        self.assertEqual(self.os_row[1], '99',
+        self.assertEqual(self.row_data[2][1], '99',
                          'Incorrect value on o2 row for low risk ob')
 
     def test_body_temperature_value(self):
         """
         Test that the body temperature value is correct
         """
-        self.assertEqual(self.bt_row[1], '37.5',
+        self.assertEqual(self.row_data[3][1], '37.5',
                          'Incorrect value on Body Temperature row '
                          'for low risk ob')
 
@@ -106,7 +106,7 @@ class TestPatientPageVisualisationWithLowRiskObsData(TestVisualisationCommon):
         """
         Test that the systolic blood pressure value is correct
         """
-        self.assertEqual(self.bps_row[1], '120',
+        self.assertEqual(self.row_data[4][1], '120',
                          'Incorrect value on Blood Pressure Systolic row '
                          'for low risk ob')
 
@@ -114,7 +114,7 @@ class TestPatientPageVisualisationWithLowRiskObsData(TestVisualisationCommon):
         """
         Test that the diastolic blood pressure value is correct
         """
-        self.assertEqual(self.bpd_row[1], '80',
+        self.assertEqual(self.row_data[5][1], '80',
                          'Incorrect value on Blood Pressure Diastolic row '
                          'for low risk ob')
 
@@ -122,7 +122,7 @@ class TestPatientPageVisualisationWithLowRiskObsData(TestVisualisationCommon):
         """
         Test that the pulse rate value is correct
         """
-        self.assertEqual(self.ps_row[1], '65',
+        self.assertEqual(self.row_data[6][1], '65',
                          'Incorrect value on Pulse Rate row '
                          'for low risk ob')
 
@@ -130,14 +130,14 @@ class TestPatientPageVisualisationWithLowRiskObsData(TestVisualisationCommon):
         """
         Test that the avpu value is correct
         """
-        self.assertEqual(self.as_row[1], 'A',
+        self.assertEqual(self.row_data[7][1], 'A',
                          'Incorrect value on AVPU row for low risk ob')
 
     def test_supplemental_value(self):
         """
         Test that the supplemental o2 value is correct
         """
-        self.assertEqual(self.pos_row[1], 'No',
+        self.assertEqual(self.row_data[8][1], 'No',
                          'Incorrect value on Supplemental O2 row '
                          'for low risk ob')
 
@@ -145,7 +145,7 @@ class TestPatientPageVisualisationWithLowRiskObsData(TestVisualisationCommon):
         """
         Test that the device value is correct
         """
-        self.assertEqual(self.ios_row[1],
+        self.assertEqual(self.row_data[9][1],
                          '',
                          'Incorrect value on Inspired Oxygen row '
                          'for low risk ob')

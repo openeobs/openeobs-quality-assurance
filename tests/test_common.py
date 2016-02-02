@@ -5,7 +5,8 @@ import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
 from selenium.webdriver.common.by import By
 from erppeek import Client
-from tests.environment import DATABASE, URL, ODOO_CLIENT_URL, TEST_DB_NAME
+from tests.environment import DATABASE, URL, ODOO_CLIENT_URL, TEST_DB_NAME, \
+    USERNAME, PASSWORD
 
 
 class TestCommon(unittest.TestCase):
@@ -17,6 +18,8 @@ class TestCommon(unittest.TestCase):
         url = URL
         odoo_client_url = ODOO_CLIENT_URL
         test_db = TEST_DB_NAME
+        username = USERNAME
+        password = PASSWORD
 
         cls.driver = webdriver.Firefox()
         cls.driver.get(url)
@@ -26,7 +29,7 @@ class TestCommon(unittest.TestCase):
                 '.oe_single_form_container.modal-content'))
         )
         cls.odoo_client = Client(odoo_client_url, db=database,
-                                 user='admin', password='admin')
+                                 user=username, password=password)
 
         cls.test_database_name = test_db
 
