@@ -35,14 +35,13 @@ class TestVisualisationCommon(TestCommon):
         self.list_page.go_to_patient_list()
         patients = self.list_page.get_list_items()
         patient_to_test = patients[0]
-        self.patient_url = patient_to_test.get_attribute('href')
-        self.patient_id = self.patient_url.replace(
+        self.patient_id = patient_to_test.get_attribute('href').replace(
             'http://localhost:8069/mobile/patient/', ''
         )
 
         self.patient_page.remove_observations_for_patient(int(self.patient_id))
         risk_mapping[self.risk](int(self.patient_id))
-        self.driver.get(self.patient_url)
+        self.driver.get(patient_to_test.get_attribute('href'))
         ui.WebDriverWait(self.driver, 5).until(
             ec.visibility_of_element_located((By.CSS_SELECTOR, '#chart svg')))
 
@@ -53,6 +52,7 @@ class TestVisualisationCommon(TestCommon):
         self.row_data = []
         for row in rows:
             self.row_data.append(self.patient_page.get_table_data(row))
+
 
         self.patient_page_graph.change_to_chart()
 
@@ -87,8 +87,7 @@ class TestVisualisationCommon(TestCommon):
         Helper function to get an dict of the focus chart labels
         :return: dict of strings from focus chart labels
         """
-        rr_label = self.patient_page_graph.get_graph_label(self.resp_rate_graph
-                                                           )
+        rr_label = self.patient_page_graph.get_graph_label(self.resp_rate_graph)
         os_label = self.patient_page_graph.get_graph_label(self.oxy_sat_graph)
         bt_label = self.patient_page_graph.get_graph_label(self.temp_graph)
         hr_label = self.patient_page_graph.get_graph_label(self.hr_graph)
