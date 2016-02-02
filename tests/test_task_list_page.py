@@ -2,6 +2,7 @@
 from openeobs_mobile import list_page_locators
 from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.list_page import ListPage
+from openeobs_mobile.page_confirm import PageConfirm
 from tests.test_common import TestCommon
 
 
@@ -21,7 +22,7 @@ class TestTaskListPage(TestCommon):
         Test that the title of the login page is Open-eObs
         """
         self.task_list_page.logout()
-        self.assertTrue(self.task_list_page.is_login_page(),
+        self.assertTrue(PageConfirm(self.driver).is_login_page(),
                         'Did not get to the logout page correctly')
 
     def test_can_go_to_task_list_page(self):
@@ -29,7 +30,7 @@ class TestTaskListPage(TestCommon):
         Test that can go to task list page
         """
         self.task_list_page.go_to_task_list()
-        self.assertTrue(self.task_list_page.is_task_list_page(),
+        self.assertTrue(PageConfirm(self.driver).is_task_list_page(),
                         'Did not get to the task list page correctly')
 
     def test_go_to_patient_list_page(self):
@@ -37,7 +38,7 @@ class TestTaskListPage(TestCommon):
         Test that can go to the patient list page
         """
         self.task_list_page.go_to_patient_list()
-        self.assertTrue(self.task_list_page.is_patient_list_page(),
+        self.assertTrue(PageConfirm(self.driver).is_patient_list_page(),
                         'Did not get to patient list page correctly')
 
     def test_can_go_to_stand_in_page(self):
@@ -45,7 +46,7 @@ class TestTaskListPage(TestCommon):
         Test that can navigate to the stand in page
         """
         self.task_list_page.go_to_standin()
-        self.assertTrue(self.task_list_page.is_stand_in_page(),
+        self.assertTrue(PageConfirm(self.driver).is_stand_in_page(),
                         'Did not get to stand in page correctly')
 
     def test_can_carry_out_barcode_scan(self):
@@ -68,7 +69,7 @@ class TestTaskListPage(TestCommon):
         task_to_test = tasks[0]
         task_url = task_to_test.get_attribute('href')
         task_to_test.click()
-        self.assertTrue(self.task_list_page.is_task_page(),
+        self.assertTrue(PageConfirm(self.driver).is_task_page(),
                         'Did not get to task page correctly')
         self.assertEqual(self.driver.current_url, task_url,
                          'Incorrect url')

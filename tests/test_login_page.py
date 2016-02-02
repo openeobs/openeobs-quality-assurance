@@ -1,6 +1,7 @@
 """Test to ensure that the login page works correctly"""
 
 from openeobs_mobile.login_page import LoginPage
+from openeobs_mobile.page_confirm import PageConfirm
 from tests.test_common import TestCommon
 
 
@@ -16,7 +17,7 @@ class TestLoginPage(TestCommon):
         """
         Test that the title of the login page is Open-eObs
         """
-        self.assertTrue(self.login_page.is_login_page(),
+        self.assertTrue(PageConfirm(self.driver).is_login_page(),
                         'Incorrect page title')
 
     def test_successful_login(self):

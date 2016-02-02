@@ -1,4 +1,5 @@
 """Test that adhoc obs can be submitted successfully"""
+from openeobs_mobile.page_confirm import PageConfirm
 from openeobs_mobile.patient_page import PatientPage
 from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.list_page import ListPage
@@ -30,7 +31,7 @@ class TestPatientPageAdhocObs(TestCommon):
         Test that the title of the login page is Open-eObs
         """
         self.patient_page.logout()
-        self.assertTrue(self.patient_page.is_login_page(),
+        self.assertTrue(PageConfirm(self.driver).is_login_page(),
                         'Did not get to the logout page correctly')
 
     def test_can_go_to_task_list_page(self):
@@ -38,7 +39,7 @@ class TestPatientPageAdhocObs(TestCommon):
         Test that can go to task list page
         """
         self.patient_page.go_to_task_list()
-        self.assertTrue(self.patient_page.is_task_list_page(),
+        self.assertTrue(PageConfirm(self.driver).is_task_list_page(),
                         'Did not get to the task list page correctly')
 
     def test_go_to_patient_list_page(self):
@@ -46,7 +47,7 @@ class TestPatientPageAdhocObs(TestCommon):
         Test that can go to the patient list page
         """
         self.patient_page.go_to_patient_list()
-        self.assertTrue(self.patient_page.is_patient_list_page(),
+        self.assertTrue(PageConfirm(self.driver).is_patient_list_page(),
                         'Did not get to patient list page correctly')
 
     def test_can_go_to_stand_in_page(self):
@@ -54,7 +55,7 @@ class TestPatientPageAdhocObs(TestCommon):
         Test that can navigate to the stand in page
         """
         self.patient_page.go_to_standin()
-        self.assertTrue(self.patient_page.is_stand_in_page(),
+        self.assertTrue(PageConfirm(self.driver).is_stand_in_page(),
                         'Did not get to stand in page correctly')
 
     def test_can_carry_out_barcode_scan(self):
