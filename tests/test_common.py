@@ -5,7 +5,7 @@ import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
 from selenium.webdriver.common.by import By
 from erppeek import Client
-from environment import DATABASE, URL, ODOO_CLIENT_URL, TEST_DB_NAME
+from tests.environment import DATABASE, URL, ODOO_CLIENT_URL, TEST_DB_NAME
 
 
 class TestCommon(unittest.TestCase):
