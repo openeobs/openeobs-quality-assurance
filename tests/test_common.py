@@ -5,8 +5,8 @@ import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
 from selenium.webdriver.common.by import By
 from erppeek import Client
-from tests.environment import DATABASE, DESKTOP_URL, ODOO_CLIENT_URL, TEST_DB_NAME, \
-     USERNAME, PASSWORD
+from tests.environment import DATABASE, DESKTOP_URL, ODOO_CLIENT_URL, \
+    TEST_DB_NAME, USERNAME, PASSWORD
 
 
 class TestCommon(unittest.TestCase):
@@ -24,9 +24,9 @@ class TestCommon(unittest.TestCase):
         cls.driver = webdriver.Firefox()
         cls.driver.get(url)
         ui.WebDriverWait(cls.driver, 5).until(
-            ec.visibility_of_element_located((
-                By.CSS_SELECTOR,
-                '.oe_single_form_container.modal-content'))
+            ec.visibility_of_element_located((By.CSS_SELECTOR,
+                                              '.oe_single_form_container.'
+                                              'modal-content'))
         )
         cls.odoo_client = Client(odoo_client_url, db=database,
                                  user=username, password=password)

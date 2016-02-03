@@ -7,7 +7,9 @@ import selenium.webdriver.support.ui as ui
 from selenium.webdriver.common.by import By
 from tests.test_common import TestCommon
 from openeobs_mobile.patient_page_graph import PatientPageGraphs
-from environment import NURSE_USERNM1, NURSE_PWD1, MOB_LOGIN, PATIENT_PAGE
+from tests.environment import NURSE_PWD1, NURSE_USERNM1, ODOO_CLIENT_URL, \
+    PATIENT_PAGE
+
 
 class TestVisualisationCommon(TestCommon):
     """
@@ -16,7 +18,7 @@ class TestVisualisationCommon(TestCommon):
     risk = 'none'
 
     def setUp(self):
-        self.driver.get(MOB_LOGIN)
+        self.driver.get("http://localhost:8069/mobile/login")
         self.login_page = LoginPage(self.driver)
         self.list_page = ListPage(self.driver)
         self.patient_page = PatientPage(self.driver)
@@ -30,17 +32,16 @@ class TestVisualisationCommon(TestCommon):
             'high': self.patient_page.add_high_risk_observation,
             '3in1': self.patient_page.add_three_in_one_observation
         }
-
         self.login_page.login(NURSE_USERNM1, NURSE_PWD1)
         self.list_page.go_to_patient_list()
         patients = self.list_page.get_list_items()
         patient_to_test = patients[0]
-        self.patient_id = patient_to_test.get_attribute('href').replace(
+        patient_id = patient_to_test.get_attribute('href').replace(
             PATIENT_PAGE, ''
         )
 
-        self.patient_page.remove_observations_for_patient(int(self.patient_id))
-        risk_mapping[self.risk](int(self.patient_id))
+        self.patient_page.remove_observations_for_patient(int(patient_id))
+        risk_mapping[self.risk](int(patient_id))
         self.driver.get(patient_to_test.get_attribute('href'))
         ui.WebDriverWait(self.driver, 5).until(
             ec.visibility_of_element_located((By.CSS_SELECTOR, '#chart svg')))
@@ -74,6 +75,10 @@ class TestVisualisationCommon(TestCommon):
 
 
     def get_graph_data(self):
+        """
+        Helper function to get an dict of the focus chart data
+        :return: dict of strings from focus chart data
+        """
         rr_mes = \
             self.patient_page_graph.get_graph_measurement(self.graph_list[0])
         os_mes = \

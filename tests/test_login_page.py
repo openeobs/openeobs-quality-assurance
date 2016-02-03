@@ -3,8 +3,7 @@
 from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.page_confirm import PageConfirm
 from tests.test_common import TestCommon
-from environment import MOB_LOGIN
-from users import NurseUsers, NurseUsersPwd
+from tests.environment import MOB_LOGIN, NURSE_PWD1, NURSE_USERNM1
 
 class TestLoginPage(TestCommon):
     """
@@ -26,8 +25,8 @@ class TestLoginPage(TestCommon):
         Test that can log into the app with correct credentials
         """
 
-        self.login_page.login(NurseUsers.nurse_user1,
-                              NurseUsersPwd.nurse_pwd_user1)
+        self.login_page.login(NURSE_USERNM1,
+                              NURSE_PWD1)
         self.assertTrue(self.login_page.has_logged_in(), 'Unable to log in')
 
     def test_error_message_login(self):
