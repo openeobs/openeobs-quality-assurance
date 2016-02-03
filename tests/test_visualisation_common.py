@@ -58,20 +58,12 @@ class TestVisualisationCommon(TestCommon):
         # Focus Graphs
         focus_graphs = self.patient_page_graph.get_focus_graphs()
         self.assertEqual(len(focus_graphs), 5, 'Incorrect number of graphs')
-        self.graph_data = []
-        for graph in focus_graphs:
-            self.graph_data.append(graph)
+        self.graph_list = []
 
-        self.rr_mes = \
-            self.patient_page_graph.get_graph_measurement(self.graph_data[0])
-        self.os_mes = \
-            self.patient_page_graph.get_graph_measurement(self.graph_data[1])
-        self.bt_mes = \
-            self.patient_page_graph.get_graph_measurement(self.graph_data[2])
-        self.hr_mes = \
-            self.patient_page_graph.get_graph_measurement(self.graph_data[3])
-        self.bp_mes = \
-            self.patient_page_graph.get_graph_measurements(self.graph_data[4])
+        for graph in focus_graphs:
+            self.graph_list.append(graph)
+
+        self.graph_data = self.get_graph_data()
 
         # Tabular Values table
         tabular_values_table = self.patient_page.get_tabular_values()
@@ -80,17 +72,37 @@ class TestVisualisationCommon(TestCommon):
         self.tabular_values_rows = \
             self.patient_page.get_table_rows(tabular_values_table)
 
+
+    def get_graph_data(self):
+        rr_mes = \
+            self.patient_page_graph.get_graph_measurement(self.graph_list[0])
+        os_mes = \
+            self.patient_page_graph.get_graph_measurement(self.graph_list[1])
+        bt_mes = \
+            self.patient_page_graph.get_graph_measurement(self.graph_list[2])
+        hr_mes = \
+            self.patient_page_graph.get_graph_measurement(self.graph_list[3])
+        bp_mes = \
+            self.patient_page_graph.get_graph_measurements(self.graph_list[4])
+
+        return {
+            'resp_rate': rr_mes,
+            'oxy_sat': os_mes,
+            'body_temp': bt_mes,
+            'pulse_rate': hr_mes,
+            'blood_press': bp_mes
+        }
+
     def get_focus_chart_labels(self):
         """
         Helper function to get an dict of the focus chart labels
         :return: dict of strings from focus chart labels
         """
-        rr_label = self.patient_page_graph.get_graph_label(
-                self.graph_data[0])
-        os_label = self.patient_page_graph.get_graph_label(self.graph_data[1])
-        bt_label = self.patient_page_graph.get_graph_label(self.graph_data[2])
-        hr_label = self.patient_page_graph.get_graph_label(self.graph_data[3])
-        bp_label = self.patient_page_graph.get_graph_label(self.graph_data[4])
+        rr_label = self.patient_page_graph.get_graph_label(self.graph_list[0])
+        os_label = self.patient_page_graph.get_graph_label(self.graph_list[1])
+        bt_label = self.patient_page_graph.get_graph_label(self.graph_list[2])
+        hr_label = self.patient_page_graph.get_graph_label(self.graph_list[3])
+        bp_label = self.patient_page_graph.get_graph_label(self.graph_list[4])
         return {
             'resp_rate': rr_label,
             'oxy_sat': os_label,

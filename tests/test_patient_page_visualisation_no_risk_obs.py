@@ -14,16 +14,14 @@ class TestPatientPageVisualisationWithNoRiskObsData(TestVisualisationCommon):
         """
         Test that the value for resp rate on the chart is correct
         """
-        self.assertEqual(self.rr_mes, '18/min',
+        self.assertEqual(self.graph_data['resp_rate'], '18/min',
                          'Incorrect Respiration Rate Measurement')
 
     def test_chart_oxy_sat_value(self):
         """
         Test that the value for oxygen saturation on the chart is correct
         """
-        self.assertEqual(
-            self.os_mes,
-            '99%',
+        self.assertEqual(self.graph_data['oxy_sat'], '99%',
             'Incorrect O2 Saturation Measurement'
         )
 
@@ -31,23 +29,23 @@ class TestPatientPageVisualisationWithNoRiskObsData(TestVisualisationCommon):
         """
         Test that the value for body temperature on the chart is correct
         """
-        self.assertIn('37.5', self.bt_mes,
+        self.assertIn('37.5', self.graph_data['body_temp'],
                       'Incorrect Body Temperature Measurement')
 
     def test_chart_pulse_rate_value(self):
         """
         Test that the value for pulse rate on the chart is correct
         """
-        self.assertEqual(self.hr_mes, '65/min',
+        self.assertEqual(self.graph_data['pulse_rate'], '65/min',
                          'Incorrect Pulse Rate Measurement')
 
     def test_chart_blood_pressure_value(self):
         """
         Test that the value for blood pressure on the chart is correct
         """
-        self.assertEqual(self.bp_mes[0].text, '120',
+        self.assertEqual(self.graph_data['blood_press'][0].text, '120',
                          'Incorrect Blood Pressure Measurement - top')
-        self.assertEqual(self.bp_mes[1].text, '80mmHg',
+        self.assertEqual(self.graph_data['blood_press'][1].text, '80mmHg',
                          'Incorrect Blood Pressure Measurement - bottom')
 
     def test_tabular_avpu_value(self):
