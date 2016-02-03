@@ -67,8 +67,6 @@ class TestVisualisationCommon(TestCommon):
         self.graph_data = self.get_graph_data()
 
         self.tabular_values_table = self.patient_page.get_tabular_values()
-        self.tabular_values_rows = \
-            self.patient_page.get_table_rows(self.tabular_values_table)
 
     def get_graph_data(self):
         """
@@ -120,7 +118,10 @@ class TestVisualisationCommon(TestCommon):
         :param column: Column to get value from
         :return: String from row/column combo
         """
+        tabular_values_rows = \
+            self.patient_page.get_table_rows(self.tabular_values_table)
+
         tabular_values = \
-            self.patient_page.get_table_data(self.tabular_values_rows[row])
+            self.patient_page.get_table_data(tabular_values_rows[row])
         self.assertEqual(len(tabular_values), 4, 'Incorrect number of data')
         return tabular_values[column]

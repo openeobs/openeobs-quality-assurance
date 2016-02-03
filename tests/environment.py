@@ -13,9 +13,9 @@ ODOO_CLIENT_URL = 'http://localhost:8069'
 DESKTOP_URL = ODOO_CLIENT_URL+'/web?db={database}'.format(database=DATABASE)
 
 # MOB_LOGIN = 'http://localhost:8069/mobile/login'
-MOB_LOGIN = ODOO_CLIENT_URL+'/mobile/login'
+MOB_LOGIN = ODOO_CLIENT_URL + '/mobile/login'
 PATIENT_PAGE = ODOO_CLIENT_URL + '/mobile/patient/'
-TASK_PAGE = ODOO_CLIENT_URL+'mobile/task/'
+TASK_PAGE = ODOO_CLIENT_URL + '/mobile/task/'
 
 # Nurse Login detail
 NURSE_USERNM1 = 'nasir'

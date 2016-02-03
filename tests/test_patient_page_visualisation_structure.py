@@ -11,7 +11,6 @@ class TestPatientPageVisualisationStructure(TestVisualisationCommon):
         super(TestPatientPageVisualisationStructure, self).setUp()
 
         # Tabular Values table
-        self.tabular_values_table = self.patient_page.get_tabular_values()
         self.tabular_values_headers = \
             self.patient_page.get_table_headers(self.tabular_values_table)
 

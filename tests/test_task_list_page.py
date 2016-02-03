@@ -6,6 +6,7 @@ from openeobs_mobile.page_confirm import PageConfirm
 from tests.test_common import TestCommon
 from tests.environment import MOB_LOGIN, NURSE_PWD1, NURSE_USERNM1, TASK_PAGE
 
+
 class TestTaskListPage(TestCommon):
     """
     Setup a session and test that the task list page works correctly
