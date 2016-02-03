@@ -10,7 +10,6 @@ from openeobs_mobile.patient_page_graph import PatientPageGraphs
 from tests.environment import NURSE_PWD1, NURSE_USERNM1, PATIENT_PAGE
 
 
-
 class TestVisualisationCommon(TestCommon):
     """
     Setup a session and ensure that patient data displays correctly
@@ -66,12 +65,6 @@ class TestVisualisationCommon(TestCommon):
 
         self.graph_data = self.get_graph_data()
 
-        # Tabular Values table
-        tabular_values_table = self.patient_page.get_tabular_values()
-        self.tabular_values_headers = \
-            self.patient_page.get_table_headers(tabular_values_table)
-        self.tabular_values_rows = \
-            self.patient_page.get_table_rows(tabular_values_table)
 
     def get_graph_data(self):
         """

@@ -12,6 +12,10 @@ class TestPatientPageVisualisationWithMediumRiskObsData(
         self.risk = 'medium'
         super(TestPatientPageVisualisationWithMediumRiskObsData, self).setUp()
 
+        self.tabular_values_table = self.patient_page.get_tabular_values()
+        self.tabular_values_rows = \
+            self.patient_page.get_table_rows(self.tabular_values_table)
+
     def test_chart_resp_rate_value(self):
         """
         Test that the value for resp rate on the chart is correct

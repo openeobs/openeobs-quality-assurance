@@ -1,5 +1,4 @@
 """Test to ensure that the Blood Sugar ob works correctly"""
-
 from openeobs_mobile.data import BLOOD_SUGAR_DATA
 from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.list_page import ListPage
@@ -10,6 +9,7 @@ import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
 from openeobs_mobile.patient_page_locators import OPEN_OBS_MENU_BLOOD_SUGAR
 from environment import MOB_LOGIN, NURSE_PWD1, NURSE_USERNM1
+
 
 class TestBloodSugarObsPage(TestCommon):
     """

@@ -7,7 +7,9 @@ import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
 from selenium.webdriver.common.by import By
 from selenium import webdriver
-from environment import MOB_LOGIN, ODOO_CLIENT_URL, DATABASE,USERNAME,PASSWORD
+from environment import MOB_LOGIN, ODOO_CLIENT_URL, DATABASE, \
+    USERNAME, PASSWORD
+
 
 class TestLoginPageWithMultipleDBs(unittest.TestCase):
     """

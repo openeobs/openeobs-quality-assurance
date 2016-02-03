@@ -1,5 +1,4 @@
 """Test to ensure that the Glasgow Coma Scale ob works correctly"""
-
 from openeobs_mobile.data import GCS_SCORE_15_DATA
 from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.list_page import ListPage
@@ -11,6 +10,7 @@ import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
 from openeobs_mobile.patient_page_locators import OPEN_OBS_MENU_GCS
 from environment import MOB_LOGIN, NURSE_PWD1, NURSE_USERNM1
+
 
 class TestGcsObsPage(TestCommon):
     """

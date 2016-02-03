@@ -1,5 +1,4 @@
 """Test to ensure Bristol Stool Scale ob works correctly"""
-
 from openeobs_mobile.data import BRISTOL_STOOL_DATA
 from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.list_page import ListPage
@@ -10,6 +9,7 @@ import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
 from openeobs_mobile.patient_page_locators import OPEN_OBS_MENU_BS_SCALE
 from environment import MOB_LOGIN, NURSE_PWD1, NURSE_USERNM1
+
 
 class TestBristolStoolObsPage(TestCommon):
     """

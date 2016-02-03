@@ -10,6 +10,11 @@ class TestPatientPageVisualisationStructure(TestVisualisationCommon):
         self.risk = 'high'
         super(TestPatientPageVisualisationStructure, self).setUp()
 
+        # Tabular Values table
+        self.tabular_values_table = self.patient_page.get_tabular_values()
+        self.tabular_values_headers = \
+            self.patient_page.get_table_headers(self.tabular_values_table)
+
     def test_doesnt_show_no_obs_message(self):
         """
         Test that the No observation data available for patient message is
