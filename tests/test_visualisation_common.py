@@ -7,8 +7,8 @@ import selenium.webdriver.support.ui as ui
 from selenium.webdriver.common.by import By
 from tests.test_common import TestCommon
 from openeobs_mobile.patient_page_graph import PatientPageGraphs
-from tests.environment import NURSE_PWD1, NURSE_USERNM1, PATIENT_PAGE
-
+from tests.environment import NURSE_PWD1, NURSE_USERNM1, PATIENT_PAGE, \
+    MOB_LOGIN
 
 class TestVisualisationCommon(TestCommon):
     """
@@ -17,7 +17,7 @@ class TestVisualisationCommon(TestCommon):
     risk = 'none'
 
     def setUp(self):
-        self.driver.get("http://localhost:8069/mobile/login")
+        self.driver.get(MOB_LOGIN)
         self.login_page = LoginPage(self.driver)
         self.list_page = ListPage(self.driver)
         self.patient_page = PatientPage(self.driver)

@@ -7,6 +7,8 @@ from tests.test_common import TestCommon
 from openeobs_mobile.patient_page_locators import OPEN_OBS_MENU_TITLE, \
     OPEN_OBS_MENU_NEWS_DEADLINE, OPEN_OBS_MENU_NEWS_ITEM, \
     OPEN_OBS_MENU_LIST_ITEMS
+from tests.environment import MOB_LOGIN, NURSE_PWD1, NURSE_USERNM1, \
+    PATIENT_PAGE
 
 
 class TestPatientPageAdhocObs(TestCommon):
@@ -15,11 +17,11 @@ class TestPatientPageAdhocObs(TestCommon):
     """
 
     def setUp(self):
-        self.driver.get("http://localhost:8069/mobile/login")
+        self.driver.get(MOB_LOGIN)
         self.login_page = LoginPage(self.driver)
         self.list_page = ListPage(self.driver)
         self.patient_page = PatientPage(self.driver)
-        self.login_page.login('nasir', 'nasir')
+        self.login_page.login(NURSE_USERNM1, NURSE_PWD1)
         self.list_page.go_to_patient_list()
         patients = self.list_page.get_list_items()
         patient_to_test = patients[0]
@@ -63,7 +65,7 @@ class TestPatientPageAdhocObs(TestCommon):
         Test that can do a barcode scan
         """
         task_id = self.patient_url.replace(
-            'http://localhost:8069/mobile/patient/', ''
+            PATIENT_PAGE, ''
         )
         id_to_use = self.patient_page.patient_scan_helper(int(task_id))
         self.patient_page.do_barcode_scan(id_to_use['other_identifier'])
@@ -83,7 +85,7 @@ class TestPatientPageAdhocObs(TestCommon):
         self.assertGreater(len(observations), 0,
                            'Incorrect number of adhoc obs')
         task_id = self.patient_url.replace(
-            'http://localhost:8069/mobile/patient/', ''
+            PATIENT_PAGE, ''
         )
         data = self.patient_page.patient_helper(int(task_id))[0]
         patient_name = data['full_name']
@@ -104,7 +106,7 @@ class TestPatientPageAdhocObs(TestCommon):
             *OPEN_OBS_MENU_NEWS_DEADLINE
         )
         task_id = self.patient_url.replace(
-            'http://localhost:8069/mobile/patient/', ''
+            PATIENT_PAGE, ''
         )
         data = self.patient_page.patient_helper(int(task_id))[0]
         ews_deadline = data['next_ews_time']

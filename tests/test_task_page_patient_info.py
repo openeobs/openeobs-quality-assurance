@@ -7,18 +7,19 @@ from tests.test_common import TestCommon
 from openeobs_mobile.task_page_locators import PATIENT_NAME_LINK, \
     PATIENT_NAME_INFO, PATIENT_INFO_POPUP_TITLE, \
     PATIENT_INFO_FULLSCREEN_IFRAME, PATIENT_INFO_FULLSCREEN_CLOSE
-
+from tests.environment import MOB_LOGIN, NURSE_PWD1, NURSE_USERNM1, TASK_PAGE, \
+    PATIENT_PAGE
 
 class TestTaskPagePatientInfo(TestCommon):
     """
     Setup a session and test that the patient info is correct
     """
     def setUp(self):
-        self.driver.get("http://localhost:8069/mobile/login")
+        self.driver.get(MOB_LOGIN)
         self.login_page = LoginPage(self.driver)
         self.list_page = ListPage(self.driver)
         self.task_page = TaskPage(self.driver)
-        self.login_page.login('nasir', 'nasir')
+        self.login_page.login(NURSE_USERNM1, NURSE_PWD1)
         self.list_page.go_to_task_list()
         tasks = self.list_page.get_list_items()
         task_to_test = tasks[0]
@@ -62,7 +63,7 @@ class TestTaskPagePatientInfo(TestCommon):
         Test that can do a barcode scan
         """
         task_id = self.task_url.replace(
-            'http://localhost:8069/mobile/task/', ''
+            TASK_PAGE, ''
         )
         id_to_use = self.task_page.task_scan_helper(int(task_id))
         self.task_page.do_barcode_scan(id_to_use['other_identifier'])
@@ -119,7 +120,7 @@ class TestTaskPagePatientInfo(TestCommon):
             *PATIENT_INFO_FULLSCREEN_IFRAME
         )
         iframe_url = iframe.get_attribute('src')
-        patient_url = 'http://localhost:8069/mobile/patient/{0}'.format(
+        patient_url = PATIENT_PAGE+'{0}'.format(
             patient_id
         )
         self.assertEqual(iframe_url, patient_url, 'Incorrect iframe src url')

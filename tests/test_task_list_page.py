@@ -4,17 +4,17 @@ from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.list_page import ListPage
 from openeobs_mobile.page_confirm import PageConfirm
 from tests.test_common import TestCommon
-
+from tests.environment import MOB_LOGIN, NURSE_PWD1, NURSE_USERNM1,TASK_PAGE
 
 class TestTaskListPage(TestCommon):
     """
     Setup a session and test that the task list page works correctly
     """
     def setUp(self):
-        self.driver.get("http://localhost:8069/mobile/login")
+        self.driver.get(MOB_LOGIN)
         self.login_page = LoginPage(self.driver)
         self.task_list_page = ListPage(self.driver)
-        self.login_page.login('nasir', 'nasir')
+        self.login_page.login(NURSE_USERNM1, NURSE_PWD1)
         self.task_list_page.go_to_task_list()
 
     def test_can_logout(self):
@@ -56,7 +56,7 @@ class TestTaskListPage(TestCommon):
         tasks = self.task_list_page.get_list_items()
         patient_to_test = tasks[0]
         task_id = patient_to_test.get_attribute('href').replace(
-            'http://localhost:8069/mobile/task/', ''
+            TASK_PAGE, ''
         )
         id_to_use = self.task_list_page.task_scan_helper(task_id)
         self.task_list_page.do_barcode_scan(id_to_use['other_identifier'])
@@ -81,7 +81,7 @@ class TestTaskListPage(TestCommon):
         tasks = self.task_list_page.get_list_items()
         patient_to_test = tasks[0]
         task_id = patient_to_test.get_attribute('href').replace(
-            'http://localhost:8069/mobile/task/', ''
+            TASK_PAGE, ''
         )
         task_data = self.task_list_page.task_helper(task_id)[0]
         name_to_use = task_data['full_name']
@@ -98,7 +98,7 @@ class TestTaskListPage(TestCommon):
         tasks = self.task_list_page.get_list_items()
         patient_to_test = tasks[0]
         task_id = patient_to_test.get_attribute('href').replace(
-            'http://localhost:8069/mobile/task/', ''
+            TASK_PAGE, ''
         )
         task_data = self.task_list_page.task_helper(task_id)[0]
         location = task_data['location']
@@ -117,7 +117,7 @@ class TestTaskListPage(TestCommon):
         tasks = self.task_list_page.get_list_items()
         patient_to_test = tasks[0]
         task_id = patient_to_test.get_attribute('href').replace(
-            'http://localhost:8069/mobile/task/', ''
+            TASK_PAGE, ''
         )
         task_data = self.task_list_page.task_helper(task_id)[0]
         score = task_data['ews_score']
@@ -139,7 +139,7 @@ class TestTaskListPage(TestCommon):
         tasks = self.task_list_page.get_list_items()
         patient_to_test = tasks[0]
         task_id = patient_to_test.get_attribute('href').replace(
-            'http://localhost:8069/mobile/task/', ''
+            TASK_PAGE, ''
         )
         task_data = self.task_list_page.task_helper(task_id)[0]
         deadline = task_data['deadline_time']
@@ -156,7 +156,7 @@ class TestTaskListPage(TestCommon):
         tasks = self.task_list_page.get_list_items()
         patient_to_test = tasks[0]
         task_id = patient_to_test.get_attribute('href').replace(
-            'http://localhost:8069/mobile/task/', ''
+            TASK_PAGE, ''
         )
         task_data = self.task_list_page.task_helper(task_id)[0]
         summary = task_data['summary']

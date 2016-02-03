@@ -3,6 +3,7 @@ from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.list_page import ListPage
 from openeobs_mobile.stand_in_page import StandInPage
 from tests.test_common import TestCommon
+from tests.environment import MOB_LOGIN, NURSE_PWD1, NURSE_USERNM1
 
 
 class TestStandInPage(TestCommon):
@@ -10,10 +11,10 @@ class TestStandInPage(TestCommon):
     Setup a session and test the standin page
     """
     def setUp(self):
-        self.driver.get("http://localhost:8069/mobile/login")
+        self.driver.get(MOB_LOGIN)
         self.login_page = LoginPage(self.driver)
         self.patient_list_page = ListPage(self.driver)
-        self.login_page.login('nasir', 'nasir')
+        self.login_page.login(NURSE_USERNM1, NURSE_PWD1)
         self.patient_list_page.go_to_standin()
 
     def test_stand_in(self):

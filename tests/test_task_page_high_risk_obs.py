@@ -8,7 +8,7 @@ from openeobs_mobile.task_page_locators import CONFIRM_SUBMIT, RELATED_TASK
 import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
 from openeobs_mobile.patient_page_locators import OPEN_OBS_MENU_NEWS_ITEM
-
+from tests.environment import MOB_LOGIN, NURSE_PWD1, NURSE_USERNM1
 
 class TestHighRiskPage(TestCommon):
     """
@@ -16,10 +16,10 @@ class TestHighRiskPage(TestCommon):
     can be submitted, and that the correct action triggers
     """
     def setUp(self):
-        self.driver.get("http://localhost:8069/mobile/login")
+        self.driver.get(MOB_LOGIN)
         self.login_page = LoginPage(self.driver)
         self.patient_list_page = ListPage(self.driver)
-        self.login_page.login('nasir', 'nasir')
+        self.login_page.login(NURSE_USERNM1, NURSE_PWD1)
         self.patient_list_page.go_to_patient_list()
 
     def test_high_risk_obs(self):
@@ -43,7 +43,7 @@ class TestHighRiskPage(TestCommon):
 
         task = 'Immediately inform medical team'
         ui.WebDriverWait(self.driver, 5).until(
-            ec.visibility_of_element_located((RELATED_TASK))
+            ec.visibility_of_element_located(RELATED_TASK)
         )
         response = self.driver.find_element(*RELATED_TASK)
 
