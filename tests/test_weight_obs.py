@@ -10,6 +10,7 @@ import selenium.webdriver.support.ui as ui
 from openeobs_mobile.patient_page_locators import OPEN_OBS_MENU_WEIGHT
 from tests.environment import MOB_LOGIN, NURSE_PWD1, NURSE_USERNM1
 
+
 class TestWeightObsPage(TestCommon):
     """
     Setup a session and test that a weight observation can be submitted

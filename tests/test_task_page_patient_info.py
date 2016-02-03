@@ -7,8 +7,9 @@ from tests.test_common import TestCommon
 from openeobs_mobile.task_page_locators import PATIENT_NAME_LINK, \
     PATIENT_NAME_INFO, PATIENT_INFO_POPUP_TITLE, \
     PATIENT_INFO_FULLSCREEN_IFRAME, PATIENT_INFO_FULLSCREEN_CLOSE
-from tests.environment import MOB_LOGIN, NURSE_PWD1, NURSE_USERNM1, TASK_PAGE, \
-    PATIENT_PAGE
+from tests.environment import MOB_LOGIN, NURSE_PWD1, NURSE_USERNM1, \
+    TASK_PAGE, PATIENT_PAGE
+
 
 class TestTaskPagePatientInfo(TestCommon):
     """

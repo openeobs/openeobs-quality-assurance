@@ -6,6 +6,7 @@ from tests.test_common import TestCommon
 from tests.environment import MOB_LOGIN, NURSE_PWD1, NURSE_USERNM1, \
     PATIENT_PAGE
 
+
 class TestPatientPageVisualisationWithNoObsData(TestCommon):
     """
     Test that the No observation data available for patient message

@@ -4,7 +4,7 @@ from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.list_page import ListPage
 from openeobs_mobile.page_confirm import PageConfirm
 from tests.test_common import TestCommon
-from tests.environment import MOB_LOGIN, NURSE_PWD1, NURSE_USERNM1,TASK_PAGE
+from tests.environment import MOB_LOGIN, NURSE_PWD1, NURSE_USERNM1, TASK_PAGE
 
 class TestTaskListPage(TestCommon):
     """
