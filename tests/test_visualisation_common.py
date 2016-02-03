@@ -7,8 +7,7 @@ import selenium.webdriver.support.ui as ui
 from selenium.webdriver.common.by import By
 from tests.test_common import TestCommon
 from openeobs_mobile.patient_page_graph import PatientPageGraphs
-from tests.environment import NURSE_PWD1, NURSE_USERNM1, ODOO_CLIENT_URL, \
-    PATIENT_PAGE
+from tests.environment import NURSE_PWD1, NURSE_USERNM1, PATIENT_PAGE
 
 
 class TestVisualisationCommon(TestCommon):
@@ -72,7 +71,6 @@ class TestVisualisationCommon(TestCommon):
             self.patient_page.get_table_headers(tabular_values_table)
         self.tabular_values_rows = \
             self.patient_page.get_table_rows(tabular_values_table)
-
 
     def get_graph_data(self):
         """
