@@ -7,7 +7,7 @@ import selenium.webdriver.support.ui as ui
 from selenium.webdriver.common.by import By
 from tests.test_common import TestCommon
 from openeobs_mobile.patient_page_graph import PatientPageGraphs
-
+from environment import NURSE_USERNM1, NURSE_PWD1, MOB_LOGIN, PATIENT_PAGE
 
 class TestVisualisationCommon(TestCommon):
     """
@@ -16,7 +16,7 @@ class TestVisualisationCommon(TestCommon):
     risk = 'none'
 
     def setUp(self):
-        self.driver.get("http://localhost:8069/mobile/login")
+        self.driver.get(MOB_LOGIN)
         self.login_page = LoginPage(self.driver)
         self.list_page = ListPage(self.driver)
         self.patient_page = PatientPage(self.driver)
@@ -31,12 +31,12 @@ class TestVisualisationCommon(TestCommon):
             '3in1': self.patient_page.add_three_in_one_observation
         }
 
-        self.login_page.login('nasir', 'nasir')
+        self.login_page.login(NURSE_USERNM1, NURSE_PWD1)
         self.list_page.go_to_patient_list()
         patients = self.list_page.get_list_items()
         patient_to_test = patients[0]
         self.patient_id = patient_to_test.get_attribute('href').replace(
-            'http://localhost:8069/mobile/patient/', ''
+            PATIENT_PAGE, ''
         )
 
         self.patient_page.remove_observations_for_patient(int(self.patient_id))
