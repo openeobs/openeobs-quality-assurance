@@ -83,8 +83,9 @@ class TestTaskPagePatientInfo(TestCommon):
             *PATIENT_INFO_POPUP_TITLE
         )
         patient_data = self.task_page.patient_helper(int(patient_id))[0]
-        popup_title = '{0}{1}'.format(patient_data['full_name'],
+        popup_title = '{0} {1}'.format(patient_data['full_name'],
                                       patient_data['gender'])
+
         self.assertEqual(popup_title, popup_header.text.replace('\n', ' '),
                          'Incorrect popup name')
 
@@ -102,7 +103,7 @@ class TestTaskPagePatientInfo(TestCommon):
             *PATIENT_INFO_POPUP_TITLE
         )
         patient_data = self.task_page.patient_helper(int(patient_id))[0]
-        popup_title = '{0}{1}'.format(patient_data['full_name'],
+        popup_title = '{0} {1}'.format(patient_data['full_name'],
                                       patient_data['gender'])
         self.assertEqual(popup_title, popup_header.text.replace('\n', ' '),
                          'Incorrect popup name')
