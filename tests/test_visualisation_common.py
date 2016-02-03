@@ -66,8 +66,6 @@ class TestVisualisationCommon(TestCommon):
 
         self.graph_data = self.get_graph_data()
 
-        self.tabular_values_table = self.patient_page.get_tabular_values()
-
     def get_graph_data(self):
         """
         Helper function to get an dict of the focus chart data
@@ -118,8 +116,10 @@ class TestVisualisationCommon(TestCommon):
         :param column: Column to get value from
         :return: String from row/column combo
         """
+        tabular_values_table = self.patient_page.get_tabular_values()
+
         tabular_values_rows = \
-            self.patient_page.get_table_rows(self.tabular_values_table)
+            self.patient_page.get_table_rows(tabular_values_table)
 
         tabular_values = \
             self.patient_page.get_table_data(tabular_values_rows[row])
