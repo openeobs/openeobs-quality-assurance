@@ -9,6 +9,7 @@ class TestLoginPage(TestCommon):
     """
     Setup a session and test the login page
     """
+
     def setUp(self):
         self.driver.get(MOB_LOGIN)
         self.login_page = LoginPage(self.driver)

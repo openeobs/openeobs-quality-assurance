@@ -10,6 +10,7 @@ from openeobs_mobile.patient_page_graph import PatientPageGraphs
 from tests.environment import NURSE_PWD1, NURSE_USERNM1, PATIENT_PAGE
 
 
+
 class TestVisualisationCommon(TestCommon):
     """
     Setup a session and ensure that patient data displays correctly
