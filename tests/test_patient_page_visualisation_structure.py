@@ -136,7 +136,7 @@ class TestPatientPageVisualisationStructure(TestVisualisationCommon):
         """
         Test the date header
         """
-
+        self.patient_page.change_to_table()
         self.assertEqual(self.patient_page.get_table_headers
                          (self.patient_page.get_obs_table())[0],
                          'Date', 'Incorrect header')
