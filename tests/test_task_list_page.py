@@ -124,11 +124,15 @@ class TestTaskListPage(TestCommon):
         score = task_data['ews_score']
         trend = task_data['ews_trend']
         score_str = '({0} )'.format(score)
-        patient_trend = self.driver.find_element(
+        patient_trend = self.driver.find_elements(
             *list_page_locators.LIST_ITEM_PATIENT_TREND
         )
+        for item in patient_trend:
+            if item.get_attribute('class') == 'icon-alert':
+                patient_trend.remove(item)
+
         trend_str = 'icon-{0}-arrow'.format(trend)
-        self.assertEqual(patient_trend.get_attribute('class'), trend_str,
+        self.assertEqual(patient_trend[0].get_attribute('class'), trend_str,
                          'Incorrect trend')
         self.assertIn(score_str, patient_to_test.text, 'Incorrect score')
 
