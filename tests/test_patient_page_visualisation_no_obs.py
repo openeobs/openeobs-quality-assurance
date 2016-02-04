@@ -5,6 +5,7 @@ from openeobs_mobile.list_page import ListPage
 from tests.test_common import TestCommon
 from tests.environment import MOB_LOGIN, NURSE_PWD1, NURSE_USERNM1, \
     PATIENT_PAGE
+import time
 
 
 class TestPatientPageVisualisationWithNoObsData(TestCommon):
