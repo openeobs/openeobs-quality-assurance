@@ -9,6 +9,7 @@ from tests.environment import MOB_LOGIN, NURSE_PWD1, NURSE_USERNM1, \
 import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
 
+
 class TestPatientPageVisualisationWithNoObsData(TestCommon):
     """
     Test that the No observation data available for patient message

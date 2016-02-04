@@ -1,5 +1,4 @@
 """Tests to ensure that the patient list page works correctly"""
-import time
 
 from openeobs_mobile import list_page_locators
 from openeobs_mobile import patient_page_locators
@@ -140,7 +139,6 @@ class TestPatientListPage(TestCommon):
                          'Incorrect trend')
         self.assertIn(score_str, patient_to_test.text, 'Incorrect score')
 
-
     def test_down_trend(self):
         """
         Test that the trend is lowered after submitting a high risk ob,
@@ -208,7 +206,6 @@ class TestPatientListPage(TestCommon):
         )
         self.assertEqual(patient_trend.get_attribute('class'), trend_str,
                          'Incorrect trend')
-
 
     def test_task_deadline_in_list(self):
         """
