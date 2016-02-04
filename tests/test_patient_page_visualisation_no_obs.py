@@ -2,10 +2,12 @@
 from openeobs_mobile.patient_page import PatientPage
 from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.list_page import ListPage
+from openeobs_mobile.patient_page_locators import GRAPH_CHART
 from tests.test_common import TestCommon
 from tests.environment import MOB_LOGIN, NURSE_PWD1, NURSE_USERNM1, \
     PATIENT_PAGE
-
+import selenium.webdriver.support.expected_conditions as ec
+import selenium.webdriver.support.ui as ui
 
 class TestPatientPageVisualisationWithNoObsData(TestCommon):
     """
@@ -28,10 +30,15 @@ class TestPatientPageVisualisationWithNoObsData(TestCommon):
         self.patient_page.remove_observations_for_patient(int(patient_id))
         self.driver.get(self.patient_url)
 
+        ui.WebDriverWait(self.driver, 5).until(
+            ec.visibility_of_element_located(GRAPH_CHART)
+        )
+
     def test_shows_message_when_no_obs(self):
         """
         Test that the No observation data available for patient message is
         shown on no obs being available
         """
+
         self.assertTrue(self.patient_page.has_no_patient_data(),
                         'No Observation Data Available message not found')

@@ -49,9 +49,6 @@ class PatientPage(BasePage):
         Check that the patient's record shows data
         :return: Boolean if error message is shown or not
         """
-        ui.WebDriverWait(self.driver, 5).until(
-            ec.visibility_of_element_located((GRAPH_CHART))
-        )
         chart = self.driver.find_element(*GRAPH_CHART)
         return chart.text == 'No observation data available for patient'
 

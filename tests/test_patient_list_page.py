@@ -1,4 +1,6 @@
 """Tests to ensure that the patient list page works correctly"""
+import time
+
 from openeobs_mobile import list_page_locators
 from openeobs_mobile import patient_page_locators
 from openeobs_mobile.login_page import LoginPage
@@ -137,6 +139,76 @@ class TestPatientListPage(TestCommon):
         self.assertEqual(patient_trend.get_attribute('class'), trend_str,
                          'Incorrect trend')
         self.assertIn(score_str, patient_to_test.text, 'Incorrect score')
+
+
+    def test_down_trend(self):
+        """
+        Test that the trend is lowered after submitting a high risk ob,
+        followed by a low risk ob
+        """
+        tasks = self.patient_list_page.get_list_items()
+        patient_to_test = tasks[0]
+        task_id = patient_to_test.get_attribute('href').replace(
+            PATIENT_PAGE, ''
+        )
+        task_data = self.patient_list_page.patient_helper(task_id)[0]
+
+        PatientPage(self.driver).add_high_risk_observation(int(task_id))
+        PatientPage(self.driver).add_low_risk_observation(int(task_id))
+
+        trend = task_data['ews_trend']
+        trend_str = 'icon-{0}-arrow'.format(trend)
+        patient_trend = self.driver.find_element(
+            *list_page_locators.LIST_ITEM_PATIENT_TREND
+        )
+        self.assertEqual(patient_trend.get_attribute('class'), trend_str,
+                         'Incorrect trend')
+
+    def test_up_trend(self):
+        """
+        Test that the trend is increased after submitting a low risk ob,
+        followed by a high risk ob
+        """
+        tasks = self.patient_list_page.get_list_items()
+        patient_to_test = tasks[0]
+        task_id = patient_to_test.get_attribute('href').replace(
+            PATIENT_PAGE, ''
+        )
+        task_data = self.patient_list_page.patient_helper(task_id)[0]
+
+        PatientPage(self.driver).add_low_risk_observation(int(task_id))
+        PatientPage(self.driver).add_high_risk_observation(int(task_id))
+
+        trend = task_data['ews_trend']
+        trend_str = 'icon-{0}-arrow'.format(trend)
+        patient_trend = self.driver.find_element(
+            *list_page_locators.LIST_ITEM_PATIENT_TREND
+        )
+        self.assertEqual(patient_trend.get_attribute('class'), trend_str,
+                         'Incorrect trend')
+
+    def test_same_trend(self):
+        """
+        Test that the trend stays the same after submitting two of the same ob
+        """
+        tasks = self.patient_list_page.get_list_items()
+        patient_to_test = tasks[0]
+        task_id = patient_to_test.get_attribute('href').replace(
+            PATIENT_PAGE, ''
+        )
+        task_data = self.patient_list_page.patient_helper(task_id)[0]
+
+        PatientPage(self.driver).add_medium_risk_observation(int(task_id))
+        PatientPage(self.driver).add_medium_risk_observation(int(task_id))
+
+        trend = task_data['ews_trend']
+        trend_str = 'icon-{0}-arrow'.format(trend)
+        patient_trend = self.driver.find_element(
+            *list_page_locators.LIST_ITEM_PATIENT_TREND
+        )
+        self.assertEqual(patient_trend.get_attribute('class'), trend_str,
+                         'Incorrect trend')
+
 
     def test_task_deadline_in_list(self):
         """
