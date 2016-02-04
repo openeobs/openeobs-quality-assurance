@@ -195,15 +195,3 @@ class TestPatientListPage(TestCommon):
                                                  patient_page_locators
                                                  .TABLE_CONTAINER_TABLE)
         self.assertEqual(patient_table.is_displayed(), True, 'Table not found')
-
-    def test_adhoc_obs(self):
-        """
-        Test that a patient record allows for adhoc obs
-        """
-        patients = self.patient_list_page.get_list_items()
-
-        PatientPage(self.driver).select_patient(patients)
-        obs_menu = PatientPage(self.driver).open_adhoc_obs_menu()
-
-        self.assertEqual(obs_menu.is_displayed(), True,
-                         'Obs menu is not present')
