@@ -2,6 +2,7 @@
 from openeobs_mobile.data import INCORRECT_EWS_DATA
 from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.list_page import ListPage
+from openeobs_mobile.menu_locators import SERVER_ERROR
 from openeobs_mobile.patient_page import PatientPage
 from tests.test_common import TestCommon
 from openeobs_mobile.task_page_locators import TASK_FORM_INVALID_SUBMIT
@@ -24,7 +25,7 @@ class TestErrorHandling(TestCommon):
 
     def test_news_error(self):
         """
-        Test that entering incorrect data into a NEWS ob will cause errors
+        Test that entering incorrect data into a NEWS ob will cause an error
         """
         incorrect_score = INCORRECT_EWS_DATA
 
@@ -40,6 +41,25 @@ class TestErrorHandling(TestCommon):
 
         response = self.driver.find_element(
             *TASK_FORM_INVALID_SUBMIT).is_displayed()
+
+        self.assertEqual(response, True,
+                         'Incorrect error handling')
+
+    def test_barcode_error(self):
+        """
+        Test that entering incorrect data into a barcode scan will
+        cause an error
+        """
+        no_patient_id = self.patient_list_page.patient_scan_helper(99)
+        self.patient_list_page.do_barcode_scan(
+            no_patient_id['other_identifier'])
+
+        ui.WebDriverWait(self.driver, 5).until(
+            ec.visibility_of_element_located(SERVER_ERROR)
+        )
+
+        response = self.driver.find_element(
+            *SERVER_ERROR).is_displayed()
 
         self.assertEqual(response, True,
                          'Incorrect error handling')
