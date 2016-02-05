@@ -49,26 +49,3 @@ class TestNewsPage(TestCommon):
         response = self.driver.find_element(*SUCCESSFUL_SUBMIT)
         self.assertEqual(success, response.text,
                          'NEWS observation unsuccessful')
-
-    def test_error_handling(self):
-        """
-        Test that errors are reported by the application, and prevent incorrect
-        submissions
-        """
-        incorrect_score = INCORRECT_EWS_DATA
-
-        patients = self.patient_list_page.get_list_items()
-
-        PatientPage(self.driver).select_patient(patients)
-        PatientPage(self.driver).open_form(OPEN_OBS_MENU_NEWS_ITEM)
-        PatientPage(self.driver).enter_obs_data(incorrect_score)
-
-        ui.WebDriverWait(self.driver, 5).until(
-            ec.visibility_of_element_located(TASK_FORM_INVALID_SUBMIT)
-        )
-
-        response = self.driver.find_element(
-            *TASK_FORM_INVALID_SUBMIT).is_displayed()
-
-        self.assertEqual(response, True,
-                         'Incorrect error handling')
