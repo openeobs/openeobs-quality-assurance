@@ -149,17 +149,17 @@ class TestPatientListPage(TestCommon):
         task_id = patient_to_test.get_attribute('href').replace(
             PATIENT_PAGE, ''
         )
-        task_data = self.patient_list_page.patient_helper(task_id)[0]
 
         PatientPage(self.driver).add_high_risk_observation(int(task_id))
         PatientPage(self.driver).add_low_risk_observation(int(task_id))
+        self.driver.refresh()
 
-        trend = task_data['ews_trend']
-        trend_str = 'icon-{0}-arrow'.format(trend)
         patient_trend = self.driver.find_element(
             *list_page_locators.LIST_ITEM_PATIENT_TREND
         )
-        self.assertEqual(patient_trend.get_attribute('class'), trend_str,
+
+        self.assertEqual(patient_trend.get_attribute('class'),
+                         'icon-down-arrow',
                          'Incorrect trend')
 
     def test_up_trend(self):
@@ -172,17 +172,16 @@ class TestPatientListPage(TestCommon):
         task_id = patient_to_test.get_attribute('href').replace(
             PATIENT_PAGE, ''
         )
-        task_data = self.patient_list_page.patient_helper(task_id)[0]
 
         PatientPage(self.driver).add_low_risk_observation(int(task_id))
         PatientPage(self.driver).add_high_risk_observation(int(task_id))
+        self.driver.refresh()
 
-        trend = task_data['ews_trend']
-        trend_str = 'icon-{0}-arrow'.format(trend)
         patient_trend = self.driver.find_element(
             *list_page_locators.LIST_ITEM_PATIENT_TREND
         )
-        self.assertEqual(patient_trend.get_attribute('class'), trend_str,
+
+        self.assertEqual(patient_trend.get_attribute('class'), 'icon-up-arrow',
                          'Incorrect trend')
 
     def test_same_trend(self):
@@ -194,17 +193,17 @@ class TestPatientListPage(TestCommon):
         task_id = patient_to_test.get_attribute('href').replace(
             PATIENT_PAGE, ''
         )
-        task_data = self.patient_list_page.patient_helper(task_id)[0]
 
         PatientPage(self.driver).add_medium_risk_observation(int(task_id))
         PatientPage(self.driver).add_medium_risk_observation(int(task_id))
+        self.driver.refresh()
 
-        trend = task_data['ews_trend']
-        trend_str = 'icon-{0}-arrow'.format(trend)
         patient_trend = self.driver.find_element(
             *list_page_locators.LIST_ITEM_PATIENT_TREND
         )
-        self.assertEqual(patient_trend.get_attribute('class'), trend_str,
+
+        self.assertEqual(patient_trend.get_attribute('class'),
+                         'icon-same-arrow',
                          'Incorrect trend')
 
     def test_task_deadline_in_list(self):
