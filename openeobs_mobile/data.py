@@ -176,6 +176,16 @@ HIGH_RISK_SCORE_11_EWS_DATA = {
     'body_temperature': 36.0,
 }
 
+INCORRECT_EWS_DATA = {
+    'respiration_rate': 9999,
+    'indirect_oxymetry_spo2': 9999,
+    'blood_pressure_systolic': 9999,
+    'blood_pressure_diastolic': 9999,
+    'pulse_rate': 9999,
+    'body_temperature': 9999,
+
+}
+
 GCS_SCORE_15_DATA = {
     'eyes': 4,
     'verbal': 5,
