@@ -206,7 +206,8 @@ class PatientPage(BasePage):
         :param data: The data to be entered
         """
         if 'oxygen_administration_flag' in data:
-            oxy = self.driver.find_element_by_name('oxygen_administration_flag')
+            oxy = self.driver.find_element_by_name(
+                'oxygen_administration_flag')
             oxy.send_keys(data['oxygen_administration_flag'])
             oxy.send_keys(Keys.TAB)
 
@@ -220,5 +221,4 @@ class PatientPage(BasePage):
             input_field.send_keys(value)
             input_field.send_keys(Keys.TAB)
 
-        self.driver.find_element(
-                *TASK_FORM_SUBMIT).click()
+        self.driver.find_element(*TASK_FORM_SUBMIT).click()
