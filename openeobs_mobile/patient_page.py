@@ -205,18 +205,20 @@ class PatientPage(BasePage):
         Enter data into an observation form
         :param data: The data to be entered
         """
-        new_dict = {}
+        if 'oxygen_administration_flag' in data:
+            oxy = self.driver.find_element_by_name('oxygen_administration_flag')
+            oxy.send_keys(data['oxygen_administration_flag'])
+            oxy.send_keys(Keys.TAB)
+
+            if 'device_id' in data:
+                device = self.driver.find_element_by_name('device_id')
+                device.send_keys(data['device_id'])
+                device.send_keys(Keys.TAB)
 
         for field, value in data.iteritems():
-            if self.driver.find_element_by_name(field).is_displayed():
-                input_field = self.driver.find_element_by_name(field)
-                input_field.send_keys(value)
-                input_field.send_keys(Keys.TAB)
-            else:
-                new_dict[field] = value
+            input_field = self.driver.find_element_by_name(field)
+            input_field.send_keys(value)
+            input_field.send_keys(Keys.TAB)
 
-        if new_dict:
-            self.enter_obs_data(new_dict)
-        else:
-            self.driver.find_element(
+        self.driver.find_element(
                 *TASK_FORM_SUBMIT).click()

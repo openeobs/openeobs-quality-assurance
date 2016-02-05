@@ -21,6 +21,7 @@ TASK_FORM_FIELD_INPUT = (By.CSS_SELECTOR, '.input-header > input')
 TASK_FORM_FIELD_SELECT = (By.CSS_SELECTOR, '.input-body > select')
 TASK_FORM_FIELD_ERRORS = (By.CSS_SELECTOR, '.input-body > .errors')
 TASK_FORM_FIELD_HELP = (By.CSS_SELECTOR, '.input-body > .help')
+TASK_FORM_INVALID_SUBMIT = (By.ID, 'invalid_form')
 CONFIRM_SUBMIT = (
     By.CSS_SELECTOR, '#submit_observation > ul > li:nth-child(2)')
 SUCCESSFUL_SUBMIT = (By.CSS_SELECTOR, '#submit_success > h2')
