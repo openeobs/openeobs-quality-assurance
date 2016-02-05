@@ -43,7 +43,7 @@ class TestErrorHandling(TestCommon):
             *TASK_FORM_INVALID_SUBMIT).is_displayed()
 
         self.assertEqual(response, True,
-                         'Incorrect error handling')
+                         'Incorrect error handling on NEWS form')
 
     def test_barcode_error(self):
         """
@@ -62,4 +62,4 @@ class TestErrorHandling(TestCommon):
             *SERVER_ERROR).is_displayed()
 
         self.assertEqual(response, True,
-                         'Incorrect error handling')
+                         'Incorrect error handling on barcode scan')
