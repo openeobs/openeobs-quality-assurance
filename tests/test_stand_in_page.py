@@ -29,3 +29,16 @@ class TestStandInPage(TestCommon):
 
         success = 'Successfully accepted stand-in invite'
         self.assertEqual(success, response.text, 'Stand in was unsuccessful')
+
+    def test_stand_in_reject(self):
+        """
+        Test that a stand-in can be rejected
+        """
+        nurse_name = StandInPage(self.driver).submit_stand_in()
+
+        nurse = nurse_name.split(' ', 1)[0].lower()
+        response = StandInPage(self.driver).reject_stand_in(
+            nurse, self.patient_list_page)
+
+        success = 'Successfully rejected stand-in invite'
+        self.assertEqual(success, response.text, 'Reject was unsuccessful')

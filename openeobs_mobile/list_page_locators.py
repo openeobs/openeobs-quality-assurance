@@ -30,6 +30,10 @@ STAND_IN_ACCEPT_BUTTON = (By.CSS_SELECTOR,
                           'body > div.content > ul > li:nth-child(1) > '
                           'a > div > div.task-right > p')
 
-STAND_IN_ACCEPT_CONFIRM = (By.CSS_SELECTOR,
+STAND_IN_REJECT = (By.CSS_SELECTOR,
+                           '#accept_invite > ul > li:nth-child(2) > a')
+STAND_IN_CONFIRM = (By.CSS_SELECTOR,
                            '#accept_invite > ul > li:nth-child(3) > a')
+
 STAND_IN_SUCCESS = (By.CSS_SELECTOR, '#invite_success > h2')
+STAND_IN_REJ_SUCCESS = (By.CSS_SELECTOR, '#reject_success > h2')

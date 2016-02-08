@@ -1,6 +1,5 @@
 """Methods for the stand-in page"""
 from openeobs_mobile import list_page_locators
-
 from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.page_helpers import BasePage
 import selenium.webdriver.support.expected_conditions as ec
@@ -55,10 +54,10 @@ class StandInPage(BasePage):
 
         ui.WebDriverWait(self.driver, 5).until(
             ec.visibility_of_element_located(
-                list_page_locators.STAND_IN_ACCEPT_CONFIRM))
+                list_page_locators.STAND_IN_CONFIRM))
         self.driver.find_element(*
                                  list_page_locators
-                                 .STAND_IN_ACCEPT_CONFIRM).click()
+                                 .STAND_IN_CONFIRM).click()
 
         ui.WebDriverWait(self.driver, 5).until(
             ec.visibility_of_element_located(
@@ -66,5 +65,40 @@ class StandInPage(BasePage):
         response = self.driver.find_element(*
                                             list_page_locators
                                             .STAND_IN_SUCCESS)
+
+        return response
+
+    def reject_stand_in(self, nurse, task_list):
+        """
+        Reject a shared patient from another nurse
+        :param nurse: the nurse who has received the patient request
+        :param task_list: the task list object
+        :return response: The submission response
+        """
+        self.driver.get('http://localhost:8069/mobile/login')
+        LoginPage(self.driver).login(nurse, nurse)
+
+        task_list.go_to_patient_list()
+
+        ui.WebDriverWait(self.driver, 5).until(
+            ec.visibility_of_element_located(
+                list_page_locators.STAND_IN_ACCEPT_BUTTON))
+        self.driver.find_element(*
+                                 list_page_locators
+                                 .STAND_IN_ACCEPT_BUTTON).click()
+
+        ui.WebDriverWait(self.driver, 5).until(
+            ec.visibility_of_element_located(
+                list_page_locators.STAND_IN_REJECT))
+        self.driver.find_element(*
+                                 list_page_locators
+                                 .STAND_IN_REJECT).click()
+
+        ui.WebDriverWait(self.driver, 5).until(
+            ec.visibility_of_element_located(
+                list_page_locators.STAND_IN_REJ_SUCCESS))
+        response = self.driver.find_element(*
+                                            list_page_locators
+                                            .STAND_IN_REJ_SUCCESS)
 
         return response
