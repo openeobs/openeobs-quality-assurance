@@ -1,5 +1,7 @@
 """Methods for the stand-in page"""
 from openeobs_mobile import list_page_locators
+from openeobs_mobile.list_page_locators import STAND_IN_SHARE_FIRST, \
+    STAND_IN_CLAIM, STAND_IN_CLAIM_CONFIRM, STAND_IN_CLAIM_SUCCESS
 from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.page_helpers import BasePage
 import selenium.webdriver.support.expected_conditions as ec
@@ -100,5 +102,25 @@ class StandInPage(BasePage):
         response = self.driver.find_element(*
                                             list_page_locators
                                             .STAND_IN_REJ_SUCCESS)
+        return response
+
+    def claim_stand_in(self):
+        """
+        Claim a stand-in patient from another nurse
+        """
+        following = self.driver.find_element(*STAND_IN_SHARE_FIRST)
+        following.click()
+
+        claim_btn = self.driver.find_element(*STAND_IN_CLAIM)
+        claim_btn.click()
+
+        claim_btn = self.driver.find_element(*STAND_IN_CLAIM_CONFIRM)
+        claim_btn.click()
+
+        ui.WebDriverWait(self.driver, 5).until(
+            ec.visibility_of_element_located(
+                list_page_locators.STAND_IN_CLAIM_SUCCESS))
+
+        response = self.driver.find_element(*STAND_IN_CLAIM_SUCCESS)
 
         return response
