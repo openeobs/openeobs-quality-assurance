@@ -43,7 +43,7 @@ class TestLowRiskPage(TestCommon):
 
         task = 'Assess Patient'
         ui.WebDriverWait(self.driver, 5).until(
-            ec.visibility_of_element_located((RELATED_TASK))
+            ec.visibility_of_element_located(RELATED_TASK)
         )
         response = self.driver.find_element(*RELATED_TASK)
         self.assertEqual(task, response.text,
