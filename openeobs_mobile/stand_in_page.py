@@ -7,6 +7,7 @@ from openeobs_mobile.page_helpers import BasePage
 import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
 
+
 class StandInPage(BasePage):
     """
     Standin Page methods and helps etc
