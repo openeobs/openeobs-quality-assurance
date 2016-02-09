@@ -7,7 +7,6 @@ from openeobs_mobile.page_helpers import BasePage
 import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
 
-
 class StandInPage(BasePage):
     """
     Standin Page methods and helps etc
@@ -32,6 +31,14 @@ class StandInPage(BasePage):
                                      .STAND_IN_NURSE_NAME).text
 
         self.driver.find_element(*list_page_locators.STAND_IN_ASSIGN).click()
+
+        ui.WebDriverWait(self.driver, 5).until(
+            ec.visibility_of_element_located(
+                list_page_locators.STAND_IN_SHARE_CANCEL))
+
+        self.driver.find_element(*list_page_locators.
+                                 STAND_IN_SHARE_CANCEL).click()
+        self.driver.refresh()
 
         return nurse_name
 

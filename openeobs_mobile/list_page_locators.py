@@ -44,3 +44,4 @@ STAND_IN_CLAIM = (By.CSS_SELECTOR,
 STAND_IN_CLAIM_CONFIRM = (By.CSS_SELECTOR,
                           '#claim_patients > ul > li:nth-child(1) > a')
 STAND_IN_CLAIM_SUCCESS = (By.CSS_SELECTOR, '#claim_success > h2')
+STAND_IN_SHARE_CANCEL = (By.CSS_SELECTOR, '#share_success > ul > li > a')
