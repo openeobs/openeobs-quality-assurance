@@ -21,6 +21,6 @@ TASK_PAGE = ODOO_CLIENT_URL + '/mobile/task/'
 NURSE_USERNM1 = 'nasir'
 NURSE_PWD1 = 'nasir'
 
-#Senior Manager login credential
+# Senior Manager login credential
 SM_USERNM1 = 'saint'
 SM_PWD = 'saint'
