@@ -7,8 +7,8 @@ from openeobs_mobile.patient_page_locators import OPEN_OBS_MENU_NEWS_ITEM
 from openeobs_mobile.task_page import TaskPage
 from tests.test_common import TestCommon
 from openeobs_mobile.task_page_locators import SUCCESSFUL_SUBMIT
-from tests.environment import MOB_LOGIN, NURSE_PWD1, NURSE_USERNM1, TASK_PAGE, \
-    PATIENT_PAGE
+from tests.environment import MOB_LOGIN, NURSE_PWD1, NURSE_USERNM1, \
+    TASK_PAGE, PATIENT_PAGE
 from openeobs_mobile.task_page_locators import CONFIRM_SUBMIT
 from openeobs_mobile.data import HIGH_RISK_SCORE_9_EWS_DATA, NO_RISK_EWS_DATA
 from openeobs_mobile.patient_page import PatientPage

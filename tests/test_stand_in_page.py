@@ -5,6 +5,7 @@ from tests.test_common import TestCommon
 from tests.environment import MOB_LOGIN, NURSE_PWD1, NURSE_USERNM1
 from openeobs_mobile.login_page import LoginPage
 
+
 class TestStandInPage(TestCommon):
     """
     Setup a session and test the stand in page
