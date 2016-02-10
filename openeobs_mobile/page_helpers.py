@@ -282,3 +282,24 @@ class BasePage(object):
         except TimeoutException:
             return False
         return True
+
+    @staticmethod
+    def add_stand_in(database='openeobs_quality_assurance_db', user='nasir',
+            password='nasir'):
+        """
+        Add a stand in task
+        :param database: The database to do stand in on
+        :param user: User to carry out stand in as
+        :param password: Password for the user
+        """
+        odoo_client = Client('http://localhost:8069', db=database,
+                             user=user, password=password)
+
+
+        activity_api = odoo_client.model('nh.activity')
+        ews_api = odoo_client.model('nh.clinical.patient.follow')
+        ews_activity_id = ews_api.create_activity({}, {'patient_id': [[6, 0, [1]]]
+                                                   })
+
+        activity_api.submit(ews_activity_id, {})
+        #activity_api.complete(ews_activity_id)

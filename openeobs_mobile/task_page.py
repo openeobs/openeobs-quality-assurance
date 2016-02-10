@@ -1,7 +1,10 @@
 """Methods for the task page"""
 from openeobs_mobile.page_helpers import BasePage
+from openeobs_mobile.patient_page import PatientPage
 from openeobs_mobile.task_page_locators import PATIENT_NAME_INFO, \
-    PATIENT_INFO_POPUP_FSCREEN_BTN, PATIENT_INFO_POPUP, PATIENT_INFO_FULLSCREEN
+    PATIENT_INFO_POPUP_FSCREEN_BTN, PATIENT_INFO_POPUP, PATIENT_INFO_FULLSCREEN, \
+    CANCEL_SUBMIT, CONFIRM_CANCEL, SUCCESSFUL_CANCEL, TASK_FORM_SUBMIT, \
+    SUCCESSFUL_SUBMIT
 import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
 from selenium.webdriver.common.by import By
@@ -51,3 +54,55 @@ class TaskPage(BasePage):
         except NoSuchElementException:
             return True
         return False
+
+    def open_clinical(self, task_id, patient_list_page):
+        """
+        Create a clinical notification for a patient, and then open it
+        """
+        PatientPage(self.driver).remove_observations_for_patient(int(task_id))
+        PatientPage(self.driver).add_medium_risk_observation(int(task_id))
+
+        patient_list_page.go_to_task_list()
+        tasks = patient_list_page.get_list_items()
+        clinical_task = tasks[0]
+        clinical_task.click()
+
+    def confirm_clinical(self):
+        """
+        Confirm a clinical notification
+        """
+        ui.WebDriverWait(self.driver, 1).until(
+            ec.visibility_of_element_located(TASK_FORM_SUBMIT)
+        )
+
+        self.driver.find_element(*TASK_FORM_SUBMIT).click()
+
+        ui.WebDriverWait(self.driver, 1).until(
+            ec.visibility_of_element_located(SUCCESSFUL_SUBMIT)
+        )
+
+        response = self.driver.find_element(*SUCCESSFUL_SUBMIT).text
+        return response
+
+    def cancel_clinical(self):
+        """
+        Cancel a clinical notification
+        """
+        ui.WebDriverWait(self.driver, 1).until(
+            ec.visibility_of_element_located(CANCEL_SUBMIT)
+        )
+
+        self.driver.find_element(*CANCEL_SUBMIT).click()
+
+        ui.WebDriverWait(self.driver, 1).until(
+            ec.visibility_of_element_located(CONFIRM_CANCEL)
+        )
+
+        self.driver.find_element(*CONFIRM_CANCEL).click()
+
+        ui.WebDriverWait(self.driver, 2).until(
+            ec.visibility_of_element_located(SUCCESSFUL_CANCEL)
+        )
+        response = self.driver.find_element(*SUCCESSFUL_CANCEL).text
+
+        return response

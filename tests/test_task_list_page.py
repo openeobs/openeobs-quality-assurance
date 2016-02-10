@@ -4,10 +4,14 @@ from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.list_page import ListPage
 from openeobs_mobile.page_confirm import PageConfirm
 from openeobs_mobile.patient_page_locators import OPEN_OBS_MENU_NEWS_ITEM
+from openeobs_mobile.task_page import TaskPage
 from tests.test_common import TestCommon
 from tests.environment import MOB_LOGIN, NURSE_PWD1, NURSE_USERNM1, TASK_PAGE
 from openeobs_mobile.task_page_locators import CONFIRM_SUBMIT, \
     SUCCESSFUL_SUBMIT
+from tests.environment import MOB_LOGIN, NURSE_PWD1, NURSE_USERNM1, TASK_PAGE, \
+    PATIENT_PAGE
+from openeobs_mobile.task_page_locators import CONFIRM_SUBMIT
 from openeobs_mobile.data import HIGH_RISK_SCORE_9_EWS_DATA, NO_RISK_EWS_DATA
 from openeobs_mobile.patient_page import PatientPage
 import selenium.webdriver.support.expected_conditions as ec
@@ -252,3 +256,40 @@ class TestTaskListPage(TestCommon):
         self.assertEqual(success, response.text,
                          'NEWS observation unsuccessful')
         # print(news_task)
+
+    def test_confirm_clinical(self):
+        """
+        Test that a clinical notification can be confirmed
+        """
+        self.patient_list_page.go_to_patient_list()
+        tasks = self.patient_list_page.get_list_items()
+        patient_to_test = tasks[0]
+        task_id = patient_to_test.get_attribute('href').replace(
+            PATIENT_PAGE, ''
+        )
+
+        TaskPage(self.driver).open_clinical(task_id, self.patient_list_page)
+
+        success = 'Submission successful'
+        response = TaskPage(self.driver).confirm_clinical()
+
+        self.assertEqual(success, response, 'Error confirming clinical')
+
+    def test_cancel_clinical(self):
+        """
+        Test that a clinical notification can be cancelled
+        """
+        self.patient_list_page.go_to_patient_list()
+        tasks = self.patient_list_page.get_list_items()
+        patient_to_test = tasks[0]
+        task_id = patient_to_test.get_attribute('href').replace(
+            PATIENT_PAGE, ''
+        )
+
+        TaskPage(self.driver).open_clinical(task_id, self.patient_list_page)
+
+        success = 'Cancellation successful'
+
+        response = TaskPage(self.driver).cancel_clinical()
+
+        self.assertEqual(success, response, 'Error cancelling clinical')
