@@ -6,9 +6,7 @@ from openeobs_mobile.page_confirm import PageConfirm
 from openeobs_mobile.patient_page_locators import OPEN_OBS_MENU_NEWS_ITEM
 from openeobs_mobile.task_page import TaskPage
 from tests.test_common import TestCommon
-from tests.environment import MOB_LOGIN, NURSE_PWD1, NURSE_USERNM1, TASK_PAGE
-from openeobs_mobile.task_page_locators import CONFIRM_SUBMIT, \
-    SUCCESSFUL_SUBMIT
+from openeobs_mobile.task_page_locators import SUCCESSFUL_SUBMIT
 from tests.environment import MOB_LOGIN, NURSE_PWD1, NURSE_USERNM1, TASK_PAGE, \
     PATIENT_PAGE
 from openeobs_mobile.task_page_locators import CONFIRM_SUBMIT
