@@ -6,11 +6,13 @@ from openeobs_mobile.page_confirm import PageConfirm
 from openeobs_mobile.patient_page_locators import OPEN_OBS_MENU_NEWS_ITEM
 from tests.test_common import TestCommon
 from tests.environment import MOB_LOGIN, NURSE_PWD1, NURSE_USERNM1, TASK_PAGE
-from openeobs_mobile.task_page_locators import CONFIRM_SUBMIT
+from openeobs_mobile.task_page_locators import CONFIRM_SUBMIT, \
+    SUCCESSFUL_SUBMIT
 from openeobs_mobile.data import HIGH_RISK_SCORE_9_EWS_DATA, NO_RISK_EWS_DATA
 from openeobs_mobile.patient_page import PatientPage
 import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
+from openeobs_mobile.task_page_locators import GO_TO_MY_TASK
 
 
 class TestTaskListPage(TestCommon):
@@ -193,12 +195,14 @@ class TestTaskListPage(TestCommon):
         Submit adhoc observation which creates News observation task
         and Take task NEWS Observation from task list, submit news score
         """
+
         # Enter high risk observation to create News Observation task in task
         # list
         self.patient_list_page.go_to_patient_list()
         high_score = HIGH_RISK_SCORE_9_EWS_DATA
         no_risk = NO_RISK_EWS_DATA
         news_task = []
+        success = 'Successfully Submitted NEWS Observation'
 
         patients = self.patient_list_page.get_list_items()
 
@@ -211,8 +215,19 @@ class TestTaskListPage(TestCommon):
         )
         self.driver.find_element(*CONFIRM_SUBMIT).click()
 
+        ui.WebDriverWait(self.driver, 5).until(
+            ec.visibility_of_element_located((
+                SUCCESSFUL_SUBMIT))
+        )
+        response = self.driver.find_element(*SUCCESSFUL_SUBMIT)
+        self.assertEqual(success, response.text,
+                         'NEWS observation unsuccessful')
+
+        self.driver.find_element(*GO_TO_MY_TASK).click()
+
         # Click on the first news score task from Task list
         self.task_list_page.go_to_task_list()
+
         self.driver.refresh()
         for task in self.task_list_page.get_list_task():
             # print(task.text)
@@ -228,4 +243,12 @@ class TestTaskListPage(TestCommon):
         )
 
         self.driver.find_element(*CONFIRM_SUBMIT).click()
+
+        ui.WebDriverWait(self.driver, 5).until(
+            ec.visibility_of_element_located((
+                SUCCESSFUL_SUBMIT))
+        )
+        response = self.driver.find_element(*SUCCESSFUL_SUBMIT)
+        self.assertEqual(success, response.text,
+                         'NEWS observation unsuccessful')
         # print(news_task)

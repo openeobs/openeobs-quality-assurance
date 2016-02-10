@@ -27,3 +27,4 @@ CONFIRM_SUBMIT = (
 SUCCESSFUL_SUBMIT = (By.CSS_SELECTOR, '#submit_success > h2')
 RELATED_TASK = (By.CSS_SELECTOR, '#submit_success > div > p')
 TASK = (By.CLASS_NAME, 'taskInfo')
+GO_TO_MY_TASK = (By.XPATH, '//a[contains(.,"Go to My Tasks")]')
