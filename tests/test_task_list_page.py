@@ -3,18 +3,26 @@ from openeobs_mobile import list_page_locators
 from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.list_page import ListPage
 from openeobs_mobile.page_confirm import PageConfirm
+from openeobs_mobile.patient_page_locators import OPEN_OBS_MENU_NEWS_ITEM
 from tests.test_common import TestCommon
 from tests.environment import MOB_LOGIN, NURSE_PWD1, NURSE_USERNM1, TASK_PAGE
+from openeobs_mobile.task_page_locators import CONFIRM_SUBMIT
+from openeobs_mobile.data import HIGH_RISK_SCORE_9_EWS_DATA, NO_RISK_EWS_DATA
+from openeobs_mobile.patient_page import PatientPage
+import selenium.webdriver.support.expected_conditions as ec
+import selenium.webdriver.support.ui as ui
 
 
 class TestTaskListPage(TestCommon):
     """
     Setup a session and test that the task list page works correctly
     """
+
     def setUp(self):
         self.driver.get(MOB_LOGIN)
         self.login_page = LoginPage(self.driver)
         self.task_list_page = ListPage(self.driver)
+        self.patient_list_page = ListPage(self.driver)
         self.login_page.login(NURSE_USERNM1, NURSE_PWD1)
         self.task_list_page.go_to_task_list()
 
@@ -179,3 +187,45 @@ class TestTaskListPage(TestCommon):
             task_list.append(patient)
 
         self.assertNotEquals(task_list, [], 'Task list not showing tasks')
+
+    def test_take_task_news_obs(self):
+        """
+        Submit adhoc observation which creates News observation task
+        and Take task NEWS Observation from task list, submit news score
+        """
+        # Enter high risk observation to create News Observation task in task
+        # list
+        self.patient_list_page.go_to_patient_list()
+        high_score = HIGH_RISK_SCORE_9_EWS_DATA
+        no_risk = NO_RISK_EWS_DATA
+        news_task = []
+
+        patients = self.patient_list_page.get_list_items()
+
+        PatientPage(self.driver).select_patient(patients)
+        PatientPage(self.driver).open_form(OPEN_OBS_MENU_NEWS_ITEM)
+        PatientPage(self.driver).enter_obs_data(high_score)
+
+        ui.WebDriverWait(self.driver, 5).until(
+            ec.visibility_of_element_located(CONFIRM_SUBMIT)
+        )
+        self.driver.find_element(*CONFIRM_SUBMIT).click()
+
+        # Click on the first news score task from Task list
+        self.task_list_page.go_to_task_list()
+        self.driver.refresh()
+        for task in self.task_list_page.get_list_task():
+            # print(task.text)
+            if task.text == 'NEWS Observation':
+                news_task.append(task)
+        news_task[0].click()
+
+        # enter low risk observation
+        PatientPage(self.driver).enter_obs_data(no_risk)
+
+        ui.WebDriverWait(self.driver, 5).until(
+            ec.visibility_of_element_located(CONFIRM_SUBMIT)
+        )
+
+        self.driver.find_element(*CONFIRM_SUBMIT).click()
+        # print(news_task)

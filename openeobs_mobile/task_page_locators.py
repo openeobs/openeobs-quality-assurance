@@ -26,3 +26,4 @@ CONFIRM_SUBMIT = (
     By.CSS_SELECTOR, '#submit_observation > ul > li:nth-child(2)')
 SUCCESSFUL_SUBMIT = (By.CSS_SELECTOR, '#submit_success > h2')
 RELATED_TASK = (By.CSS_SELECTOR, '#submit_success > div > p')
+TASK = (By.CLASS_NAME, 'taskInfo')
