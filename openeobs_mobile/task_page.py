@@ -59,7 +59,6 @@ class TaskPage(BasePage):
         """
         Create a clinical notification for a patient, and then open it
         """
-        PatientPage(self.driver).remove_observations_for_patient(int(task_id))
         PatientPage(self.driver).add_medium_risk_observation(int(task_id))
 
         patient_list_page.go_to_task_list()
