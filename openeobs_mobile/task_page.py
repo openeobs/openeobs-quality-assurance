@@ -60,11 +60,11 @@ class TaskPage(BasePage):
         Create a clinical notification for a patient, and then open it
         """
         PatientPage(self.driver).add_medium_risk_observation(int(task_id))
-
         patient_list_page.go_to_task_list()
         tasks = patient_list_page.get_list_items()
         clinical_task = tasks[0]
         clinical_task.click()
+
 
     def confirm_clinical(self):
         """

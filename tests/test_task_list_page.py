@@ -15,6 +15,7 @@ from openeobs_mobile.patient_page import PatientPage
 import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
 from openeobs_mobile.task_page_locators import GO_TO_MY_TASK
+import time
 
 
 class TestTaskListPage(TestCommon):
@@ -265,12 +266,11 @@ class TestTaskListPage(TestCommon):
         task_id = patient_to_test.get_attribute('href').replace(
             PATIENT_PAGE, ''
         )
-
+        PatientPage(self.driver).remove_observations_for_patient(int(task_id))
         TaskPage(self.driver).open_clinical(task_id, self.patient_list_page)
 
         success = 'Submission successful'
         response = TaskPage(self.driver).confirm_clinical()
-
         self.assertEqual(success, response, 'Error confirming clinical')
 
     def test_cancel_clinical(self):
@@ -283,11 +283,9 @@ class TestTaskListPage(TestCommon):
         task_id = patient_to_test.get_attribute('href').replace(
             PATIENT_PAGE, ''
         )
-
+        PatientPage(self.driver).remove_observations_for_patient(int(task_id))
         TaskPage(self.driver).open_clinical(task_id, self.patient_list_page)
 
         success = 'Cancellation successful'
-
         response = TaskPage(self.driver).cancel_clinical()
-
         self.assertEqual(success, response, 'Error cancelling clinical')
