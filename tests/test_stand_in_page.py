@@ -1,9 +1,13 @@
 """Tests to ensure that the stand in page works correctly"""
 from openeobs_mobile.list_page import ListPage
+from openeobs_mobile.list_page_locators import STAND_IN_ACCEPT_BUTTON, \
+    STAND_IN_CONFIRM, STAND_IN_ERROR
 from openeobs_mobile.stand_in_page import StandInPage
 from tests.test_common import TestCommon
 from tests.environment import MOB_LOGIN, NURSE_PWD1, NURSE_USERNM1
 from openeobs_mobile.login_page import LoginPage
+import selenium.webdriver.support.expected_conditions as ec
+import selenium.webdriver.support.ui as ui
 
 
 class TestStandInPage(TestCommon):
@@ -60,3 +64,21 @@ class TestStandInPage(TestCommon):
 
         success = 'Patients claimed'
         self.assertEqual(success, response.text, 'Reject was unsuccessful')
+
+    def test_erppeek_stand_in(self):
+        """
+        Test that accepting a stand in through the GUI, after doing so through
+        erppeek will cause a server error
+        """
+        task_id = StandInPage.add_stand_in()
+        StandInPage(self.driver).go_to_patient_list()
+        StandInPage.complete_stand_in(task_id)
+
+        self.driver.find_element(*STAND_IN_ACCEPT_BUTTON).click()
+        ui.WebDriverWait(self.driver, 5).until(
+            ec.visibility_of_element_located(STAND_IN_CONFIRM))
+        self.driver.find_element(*STAND_IN_CONFIRM).click()
+        response = self.driver.find_element(*STAND_IN_ERROR).text
+
+        success = 'Error accepting patients'
+        self.assertEqual(success, response, 'Stand in should not be accepted')
