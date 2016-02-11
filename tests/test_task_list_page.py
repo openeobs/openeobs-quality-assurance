@@ -15,7 +15,6 @@ from openeobs_mobile.patient_page import PatientPage
 import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
 from openeobs_mobile.task_page_locators import GO_TO_MY_TASK
-import time
 
 
 class TestTaskListPage(TestCommon):

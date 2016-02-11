@@ -65,7 +65,6 @@ class TaskPage(BasePage):
         clinical_task = tasks[0]
         clinical_task.click()
 
-
     def confirm_clinical(self):
         """
         Confirm a clinical notification
