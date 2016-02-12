@@ -1,6 +1,6 @@
 """Tests to ensure that the stand in page works correctly"""
 from openeobs_mobile.list_page import ListPage
-from openeobs_mobile.list_page_locators import STAND_IN_ACCEPT_BUTTON, \
+from openeobs_mobile.stand_in_page_locators import STAND_IN_ACCEPT_BUTTON, \
     STAND_IN_CONFIRM, STAND_IN_ERROR
 from openeobs_mobile.stand_in_page import StandInPage
 from tests.test_common import TestCommon
@@ -67,7 +67,7 @@ class TestStandInPage(TestCommon):
 
     def test_erppeek_stand_in(self):
         """
-        Test that accepting a stand in through the GUI, after doing so through
+        Test that accepting a stand-in through the GUI, after doing so through
         erppeek will cause a server error
         """
         task_id = StandInPage.add_stand_in()

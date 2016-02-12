@@ -302,7 +302,7 @@ class BasePage(object):
             ['login', '=', 'nasir'],
             ])
         ews_activity_id = ews_api.create_activity({'user_id': nurse_id[0]}, {
-                'patient_ids': [[6, 0, [4]]]})
+            'patient_ids': [[6, 0, [4]]]})
 
         activity_api.submit(ews_activity_id, {})
 
