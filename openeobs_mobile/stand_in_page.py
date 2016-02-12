@@ -1,5 +1,4 @@
 """Methods for the stand-in page"""
-from openeobs_mobile import list_page_locators
 from openeobs_mobile.stand_in_page_locators import STAND_IN_SHARE_FIRST, \
     STAND_IN_CLAIM, STAND_IN_CLAIM_CONFIRM, STAND_IN_CLAIM_SUCCESS, \
     STAND_IN_SELECT, STAND_IN_SHARE, STAND_IN_LIST, STAND_IN_SHARE_CANCEL, \
