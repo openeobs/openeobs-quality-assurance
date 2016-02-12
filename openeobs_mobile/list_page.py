@@ -19,7 +19,8 @@ class ListPage(BasePage):
 
     def get_list_task(self):
         """
-        Returns list of tasks
+        Returns list of tasks in task list.
+        Example: Assess Patient, NEWS Observation etc.
         :return: A list of tasks
         """
         task_items = self.driver.find_elements(*task_page_locators.TASK)

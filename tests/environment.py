@@ -5,7 +5,7 @@ USERNAME = 'admin'
 PASSWORD = 'admin'
 # DB names
 TEST_DB_NAME = 'openeobs_quality_assurance_db'
-DATABASE = 'mobile_qa_db'
+DATABASE = '0402'
 # Url Info
 ODOO_CLIENT_URL = 'http://localhost:8069'
 # DESKTOP_URL = 'http://localhost:8069/web?db={database}'.format(

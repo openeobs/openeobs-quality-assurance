@@ -25,12 +25,7 @@ class TestVisualisationCommon(TestCommon):
         self.patient_page_graph = PatientPageGraphs(self.driver)
 
         risk_mapping = {
-            'none': self.patient_page.add_no_risk_observation,
-            'low': self.patient_page.add_low_risk_observation,
-            'medium':
-                self.patient_page.add_medium_risk_observation,
             'high': self.patient_page.add_high_risk_observation,
-            '3in1': self.patient_page.add_three_in_one_observation
         }
         self.login_page.login(NURSE_USERNM1, NURSE_PWD1)
         self.list_page.go_to_patient_list()
@@ -41,7 +36,9 @@ class TestVisualisationCommon(TestCommon):
         )
 
         self.patient_page.remove_observations_for_patient(int(patient_id))
+
         risk_mapping[self.risk](int(patient_id))
+
         self.driver.get(patient_to_test.get_attribute('href'))
         ui.WebDriverWait(self.driver, 5).until(
             ec.visibility_of_element_located((By.CSS_SELECTOR, '#chart svg')))

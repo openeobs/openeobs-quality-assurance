@@ -284,12 +284,12 @@ class BasePage(object):
         return True
 
     @staticmethod
-    def add_stand_in(database='openeobs_quality_assurance_db', user='nat',
-                     password='nat'):
+    def add_stand_in(database='openeobs_quality_assurance_db', user='nasir',
+                     password='nasir'):
         """
         Add a stand in task
         :param database: The database to do stand in on
-        :param user: User to create stand in as
+        :param user: User to carry out stand in as
         :param password: Password for the user
         """
         odoo_client = Client('http://localhost:8069', db=database,
@@ -297,28 +297,28 @@ class BasePage(object):
 
         activity_api = odoo_client.model('nh.activity')
         ews_api = odoo_client.model('nh.clinical.patient.follow')
-        user_pool = odoo_client.model('res.users')
-        nurse_id = user_pool.search([
-            ['login', '=', 'nasir'],
-            ])
-        ews_activity_id = ews_api.create_activity({'user_id': nurse_id[0]}, {
-                'patient_ids': [[6, 0, [4]]]})
+        ews_activity_id = ews_api.create_activity({}, {
+            'patient_id': [[6, 0, [1]]]
+        })
 
         activity_api.submit(ews_activity_id, {})
-
-        return ews_activity_id
+        # activity_api.complete(ews_activity_id)
 
     @staticmethod
-    def complete_stand_in(task_id, database='openeobs_quality_assurance_db',
-                          user='nasir', password='nasir'):
+    def add_task_high_risk_observation(
+            task_id, database='openeobs_quality_assurance_db', user='nasir',
+            password='nasir'):
         """
-        Complete a stand in task
-        :param database: The database to complete stand in on
-        :param user: User to complete stand in as
+        Add an observation that gives medium clinical risk due to 3in1
+        :param task_id: The task to do observation for
+        :param database: The database to do observation on
+        :param user: User to carry out observation as
         :param password: Password for the user
         """
         odoo_client = Client('http://localhost:8069', db=database,
                              user=user, password=password)
-
         activity_api = odoo_client.model('nh.activity')
+        activity_api.submit(task_id,
+                            HIGH_RISK_SCORE_11_EWS_DATA)
         activity_api.complete(task_id)
+

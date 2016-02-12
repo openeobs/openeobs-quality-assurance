@@ -192,69 +192,6 @@ class TestTaskListPage(TestCommon):
 
         self.assertNotEquals(task_list, [], 'Task list not showing tasks')
 
-    def test_take_task_news_obs(self):
-        """
-        Submit adhoc observation which creates News observation task
-        and Take task NEWS Observation from task list, submit news score
-        """
-
-        # Enter high risk observation to create News Observation task in task
-        # list
-        self.patient_list_page.go_to_patient_list()
-        high_score = HIGH_RISK_SCORE_9_EWS_DATA
-        no_risk = NO_RISK_EWS_DATA
-        news_task = []
-        success = 'Successfully Submitted NEWS Observation'
-
-        patients = self.patient_list_page.get_list_items()
-
-        PatientPage(self.driver).select_patient(patients)
-        PatientPage(self.driver).open_form(OPEN_OBS_MENU_NEWS_ITEM)
-        PatientPage(self.driver).enter_obs_data(high_score)
-
-        ui.WebDriverWait(self.driver, 5).until(
-            ec.visibility_of_element_located(CONFIRM_SUBMIT)
-        )
-        self.driver.find_element(*CONFIRM_SUBMIT).click()
-
-        ui.WebDriverWait(self.driver, 5).until(
-            ec.visibility_of_element_located((
-                SUCCESSFUL_SUBMIT))
-        )
-        response = self.driver.find_element(*SUCCESSFUL_SUBMIT)
-        self.assertEqual(success, response.text,
-                         'NEWS observation unsuccessful')
-
-        self.driver.find_element(*GO_TO_MY_TASK).click()
-
-        # Click on the first news score task from Task list
-        self.task_list_page.go_to_task_list()
-
-        self.driver.refresh()
-        for task in self.task_list_page.get_list_task():
-            # print(task.text)
-            if task.text == 'NEWS Observation':
-                news_task.append(task)
-        news_task[0].click()
-
-        # enter low risk observation
-        PatientPage(self.driver).enter_obs_data(no_risk)
-
-        ui.WebDriverWait(self.driver, 5).until(
-            ec.visibility_of_element_located(CONFIRM_SUBMIT)
-        )
-
-        self.driver.find_element(*CONFIRM_SUBMIT).click()
-
-        ui.WebDriverWait(self.driver, 5).until(
-            ec.visibility_of_element_located((
-                SUCCESSFUL_SUBMIT))
-        )
-        response = self.driver.find_element(*SUCCESSFUL_SUBMIT)
-        self.assertEqual(success, response.text,
-                         'NEWS observation unsuccessful')
-        # print(news_task)
-
     def test_confirm_clinical(self):
         """
         Test that a clinical notification can be confirmed
@@ -265,11 +202,12 @@ class TestTaskListPage(TestCommon):
         task_id = patient_to_test.get_attribute('href').replace(
             PATIENT_PAGE, ''
         )
-        PatientPage(self.driver).remove_observations_for_patient(int(task_id))
+
         TaskPage(self.driver).open_clinical(task_id, self.patient_list_page)
 
         success = 'Submission successful'
         response = TaskPage(self.driver).confirm_clinical()
+
         self.assertEqual(success, response, 'Error confirming clinical')
 
     def test_cancel_clinical(self):
@@ -282,9 +220,11 @@ class TestTaskListPage(TestCommon):
         task_id = patient_to_test.get_attribute('href').replace(
             PATIENT_PAGE, ''
         )
-        PatientPage(self.driver).remove_observations_for_patient(int(task_id))
+
         TaskPage(self.driver).open_clinical(task_id, self.patient_list_page)
 
         success = 'Cancellation successful'
+
         response = TaskPage(self.driver).cancel_clinical()
+
         self.assertEqual(success, response, 'Error cancelling clinical')
