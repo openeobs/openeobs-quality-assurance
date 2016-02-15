@@ -28,7 +28,6 @@ STAND_IN_CONFIRM = (By.CSS_SELECTOR,
 
 STAND_IN_SUCCESS = (By.CSS_SELECTOR, '#invite_success > h2')
 STAND_IN_REJ_SUCCESS = (By.CSS_SELECTOR, '#reject_success > h2')
-STAND_IN_TEXT = (By.CLASS_NAME, 'taskInfo')
 STAND_IN_SHARE_FIRST = (By.NAME, 'patient_share_1')
 STAND_IN_CLAIM = (By.CSS_SELECTOR,
                   'body > div.share-footer > ul > li:nth-child(2) > a')
