@@ -29,3 +29,5 @@ after_script:
 - ssh -o StrictHostKeyChecking=no $DEPLOY_USER@$DEPLOY_HOST -L 2000:localhost:2000
   -L 6432:localhost:5432 -fN
 - if [ "$SONAR" == "1" ] ; then "${HOME}/sonar-runner-2.4/bin/sonar-runner" ; fi
+- curl -v ${TARGET_URL}:8080/$TARGET_JOB --user $TARGET_USER:$TARGET_PASSWORD -F json_file=@./json.file -F coverage_file=@/home/travis/build/NeovaHealth/openeobs-quality-assurance/coverage.xml ; fi
+
