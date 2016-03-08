@@ -24,6 +24,7 @@ script:
 - flake8 tests
 - pylint openeobs_mobile tests | tee pylint_output
 after_script:
+- coverage xml -o ${HOME}/build/NeovaHealth/openeobs-quality-assurance/coverage.xml
 - echo -e "\nsonar.branch=${TRAVIS_BRANCH}" >> sonar-project.properties
 - ssh -o StrictHostKeyChecking=no $DEPLOY_USER@$DEPLOY_HOST -L 2000:localhost:2000
   -L 6432:localhost:5432 -fN
