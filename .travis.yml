@@ -26,10 +26,12 @@ script:
 after_script:
 - coverage xml -o ${HOME}/build/NeovaHealth/openeobs-quality-assurance/coverage.xml
 - echo -e "\nsonar.branch=${TRAVIS_BRANCH}" >> sonar-project.properties
-- ssh -o StrictHostKeyChecking=no $DEPLOY_USER@$DEPLOY_HOST -L 2000:localhost:2000
-  -L 6432:localhost:5432 -fN
+- ssh -o StrictHostKeyChecking=no $DEPLOY_USER@$DEPLOY_HOST -L 2000:localhost:2000 -L 6432:localhost:5432 -fN
+- printf '{"branch":"%s","commit":"%s","pull_request":"%s","repository":{"name":"%s"}}' "$TRAVIS_BRANCH" "$TRAVIS_COMMIT" "$TRAVIS_PULL_REQUEST" "$TRAVIS_REPO_SLUG" > json.file
+- pwd
+- ls ./
 - if [ "$SONAR" == "1"] ; then "${HOME}/sonar-runner-2.4/bin/sonar-runner" ; fi
-
+- echo "Test result is ${TRAVIS_TEST_RESULT}" 
 - if["$TRAVIS_TEST_RESULT" == "0"]; then curl -v ${TARGET_URL}:8080/$TARGET_JOB --user $TARGET_USER:$TARGET_PASSWORD -F json_file=@./json.file -F coverage_file=@/home/travis/build/NeovaHealth/openeobs-quality-assurance/coverage.xml -F json='{"parameter":[{"name":"json_payload","file":"json_file"}, {"name":"coverage_report","file":"coverage_file"}]}'; fi
 
 
