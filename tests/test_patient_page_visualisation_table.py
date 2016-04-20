@@ -23,12 +23,12 @@ class TestPatientPageVisualisationTable(TestVisualisationCommon):
         self.assertEqual(self.row_data[1][0], 'Respiration Rate',
                          'Incorrect title on respiration rate row')
 
-    # def test_o2_saturation_title(self):
-    #     """
-    #     Test that the o2 saturation title in the table is correct
-    #     """
-    #     self.assertEqual(self.row_data[2][0], 'O2 Saturation',
-    #                      'Incorrect title on o2 sat row')
+    def test_o2_saturation_title(self):
+        """
+        Test that the o2 saturation title in the table is correct
+        """
+        self.assertEqual(self.row_data[2][0], 'O2 Saturation',
+                         'Incorrect title on o2 sat row')
 
     def test_body_temperature_title(self):
         """
