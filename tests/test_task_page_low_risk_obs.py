@@ -25,7 +25,6 @@ class TestLowRiskPage(TestCommon):
         self.login_page.login(NURSE_USERNM1, NURSE_PWD1)
         self.patient_list_page.go_to_patient_list()
 
-    @unittest.skipIf(TEST_DB_NAME != 'slam', 'Not supported in this configuration')
     def test_low_risk_obs(self):
         """
         Test that an 'assess patient' task is triggered after a low NEWS score

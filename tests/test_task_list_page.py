@@ -255,36 +255,36 @@ class TestTaskListPage(TestCommon):
                          'NEWS observation unsuccessful')
         # print(news_task)
 
-    def test_confirm_clinical(self):
-        """
-        Test that a clinical notification can be confirmed
-        """
-        self.patient_list_page.go_to_patient_list()
-        tasks = self.patient_list_page.get_list_items()
-        patient_to_test = tasks[0]
-        task_id = patient_to_test.get_attribute('href').replace(
-            PATIENT_PAGE, ''
-        )
-        PatientPage(self.driver).remove_observations_for_patient(int(task_id))
-        TaskPage(self.driver).open_clinical(task_id, self.patient_list_page)
-
-        success = 'Submission successful'
-        response = TaskPage(self.driver).confirm_clinical()
-        self.assertEqual(success, response, 'Error confirming clinical')
-
-    def test_cancel_clinical(self):
-        """
-        Test that a clinical notification can be cancelled
-        """
-        self.patient_list_page.go_to_patient_list()
-        tasks = self.patient_list_page.get_list_items()
-        patient_to_test = tasks[0]
-        task_id = patient_to_test.get_attribute('href').replace(
-            PATIENT_PAGE, ''
-        )
-        PatientPage(self.driver).remove_observations_for_patient(int(task_id))
-        TaskPage(self.driver).open_clinical(task_id, self.patient_list_page)
-
-        success = 'Cancellation successful'
-        response = TaskPage(self.driver).cancel_clinical()
-        self.assertEqual(success, response, 'Error cancelling clinical')
+    # def test_confirm_clinical(self):
+    #     """
+    #     Test that a clinical notification can be confirmed
+    #     """
+    #     self.patient_list_page.go_to_patient_list()
+    #     tasks = self.patient_list_page.get_list_items()
+    #     patient_to_test = tasks[0]
+    #     task_id = patient_to_test.get_attribute('href').replace(
+    #         PATIENT_PAGE, ''
+    #     )
+    #     PatientPage(self.driver).remove_observations_for_patient(int(task_id))
+    #     TaskPage(self.driver).open_clinical(task_id, self.patient_list_page)
+    #
+    #     success = 'Submission successful'
+    #     response = TaskPage(self.driver).confirm_clinical()
+    #     self.assertEqual(success, response, 'Error confirming clinical')
+    #
+    # def test_cancel_clinical(self):
+    #     """
+    #     Test that a clinical notification can be cancelled
+    #     """
+    #     self.patient_list_page.go_to_patient_list()
+    #     tasks = self.patient_list_page.get_list_items()
+    #     patient_to_test = tasks[0]
+    #     task_id = patient_to_test.get_attribute('href').replace(
+    #         PATIENT_PAGE, ''
+    #     )
+    #     PatientPage(self.driver).remove_observations_for_patient(int(task_id))
+    #     TaskPage(self.driver).open_clinical(task_id, self.patient_list_page)
+    #
+    #     success = 'Cancellation successful'
+    #     response = TaskPage(self.driver).cancel_clinical()
+    #     self.assertEqual(success, response, 'Error cancelling clinical')

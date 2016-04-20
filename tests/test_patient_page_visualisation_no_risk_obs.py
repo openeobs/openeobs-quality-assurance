@@ -54,12 +54,12 @@ class TestPatientPageVisualisationWithNoRiskObsData(TestVisualisationCommon):
         self.assertEqual(self.get_tabular_values_value(1, 1), 'A',
                          'Incorrect avpu data in table')
 
-    def test_tabular_supple_oxy_value(self):
-        """
-        Test that the tabular values table shows the correct data
-        """
-        self.assertEqual(self.get_tabular_values_value(1, 2), 'No',
-                         'Incorrect on suppl o2 data in table')
+    # def test_tabular_supple_oxy_value(self):
+    #     """
+    #     Test that the tabular values table shows the correct data
+    #     """
+    #     self.assertEqual(self.get_tabular_values_value(1, 2), 'No',
+    #                      'Incorrect on suppl o2 data in table')
 
     def test_tabular_inspired_oxy_value(self):
         """
@@ -71,12 +71,12 @@ class TestPatientPageVisualisationWithNoRiskObsData(TestVisualisationCommon):
             'Incorrect inspired o2 data in table'
         )
 
-    def test_news_score_value(self):
-        """
-        Test that the NEWS score value is correct
-        """
-        self.assertEqual(self.row_data[0][1], '0',
-                         'Incorrect value on news score row')
+    # def test_news_score_value(self):
+    #     """
+    #     Test that the NEWS score value is correct
+    #     """
+    #     self.assertEqual(self.row_data[0][1], '0',
+    #                      'Incorrect value on news score row')
 
     def test_respiration_rate_value(self):
         """
@@ -127,12 +127,12 @@ class TestPatientPageVisualisationWithNoRiskObsData(TestVisualisationCommon):
         self.assertEqual(self.row_data[7][1], 'A',
                          'Incorrect value on AVPU row')
 
-    def test_supplemental_value(self):
-        """
-        Test that the supplemental o2 value is correct
-        """
-        self.assertEqual(self.row_data[8][1], 'No',
-                         'Incorrect value on Supplemental O2 row')
+    # def test_supplemental_value(self):
+    #     """
+    #     Test that the supplemental o2 value is correct
+    #     """
+    #     self.assertEqual(self.row_data[8][1], 'No',
+    #                      'Incorrect value on Supplemental O2 row')
 
     def test_device_value(self):
         """

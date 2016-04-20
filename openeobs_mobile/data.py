@@ -59,6 +59,8 @@ LOW_RISK_SCORE_4_EWS_DATA = {
     'body_temperature': 37.5,
 }
 
+LOW_SCORE_RESPONSE = 'Assess Patient'
+
 MEDIUM_RISK_SCORE_3_THREE_IN_ONE_EWS_DATA = {
     'respiration_rate': 18,
     'indirect_oxymetry_spo2': 99,
@@ -107,6 +109,8 @@ MEDIUM_RISK_SCORE_6_EWS_DATA = {
     'pulse_rate': 50,
     'body_temperature': 37.5,
 }
+
+MEDIUM_SCORE_RESPONSE = 'Urgently inform medical team'
 
 HIGH_RISK_SCORE_7_EWS_DATA = {
     'respiration_rate': 24,
@@ -175,6 +179,8 @@ HIGH_RISK_SCORE_11_EWS_DATA = {
     'pulse_rate': 130,
     'body_temperature': 36.0,
 }
+
+HIGH_SCORE_RESPONSE = 'Immediately inform medical team'
 
 INCORRECT_EWS_DATA = {
     'respiration_rate': 9999,

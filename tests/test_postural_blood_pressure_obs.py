@@ -9,7 +9,7 @@ import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
 from openeobs_mobile.patient_page_locators import \
     OPEN_OBS_MENU_POSTURAL_PRESSURE
-from tests.environment import MOB_LOGIN, NURSE_PWD1, NURSE_USERNM1
+from openeobs_selenium.environment import MOB_LOGIN, NURSE_PWD1, NURSE_USERNM1
 
 
 class TestPosturalBloodPressurePage(TestCommon):

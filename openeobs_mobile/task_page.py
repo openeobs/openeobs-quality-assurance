@@ -69,13 +69,13 @@ class TaskPage(BasePage):
         """
         Confirm a clinical notification
         """
-        ui.WebDriverWait(self.driver, 1).until(
+        ui.WebDriverWait(self.driver, 5).until(
             ec.visibility_of_element_located(TASK_FORM_SUBMIT)
         )
 
         self.driver.find_element(*TASK_FORM_SUBMIT).click()
 
-        ui.WebDriverWait(self.driver, 1).until(
+        ui.WebDriverWait(self.driver, 5).until(
             ec.visibility_of_element_located(SUCCESSFUL_SUBMIT)
         )
 
@@ -86,19 +86,19 @@ class TaskPage(BasePage):
         """
         Cancel a clinical notification
         """
-        ui.WebDriverWait(self.driver, 1).until(
+        ui.WebDriverWait(self.driver, 5).until(
             ec.visibility_of_element_located(CANCEL_SUBMIT)
         )
 
         self.driver.find_element(*CANCEL_SUBMIT).click()
 
-        ui.WebDriverWait(self.driver, 1).until(
+        ui.WebDriverWait(self.driver, 5).until(
             ec.visibility_of_element_located(CONFIRM_CANCEL)
         )
 
         self.driver.find_element(*CONFIRM_CANCEL).click()
 
-        ui.WebDriverWait(self.driver, 2).until(
+        ui.WebDriverWait(self.driver, 5).until(
             ec.visibility_of_element_located(SUCCESSFUL_CANCEL)
         )
         response = self.driver.find_element(*SUCCESSFUL_CANCEL).text
