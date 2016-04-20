@@ -8,12 +8,11 @@ from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.page_confirm import PageConfirm
 from openeobs_mobile.patient_page import PatientPage
 from openeobs_mobile.patient_page_locators import OPEN_OBS_MENU_NEWS_ITEM
-from openeobs_mobile.task_page import TaskPage
 from openeobs_mobile.task_page_locators import CONFIRM_SUBMIT
 from openeobs_mobile.task_page_locators import GO_TO_MY_TASK
 from openeobs_mobile.task_page_locators import SUCCESSFUL_SUBMIT
 from openeobs_selenium.environment import MOB_LOGIN, NURSE_PWD1, NURSE_USERNM1, \
-    TASK_PAGE, PATIENT_PAGE
+    TASK_PAGE
 from tests.test_common import TestCommon
 
 
