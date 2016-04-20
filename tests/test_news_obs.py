@@ -1,15 +1,15 @@
 """Test to ensure that a no risk NEWS obs works correctly"""
-from openeobs_mobile.data import NO_RISK_EWS_DATA
-from openeobs_mobile.login_page import LoginPage
-from openeobs_mobile.list_page import ListPage
-from openeobs_mobile.patient_page import PatientPage
-from tests.test_common import TestCommon
-from openeobs_mobile.task_page_locators import CONFIRM_SUBMIT, \
-    SUCCESSFUL_SUBMIT
 import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
+from openeobs_mobile.data import NO_RISK_EWS_DATA
+from openeobs_mobile.list_page import ListPage
+from openeobs_mobile.login_page import LoginPage
+from openeobs_mobile.patient_page import PatientPage
 from openeobs_mobile.patient_page_locators import OPEN_OBS_MENU_NEWS_ITEM
-from tests.environment import MOB_LOGIN, NURSE_PWD1, NURSE_USERNM1
+from openeobs_mobile.task_page_locators import CONFIRM_SUBMIT, \
+    SUCCESSFUL_SUBMIT
+from openeobs_selenium.environment import MOB_LOGIN, NURSE_PWD1, NURSE_USERNM1
+from tests.test_common import TestCommon
 
 
 class TestNewsPage(TestCommon):

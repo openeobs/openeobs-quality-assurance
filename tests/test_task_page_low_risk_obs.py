@@ -1,14 +1,16 @@
 """Test to ensure that a low risk NEWS ob works correctly"""
-from openeobs_mobile.data import LOW_RISK_SCORE_1_EWS_DATA
-from openeobs_mobile.login_page import LoginPage
-from openeobs_mobile.list_page import ListPage
-from openeobs_mobile.patient_page import PatientPage
-from tests.test_common import TestCommon
-from openeobs_mobile.task_page_locators import CONFIRM_SUBMIT, RELATED_TASK
+import unittest
+
 import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
+from openeobs_mobile.data import LOW_RISK_SCORE_1_EWS_DATA, LOW_SCORE_RESPONSE
+from openeobs_mobile.list_page import ListPage
+from openeobs_mobile.login_page import LoginPage
+from openeobs_mobile.patient_page import PatientPage
 from openeobs_mobile.patient_page_locators import OPEN_OBS_MENU_NEWS_ITEM
-from tests.environment import MOB_LOGIN, NURSE_PWD1, NURSE_USERNM1
+from openeobs_mobile.task_page_locators import CONFIRM_SUBMIT, RELATED_TASK
+from openeobs_selenium.environment import MOB_LOGIN, NURSE_PWD1, NURSE_USERNM1, TEST_DB_NAME
+from tests.test_common import TestCommon
 
 
 class TestLowRiskPage(TestCommon):
@@ -23,6 +25,7 @@ class TestLowRiskPage(TestCommon):
         self.login_page.login(NURSE_USERNM1, NURSE_PWD1)
         self.patient_list_page.go_to_patient_list()
 
+    @unittest.skipIf(TEST_DB_NAME != 'slam', 'Not supported in this configuration')
     def test_low_risk_obs(self):
         """
         Test that an 'assess patient' task is triggered after a low NEWS score
@@ -41,10 +44,9 @@ class TestLowRiskPage(TestCommon):
 
         self.driver.find_element(*CONFIRM_SUBMIT).click()
 
-        task = 'Assess Patient'
         ui.WebDriverWait(self.driver, 5).until(
             ec.visibility_of_element_located(RELATED_TASK)
         )
         response = self.driver.find_element(*RELATED_TASK)
-        self.assertEqual(task, response.text,
+        self.assertEqual(LOW_SCORE_RESPONSE, response.text,
                          'Incorrect triggered action for low risk ob')

@@ -1,8 +1,8 @@
 """Test to ensure that the login page works correctly"""
 from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.page_confirm import PageConfirm
+from openeobs_selenium.environment import MOB_LOGIN, NURSE_PWD1, NURSE_USERNM1
 from tests.test_common import TestCommon
-from tests.environment import MOB_LOGIN, NURSE_PWD1, NURSE_USERNM1
 
 
 class TestLoginPage(TestCommon):

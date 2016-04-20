@@ -1,14 +1,15 @@
 """Test to ensure that the login page works correctly
 with multiple databases"""
-from openeobs_mobile.login_page import LoginPage
 import unittest
-from erppeek import Client
+
 import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
-from selenium.webdriver.common.by import By
-from selenium import webdriver
-from tests.environment import MOB_LOGIN, ODOO_CLIENT_URL, DATABASE, \
+from erppeek import Client
+from openeobs_mobile.login_page import LoginPage
+from openeobs_selenium.environment import MOB_LOGIN, ODOO_CLIENT_URL, DATABASE, \
     USERNAME, PASSWORD
+from selenium import webdriver
+from selenium.webdriver.common.by import By
 
 
 class TestLoginPageWithMultipleDBs(unittest.TestCase):

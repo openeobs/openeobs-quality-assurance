@@ -1,13 +1,13 @@
 """Test that the user is notified for a patient having no observation data"""
-from openeobs_mobile.patient_page import PatientPage
-from openeobs_mobile.login_page import LoginPage
-from openeobs_mobile.list_page import ListPage
-from openeobs_mobile.patient_page_locators import GRAPH_CHART
-from tests.test_common import TestCommon
-from tests.environment import MOB_LOGIN, NURSE_PWD1, NURSE_USERNM1, \
-    PATIENT_PAGE
 import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
+from openeobs_mobile.list_page import ListPage
+from openeobs_mobile.login_page import LoginPage
+from openeobs_mobile.patient_page import PatientPage
+from openeobs_mobile.patient_page_locators import GRAPH_CHART
+from openeobs_selenium.environment import MOB_LOGIN, NURSE_PWD1, NURSE_USERNM1, \
+    PATIENT_PAGE
+from tests.test_common import TestCommon
 
 
 class TestPatientPageVisualisationWithNoObsData(TestCommon):

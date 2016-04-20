@@ -1,12 +1,13 @@
 """Sets up and tears down a test class"""
 import unittest
-from selenium import webdriver
+
 import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
-from selenium.webdriver.common.by import By
 from erppeek import Client
-from tests.environment import DATABASE, DESKTOP_URL, ODOO_CLIENT_URL, \
+from openeobs_selenium.environment import DATABASE, DESKTOP_URL, ODOO_CLIENT_URL, \
     TEST_DB_NAME, USERNAME, PASSWORD
+from selenium import webdriver
+from selenium.webdriver.common.by import By
 
 
 class TestCommon(unittest.TestCase):

@@ -1,13 +1,13 @@
 """Tests to ensure that the stand in page works correctly"""
-from openeobs_mobile.list_page import ListPage
-from openeobs_mobile.stand_in_page_locators import STAND_IN_ACCEPT_BUTTON, \
-    STAND_IN_CONFIRM, STAND_IN_ERROR
-from openeobs_mobile.stand_in_page import StandInPage
-from tests.test_common import TestCommon
-from tests.environment import MOB_LOGIN, NURSE_PWD1, NURSE_USERNM1
-from openeobs_mobile.login_page import LoginPage
 import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
+from openeobs_mobile.list_page import ListPage
+from openeobs_mobile.login_page import LoginPage
+from openeobs_mobile.stand_in_page import StandInPage
+from openeobs_mobile.stand_in_page_locators import STAND_IN_ACCEPT_BUTTON, \
+    STAND_IN_CONFIRM, STAND_IN_ERROR
+from openeobs_selenium.environment import MOB_LOGIN, NURSE_PWD1, NURSE_USERNM1
+from tests.test_common import TestCommon
 
 
 class TestStandInPage(TestCommon):

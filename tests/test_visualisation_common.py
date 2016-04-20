@@ -1,14 +1,14 @@
 """Methods and helpers for patient data visualisation"""
-from openeobs_mobile.patient_page import PatientPage
-from openeobs_mobile.login_page import LoginPage
-from openeobs_mobile.list_page import ListPage
 import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
+from openeobs_mobile.list_page import ListPage
+from openeobs_mobile.login_page import LoginPage
+from openeobs_mobile.patient_page import PatientPage
+from openeobs_mobile.patient_page_graph import PatientPageGraphs
+from openeobs_selenium.environment import NURSE_PWD1, NURSE_USERNM1, PATIENT_PAGE, \
+    MOB_LOGIN
 from selenium.webdriver.common.by import By
 from tests.test_common import TestCommon
-from openeobs_mobile.patient_page_graph import PatientPageGraphs
-from tests.environment import NURSE_PWD1, NURSE_USERNM1, PATIENT_PAGE, \
-    MOB_LOGIN
 
 
 class TestVisualisationCommon(TestCommon):

@@ -1,14 +1,14 @@
 """Test that adhoc obs can be submitted successfully"""
+from openeobs_mobile.list_page import ListPage
+from openeobs_mobile.login_page import LoginPage
 from openeobs_mobile.page_confirm import PageConfirm
 from openeobs_mobile.patient_page import PatientPage
-from openeobs_mobile.login_page import LoginPage
-from openeobs_mobile.list_page import ListPage
-from tests.test_common import TestCommon
 from openeobs_mobile.patient_page_locators import OPEN_OBS_MENU_TITLE, \
     OPEN_OBS_MENU_NEWS_DEADLINE, OPEN_OBS_MENU_NEWS_ITEM, \
     OPEN_OBS_MENU_LIST_ITEMS
-from tests.environment import MOB_LOGIN, NURSE_PWD1, NURSE_USERNM1, \
+from openeobs_selenium.environment import MOB_LOGIN, NURSE_PWD1, NURSE_USERNM1, \
     PATIENT_PAGE
+from tests.test_common import TestCommon
 
 
 class TestPatientPageAdhocObs(TestCommon):

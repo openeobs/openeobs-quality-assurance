@@ -1,20 +1,20 @@
 """Tests to ensure that the task list page works correctly"""
-from openeobs_mobile import list_page_locators
-from openeobs_mobile.login_page import LoginPage
-from openeobs_mobile.list_page import ListPage
-from openeobs_mobile.page_confirm import PageConfirm
-from openeobs_mobile.patient_page_locators import OPEN_OBS_MENU_NEWS_ITEM
-from openeobs_mobile.task_page import TaskPage
-from tests.test_common import TestCommon
-from openeobs_mobile.task_page_locators import SUCCESSFUL_SUBMIT
-from tests.environment import MOB_LOGIN, NURSE_PWD1, NURSE_USERNM1, \
-    TASK_PAGE, PATIENT_PAGE
-from openeobs_mobile.task_page_locators import CONFIRM_SUBMIT
-from openeobs_mobile.data import HIGH_RISK_SCORE_9_EWS_DATA, NO_RISK_EWS_DATA
-from openeobs_mobile.patient_page import PatientPage
 import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
+from openeobs_mobile import list_page_locators
+from openeobs_mobile.data import HIGH_RISK_SCORE_9_EWS_DATA, NO_RISK_EWS_DATA
+from openeobs_mobile.list_page import ListPage
+from openeobs_mobile.login_page import LoginPage
+from openeobs_mobile.page_confirm import PageConfirm
+from openeobs_mobile.patient_page import PatientPage
+from openeobs_mobile.patient_page_locators import OPEN_OBS_MENU_NEWS_ITEM
+from openeobs_mobile.task_page import TaskPage
+from openeobs_mobile.task_page_locators import CONFIRM_SUBMIT
 from openeobs_mobile.task_page_locators import GO_TO_MY_TASK
+from openeobs_mobile.task_page_locators import SUCCESSFUL_SUBMIT
+from openeobs_selenium.environment import MOB_LOGIN, NURSE_PWD1, NURSE_USERNM1, \
+    TASK_PAGE, PATIENT_PAGE
+from tests.test_common import TestCommon
 
 
 class TestTaskListPage(TestCommon):

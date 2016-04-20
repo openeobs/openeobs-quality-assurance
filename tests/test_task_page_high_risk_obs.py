@@ -1,14 +1,14 @@
 """Test to ensure that a high risk NEWS ob works correctly"""
-from openeobs_mobile.data import HIGH_RISK_SCORE_9_EWS_DATA
-from openeobs_mobile.login_page import LoginPage
-from openeobs_mobile.list_page import ListPage
-from openeobs_mobile.patient_page import PatientPage
-from tests.test_common import TestCommon
-from openeobs_mobile.task_page_locators import CONFIRM_SUBMIT, RELATED_TASK
 import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
+from openeobs_mobile.data import HIGH_RISK_SCORE_9_EWS_DATA, HIGH_SCORE_RESPONSE
+from openeobs_mobile.list_page import ListPage
+from openeobs_mobile.login_page import LoginPage
+from openeobs_mobile.patient_page import PatientPage
 from openeobs_mobile.patient_page_locators import OPEN_OBS_MENU_NEWS_ITEM
-from tests.environment import MOB_LOGIN, NURSE_PWD1, NURSE_USERNM1
+from openeobs_mobile.task_page_locators import CONFIRM_SUBMIT, RELATED_TASK
+from openeobs_selenium.environment import MOB_LOGIN, NURSE_PWD1, NURSE_USERNM1
+from tests.test_common import TestCommon
 
 
 class TestHighRiskPage(TestCommon):
@@ -42,11 +42,10 @@ class TestHighRiskPage(TestCommon):
 
         self.driver.find_element(*CONFIRM_SUBMIT).click()
 
-        task = 'Immediately inform medical team'
         ui.WebDriverWait(self.driver, 5).until(
             ec.visibility_of_element_located(RELATED_TASK)
         )
         response = self.driver.find_element(*RELATED_TASK)
 
-        self.assertEqual(task, response.text,
+        self.assertEqual(HIGH_SCORE_RESPONSE, response.text,
                          'Incorrect triggered action for high risk ob')

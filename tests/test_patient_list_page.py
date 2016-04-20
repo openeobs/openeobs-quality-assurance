@@ -1,16 +1,16 @@
 """Tests to ensure that the patient list page works correctly"""
 
-from openeobs_mobile import list_page_locators
-from openeobs_mobile import patient_page_locators
-from openeobs_mobile.login_page import LoginPage
-from openeobs_mobile.list_page import ListPage
-from openeobs_mobile.page_confirm import PageConfirm
-from openeobs_mobile.patient_page import PatientPage
-from tests.test_common import TestCommon
 import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
-from tests.environment import MOB_LOGIN, NURSE_PWD1, NURSE_USERNM1, \
+from openeobs_mobile import list_page_locators
+from openeobs_mobile import patient_page_locators
+from openeobs_mobile.list_page import ListPage
+from openeobs_mobile.login_page import LoginPage
+from openeobs_mobile.page_confirm import PageConfirm
+from openeobs_mobile.patient_page import PatientPage
+from openeobs_selenium.environment import MOB_LOGIN, NURSE_PWD1, NURSE_USERNM1, \
     PATIENT_PAGE
+from tests.test_common import TestCommon
 
 
 class TestPatientListPage(TestCommon):
