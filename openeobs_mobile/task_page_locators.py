@@ -24,7 +24,7 @@ TASK_FORM_FIELD_HELP = (By.CSS_SELECTOR, '.input-body > .help')
 TASK_FORM_INVALID_SUBMIT = (By.ID, 'invalid_form')
 CONFIRM_ACTION = (By.CSS_SELECTOR, '#submitButton')
 CONFIRM_SUBMIT = (
-    By.CSS_SELECTOR, '#submit_observation > ul > li:nth-child(2)')
+    By.CSS_SELECTOR, '#submit_observation > ul > li:nth-child(2) > a')
 SUCCESSFUL_SUBMIT = (By.CSS_SELECTOR, '#submit_success > h2')
 CONFIRM_TASK = (By.CSS_SELECTOR, '#submit_success > ul > li:nth-child(2) > a')
 CANCEL_SUBMIT = (By.ID, 'cancelSubmit')
