@@ -5,7 +5,7 @@ USERNAME = 'admin'
 PASSWORD = 'admin'
 # DB names
 TEST_DB_NAME = 'openeobs_quality_assurance_db'
-DATABASE = 'bjss_selenium'
+DATABASE = 'nhclinical'
 # Url Info
 ODOO_CLIENT_URL = 'http://localhost:8069'
 # DESKTOP_URL = 'http://localhost:8069/web?db={database}'.format(
@@ -24,3 +24,7 @@ NURSE_PWD1 = 'nasir'
 # Senior Manager login credential
 SM_USERNM1 = 'saint'
 SM_PWD = 'saint'
+
+#HCA login credential
+HCA_USERNM1 = 'hal'
+HCA_PWD1 = 'hal'
