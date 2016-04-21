@@ -31,7 +31,7 @@ CANCEL_SUBMIT = (By.ID, 'cancelSubmit')
 CONFIRM_CANCEL = (By.CSS_SELECTOR,
                   '.options > li:nth-child(2) > a:nth-child(1)')
 SUCCESSFUL_CANCEL = (By.CSS_SELECTOR, '#cancel_success > h2:nth-child(1)')
-RELATED_TASK = (By.CSS_SELECTOR, '#submit_success > div > p')
+RELATED_TASK = (By.CSS_SELECTOR, '#submit_success > .dialogContent')
 TASK = (By.CLASS_NAME, 'taskInfo')
 GO_TO_MY_TASK = (By.XPATH, '//a[contains(.,"Go to My Tasks")]')
 MEDIUM_SLAM_TASKS = (By.XPATH, "//*]contains(text(), 'Urgently inform medical team')]")
