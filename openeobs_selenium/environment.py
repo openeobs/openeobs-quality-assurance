@@ -28,3 +28,7 @@ SM_PWD = 'saint'
 #HCA login credential
 HCA_USERNM1 = 'hal'
 HCA_PWD1 = 'hal'
+
+#Doctor login credential
+DOCTOR_USERNM1 = 'david'
+DOCTOR_PWD1 = 'david'
