@@ -1,7 +1,7 @@
 """Methods for the patient page"""
 
 from openeobs_mobile.page_helpers import BasePage
-from openeobs_mobile.task_page_locators import TASK_FORM_SUBMIT, TASK_FORM
+from openeobs_mobile.task_page_locators import TASK_FORM
 from openeobs_mobile.patient_page_locators import ADHOC_OBS_MENU_BUTTON, \
     OPEN_OBS_MENU, GRAPH_CHART, TABLE_TAB_BUTTON, GRAPH_TAB_BUTTON, \
     GRAPH_CHART_SVG, TABULAR_VALUES_TABLE, TABLE_CONTAINER, TABLE_DATA, \
@@ -10,7 +10,7 @@ import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
-from selenium.webdriver.common.keys import Keys
+from openeobs_mobile.observation_form_page import ObservationFormPage
 
 
 class PatientPage(BasePage):
@@ -200,25 +200,6 @@ class PatientPage(BasePage):
             ec.visibility_of_element_located(TASK_FORM)
         )
 
+    # TODO: Remove this
     def enter_obs_data(self, data):
-        """
-        Enter data into an observation form
-        :param data: The data to be entered
-        """
-        if 'oxygen_administration_flag' in data:
-            oxy = self.driver.find_element_by_name(
-                'oxygen_administration_flag')
-            oxy.send_keys(data['oxygen_administration_flag'])
-            oxy.send_keys(Keys.TAB)
-
-            if 'device_id' in data:
-                device = self.driver.find_element_by_name('device_id')
-                device.send_keys(data['device_id'])
-                device.send_keys(Keys.TAB)
-
-        for field, value in data.iteritems():
-            input_field = self.driver.find_element_by_name(field)
-            input_field.send_keys(value)
-            input_field.send_keys(Keys.TAB)
-
-        self.driver.find_element(*TASK_FORM_SUBMIT).click()
+        return ObservationFormPage.enter_obs_data(data)
