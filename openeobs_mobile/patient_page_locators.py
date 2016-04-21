@@ -7,7 +7,7 @@ OPEN_OBS_MENU = (By.ID, 'obs_menu')
 OPEN_OBS_MENU_TITLE = (By.TAG_NAME, 'h2')
 OPEN_OBS_MENU_LIST_ITEMS = (By.TAG_NAME, 'li')
 OPEN_OBS_MENU_NEWS_ITEM = (By.CSS_SELECTOR,
-                           '#obs_menu > div > ul > li.rightContent')
+                           '#obs_menu > div > ul > li.rightContent a')
 OPEN_OBS_MENU_NEWS_DEADLINE = (By.CLASS_NAME, 'aside')
 
 OPEN_OBS_MENU_GCS = (
