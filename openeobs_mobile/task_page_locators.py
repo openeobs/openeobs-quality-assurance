@@ -39,3 +39,4 @@ CLINICAL_RISK = (By.CSS_SELECTOR,'#submit_observation > div > p:nth-child(1) > s
 CONFIRM_ACTION_TAKEN = (By.CSS_SELECTOR, '#obsForm > p')
 RELATED_TASK_LIST = (By.CSS_SELECTOR, '#submit_success > div > ul > li > a')
 CONFIRM_AMBULANCE = (By.CSS_SELECTOR, '#obsForm > p:nth-child(2)')
+CANCEL_TASK = (By.CSS_SELECTOR, '#cancel_reasons > ul > li:nth-child(2) > a')
