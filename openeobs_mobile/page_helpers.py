@@ -150,6 +150,33 @@ class BasePage(object):
         activity_api.unlink(obs)
 
     @staticmethod
+    def remove_tasks_for_patient(patient_id,
+                                 activity_models=[],
+                                 database='openeobs_quality_assurance_db',
+                                 user='admin', password='admin'):
+        """
+        Remove a specific task for a patient
+        :param patient_id: The patient to remove tasks for
+        :param activity_models: The activity model to remove
+        :param database: database to run against
+        :param user: the username to run as
+        :param password: password for username
+        """
+        odoo_client = Client('http://localhost:8069', db=database,
+                             user=user, password=password)
+        activity_api = odoo_client.model('nh.activity')
+        spells = activity_api.search([
+            ['state', '=', 'started'],
+            ['data_model', '=', 'nh.clinical.spell'],
+            ['patient_id', '=', patient_id]
+        ])
+        activities = activity_api.search([
+            ['data_model', 'in', activity_models],
+            ['parent_id', 'in', spells]
+        ])
+        activity_api.unlink(activities)
+
+    @staticmethod
     def add_no_risk_observation(
             patient_id, database='openeobs_quality_assurance_db', user='nasir',
             password='nasir'):
