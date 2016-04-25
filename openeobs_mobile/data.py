@@ -112,21 +112,59 @@ MEDIUM_RISK_SCORE_6_EWS_DATA = {
 
 MEDIUM_SCORE_RESPONSE = 'Urgently inform medical team'
 
-HIGH_RISK_SCORE_7_EWS_DATA = {
-    'respiration_rate': 24,
-    'indirect_oxymetry_spo2': 99,
-    'oxygen_administration_flag': 'Yes',
-    'blood_pressure_systolic': 110,
-    'blood_pressure_diastolic': 80,
-    'avpu_text': 'Alert',
-    'pulse_rate': 50,
-    'body_temperature': 36.0,
-    'device_id': 'NIV BiPAP',
-    'concentration': 85,
-    'niv_ipap': 2,
-    'niv_epap': 2,
-    'niv_backup': 4
-}
+HIGH_RISK_SCORE_7_EWS_DATA = [
+    {'name': 'respiration_rate',
+     'value': 24,
+     'type': 'textbox'},
+
+    {'name': 'indirect_oxymetry_spo2',
+     'value': 99,
+     'type': 'textbox'},
+
+    {'name': 'oxygen_administration_flag',
+     'value': 'Yes',
+     'type': 'select'},
+
+    {'name': 'blood_pressure_systolic',
+     'value': 110,
+     'type': 'textbox'},
+
+    {'name': 'blood_pressure_diastolic',
+     'value': 80,
+     'type': 'textbox'},
+
+    {'name': 'avpu_text',
+     'value': 'Alert',
+     'type': 'select'},
+
+    {'name': 'pulse_rate',
+     'value': 50,
+     'type': 'textbox'},
+
+    {'name': 'body_temperature',
+     'value': 36.0,
+     'type': 'textbox'},
+
+    {'name': 'device_id',
+     'value': 'NIV BiPAP',
+     'type': 'select'},
+
+    {'name': 'concentration',
+     'value': 85,
+     'type': 'textbox'},
+
+    {'name': 'niv_ipap',
+     'value': 2,
+     'type': 'textbox'},
+
+    {'name': 'niv_epap',
+     'value': 2,
+     'type': 'textbox'},
+
+    {'name': 'niv_backup',
+     'value': 4,
+     'type': 'textbox'}
+]
 
 HIGH_RISK_SCORE_8_EWS_DATA = {
     'respiration_rate': 24,
