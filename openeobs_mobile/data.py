@@ -6,7 +6,7 @@ NO_RISK_EWS_DATA = {
     'oxygen_administration_flag': 'No',
     'blood_pressure_systolic': 120,
     'blood_pressure_diastolic': 80,
-    'avpu_text': 'A',
+    'avpu_text': 'Alert',
     'pulse_rate': 65,
     'body_temperature': 37.5,
 }
@@ -17,7 +17,7 @@ LOW_RISK_SCORE_1_EWS_DATA = {
     'oxygen_administration_flag': 'No',
     'blood_pressure_systolic': 120,
     'blood_pressure_diastolic': 80,
-    'avpu_text': 'A',
+    'avpu_text': 'Alert',
     'pulse_rate': 65,
     'body_temperature': 37.5,
 }
@@ -28,7 +28,7 @@ LOW_RISK_SCORE_2_EWS_DATA = {
     'oxygen_administration_flag': 'No',
     'blood_pressure_systolic': 110,
     'blood_pressure_diastolic': 80,
-    'avpu_text': 'A',
+    'avpu_text': 'Alert',
     'pulse_rate': 65,
     'body_temperature': 37.5,
 }
@@ -41,7 +41,7 @@ LOW_RISK_SCORE_3_EWS_DATA = {
     'flow_rate': 8,
     'blood_pressure_systolic': 120,
     'blood_pressure_diastolic': 80,
-    'avpu_text': 'A',
+    'avpu_text': 'Alert',
     'pulse_rate': 65,
     'body_temperature': 37.5,
 }
@@ -54,7 +54,7 @@ LOW_RISK_SCORE_4_EWS_DATA = {
     'flow_rate': 4,
     'blood_pressure_systolic': 110,
     'blood_pressure_diastolic': 80,
-    'avpu_text': 'A',
+    'avpu_text': 'Alert',
     'pulse_rate': 65,
     'body_temperature': 37.5,
 }
@@ -67,7 +67,7 @@ MEDIUM_RISK_SCORE_3_THREE_IN_ONE_EWS_DATA = {
     'oxygen_administration_flag': 'No',
     'blood_pressure_systolic': 120,
     'blood_pressure_diastolic': 80,
-    'avpu_text': 'V',
+    'avpu_text': 'Voice',
     'pulse_rate': 65,
     'body_temperature': 37.5,
 }
@@ -78,7 +78,7 @@ MEDIUM_RISK_SCORE_4_THREE_IN_ONE_EWS_DATA = {
     'oxygen_administration_flag': 'No',
     'blood_pressure_systolic': 120,
     'blood_pressure_diastolic': 80,
-    'avpu_text': 'V',
+    'avpu_text': 'Voice',
     'pulse_rate': 65,
     'body_temperature': 37.5,
 }
@@ -90,7 +90,7 @@ MEDIUM_RISK_SCORE_5_EWS_DATA = {
     'device_id': 'Nasal Cannula',
     'blood_pressure_systolic': 110,
     'blood_pressure_diastolic': 80,
-    'avpu_text': 'A',
+    'avpu_text': 'Alert',
     'pulse_rate': 50,
     'body_temperature': 37.5,
     'concentration': 40,
@@ -105,7 +105,7 @@ MEDIUM_RISK_SCORE_6_EWS_DATA = {
     'cpap_peep': 2,
     'blood_pressure_systolic': 110,
     'blood_pressure_diastolic': 80,
-    'avpu_text': 'A',
+    'avpu_text': 'Alert',
     'pulse_rate': 50,
     'body_temperature': 37.5,
 }
@@ -123,7 +123,7 @@ HIGH_RISK_SCORE_7_EWS_DATA = {
     'niv_backup': 4,
     'blood_pressure_systolic': 110,
     'blood_pressure_diastolic': 80,
-    'avpu_text': 'A',
+    'avpu_text': 'Alert',
     'pulse_rate': 50,
     'body_temperature': 36.0,
 }
@@ -136,7 +136,7 @@ HIGH_RISK_SCORE_8_EWS_DATA = {
     'flow_rate': 10,
     'blood_pressure_systolic': 110,
     'blood_pressure_diastolic': 80,
-    'avpu_text': 'A',
+    'avpu_text': 'Alert',
     'pulse_rate': 50,
     'body_temperature': 36.0,
 }
@@ -149,7 +149,7 @@ HIGH_RISK_SCORE_9_EWS_DATA = {
     'flow_rate': 10,
     'blood_pressure_systolic': 100,
     'blood_pressure_diastolic': 80,
-    'avpu_text': 'A',
+    'avpu_text': 'Alert',
     'pulse_rate': 130,
     'body_temperature': 36.0,
 }
@@ -162,7 +162,7 @@ HIGH_RISK_SCORE_10_EWS_DATA = {
     'flow_rate': 10,
     'blood_pressure_systolic': 100,
     'blood_pressure_diastolic': 80,
-    'avpu_text': 'A',
+    'avpu_text': 'Alert',
     'pulse_rate': 130,
     'body_temperature': 36.0,
 }
@@ -175,7 +175,7 @@ HIGH_RISK_SCORE_11_EWS_DATA = {
     'flow_rate': 10,
     'blood_pressure_systolic': 100,
     'blood_pressure_diastolic': 80,
-    'avpu_text': 'A',
+    'avpu_text': 'Alert',
     'pulse_rate': 130,
     'body_temperature': 36.0,
 }
