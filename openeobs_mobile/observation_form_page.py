@@ -11,25 +11,15 @@ class ObservationFormPage(BasePage):
         :param data: The data to be entered
         """
         for field, value in data.iteritems():
-            input_field = self.driver.find_element_by_name(field)
-            input_field.send_keys(value)
-            input_field.send_keys(Keys.TAB)
-
-        if 'oxygen_administration_flag' in data:
-            oxy = self.driver.find_element_by_name(
-                'oxygen_administration_flag')
-            oxy_select = Select(oxy)
-            oxy_select.select_by_visible_text(
-                data['oxygen_administration_flag'])
-
-        if 'device_id' in data:
-            device = self.driver.find_element_by_name('device_id')
-            device_select = Select(device)
-            device_select.select_by_visible_text(data['device_id'])
-
-        if 'avpu_text' in data:
-            avpu = self.driver.find_element_by_name('avpu_text')
-            avpu_select = Select(avpu)
-            avpu_select.select_by_visible_text(data['avpu_text'])
+            if field not in ['oxygen_administration_flag', 'device_id',
+                             'avpu_text']:
+                input_field = self.driver.find_element_by_name(field)
+                input_field.send_keys(value)
+                input_field.send_keys(Keys.TAB)
+            else:
+                select_field = self.driver.find_element_by_name(field)
+                select_select = Select(select_field)
+                select_select.select_by_visible_text(value)
+                select_field.send_keys(Keys.TAB)
 
         self.driver.find_element(*TASK_FORM_SUBMIT).click()
