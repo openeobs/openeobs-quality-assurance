@@ -11,6 +11,7 @@ class ObservationFormPage(BasePage):
         :param data: The data to be entered
         """
         for field, value in data.iteritems():
+            print(field)
             if field not in ['oxygen_administration_flag', 'device_id',
                              'avpu_text']:
                 input_field = self.driver.find_element_by_name(field)
