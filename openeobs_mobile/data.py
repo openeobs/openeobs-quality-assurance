@@ -1,63 +1,199 @@
 """Stores data dictionaries for QA testing"""
 
-NO_RISK_EWS_DATA = {
-    'respiration_rate': 18,
-    'indirect_oxymetry_spo2': 99,
-    'oxygen_administration_flag': 'No',
-    'blood_pressure_systolic': 120,
-    'blood_pressure_diastolic': 80,
-    'avpu_text': 'Alert',
-    'pulse_rate': 65,
-    'body_temperature': 37.5
-}
+NO_RISK_EWS_DATA = [
+    {'name': 'respiration_rate',
+     'value': 18,
+     'type': 'textbox'
+     },
 
-LOW_RISK_SCORE_1_EWS_DATA = {
-    'respiration_rate': 11,
-    'indirect_oxymetry_spo2': 99,
-    'oxygen_administration_flag': 'No',
-    'blood_pressure_systolic': 120,
-    'blood_pressure_diastolic': 80,
-    'avpu_text': 'Alert',
-    'pulse_rate': 65,
-    'body_temperature': 37.5
-}
+    {'name': 'indirect_oxymetry_spo2',
+     'value': 99,
+     'type': 'textbox'},
 
-LOW_RISK_SCORE_2_EWS_DATA = {
-    'respiration_rate': 11,
-    'indirect_oxymetry_spo2': 99,
-    'oxygen_administration_flag': 'No',
-    'blood_pressure_systolic': 110,
-    'blood_pressure_diastolic': 80,
-    'avpu_text': 'Alert',
-    'pulse_rate': 65,
-    'body_temperature': 37.5
-}
+    {'name': 'oxygen_administration_flag',
+     'value': 'No',
+     'type': 'select'},
 
-LOW_RISK_SCORE_3_EWS_DATA = {
-    'respiration_rate': 11,
-    'indirect_oxymetry_spo2': 99,
-    'oxygen_administration_flag': 'Yes',
-    'blood_pressure_systolic': 120,
-    'blood_pressure_diastolic': 80,
-    'avpu_text': 'Alert',
-    'pulse_rate': 65,
-    'body_temperature': 37.5,
-    'device_id': 'Nasal Cannula',
-    'flow_rate': 8
-}
+    {'name': 'blood_pressure_systolic',
+     'value': 120,
+     'type': 'textbox'},
 
-LOW_RISK_SCORE_4_EWS_DATA = {
-    'respiration_rate': 11,
-    'indirect_oxymetry_spo2': 99,
-    'oxygen_administration_flag': 'Yes',
-    'blood_pressure_systolic': 110,
-    'blood_pressure_diastolic': 80,
-    'avpu_text': 'Alert',
-    'pulse_rate': 65,
-    'body_temperature': 37.5,
-    'device_id': 'Simple Mask',
-    'flow_rate': 4
-}
+    {'name': 'blood_pressure_diastolic',
+     'value': 80,
+     'type': 'textbox'},
+
+    {'name': 'avpu_text',
+     'value': 'Alert',
+     'type': 'select'},
+
+    {'name': 'pulse_rate',
+     'value': 65,
+     'type': 'textbox'},
+
+    {'name': 'body_temperature',
+     'value': 37.5,
+     'type': 'textbox'}
+]
+
+LOW_RISK_SCORE_1_EWS_DATA = [
+
+    {'name': 'respiration_rate',
+     'value': 11,
+     'type': 'textbox'
+     },
+
+    {'name': 'indirect_oxymetry_spo2',
+     'value': 99,
+     'type': 'textbox'
+     },
+    {'name': 'oxygen_administration_flag',
+     'value': 'No',
+     'type': 'select'},
+
+    {'name': 'blood_pressure_systolic',
+     'value': 120,
+     'type': 'textbox'},
+
+    {'name': 'blood_pressure_diastolic',
+     'value': 80,
+     'type': 'textbox'},
+
+    {'name': 'avpu_text',
+     'value': 'Alert',
+     'type': 'select'},
+
+    {'name': 'pulse_rate',
+     'value': 65,
+     'type': 'textbox'},
+
+    {'name': 'body_temperature',
+     'value': 37.5,
+     'type': 'textbox'}
+]
+
+LOW_RISK_SCORE_2_EWS_DATA = [
+    {'name': 'respiration_rate',
+     'value': 11,
+     'type': 'textbox'
+     },
+
+    {'name': 'indirect_oxymetry_spo2',
+     'value': 99,
+     'type': 'textbox'
+     },
+    {'name': 'oxygen_administration_flag',
+     'value': 'No',
+     'type': 'select'},
+
+    {'name': 'blood_pressure_systolic',
+     'value': 110,
+     'type': 'textbox'},
+
+    {'name': 'blood_pressure_diastolic',
+     'value': 80,
+     'type': 'textbox'},
+
+    {'name': 'avpu_text',
+     'value': 'Alert',
+     'type': 'select'},
+
+    {'name': 'pulse_rate',
+     'value': 65,
+     'type': 'textbox'},
+
+    {'name': 'body_temperature',
+     'value': 37.5,
+     'type': 'textbox'}
+
+]
+
+LOW_RISK_SCORE_3_EWS_DATA = [
+    {'name': 'respiration_rate',
+     'value': 11,
+     'type': 'textbox'
+     },
+
+    {'name': 'indirect_oxymetry_spo2',
+     'value': 99,
+     'type': 'textbox'
+     },
+    {'name': 'oxygen_administration_flag',
+     'value': 'Yes',
+     'type': 'select'},
+
+    {'name': 'blood_pressure_systolic',
+     'value': 120,
+     'type': 'textbox'},
+
+    {'name': 'blood_pressure_diastolic',
+     'value': 80,
+     'type': 'textbox'},
+
+    {'name': 'avpu_text',
+     'value': 'Alert',
+     'type': 'select'},
+
+    {'name': 'pulse_rate',
+     'value': 65,
+     'type': 'textbox'},
+
+    {'name': 'body_temperature',
+     'value': 37.5,
+     'type': 'textbox'},
+
+    {'name': 'device_id',
+     'value': 'Nasal Cannula',
+     'type': 'select'},
+
+    {'name': 'flow_rate',
+     'value': 8,
+     'type': 'textbox'},
+
+]
+
+LOW_RISK_SCORE_4_EWS_DATA = [
+    {'name': 'respiration_rate',
+     'value': 11,
+     'type': 'textbox'
+     },
+
+    {'name': 'indirect_oxymetry_spo2',
+     'value': 99,
+     'type': 'textbox'
+     },
+    {'name': 'oxygen_administration_flag',
+     'value': 'Yes',
+     'type': 'select'},
+
+    {'name': 'blood_pressure_systolic',
+     'value': 110,
+     'type': 'textbox'},
+
+    {'name': 'blood_pressure_diastolic',
+     'value': 80,
+     'type': 'textbox'},
+
+    {'name': 'avpu_text',
+     'value': 'Alert',
+     'type': 'select'},
+
+    {'name': 'pulse_rate',
+     'value': 65,
+     'type': 'textbox'},
+
+    {'name': 'body_temperature',
+     'value': 37.5,
+     'type': 'textbox'},
+
+    {'name': 'device_id',
+     'value': 'Simple Mask',
+     'type': 'select'},
+
+    {'name': 'flow_rate',
+     'value': 4,
+     'type': 'textbox'}
+
+]
 
 LOW_SCORE_RESPONSE = 'Assess Patient'
 
