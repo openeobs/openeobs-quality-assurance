@@ -14,7 +14,7 @@ OPEN_OBS_MENU_GCS = (
     By.CSS_SELECTOR, '#obs_menu > div > ul > li:nth-child(2)')
 
 OPEN_OBS_MENU_HEIGHT = (
-    By.CSS_SELECTOR, '#obs_menu > div > ul > li:nth-child(3)')
+    By.CSS_SELECTOR, '#obs_menu > div > ul > li:nth-child(3) > a')
 
 OPEN_OBS_MENU_WEIGHT = (
     By.CSS_SELECTOR, '#obs_menu > div > ul > li:nth-child(4)')
