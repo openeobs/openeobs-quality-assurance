@@ -587,56 +587,140 @@ HIGH_RISK_SCORE_11_EWS_DATA = [
 
 HIGH_SCORE_RESPONSE = 'Immediately inform medical team'
 
-INCORRECT_EWS_DATA = {
-    'respiration_rate': 9999,
-    'indirect_oxymetry_spo2': 9999,
-    'blood_pressure_systolic': 9999,
-    'blood_pressure_diastolic': 9999,
-    'pulse_rate': 9999,
-    'body_temperature': 9999,
+INCORRECT_EWS_DATA = [
+    {'name': 'respiration_rate',
+     'value': 9999,
+     'type': 'textbox'},
 
-}
+    {'name': 'indirect_oxymetry_spo2',
+     'value': 9999,
+     'type': 'textbox'},
 
-GCS_SCORE_15_DATA = {
-    'eyes': 4,
-    'verbal': 5,
-    'motor': 6
-}
+    {'name': 'blood_pressure_systolic',
+     'value': 9999,
+     'type': 'textbox'},
 
-HEIGHT_DATA = {
-    'height': 1.8
-}
+    {'name': 'blood_pressure_diastolic',
+     'value': 9999,
+     'type': 'textbox'},
 
-WEIGHT_DATA = {
-    'weight': 55
-}
+    {'name': 'pulse_rate',
+     'value': 9999,
+     'type': 'textbox'},
 
-BLOOD_PRODUCT_DATA = {
-    'vol': 15,
-    'product': 'rbc'
-}
+    {'name': 'body_temperature',
+     'value': 9999.0,
+     'type': 'textbox'}
+]
 
-BLOOD_SUGAR_DATA = {
-    'blood_sugar': 5
-}
+GCS_SCORE_15_DATA = [
 
-BRISTOL_STOOL_DATA = {
-    'bowel_open': 'no',
-    'nausea': 'no',
-    'vomiting': 'no',
-    'quantity': 'medium',
-    'colour': 'brown',
-    'bristol_type': 'type 1',
-    'offensive': 'no',
-    'strain': 'no',
-    'laxatives': 'no',
-    'samples': 'none',
-    'rectal_exam': 'no'
-}
+    {'name': 'eyes',
+     'value': 4,
+     'type': 'select'},
 
-POSTURAL_BLOOD_PRESSURE_DATA = {
-    'systolic_sitting': 120,
-    'diastolic_sitting': 80,
-    'systolic_standing': 130,
-    'diastolic_standing': 90
-}
+    {'name': 'verbal',
+     'value': 5,
+     'type': 'select'},
+
+    {'name': 'motor',
+     'value': 6,
+     'type': 'select'}
+]
+
+HEIGHT_DATA = [
+
+    {'name': 'height',
+     'value': 1.8,
+     'type': 'textbox'}
+]
+
+WEIGHT_DATA = [
+
+    {'name': 'weight',
+     'value': 55,
+     'type': 'textbox'}
+]
+
+BLOOD_PRODUCT_DATA = [
+
+    {'name': 'vol',
+     'value': 15,
+     'type': 'textbox'},
+
+    {'name': 'product',
+     'value': 'rbc',
+     'type': 'select'}
+]
+
+BLOOD_SUGAR_DATA = [
+
+    {'name': 'blood_sugar',
+     'value': 5,
+     'type': 'textbox'}
+]
+
+BRISTOL_STOOL_DATA = [
+
+    {'name': 'bowel_open',
+     'value': 'no',
+     'type': 'select'},
+
+    {'name': 'nausea',
+     'value': 'no',
+     'type': 'select'},
+
+    {'name': 'vomiting',
+     'value': 'no',
+     'type': 'select'},
+
+    {'name': 'quantity',
+     'value': 'medium',
+     'type': 'select'},
+
+    {'name': 'colour',
+     'value': 'brown',
+     'type': 'select'},
+
+    {'name': 'bristol_type',
+     'value': 'type 1',
+     'type': 'select'},
+
+    {'name': 'offensive',
+     'value': 'no',
+     'type': 'select'},
+
+    {'name': 'strain',
+     'value': 'no',
+     'type': 'select'},
+
+    {'name': 'laxatives',
+     'value': 'no',
+     'type': 'select'},
+
+    {'name': 'samples',
+     'value': 'no',
+     'type': 'select'},
+
+    {'name': 'rectal_exam',
+     'value': 'no',
+     'type': 'select'}
+]
+
+POSTURAL_BLOOD_PRESSURE_DATA = [
+    {'name': 'systolic_sitting',
+     'value': 120,
+     'type': 'textbox'},
+
+    {'name': 'diastolic_sitting',
+     'value': 80,
+     'type': 'textbox'},
+
+    {'name': 'systolic_standing',
+     'value': 130,
+     'type': 'textbox'},
+
+    {'name': 'diastolic_standing',
+     'value': 90,
+     'type': 'textbox'}
+]
