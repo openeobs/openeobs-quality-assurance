@@ -638,7 +638,7 @@ HEIGHT_DATA = [
 WEIGHT_DATA = [
 
     {'name': 'weight',
-     'value': 55,
+     'value': 120,
      'type': 'textbox'}
 ]
 
