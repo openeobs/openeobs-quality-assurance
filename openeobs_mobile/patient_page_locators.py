@@ -11,25 +11,25 @@ OPEN_OBS_MENU_NEWS_ITEM = (By.CSS_SELECTOR,
 OPEN_OBS_MENU_NEWS_DEADLINE = (By.CLASS_NAME, 'aside')
 
 OPEN_OBS_MENU_GCS = (
-    By.CSS_SELECTOR, '#obs_menu > div > ul > li:nth-child(2)')
+    By.CSS_SELECTOR, '#obs_menu > div > ul > li:nth-child(2) > a')
 
 OPEN_OBS_MENU_HEIGHT = (
     By.CSS_SELECTOR, '#obs_menu > div > ul > li:nth-child(3) > a')
 
 OPEN_OBS_MENU_WEIGHT = (
-    By.CSS_SELECTOR, '#obs_menu > div > ul > li:nth-child(4)')
+    By.CSS_SELECTOR, '#obs_menu > div > ul > li:nth-child(4) > a')
 
 OPEN_OBS_MENU_BLOOD_PRODUCT = (
-    By.CSS_SELECTOR, '#obs_menu > div > ul > li:nth-child(5)')
+    By.CSS_SELECTOR, '#obs_menu > div > ul > li:nth-child(5) > a')
 
 OPEN_OBS_MENU_BLOOD_SUGAR = (
-    By.CSS_SELECTOR, '#obs_menu > div > ul > li:nth-child(6)')
+    By.CSS_SELECTOR, '#obs_menu > div > ul > li:nth-child(6) > a')
 
 OPEN_OBS_MENU_BS_SCALE = (
-    By.CSS_SELECTOR, '#obs_menu > div > ul > li:nth-child(7)')
+    By.CSS_SELECTOR, '#obs_menu > div > ul > li:nth-child(7) > a')
 
 OPEN_OBS_MENU_POSTURAL_PRESSURE = (
-    By.CSS_SELECTOR, '#obs_menu > div > ul > li:nth-child(8)')
+    By.CSS_SELECTOR, '#obs_menu > div > ul > li:nth-child(8) > a')
 
 PATIENT_INFO = (By.CSS_SELECTOR, '#obsButton h3.name')
 PATIENT_NAME = (By.CSS_SELECTOR, '#obsButton h3.name strong')
