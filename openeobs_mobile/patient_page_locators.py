@@ -2,7 +2,7 @@
 
 from selenium.webdriver.common.by import By
 
-ADHOC_OBS_MENU_BUTTON = (By.CLASS_NAME, 'obs')
+ADHOC_OBS_MENU_BUTTON = (By.ID, 'take-observation')
 OPEN_OBS_MENU = (By.ID, 'obs_menu')
 OPEN_OBS_MENU_TITLE = (By.TAG_NAME, 'h2')
 OPEN_OBS_MENU_LIST_ITEMS = (By.TAG_NAME, 'li')
