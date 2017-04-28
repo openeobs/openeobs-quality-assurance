@@ -11,4 +11,4 @@ RENABLE_OPTION = (
 TASK_LIST_OPTION = (
     By.CSS_SELECTOR, ".dialog > .options > li > a[data-action=\"confirm\"]")
 ESCALATION_TASK_OPTION = (
-    By.CSS_SELECTOR, "#submit_success > options > li:last-child > a")
+    By.CSS_SELECTOR, "#submit_success > .options > li:last-child > a")
