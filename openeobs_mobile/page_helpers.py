@@ -11,6 +11,7 @@ from selenium.common.exceptions import NoSuchElementException, TimeoutException
 from erppeek import Client
 from openeobs_mobile.menu_locators import PATIENT_LIST_EL, TASK_LIST_EL, \
     STAND_IN_EL, LOGOUT_EL, BARCODE_SCAN_EL, BARCODE_SCAN_INPUT
+from openeobs_mobile.list_page_locators import LIST_EL
 
 
 class BasePage(object):
@@ -31,6 +32,9 @@ class BasePage(object):
             ec.visibility_of_element_located(
                 (By.CSS_SELECTOR, '#taskNavItem.selected'))
         )
+        ui.WebDriverWait(self.driver, 10).until(
+            ec.visibility_of_element_located(LIST_EL)
+        )
 
     def go_to_patient_list(self):
         """
@@ -42,6 +46,9 @@ class BasePage(object):
         ui.WebDriverWait(self.driver, 10).until(
             ec.visibility_of_element_located(
                 (By.CSS_SELECTOR, '#patientNavItem.selected'))
+        )
+        ui.WebDriverWait(self.driver, 10).until(
+            ec.visibility_of_element_located(LIST_EL)
         )
 
     def logout(self):
