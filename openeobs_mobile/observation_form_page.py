@@ -31,7 +31,7 @@ class ObservationFormPage(BasePage):
                 input_field.send_keys(Keys.TAB)
 
         form_submit_button = self.driver.find_element(*TASK_FORM_SUBMIT)
-        form_submit_button.click()
+        form_submit_button.send_keys(Keys.ENTER)
 
     def confirm_submit_scored_ob(self):
         """
