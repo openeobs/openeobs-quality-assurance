@@ -9,7 +9,6 @@ import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
 
 
-
 class ObservationFormPage(BasePage):
     def enter_obs_data(self, data):
         """
@@ -31,7 +30,8 @@ class ObservationFormPage(BasePage):
                 input_field.send_keys(value)
                 input_field.send_keys(Keys.TAB)
 
-        self.driver.find_element(*TASK_FORM_SUBMIT).click()
+        form_submit_button = self.driver.find_element(*TASK_FORM_SUBMIT)
+        form_submit_button.click()
 
     def confirm_submit_scored_ob(self):
         """
