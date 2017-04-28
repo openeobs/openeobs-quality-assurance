@@ -29,7 +29,7 @@ class BasePage(object):
         task_list_item.click()
         ui.WebDriverWait(self.driver, 10).until(
             ec.visibility_of_element_located(
-                By.CSS_SELECTOR, '#taskNavItem.selected')
+                (By.CSS_SELECTOR, '#taskNavItem.selected'))
         )
 
     def go_to_patient_list(self):
@@ -41,7 +41,7 @@ class BasePage(object):
         patient_list_item.click()
         ui.WebDriverWait(self.driver, 10).until(
             ec.visibility_of_element_located(
-                By.CSS_SELECTOR, '#patientNavItem.selected')
+                (By.CSS_SELECTOR, '#patientNavItem.selected'))
         )
 
     def logout(self):
