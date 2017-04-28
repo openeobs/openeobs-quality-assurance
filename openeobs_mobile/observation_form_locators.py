@@ -5,10 +5,10 @@ SCORED_SUBMIT_CONFIRM_DIALOG = (By.ID, "submit_observation")
 SUBMIT_SUCCESS_DIALOG = (By.ID, "submit_success")
 OPTION_BUTTONS = (By.CSS_SELECTOR, ".dialog > .options > li > a")
 SUBMIT_OPTION = (
-    By.CSS_SELECTOR, ".dialog > .options > li > a[@data-action=\"submit\"]")
+    By.CSS_SELECTOR, ".dialog > .options > li > a[data-action=\"submit\"]")
 RENABLE_OPTION = (
-    By.CSS_SELECTOR, ".dialog > .options > li > a[@data-action=\"renable\"]")
+    By.CSS_SELECTOR, ".dialog > .options > li > a[data-action=\"renable\"]")
 TASK_LIST_OPTION = (
-    By.CSS_SELECTOR, ".dialog > .options > li > a[@data-action=\"confirm\"]")
+    By.CSS_SELECTOR, ".dialog > .options > li > a[data-action=\"confirm\"]")
 ESCALATION_TASK_OPTION = (
     By.CSS_SELECTOR, "#submit_success > options > li:last-child > a")
